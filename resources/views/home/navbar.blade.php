@@ -9,16 +9,19 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('home')}}">Home</a>
+                    <a class="nav-link {{request()->routeIs('home') ? 'active' : ""}}" aria-current="page" href="{{url('home')}}">Home</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link {{request()->routeIs('listUsers') ? 'active' : ""}}" aria-current="page" href="{{url('listUsers')}}">List Users</a>
+                </li>
             </ul>
             <div class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
 
                     <li class="nav-item ">
-                        <form action="{{ 'logout' }}" style="display: inline;" method="POST">
+                        <form action="{{url('logout') }}" style="display: inline;" method="POST">
                             @csrf
                             <button class="nav-link btn btn-sm"  type="submit"  >  Sign out</button>
                         </form>

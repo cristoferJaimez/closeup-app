@@ -2,23 +2,42 @@
 @section('contenido')
     @include('home.navbar')
     <div class="container mt-5 ">
-        <div class="row mt-5 ">
-            <div class="card mx-auto col-md-4 ">
+        <div class="row mt-2 mb-5 ">
+                        
+            <!--msm -->
+            @if(Session::has('message'))    
+            <script>
+                 Swal.fire(
+                'Good job!',
+                'You clicked the button!',
+                'success'
+            )
+            </script>
+            @endif
+         
+            <div class="card-group ">
+
+            <div class="card col-md-4 col-sm-12 ">
+                    <div class="card-body mt-3 ">
+                        <p class="mt-3  d-flex justify-content-center align-items-center">
+                            <img src="https://www.close-upinternational.com/img/logo.svg" class="border border-3 rounded-circle navbar-brand border m-2 bg-Light" alt="avatar"  width="200px" height="200px">
+                        </p>
+                        <p class="text-muted  mt-3">
+                         @foreach ($user as $item)
+                            <h2 class="text-center"> {{$item->name}}</h2>
+                         @endforeach
+                        </p>
+                    </div>
+            </div>
+            
+            <div class="card mx-auto col-md-8 col-sm-12 ">
+                
                 <div class="card-body">
-                    <table class="text-center">
-                        <thead>
-                            <th colspan="2" class="text-capitalize">
-                                @foreach ($user as $item)
-                                     {{$item->name}}
-                                @endforeach
-                            </th>
-                        </thead>
-                    </table>
-                    <form action="" method="POST">
+                        <form action="{{'public'}}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" id="title" autofocus placeholder="title..." required class="form-control">
+                            <input type="text" id="title" name="title" autofocus placeholder="title..." required class="form-control">
                         </div>
         
                         <div class="mb-3">
@@ -28,8 +47,16 @@
                         </div>
         
                         <div class="mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <select class="form-select" required aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                
+                              </select>
+                        </div>
+
+                        <div class="mb-3">
                             <label for="url" class="form-label">Url</label>
-                            <input type="url" id="url" autofocus placeholder="https://yourlink.com.co" required class="form-control">
+                            <input type="url" id="url" name="url" autofocus placeholder="https://yourlink.com.co" required class="form-control">
                         </div>
                         <div class="d-grid gap-2 ">
                             <button class="btn btn-secondary" type="submit">send post</button>
@@ -38,9 +65,11 @@
                 </div>
             </div>
 
+           
             
             
         </div>
+    </div>
         
     </div>
 @endsection

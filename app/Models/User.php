@@ -45,4 +45,12 @@ class User extends Authenticatable
     public function index(){
         return User::all();
     }
+
+
+    
+    // Relation one to more
+    public function posts(){
+        return $this->hasMany('App\Models\Post');
+    }
+
 }

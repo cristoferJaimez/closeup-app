@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
+
 class usersController extends Controller
 {
   
@@ -13,6 +16,8 @@ class usersController extends Controller
         $this->user = $user;
     }
     
+
+    //listar usuarios
     public function index()
     {
     $user = $this->user->index();
@@ -20,6 +25,16 @@ class usersController extends Controller
     }    
     
 
+    //save users new
+    public function saveUser(Request $request){
+        $user = new User($request->input());
+        $user['password'] = bcrypt($request->password);
+        $user->save();
+        return redirect()->back()->with(["message" => "user saved successfully"]);
+    }
+
+
+    // obtenr user por id
     public function userId($id)
     {
      $user = DB::table('users')
@@ -35,11 +50,21 @@ class usersController extends Controller
 
 
 
+    //listar usuarios en home
     public function index_home()
     {
     $user = $this->user->index();
     return view('home/home', ['user' => $user]);
-    }    
+    }  
+    
+    
+     //listar usuarios en home
+     public function index_listUsers()
+     {
+     $user = $this->user->index();
+     
+     return view('home/listUsers', ['user' => $user]);
+     }  
     
 
 }

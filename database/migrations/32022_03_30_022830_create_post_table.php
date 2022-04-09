@@ -16,11 +16,21 @@ return new class extends Migration
         Schema::create('post', function (Blueprint $table) {
             $table->id();
             $table->string('url');
-            $table->string('title');
-            $table->string('description');
-            $table->timestamps();
+            $table->string('title', 45);
+            $table->longText('description');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             
-         
+            $table->foreign('user_id')
+                    ->references('id')->on('users')
+                    ->onDelete('set null');
+           
+            $table->foreign('category_id')
+                    ->references('id')->on('categories')
+                    ->onDelete('set null');
+                   
+            $table->timestamps();
+    
         });
     }
 
