@@ -12,9 +12,13 @@ Route::get('/', [usersController::class, 'index'] );
 
 //Sign In
 Route::post('login', [LoginController::class, 'login'])->name('login')->middleware('guest');
+//end SignIn
+Route::post( 'logout' , [LoginController::class , 'Logout'])->name('logout');
+
+
 //Sign In users Routes
 Route::view('home' , 'home.home')->name('home')->middleware('auth');
-Route::get('home' , [usersController::class, 'index_home'] )->name('home')->middleware('auth');
+Route::get('home' , [usersController::class, 'index_home' ] )->name('home')->middleware('auth');
 
 //list Users
 Route::view('listUsers', 'home.listUsers')->middleware('auth');
@@ -31,15 +35,11 @@ Route::get('post/{id}',  [usersController::class, 'userId'])->middleware('auth')
 //public Post
 Route::post('post/public', [postController::class , 'public'])->middleware('auth');
 
-//end SignIn
-Route::post( 'logout' , [LoginController::class , 'Logout'])->name('logout');
-
-
-//home de clientes
 
 
 //save users
 Route::post('register', [usersController::class, 'saveUser']);
+
 
 
 //route register disabled

@@ -16,7 +16,16 @@ class postController extends Controller
 
     public function list(){
         $posts = Post::all();
-    
         return view('home.listPost', ['posts' => $posts]);
     }
+
+    //listar por usuario
+    public function listID(){
+        $post = Post::all();
+        return view('home.home', ['post' => $post]);
+        }
+
+
+    
+
 }

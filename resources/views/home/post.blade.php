@@ -1,6 +1,8 @@
 @extends('layout.app')
 @section('contenido')
     @include('home.navbar')
+    @include('home.navbutton')
+
     <div class="container mt-5 ">
         <div class="row mt-2 mb-5 ">
                         
@@ -15,7 +17,7 @@
             </script>
             @endif
          
-            <div class="card-group ">
+            <div class="card-group mb-5 ">
 
             <div class="card col-md-4 col-sm-12 ">
                     <div class="card-body mt-3 ">
@@ -39,6 +41,16 @@
                             @foreach ($user as $item)
                             <input type="text" name="user_id" id="user_id" value=" {{$item->id}}" hidden>   
                             @endforeach
+
+                            <div class="mb-3">
+                                <label for="category" class="form-label">Report type</label>
+                                <select class="form-select" name="category_id" id="category_id" required aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">Flash</option>
+                                    <option value="2">Pharmacist</option>
+                                    
+                                  </select>
+                            </div>   
                        
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>

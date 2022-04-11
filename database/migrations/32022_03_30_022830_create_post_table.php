@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('description');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('type-report_id')->nullable();
             
             $table->foreign('user_id')
                     ->references('id')->on('users')
@@ -28,6 +29,10 @@ return new class extends Migration
             $table->foreign('category_id')
                     ->references('id')->on('categories')
                     ->onDelete('set null');
+
+            $table->foreign('type_report_id')
+                    ->references('id')->on('type_reports')
+                    ->onDelete('set null');        
                    
             $table->timestamps();
     

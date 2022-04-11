@@ -17,19 +17,25 @@
   <!--usuario cliente-->
 
   
-  @if(auth()->user()->fk_rol == 2)
-  <h1>lista de url</h1> 
+  @if(auth()->user()->fk_rol === 2)
+  @include('home.home_')
   @endif
 
   
-  @if(auth()->user()->fk_rol == 3)
-  <h1>lista de url</h1>
+  @if(auth()->user()->fk_rol === 3)
+  @include('home.home_')
+  @endif
+
+ 
+  @if(auth()->user()->fk_rol === 4)
+    @include('home.home_')
   @endif
 
   <!--usuario empleado-->
   
-  @if(auth()->user()->fk_rol == 4)
+  @if(auth()->user()->fk_rol === 5)
     @include('home.home_')
   @endif
+  @include('home.navbutton')
   
   @endsection

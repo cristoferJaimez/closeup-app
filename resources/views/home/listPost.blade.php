@@ -1,6 +1,8 @@
 @extends('layout.app')
 @section('contenido')
 @include('home.navbar')
+@include('home.navbutton')
+
    @if(auth()->user()->fk_rol === 1)
    <div class="container mt-5">
     <div class="row mt-5 mx-auto">

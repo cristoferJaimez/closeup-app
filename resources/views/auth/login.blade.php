@@ -1,3 +1,5 @@
+@extends('layout.app')
+
 <div class=" vh-100  d-flex justify-content-center align-items-center ">
     <div class="col-md-8 col-sm-12 ">
 
