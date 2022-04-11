@@ -1,7 +1,8 @@
 @extends('layout.app')
 @include('home.navbar')
 
-
+@section('contenido')
+@if(auth()->user()->fk_rol === 1)
 <div class="container mt-5">
     <div class="row mt-5 m-2">
         <div class="card col-md-8 mx-auto col-sm-12">
@@ -14,7 +15,7 @@
                         <th>option</th>
                     </thead>
                     <tbody>
-                        <form action="" method="POST">
+                        <form action="{{'/'}}" method="GET">
                             @foreach ($user as $usu => $value)
                             <tr>
                                 <td class="text-center">
@@ -24,7 +25,10 @@
                                 <td class="col-4">
                                     <select class="form-select form-select-sm border-0 " required aria-label="Default select example">
                                         <option selected>Open this select menu</option>
-                                        
+                                        <option value="2">proveedores</option>
+                                        <option value="3">cadena / distribuidores</option>
+                                        <option value="4">laboratorio coorporaciones</option>
+                                        <option value="5">cliente interno</option>
                                       </select>
                                 </td>
                                 <td class="text-center col-2"><input type="submit" value="update" class="btn btn-sm btn-success"></td>
@@ -41,4 +45,9 @@
         </div>
     </div>
 </div>
+@else
+sin permiso
+@endif
+
+@endsection
 

@@ -35,6 +35,11 @@
                 <div class="card-body">
                         <form action="{{'public'}}" method="POST">
                         @csrf
+                     
+                            @foreach ($user as $item)
+                            <input type="text" name="user_id" id="user_id" value=" {{$item->id}}" hidden>   
+                            @endforeach
+                       
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" id="title" name="title" autofocus placeholder="title..." required class="form-control">
@@ -48,8 +53,10 @@
         
                         <div class="mb-3">
                             <label for="category" class="form-label">Category</label>
-                            <select class="form-select" required aria-label="Default select example">
+                            <select class="form-select" name="category_id" id="category_id" required aria-label="Default select example">
                                 <option selected>Open this select menu</option>
+                                <option value="1">Power BI</option>
+                                <option value="2">Other</option>
                                 
                               </select>
                         </div>

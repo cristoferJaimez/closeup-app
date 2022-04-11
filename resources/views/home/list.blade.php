@@ -1,8 +1,8 @@
-<div class="container mt-5 ">
-    <div class="row  mx-auto">
-        <div class="card-group mx-auto">
+<div class="container mt-5  ">
+    <div class="row  ">
+        <div class="card-group ">
         @foreach ($user as $item => $value)
-            <div class="card col-md-3 col-sm-12  " style="max-width: 18rem;">
+            <div class="card mx-auto col-md-3 col-sm-12  " style="max-width: 18rem;">
                 <img src="https://www.close-upinternational.com/img/logo.svg" class="card-img-top p-5"  alt="...">
                 <div class="card-body text-center">
                     <h5 class="card-title text-center">{{$value->name}}</h5>

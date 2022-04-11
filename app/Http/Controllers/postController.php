@@ -12,4 +12,11 @@ class postController extends Controller
         $post->save();
         return redirect()->back()->with(["message" => "Message sent"]);
     }
+
+
+    public function list(){
+        $posts = Post::all();
+    
+        return view('home.listPost', ['posts' => $posts]);
+    }
 }

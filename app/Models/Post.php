@@ -17,14 +17,10 @@ class Post extends Model
         'url',
         'description',
         'user_id',
-        'catory_id',
+        'category_id',
     ];
 
     protected $hidden = [
-        'id',
-        'url',
-        'user_id',
-        'catory_id',
     ];
 
     

@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar  navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{route('home')}}">{{ auth()->user()->name }}</a>
+        <a class="navbar-brand" href="{{route('home')}}">welcome:  {{ auth()->user()->name }}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,9 +12,18 @@
                     <a class="nav-link {{request()->routeIs('home') ? 'active' : ""}}" aria-current="page" href="{{url('home')}}">Home</a>
                 </li>
 
+                @if(auth()->user()->fk_rol === 1)
                 <li class="nav-item">
                     <a class="nav-link {{request()->routeIs('listUsers') ? 'active' : ""}}" aria-current="page" href="{{url('listUsers')}}">List Users</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{request()->routeIs('listPost') ? 'active' : ""}}" aria-current="page" href="{{url('listPost')}}">List Post</a>
+                </li>
+                    
+                @else
+                    
+                @endif
             </ul>
             <div class="d-flex">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
