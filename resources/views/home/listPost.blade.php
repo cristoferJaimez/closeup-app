@@ -2,7 +2,7 @@
 @section('contenido')
     @include('home.navbar')
     @include('home.navbutton')
-
+   
     @if (auth()->user()->fk_rol === 1)
         <div class="container mt-5">
             <div class="row mt-5 ">
@@ -22,9 +22,27 @@
                                 <tbody>
                                     @foreach ($posts as $post => $value)
                                         <tr>
-                                            <td>{{ $value->user_id }}</td>
-                                            <td>{{$value->type_report_id}}</td>
-                                            <td>{{$value->category_id}}</td>
+                                            <td>
+                                                @foreach($user as $usu)
+                                                    @if ($usu->id === $value->user_id)
+                                                        {{$usu->name}}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            <td class="text-center text-capitalize">
+                                                @foreach($type as $ty)
+                                                    @if ($ty->id === $value->type_report_id)
+                                                        {{$ty->type}}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            <td class="text-center text-capitalize">
+                                                @foreach($cate as $ca)
+                                                @if ($ca->id === $value->category_id)
+                                                    {{$ca->category}}
+                                                @endif
+                                            @endforeach
+                                            </td>
                                             <td class="text-center"><a href="{{ $value->url }}"
                                                     class="d-inline-block text-truncate " style="max-width: 150px;"
                                                     target="blank_"> {{ $value->url }}</a></td>

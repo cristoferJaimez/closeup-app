@@ -50,7 +50,7 @@ class User extends Authenticatable
     
     // Relation one to more
     public function posts(){
-        return $this->hasMany('App\Models\Post');
+        return $this->hasMany(Post::class);
     }
 
 }

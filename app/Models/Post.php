@@ -5,6 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Client\Request;
+use App\Models\Category;
+use App\Models\User;
+use App\Models\typeReport;
+
+
 
 class Post extends Model
 {
@@ -35,20 +40,20 @@ class Post extends Model
 
     //Relation one to more (invertida)
     public function user(){
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     //Relation one to more (invertida)
     public function category(){
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo(Category::class);
     }
 
     //Relation one to more (invertida)
     public function type(){
-        return $this->belongsTo('App\Models\typeReport');
+        return $this->belongsTo(typeReport::class);
     }
 
 
     
 }
-
+    

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use App\Models\Rol;
 
 class usersController extends Controller
 {
@@ -62,7 +62,7 @@ class usersController extends Controller
      public function index_listUsers()
      {
      $user = $this->user->index();
-     
+     $rol = Rol::all();
      return view('home/listUsers', ['user' => $user]);
      }  
     

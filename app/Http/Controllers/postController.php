@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\User;
+use App\Models\typeReport;
 
 class postController extends Controller
 {
@@ -17,8 +20,11 @@ class postController extends Controller
 
 
     public function list(){
-        $posts = Post::all();
-        return view('home.listPost', ['posts' => $posts]);
+        $posts = Post::all(); 
+        $type = typeReport::all();  
+        $cate = Category::all();
+        $user = User::all();
+        return view('home.listPost', ['posts' => $posts, 'type' => $type, 'cate'=> $cate, 'user' => $user]);
     }
 
     //listar por usuario
@@ -35,6 +41,8 @@ class postController extends Controller
             $post = Post::orderBy('created_at', 'desc')
                             ->where('user_id', $id)
                             ->get();
+            
+            
             return view('home.oldpost', ['post' => $post]);
             }
     
