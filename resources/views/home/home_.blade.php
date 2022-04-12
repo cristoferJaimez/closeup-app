@@ -3,23 +3,45 @@
     @include('home.navbar')
         @include('home.navbutton')
 
-
     <!--msm -->
-    @if (Session::has('post'))
-        @foreach ($post as $item)
-            @if(auth()->user()->id === $item->user_id)
-                {{$item}}
-            @endif
-        @endforeach
-    @else
-        <div class="container mt-5">
-            <div class="row mt-5 m-2  ">
-                <p></p><p></p>
-                <i class="border  text-center mt-5 text-muted fa-solid fa-link-slash fa-10x"></i>
-                <p class="text-center">
-                    No post...
-                </p>
+    <div class="container mt-5 mb-3">
+
+        <div class="row mt-5  ">
+            <a href="{{'postList'}}/{{auth()->user()->id}}" class="  col-md-6 col-sm-12 text-decoration-none mb-2 text-muted">
+              <div class="card ">
+                  <div class="card-body d-flex justify-content-between">
+                      <div class="text-star ">
+                        <i class="fa-solid fa-file-excel"></i>  File Flash. 
+                      </div>
+                      <div class="text-end">
+                        <span class="badge bg-success">New Post  <i class="fa-solid fa-file-excel"></i></span>
+                      </div>
+                  </div>
+              </div>
+            </a>
+
+      
+          <a href="{{'postList'}}/{{auth()->user()->id}}" class=" col-md-6 col-sm-12 text-decoration-none mb-2 text-muted">
+            <div class="card ">
+                <div class="card-body d-flex justify-content-between">
+                    <div class="text-star ">
+                      <i class="fa-solid fa-bell"></i> New Post. 
+                    </div>
+                    <div class="text-end">
+                      <span class="badge bg-danger">New Post <i class="fa-solid fa-face-grin-stars"></i></span>
+                    </div>
+                </div>
             </div>
+          </a>
+        
+           <a href="{{'oldpost'}}/{{auth()->user()->id}}" class="col-md-6 col-sm-12 text-decoration-none text-muted">
+            <div class="card   mb-3">
+                <div class="card-body">
+                    <i class="fa-solid fa-link-slash m-2"></i>   Old post list.
+                </div>
+            </div>
+           </a>
         </div>
-    @endif
+    </div>
+  
 @endsection

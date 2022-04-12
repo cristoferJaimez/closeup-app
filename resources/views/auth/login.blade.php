@@ -12,7 +12,7 @@
             <div class="card border border-light " >
                 <div class="card-body">
                     
-                    <form action="{{'login'}}" method="POST">
+                    <form action="{{url('login')}}" method="POST">
                         <div class="form-group ">
                             <!--token-->
                             @csrf

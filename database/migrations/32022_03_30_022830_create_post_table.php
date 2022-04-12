@@ -20,7 +20,7 @@ return new class extends Migration
             $table->longText('description');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('type-report_id')->nullable();
+            $table->unsignedBigInteger('type_report_id')->nullable();
             
             $table->foreign('user_id')
                     ->references('id')->on('users')

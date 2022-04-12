@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Post;
+
 class postController extends Controller
 {
     
@@ -20,12 +22,22 @@ class postController extends Controller
     }
 
     //listar por usuario
-    public function listID(){
-        $post = Post::all();
-        return view('home.home', ['post' => $post]);
+    public function listID($id){
+        $post = Post::orderBy('created_at', 'desc')
+                        ->where('user_id', $id)
+                        ->limit(1)
+                        ->get();
+        return view('home.postList', ['post' => $post]);
         }
 
 
+        public function oldList($id){
+            $post = Post::orderBy('created_at', 'desc')
+                            ->where('user_id', $id)
+                            ->get();
+            return view('home.oldpost', ['post' => $post]);
+            }
+    
     
 
 }

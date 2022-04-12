@@ -43,6 +43,11 @@ class Post extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
+    //Relation one to more (invertida)
+    public function type(){
+        return $this->belongsTo('App\Models\typeReport');
+    }
+
 
     
 }

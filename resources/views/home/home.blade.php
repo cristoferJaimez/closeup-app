@@ -1,6 +1,7 @@
 @extends('layout.app')
 @section('contenido')
   @include('home.navbar')
+  @include('home.breadcrumb')
   
   <!--usuario sin rol-->
 
@@ -36,6 +37,8 @@
   @if(auth()->user()->fk_rol === 5)
     @include('home.home_')
   @endif
+
   @include('home.navbutton')
+
   
   @endsection

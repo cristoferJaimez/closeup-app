@@ -32,10 +32,13 @@ Route::get('listPost' , [postController::class, 'list'] )->name('listPost')->mid
 Route::view('post', 'home.post')->middleware('auth');
 Route::get('post/{id}',  [usersController::class, 'userId'])->middleware('auth');
 
-//public Post
+//public Post 
 Route::post('post/public', [postController::class , 'public'])->middleware('auth');
 
 
+//post users
+Route::get('postList/{id}',  [postController::class, 'listID'])->name('postList')->middleware('auth');
+Route::get('oldpost/{id}',  [postController::class, 'oldList'])->name('oldpost')->middleware('auth');
 
 //save users
 Route::post('register', [usersController::class, 'saveUser']);

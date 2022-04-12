@@ -11,9 +11,26 @@ return new class extends Migration
      *
      * @return void
      */
+
+    static $type = [
+        'flash',
+        'pharmacist',
+    ];
+
     public function up()
     {
-        //
+        Schema::table('type_reports', function (Blueprint $table) {
+            //
+           });
+           //cargar datos predetermiandos
+           foreach (self::$type as $ty) {
+           DB::table("type_reports")
+           ->insert(['type' => $ty ,
+                     'created_at'  => now()->toDateString()." ". now()->toTimeString(),
+                     'updated_at'  => now()->toDateString(). " ". now()->toTimeString(),    
+                   ]);
+           }        
+    
     }
 
     /**

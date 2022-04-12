@@ -44,7 +44,7 @@
 
                             <div class="mb-3">
                                 <label for="category" class="form-label">Report type</label>
-                                <select class="form-select" name="category_id" id="category_id" required aria-label="Default select example">
+                                <select class="form-select" name="type_report_id" id="type_report_id" required aria-label="Default select example">
                                     <option selected>Open this select menu</option>
                                     <option value="1">Flash</option>
                                     <option value="2">Pharmacist</option>

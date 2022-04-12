@@ -1,36 +1,52 @@
 @extends('layout.app')
 @section('contenido')
-@include('home.navbar')
-@include('home.navbutton')
+    @include('home.navbar')
+    @include('home.navbutton')
 
-   @if(auth()->user()->fk_rol === 1)
-   <div class="container mt-5">
-    <div class="row mt-5 mx-auto">
-        <div class="card col-md-6 mx-auto col-sm-12">
-            <div class="card-body ">
-             <table class="table table-sm ">
-                 <thead class="text-center">
-                     <th>User</th>
-                     <th>Link</th>
-                     <th>Stated</th>
-                     <th>Date</th>
-                 </thead>
-                 <tbody>
-                     @foreach($posts as $post => $value)
-                         <tr>
-                             <td>{{$value->user_id}}</td>
-                             <td><a href="{{$value->url}}" target="blank_">Link</a></td>
-                             <td></td>
-                             <td>{{ $value->created_at }}</td>
-                         </tr>
-                     @endforeach
-                 </tbody>
-             </table>
+    @if (auth()->user()->fk_rol === 1)
+        <div class="container mt-5">
+            <div class="row mt-5 ">
+                <div class="table-responsive">
+
+                    <div class="card col-md-12 mx-auto col-sm-12">
+                        <div class="card-body ">
+                            <table class="table table-sm ">
+                                <thead class="text-center">
+                                    <th> <i class="fa-solid fa-users"></i> Users</th>
+                                    <th><i class="fa-solid fa-ballot-check"></i> Type report</th>
+                                    <th><i class="fa-solid fa-ballot-check"></i> Category</th>
+                                    <th> <i class="fa-solid fa-link"></i> Links</th>
+                                    <th> <i class="fa-solid fa-database"></i> Status</th>
+                                    <th> <i class="fa-solid fa-calendar"></i> Date</th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($posts as $post => $value)
+                                        <tr>
+                                            <td>{{ $value->user_id }}</td>
+                                            <td>{{$value->type_report_id}}</td>
+                                            <td>{{$value->category_id}}</td>
+                                            <td class="text-center"><a href="{{ $value->url }}"
+                                                    class="d-inline-block text-truncate " style="max-width: 150px;"
+                                                    target="blank_"> {{ $value->url }}</a></td>
+                                            <td class="text-center text-success">
+                                                <i class="fa-solid fa-link" title="ON LINE"></i>
+                                            </td>
+                                            <td>{{ $value->created_at }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+
             </div>
+
+
         </div>
-    </div>
-</div>
-   @else
-    sin permiso
-   @endif
+    @else
+        sin permiso
+    @endif
 @endsection
