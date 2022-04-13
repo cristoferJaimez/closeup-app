@@ -19,7 +19,8 @@ return new class extends Migration
             'proveedores',
             'cadena / distribuidores',
             'laboratorio coorporaciones',
-            'cliente interno'
+            'cliente interno',
+            'cliente interno / UTC',
     ];
 
     public function up()

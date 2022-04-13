@@ -4,12 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\usersController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\postController;
+use App\Http\Controllers\UtcMapsController;
+
 
 
 //Route Index App
 Route::view('/', 'index' );
 Route::get('/', [usersController::class, 'index'] );
-
+ 
 //Sign In
 Route::post('login', [LoginController::class, 'login'])->name('login')->middleware('guest');
 //end SignIn
@@ -19,6 +21,9 @@ Route::post( 'logout' , [LoginController::class , 'Logout'])->name('logout');
 //Sign In users Routes
 Route::view('home' , 'home.home')->name('home')->middleware('auth');
 Route::get('home' , [usersController::class, 'index_home' ] )->name('home')->middleware('auth');
+
+//perfil user
+Route::get('perfil/{id}', [usersController::class, 'perfil'])->name('perfil')->middleware('auth');
 
 //list Users
 Route::view('listUsers', 'home.listUsers')->middleware('auth');
@@ -35,6 +40,7 @@ Route::get('post/{id}',  [usersController::class, 'userId'])->middleware('auth')
 //public Post 
 Route::post('post/public', [postController::class , 'public'])->middleware('auth');
 
+//update rol users
 
 //post users
 Route::get('postList/{id}',  [postController::class, 'listID'])->name('postList')->middleware('auth');
@@ -55,3 +61,6 @@ Route::get('category_type', [usersController::class, 'category'])->name('categor
 
 
 
+//UTC Routes
+
+Route::get('utcmaps', [UtcMapsController::class, 'show'])->name('utcmaps')->middleware('auth');

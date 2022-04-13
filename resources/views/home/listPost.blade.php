@@ -17,7 +17,7 @@
                                     <th><i class="fa-solid fa-ballot-check"></i> Category</th>
                                     <th> <i class="fa-solid fa-link"></i> Links</th>
                                     <th> <i class="fa-solid fa-database"></i> Status</th>
-                                    <th> <i class="fa-solid fa-calendar"></i> Date</th>
+                                    <th> <i class="fa-solid fa-calendar"></i> Timestamps</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($posts as $post => $value)
@@ -49,7 +49,7 @@
                                             <td class="text-center text-success">
                                                 <i class="fa-solid fa-link" title="ON LINE"></i>
                                             </td>
-                                            <td>{{ $value->created_at }}</td>
+                                            <td class="text-center text-muted">{{ $value->created_at }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

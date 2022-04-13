@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Http\Request;
+
 
 class User extends Authenticatable
 {
@@ -20,6 +22,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'avatar',
         'password',
     ];
 
@@ -35,6 +38,7 @@ class User extends Authenticatable
 
     protected $attributes = [
         'fk_rol' => '5',
+        'avatar' => 'https://www.close-upinternational.com/img/logo.svg', 
     ];
 
     /**
@@ -46,9 +50,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //show
     public function index(){
         return User::all();
     }
+
+
+   
 
 
     

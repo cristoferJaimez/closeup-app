@@ -44,9 +44,25 @@ class usersController extends Controller
         ->where('id' , $id)
         ->get();   
 
-     return view('home.post', ['user'=> $user]);
+    $type = typeReport::all();
+    $category = Category::all();
+
+     return view('home.post', ['user'=> $user, 'type' => $type, 'category'=> $category]);
     }    
     
+
+     // obtenr user por id
+     public function perfil($id)
+     {
+      $user = DB::table('users')
+         ->select(['name', 'id'])
+         ->where('id' , $id)
+         ->get();   
+ 
+      $rol = Rol::all();
+      return view('auth.perfil', ['user'=> $user, 'rol'=> $rol]);
+     }    
+     
 
 
 
@@ -56,16 +72,17 @@ class usersController extends Controller
     public function index_home()
     {
     $user = $this->user->index();
-    return view('home/home', ['user' => $user]);
+    $rols = Rol::all();
+    return view('home/home', ['user' => $user, 'rols' => $rols]);
     }  
     
-    
+     
      //listar usuarios en home
      public function index_listUsers()
      {
      $user = $this->user->index();
      $rol = Rol::all();
-     return view('home/listUsers', ['user' => $user]);
+     return view('home/listUsers', ['user' => $user, 'rol' => $rol]);
      }  
 
 
@@ -78,5 +95,8 @@ class usersController extends Controller
 
         return view('home.category_type', ['category'=> $category, 'type' => $type, 'rol' => $rol]);
      }
+
+     //update rol user
+  
 
 }

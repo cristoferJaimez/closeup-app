@@ -16,7 +16,7 @@
                                     <th> <i class="fa-solid fa-user-gear"></i> Rol</th>
                                 </thead>
                                 <tbody>
-                                    <form action="{{ '/' }}" method="GET">
+                                    <form action="{{ url('rolupdate')  }}" method="POST">
                                         @foreach ($user as $usu => $value)
                                             <tr>
 
@@ -24,11 +24,15 @@
                                                 <td class="col-4">
                                                     <select class="form-select form-select-sm border-0 " required
                                                         aria-label="Default select example">
-                                                        <option selected>Open this select menu</option>
-                                                        <option value="2">proveedores</option>
-                                                        <option value="3">cadena / distribuidores</option>
-                                                        <option value="4">laboratorio coorporaciones</option>
-                                                        <option value="5">cliente interno</option>
+                                                        @foreach ($rol as $item)
+                                                            @if ($item->id === $value->fk_rol)
+                                                                <option selected>{{$item->description}}</option>
+                                                            @endif
+                                                        @endforeach
+                                                        @foreach ($rol as $item)
+                                                            <option value="{{ $item->id }}" class="text-capitalize">
+                                                                {{ $item->description }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </td>
 
@@ -41,7 +45,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
         </div>
