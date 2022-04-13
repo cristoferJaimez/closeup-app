@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Rol;
+use App\Models\Category;
+use App\Models\typeReport;
 
 class usersController extends Controller
 {
@@ -65,6 +67,16 @@ class usersController extends Controller
      $rol = Rol::all();
      return view('home/listUsers', ['user' => $user]);
      }  
-    
+
+
+     //view category and type an rol
+     
+     public function category(){
+        $category = Category::all();
+        $type = typeReport::all();
+        $rol = Rol::all();
+
+        return view('home.category_type', ['category'=> $category, 'type' => $type, 'rol' => $rol]);
+     }
 
 }

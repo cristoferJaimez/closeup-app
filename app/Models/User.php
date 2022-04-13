@@ -33,6 +33,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $attributes = [
+        'fk_rol' => '5',
+    ];
+
     /**
      * The attributes that should be cast.
      *

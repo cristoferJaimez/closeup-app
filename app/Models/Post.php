@@ -20,22 +20,41 @@ class Post extends Model
     protected $fillable = [
         'title',
         'url',
+        'type_report_id',
+        'status',
         'description',
-        'user_id',
+         'user_id',
         'category_id',
+    ];
+
+    protected $attributes = [
+        'status' => 'active',
     ];
 
     protected $hidden = [
     ];
 
     
+    //show
     public function getAll(){
       return Post::all();   
     }
 
+    //create
     public function create(Request $request ){
         return Post::created($request);
     }
+
+    //update
+
+    //delete
+
+    //edit
+
+
+
+
+
 
 
     //Relation one to more (invertida)

@@ -50,7 +50,8 @@ Route::get('register', function (){
     return view('auth.register');
 });
 
-
+//category
+Route::get('category_type', [usersController::class, 'category'])->name('category')->middleware('auth');
 
 
 

@@ -19,5 +19,18 @@ class Rol extends Model
     protected $hidden = [
     ];
 
-    
+ 
+    //show
+    public function show(){
+        return Rol::all();
+    }
+
+    //create
+
+    //update
+
+    //edit
+
+    //delete
+
 }

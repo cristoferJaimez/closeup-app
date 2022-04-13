@@ -41,7 +41,6 @@
                             @foreach ($user as $item)
                             <input type="text" name="user_id" id="user_id" value=" {{$item->id}}" hidden>   
                             @endforeach
-
                             <div class="mb-3">
                                 <label for="category" class="form-label">Report type</label>
                                 <select class="form-select" name="type_report_id" id="type_report_id" required aria-label="Default select example">

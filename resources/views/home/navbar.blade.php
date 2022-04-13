@@ -34,18 +34,25 @@
                             aria-current="page" href="{{ url('loadListPost') }}"><i class="fa-solid fa-file-csv"></i>
                             Load list post</a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a class=" nav-link  border-1  {{ request()->routeIs('category') ? 'text-white' : 'text-dark' }}"
+                            aria-current="page" href="{{url('category_type')}}"><i
+                                class="fa-solid fa-clipboard-list"></i> Add</a>
+                    </li>
                 @else
                     <li class="nav-item">
-                        <a class="text-white nav-link  border-1 {{ request()->routeIs('postList') ? 'active' : 'text-dark' }}"
+                        <a class=" nav-link  border-1 {{ request()->routeIs('postList') ? 'text-white' : 'text-dark' }}"
                             aria-current="page" href="{{ url('postList') }}/{{ auth()->user()->id }}"><i
                                 class="fa-solid fa-link"></i> Links post</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="text-white nav-link  border-1  {{ request()->routeIs('oldpost') ? 'active' : 'text-dark' }}"
+                        <a class="nav-link  border-1  {{ request()->routeIs('oldpost') ? 'text-white' : 'text-dark' }}"
                             aria-current="page" href="{{ url('oldpost') }}/{{ auth()->user()->id }}"><i
                                 class="fa-solid fa-clipboard-list"></i> List old post</a>
                     </li>
+
                 @endif
             </ul>
             <div class="d-flex">

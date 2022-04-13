@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('url');
             $table->string('title', 45);
             $table->longText('description');
+            $table->string('status');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('type_report_id')->nullable();
