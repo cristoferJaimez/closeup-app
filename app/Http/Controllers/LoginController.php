@@ -11,11 +11,13 @@ class LoginController extends Controller
 {
     public function login(Request $request ){
         $remember = $request->filled('remember');
-        
+
         if(Auth::attempt($request->only('email', 'password'), $remember)){
-            request()->session()->regenerate();            
+            request()->session()->regenerate();
             return redirect()->intended('home')->with('status', 'You are logger in!');
 
+        }else{
+            return redirect()->intended('/')->with('status', "You're logger out!");
         }
 
         throw ValidationException::withMessages([
@@ -25,10 +27,14 @@ class LoginController extends Controller
 
 
    public function logout(Request $request ,  Redirector $redirect){
-       Auth::logout();
-       $request->session()->invalidate();
-       $request->session()->regenerateToken();
-       
-       return $redirect->to('home')->with('status', "You're logger out");
-   } 
+    try {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return $redirect->to('/')->with('status', "You're logger out");
+    } catch (\Throwable $th) {
+        return $redirect->to('/')->with('status', "You're logger out");
+    }
+   }
 }
