@@ -8,3 +8,4 @@ Turbolinks.start()
 //ALERT
 window.Swal = require('sweetalert2')
 
+//inc
