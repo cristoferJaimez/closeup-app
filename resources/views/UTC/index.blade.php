@@ -2,12 +2,8 @@
 @push('head')
 @endpush
 @section('contenido')
+    <div class="loader-page"><span class="ref"></span></div>
 
-    <head>
-        <title>UTC Maps</title>
-        <script></script>
-
-    </head>
 
     <style>
         body {
@@ -29,127 +25,99 @@
     <div id="map" class="map col-md-12"></div>
 
     <script>
-        var geojsonFeature = {
-            "type": "Feature",
-            "properties": {
-                "name": "Colombia",
-                "amenity": "",
-                "popupContent": "!"
-            },
-            "geometry": {
-                "type": "Point",
-                "coordinates": [4.0000000, -72.0000000]
+        // Make basemap
+        const map = new L.Map('map', {
+            center: new L.LatLng(4.570868, -74.297333),
+            zoom: 7,
+            fullscreenControl: {
+                pseudoFullscreen: false
             }
-        };
+        });
+        const osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 
-        var map = L.map('map', {
-            minZoom: 5,
-            maxZoom: 18
-        }).setView([4.60971, -74.08175], 9);
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        map.addLayer(osm);
+
+        //end view maps
+
+        // Load kml file
+        fetch('assets/kml/maps.kml')
+            .then(res => res.text())
+            .then(kmltext => {
+                // Create new kml overlay
+                const parser = new DOMParser();
+                const kml = parser.parseFromString(kmltext, 'text/xml');
+                const track = new L.KML(kml);
+                map.addLayer(track);
+
+                // Adjust map to show the kml
+                const bounds = track.getBounds();
+                map.fitBounds(bounds);
+            }).catch(function(e) {
+                console.log('Error: ' + e);
+            });
+        //end kml
+        //full screen
+
+
+        //print map
+        var printer = L.easyPrint({
+            tileLayer: osm,
+            sizeModes: ['Current', 'A4Landscape', 'A4Portrait'],
+            filename: 'myUTC',
+            exportOnly: true,
+            hideControlContainer: true
         }).addTo(map);
 
+        function manualPrint() {
+            printer.printMap('CurrentSize', 'MyManualPrint')
+        }
 
+        //leyend
+        var filter = L.control({
+            position: 'topleft'
+        });
+        filter.onAdd = function(map) {
 
+            var div = L.DomUtil.create('div', 'card p-2');
+            labels = ['<strong>Categories</strong>'],
+                categories = [];
 
-        function onEachFeature(feature, layer) {
-            if (feature.properties) {
-                var popupContent = "<p>Localidad: " + feature.properties.NAME + "<br>" +
-                    "Identificación: " + feature.properties.IDENTIFICATION_LOCATION + "<br>" +
-                    "Area: " + feature.properties.AREA + "</p>";
-                layer.bindPopup(popupContent);
-            };
-        };
+            for (var i = 0; i < categories.length; i++) {
 
-        function style(feature) {
-            return {
-                weight: 2,
-                opacity: 1,
-                color: 'red',
-                dashArray: '3',
-                fillOpacity: 0.9,
-                fillColor: 'white'
-            };
-        };
+                div.innerHTML +=
+                    labels.push(
+                        '<i class="circle" style="background:' + "" + '"></i> ' +
+                        (categories[i] ? categories[i] : '+'));
 
-
-
-        //control
-        var info = L.control();
-
-        info.onAdd = function(map) {
-            this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-            this.update();
-            return this._div;
-        };
-
-        // method that we will use to update the control based on feature properties passed
-        info.update = function(props) {
-            this._div.innerHTML =
-                '<div class="card p-4"> <h4 ><img src="https://www.close-upinternational.com/img/logo.svg" /></h4>' + (
-                    props ?
-                    '<b>' + props.name + '</b><br />' + props.density + ' people / mi<sup>2</sup>' :
-                    ' </div>');
-        };
-
-        info.addTo(map);
-        L.Control.MousePosition = L.Control.extend({
-            options: {
-                position: 'bottomleft',
-                separator: ' : ',
-                emptyString: 'Unavailable',
-                lngFirst: false,
-                numDigits: 5,
-                lngFormatter: undefined,
-                latFormatter: undefined,
-                prefix: ""
-            },
-
-            onAdd: function(map) {
-                this._container = L.DomUtil.create('div', 'leaflet-control-mouseposition');
-                L.DomEvent.disableClickPropagation(this._container);
-                map.on('mousemove', this._onMouseMove, this);
-                this._container.innerHTML = this.options.emptyString;
-                return this._container;
-            },
-
-            onRemove: function(map) {
-                map.off('mousemove', this._onMouseMove)
-            },
-
-            _onMouseMove: function(e) {
-                var lng = this.options.lngFormatter ? this.options.lngFormatter(e.latlng.lng) : L.Util
-                    .formatNum(e.latlng.lng, this.options.numDigits);
-                var lat = this.options.latFormatter ? this.options.latFormatter(e.latlng.lat) : L.Util
-                    .formatNum(e.latlng.lat, this.options.numDigits);
-                var value = this.options.lngFirst ? lng + this.options.separator + lat : lat + this.options
-                    .separator + lng;
-                var prefixAndValue = this.options.prefix + ' ' + value;
-                this._container.innerHTML = "<div class='card col-12 p-4'>" + prefixAndValue + "</div>";
             }
-
-        });
-
-        L.Map.mergeOptions({
-            positionControl: false
-        });
-
-        L.Map.addInitHook(function() {
-            if (this.options.positionControl) {
-                this.positionControl = new L.Control.MousePosition();
-                this.addControl(this.positionControl);
-            }
-        });
-
-        L.control.mousePosition = function(options) {
-            return new L.Control.MousePosition(options);
+            div.innerHTML = labels.join('<br>');
+            return div;
         };
-        L.control.mousePosition().addTo(map);
 
-        L.geoJson(utc, {
-            style: style,
-            onEachFeature: onEachFeature
-        }).addTo(map);
+        // Insertando una leyenda en el mapa
+        var legend = L.control({
+            position: 'bottomright'
+        });
+
+
+        legend.onAdd = function(map) {
+
+            var div = L.DomUtil.create('div', 'card p-2');
+            labels = ['<strong>Categories</strong>'],
+                categories = ['Road Surface', 'Signage', 'Line Markings', 'Roadside Hazards', 'Other'];
+
+            for (var i = 0; i < categories.length; i++) {
+
+                div.innerHTML +=
+                    labels.push(
+                        '<i class="circle" style="background:' + "" + '"></i> ' +
+                        (categories[i] ? categories[i] : '+'));
+
+            }
+            div.innerHTML = labels.join('<br>');
+            return div;
+        };
+        legend.addTo(map);
+        filter.addTo(map);
     </script>
 @endsection
