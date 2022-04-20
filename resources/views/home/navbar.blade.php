@@ -3,7 +3,10 @@
         <a class="navbar-brand text-white" href="{{ url('perfil') }}/{{ auth()->user()->id }}">
             <img src="{{auth()->user()->avatar}}" alt="avatar"
                 class="rounded-circle navbar-brand border m-2 bg-white" width="30px" height="30px">
-            {{ auth()->user()->name }}</a>
+        <span class="text-uppercase">
+              </span>
+
+                {{ auth()->user()->name }}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,8 +37,8 @@
                             aria-current="page" href="{{ route('utcmaps') }}"> <i class="fa-solid fa-map-location-dot"></i>
                             Maps</a>
                     </li>
-                    
-                 
+
+
 
                 @else
                     <li class="nav-item">
@@ -64,7 +67,7 @@
                         </form>
                     <li>
 
-                   
+
                 </ul>
             </div>
         </div>

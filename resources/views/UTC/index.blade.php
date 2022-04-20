@@ -2,8 +2,8 @@
 @push('head')
 @endpush
 @section('contenido')
-    <div class="loader-page"><span class="ref"></span></div>
-
+   <!-- <div class="loader-page"><span class="ref"></span></div>
+   -->
 
     <style>
         body {
@@ -21,8 +21,31 @@
     </style>
 
 
+    <div id="map" class="map col-md-12" style="z-index:2;"></div>
 
-    <div id="map" class="map col-md-12"></div>
+    <div class="position-relative  " style=" z-index:3; ">
+        <div class="">
+        <div class="px-5 ms-1 mt-2">
+            <form action="" class="row g-2" method="POST">
+                @csrf
+                <div class="col-md-4 col-sm-12 ">
+                <select class=" form-select form-select-sm  col-12 border border-sencondary border-2 shadow-lg  bg-body rounded" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+
+                  <div class="col-md-8 col-sm-12 ">
+                    <input type="text" class="form-control form-control-sm border border-sencondary border-2 shadow-lg  bg-body rounded" placeholder="Search for name" aria-label="Recipient's username" aria-describedby="button-addon2">
+                  </div>
+
+            </form>
+    </div>
+</div>
+</div>
+
 
     <script>
         // Make basemap
@@ -65,7 +88,7 @@
             sizeModes: ['Current', 'A4Landscape', 'A4Portrait'],
             filename: 'myUTC',
             exportOnly: true,
-            hideControlContainer: true
+            hideControlContainer: false
         }).addTo(map);
 
         function manualPrint() {
@@ -74,12 +97,12 @@
 
         //leyend
         var filter = L.control({
-            position: 'topleft'
+            position: 'buttonleft'
         });
         filter.onAdd = function(map) {
 
             var div = L.DomUtil.create('div', 'card p-2');
-            labels = ['<strong>Categories</strong>'],
+            labels = ['<strong></strong>'],
                 categories = [];
 
             for (var i = 0; i < categories.length; i++) {
@@ -104,7 +127,8 @@
 
             var div = L.DomUtil.create('div', 'card p-2');
             labels = ['<strong>Categories</strong>'],
-                categories = ['Road Surface', 'Signage', 'Line Markings', 'Roadside Hazards', 'Other'];
+                categories = ['Road Surface', 'Signage', 'Line Markings', 'Roadside Hazards', 'Other',
+                'Road Surface', 'Signage', 'Line Markings', 'Roadside Hazards', 'Other'];
 
             for (var i = 0; i < categories.length; i++) {
 
