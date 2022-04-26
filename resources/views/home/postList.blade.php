@@ -5,9 +5,9 @@
 
     <div class="container mt-5">
         <div class="row mt5 m-2">
-            <div class="card col-md-4 col-sm-12 shadow-sm">
+            @foreach ($post as $item => $value)
+            <div class="card col-md-4 col-sm-12 m-2 mb-3 shadow-sm">
                 <div class="card-body ">
-                    @foreach ($post as $item => $value)
                         @if ($value->user_id === auth()->user()->id)
                             <h5 class="card-title text-capitalize">{{ $value->title }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted border"><i class="fa-duotone fa-calendar-check"></i>
@@ -39,10 +39,11 @@
                             </ul>
                         @else
                         @endif
-                    @endforeach
 
                 </div>
             </div>
-        </div>
+        @endforeach
+    </div>
+
     </div>
 @endsection

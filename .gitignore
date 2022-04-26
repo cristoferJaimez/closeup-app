@@ -1,9 +1,14 @@
 /node_modules
 /public/hot
+/public/assets
 /public/storage
 /storage/*.key
 /vendor
 .env
+.xlsx
+.geojson
+.rar
+.zip
 .env.backup
 .phpunit.result.cache
 Homestead.json

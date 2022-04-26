@@ -38,6 +38,11 @@
                             Maps</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a  class="nav-link {{ request()->routeIs('listUTC') ? 'active text-white' : 'text-dark' }}"
+                            aria-current="page" href="{{ route('listUTC') }}"> <i class="fa-solid fa-map-location-dot"></i>
+                            List UTC</a>
+                    </li>
 
 
                 @else

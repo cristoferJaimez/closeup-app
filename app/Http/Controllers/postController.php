@@ -30,7 +30,7 @@ class postController extends Controller
     public function listID($id){
         $post = Post::orderBy('created_at', 'desc')
                         ->where('user_id', $id)
-                        ->limit(1)
+                        ->limit(2)
                         ->get();
                         $posts = Post::all();
                         $type = typeReport::all();

@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{asset('css/maps.css')}}">
     <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fullScreen.css') }}">
     <script type="text/javascript" src="{{ asset('assets/kml/maps.geojson') }}"></script>
+
 
     <script src="{{ asset('js/app.js') }}"></script>
 

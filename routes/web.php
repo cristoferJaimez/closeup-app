@@ -62,5 +62,7 @@ Route::get('category_type', [usersController::class, 'category'])->name('categor
 
 
 //UTC Routes
-
 Route::get('utcmaps', [UtcMapsController::class, 'show'])->name('utcmaps')->middleware('auth');
+Route::post('utcmaps', [UtcMapsController::class, 'ajaxReq'])->name('utcmaps')->middleware('auth');
+
+Route::get('listUTC', [UtcMapsController::class, 'listUTC'])->name('listUTC')->middleware('auth');
