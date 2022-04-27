@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="{{asset('css/maps.css')}}">
     <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fullScreen.css') }}">
-    <script type="text/javascript" src="{{ asset('assets/kml/maps.geojson') }}"></script>
 
 
     <script src="{{ asset('js/app.js') }}"></script>
@@ -39,9 +38,9 @@
     </script>
     <link rel="stylesheet" href="http://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
     <script src="http://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-    <script src="{{ asset('js/L.KML.js') }}"></script>
     <script src="{{ asset('js/bundle.js') }}"></script>
     <script src="{{ asset('js/Leaflet.fullscreen.min.js') }}"></script>
+    <script src="{{ asset('js/L.KML.js') }}"></script>
 
     <title>Web App</title>
 </head>

@@ -45,7 +45,6 @@ var svgrect = "https://www.close-upinternational.com/img/logo.svg";
 
 //Para Firefox y IE hay que rremplazar '#' por '%23'.
 var url = encodeURI("data:image/svg+xml," + svgrect).replace("#", "%23");
-console.log(url);
 
 var rectIcon = new CustomIcon({ iconUrl: url });
 
@@ -170,7 +169,7 @@ $(selectElement).click(function() {
             var num = 0;
             response.forEach((element) => {
                 num++;
-                console.log(element);
+                console.log(element.length);
             });
             num_utc.textContent = ` ` + num;
         },
