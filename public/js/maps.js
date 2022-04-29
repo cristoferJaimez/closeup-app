@@ -9,14 +9,18 @@ const map = new L.Map("map", {
         pseudoFullscreen: false,
     },
 });
+var cartodbAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="#"><img src="https://www.close-upinternational.com/img/logo.svg" width="50px" /> | <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" width="12px" /></a>';
+
 const osm = new L.TileLayer(
     // "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     //"https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
     //"https://stamen-tiles.a.ssl.fastly.net/carto/{z}/{x}/{y}.png"
     //"https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
-    "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
+    "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
     //"https://stamen-tiles.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg"
     //"https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg"
+    { attribution: cartodbAttribution }
+
 );
 
 //style
@@ -55,7 +59,7 @@ var marker = L.marker([4.570868, -74.297333], { icon: rectIcon })
 */
 
 // add maps geojson
-L.geoJson(null, {
+L.geoJson(maps, {
     style: style,
     onEachFeature: function(feature, layer) {
         if (feature.geometry.type) {
@@ -94,36 +98,11 @@ var legend = L.control({
     position: "bottomright",
 });
 
-legend.onAdd = function(map) {
-    var div = L.DomUtil.create("div", "card p-2");
-    (labels = ["<strong>Categories</strong>"]),
-    (categories = [
-        "Road Surface",
-        "Signage",
-        "Line Markings",
-        "Roadside Hazards",
-        "Other",
-        "Road Surface",
-        "Signage",
-        "Line Markings",
-        "Roadside Hazards",
-        "Other",
-    ]);
 
-    for (var i = 0; i < categories.length; i++) {
-        div.innerHTML += labels.push(
-            '<i class="circle" style="background:' +
-            "" +
-            '"></i> ' +
-            (categories[i] ? categories[i] : "+")
-        );
-    }
-    div.innerHTML = labels.join("<br>");
-    return div;
-};
-legend.addTo(map);
 
 //en maps
+// Add a basic graticule with divisions every 20 degrees
+// as a layer on a map
 
 //pain areas
 function getColor(d) {
@@ -161,17 +140,62 @@ $(selectElement).click(function() {
         data: $("#form-search").serialize(),
         type: "post",
         success: function(response) {
-            console.log(response);
-            resultado.textContent = `  `;
-            resultado_.textContent = ``;
+            resultado.textContent = ` ` + response[0].region;
+            var layerGroup = L.layerGroup().addTo(map);
+            // ubicar region
+            //map.removeLayer(mark);
+            //
+            switch (response[0].region) {
+                case "CENTRO":
+
+                    L.marker([4.60971, -74.08175]).addTo(layerGroup);
+                    map.flyTo([4.60971, -74.08175], 7);
+                    break;
+                case "COSTA ATLANTICA":
+
+                    L.marker([10.96854, -74.78132]).addTo(layerGroup);
+                    map.flyTo([10.96854, -74.78132], 6);
+                    break
+                case "COSTA PACIFICA":
+                    L.marker([3.43722, -76.5225]).addTo(layerGroup);
+                    map.flyTo([3.43722, -76.5225], 6);
+
+                    break
+                case "ANTIOQUIA":
+                    L.marker([6.25184, -75.56359]).addTo(layerGroup);
+                    map.flyTo([6.25184, -75.56359], 6);
+
+                    break
+                case "EJE CAFETERO":
+                    L.marker([4.81333, -75.69611]).addTo(layerGroup);
+                    map.flyTo([4.81333, -75.69611], 6);
+
+                    break
+                case "SANTANDERES":
+                    L.marker([7.12539, -73.1198]).addTo(layerGroup);
+                    map.flyTo([7.12539, -73.1198], 6);
+
+                    break
+                case "ORIENTAL":
+                    L.marker([3.38463, -74.04424]).addTo(layerGroup);
+                    map.flyTo([3.38463, -74.04424], 6);
+
+                    break
+                default:
+
+                    break;
+            }
+            //end mark
+
             //console.log(maps);
             //L.geoJson(maps).addTo(map);
             var num = 0;
             response.forEach((element) => {
                 num++;
-                console.log(element.length);
             });
             num_utc.textContent = ` ` + num;
+            //add layer
+
         },
         statusCode: {
             404: function() {
