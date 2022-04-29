@@ -11,7 +11,7 @@ use App\Http\Controllers\UtcMapsController;
 //Route Index App
 Route::view('/', 'index' );
 Route::get('/', [usersController::class, 'index'] );
- 
+
 //Sign In
 Route::post('login', [LoginController::class, 'login'])->name('login')->middleware('guest');
 //end SignIn
@@ -37,7 +37,7 @@ Route::get('listPost' , [postController::class, 'list'] )->name('listPost')->mid
 Route::view('post', 'home.post')->middleware('auth');
 Route::get('post/{id}',  [usersController::class, 'userId'])->middleware('auth');
 
-//public Post 
+//public Post
 Route::post('post/public', [postController::class , 'public'])->middleware('auth');
 
 //update rol users

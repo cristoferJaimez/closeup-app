@@ -29,7 +29,7 @@
 
     <div class="offcanvas-body">
         <div class="container">
-           
+
 
             <form action="{{ url('utcmaps') }}" method="POST" id="form-search" class="mb-3">
                 @csrf
@@ -41,7 +41,7 @@
 
 
                 <select class="nieve form-select form-select-sm " id="nieve" name="nieve">
-                    <option value="">Please select one Area …</option>
+                    <option value="0">Please select one Area …</option>
                     @if (Session::has('regiones'))
                     @else
                         @foreach ($regiones as $item)

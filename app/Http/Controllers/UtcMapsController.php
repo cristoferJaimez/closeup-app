@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Region;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
-
+use DataTables;
 class UtcMapsController extends Controller
 {
 
@@ -17,17 +17,26 @@ class UtcMapsController extends Controller
     public function ajaxReq(Request $request)
     {
        $utc = DB::select('CALL colombiadb.ubicacion_utc(?)', [$request->input('nieve')]);
-       return $utc;       
+       return $utc;
     }
 
       //ajax request
       public function listUTC(Request $request)
       {
          $utc = DB::select('CALL colombiadb.list_utc()');
-         return  view('UTC.layout.listUTC', compact('utc'));       
+         $data = DataTables::of($utc)
+         ->addIndexColumn()
+         ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+
+         return  view('UTC.layout.listUTC', ['data' => $data ]);
       }
 
-  
+
     //show all
     public function show(Request $request)
     {
