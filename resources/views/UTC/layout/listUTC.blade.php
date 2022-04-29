@@ -12,7 +12,7 @@
                     <input type="search" placeholder="Search UTC" class="form-control">
                 </form>
 
-               
+
 
                 <table class="table table-sm table-striped table-hover">
                     <thead class="text-center">
@@ -24,7 +24,7 @@
                         <th style="width: 250px">Neighborhood</th>
                     </thead>
                     <tbody class="text-center">
-                        
+
                         @foreach ($utc as $item => $val)
                         <tr class=""  style="font-size: 0.7em">
                             <td>{{ json_encode($val->co_barrio)}}</td>
@@ -34,10 +34,10 @@
                             <td>{{ json_encode($val->localidad)}}</td>
                             <td>{{ json_encode($val->desc_utc)}}</td>
                         </tr>
-                    @endforeach 
+                    @endforeach
                     </tbody>
-                </table>  
-                                
+                </table>
+
             </div>
         </div>
     </div>
