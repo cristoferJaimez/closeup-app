@@ -31,11 +31,12 @@
                                         @endif
                                     @endforeach
                                 </li>
-                                <li class="text-capitalize text-end"> <i class="fa-solid fa-link"></i> <a href="{{ url($value->url) }}" target="blank_"
+                                <li class="text-capitalize text-end"> <i class="fa-solid fa-link"></i> <a href="!#" onclick="openMyWindow('{{url($value->url)}}')"
                                         class="card-link badge bg-danger text-decoration-none text-wrap "> <i
                                             class="fa-solid fa-chart-simple"></i> view my report </a>
 
                                 </li>
+
                             </ul>
                         @else
                         @endif

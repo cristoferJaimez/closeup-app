@@ -42,6 +42,7 @@
     <link rel="stylesheet" href="http://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
     <script src="http://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
     <script src="{{ asset('js/bundle.js') }}"></script>
+    <script src="{{ asset('js/window.js') }}"></script>
     <script src="{{ asset('js/Leaflet.fullscreen.min.js') }}"></script>
     <script src="{{ asset('js/L.KML.js') }}"></script>
 
