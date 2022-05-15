@@ -58,8 +58,15 @@ var marker = L.marker([4.570868, -74.297333], { icon: rectIcon })
     .addTo(map);
 */
 
+for (const key in maps) {   
+    console.log(key);
+}
+
 // add maps geojson
 L.geoJson(maps, {
+    filter: function(feature, layer) {								
+           return (layer);
+   },
     style: style,
     onEachFeature: function(feature, layer) {
         if (feature.geometry.type) {
@@ -145,39 +152,43 @@ $(selectElement).click(function() {
             // ubicar region
             //map.removeLayer(mark);
             //
+            
+
+
+
             switch (response[0].region) {
                 case "CENTRO":
 
-                    L.marker([4.60971, -74.08175]).addTo(layerGroup);
+                    //L.marker([4.60971, -74.08175]).addTo(layerGroup);
                     map.flyTo([4.60971, -74.08175], 7);
                     break;
                 case "COSTA ATLANTICA":
 
-                    L.marker([10.96854, -74.78132]).addTo(layerGroup);
+                    //L.marker([10.96854, -74.78132]).addTo(layerGroup);
                     map.flyTo([10.96854, -74.78132], 6);
                     break
                 case "COSTA PACIFICA":
-                    L.marker([3.43722, -76.5225]).addTo(layerGroup);
+                    ///L.marker([3.43722, -76.5225]).addTo(layerGroup);
                     map.flyTo([3.43722, -76.5225], 6);
 
                     break
                 case "ANTIOQUIA":
-                    L.marker([6.25184, -75.56359]).addTo(layerGroup);
+                    ///L.marker([6.25184, -75.56359]).addTo(layerGroup);
                     map.flyTo([6.25184, -75.56359], 6);
 
                     break
                 case "EJE CAFETERO":
-                    L.marker([4.81333, -75.69611]).addTo(layerGroup);
+                    //L.marker([4.81333, -75.69611]).addTo(layerGroup);
                     map.flyTo([4.81333, -75.69611], 6);
 
                     break
                 case "SANTANDERES":
-                    L.marker([7.12539, -73.1198]).addTo(layerGroup);
+                    //L.marker([7.12539, -73.1198]).addTo(layerGroup);
                     map.flyTo([7.12539, -73.1198], 6);
 
                     break
                 case "ORIENTAL":
-                    L.marker([3.38463, -74.04424]).addTo(layerGroup);
+                    //L.marker([3.38463, -74.04424]).addTo(layerGroup);
                     map.flyTo([3.38463, -74.04424], 6);
 
                     break
