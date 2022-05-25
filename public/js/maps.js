@@ -22,16 +22,35 @@ const osm = new L.TileLayer(
     { attribution: cartodbAttribution }
 
 );
-
+//pain areas
+function getColor(d) {
+    //console.log(d);
+    return d > 10000000000 ?
+        "#800026" :
+        d > 20000000000 ?
+        "#BD0026" :
+        d > 30000000000 ?
+        "#E31A1C" :
+        d > 40000000000 ?
+        "#FC4E2A" :
+        d > 5000000000 ?
+        "#FD8D3C" :
+        d > 60000000000 ?
+        "#FEB24C" :
+        d > 70000000000 ?
+        "#FED976" :
+        "#FEB24C";
+}
 //style
 function style(feature) {
+    //console.log(feature.properties.name);
     return {
-        fillColor: "red",
+        fillColor: getColor(feature.properties.name),
         weight: 2,
         opacity: 1,
-        color: "red",
-        dashArray: "3",
-        fillOpacity: 0,
+        color: 'red',
+        dashArray: '3',
+        fillOpacity: 0.7
     };
 }
 
@@ -58,15 +77,13 @@ var marker = L.marker([4.570868, -74.297333], { icon: rectIcon })
     .addTo(map);
 */
 
-for (const key in maps) {   
-    console.log(key);
-}
+
 
 // add maps geojson
-L.geoJson(maps, {
-    filter: function(feature, layer) {								
-           return (layer);
-   },
+L.geoJson(null, {
+    filter: function(feature) {
+        // console.log(feature.properties.name);
+    },
     style: style,
     onEachFeature: function(feature, layer) {
         if (feature.geometry.type) {
@@ -80,7 +97,13 @@ L.geoJson(maps, {
     },
 }).addTo(map);
 
-//end view maps
+//escala
+L.control.scale().addTo(map)
+    //end view maps
+    //https://vivaelsoftwarelibre.com/anadir-y-modificar-los-controles-en-leaflet/
+    //caps
+var capas_base = { "capa base OSM": osm };
+L.control.layers(capas_base).addTo(map);
 
 //print map
 var printer = L.easyPrint({
@@ -111,24 +134,7 @@ var legend = L.control({
 // Add a basic graticule with divisions every 20 degrees
 // as a layer on a map
 
-//pain areas
-function getColor(d) {
-    return d > 6000 ?
-        "#800026" :
-        d > 5000 ?
-        "#BD0026" :
-        d > 2000 ?
-        "#E31A1C" :
-        d > 1000 ?
-        "#FC4E2A" :
-        d > 500 ?
-        "#FD8D3C" :
-        d > 200 ?
-        "#FEB24C" :
-        d > 100 ?
-        "#FED976" :
-        "#FFEDA0";
-}
+
 //end pain
 
 //selector
@@ -140,6 +146,23 @@ const num_utc = document.querySelector(".num_utc");
 
 selectElement.addEventListener("change", (event) => {});
 
+//removercapas
+
+function removeMarkers() {
+    map.eachLayer(function(layer) {
+        if (layer.myTag === "mapa") {
+            map.removeLayer(layer)
+        }
+    })
+}
+
+function clearSelect() {
+    const $select = document.querySelector("#my-select");
+    for (let i = $select.options.length; i >= 0; i--) {
+        $select.remove(i);
+    }
+}
+
 //consultar area utc
 $(selectElement).click(function() {
     $.ajax({
@@ -147,52 +170,229 @@ $(selectElement).click(function() {
         data: $("#form-search").serialize(),
         type: "post",
         success: function(response) {
-            resultado.textContent = ` ` + response[0].region;
-            var layerGroup = L.layerGroup().addTo(map);
+            //resultado.textContent = ` ` + response[0].region;
+            //var layerGroup = L.layerGroup().addTo(map);
             // ubicar region
             //map.removeLayer(mark);
             //
-            
 
+            removeMarkers();
+            clearSelect();
 
-
+            //console.log(response);
             switch (response[0].region) {
-                case "CENTRO":
 
+                case "CENTRO":
                     //L.marker([4.60971, -74.08175]).addTo(layerGroup);
-                    map.flyTo([4.60971, -74.08175], 7);
+                    map.flyTo([4.60971, -74.08175], 8);
+                    for (const it of response) {
+
+                        L.geoJson(maps, {
+                            filter: function(feature, layer) {
+                                return feature.properties.name === it.co_barrio;
+                            },
+
+                            style: style,
+                            onEachFeature: function(feature, layer) {
+                                layer.myTag = "mapa"
+                                if (feature.geometry.type) {
+                                    layer.bindPopup(
+                                        JSON.stringify(
+                                            "<img src='https://www.close-upinternational.com/img/logo.svg' alt='colombia'  /> <br>" +
+                                            feature.properties.description
+                                        )
+                                    );
+                                }
+                            },
+                        }).addTo(map)
+
+                        //select de utc
+                        var x = document.getElementById("my-select");
+                        var option = new Option(`${it.co_barrio}  - ${it.desc_utc} `, `${it.co_barrio}`);
+                        x.appendChild(option);
+                    }
+
+
+
+
                     break;
                 case "COSTA ATLANTICA":
 
                     //L.marker([10.96854, -74.78132]).addTo(layerGroup);
-                    map.flyTo([10.96854, -74.78132], 6);
+                    map.flyTo([10.96854, -74.78132], 8);
+                    for (const it of response) {
+                        //console.log("UTC: " + it.co_barrio);
+                        L.geoJson(maps, {
+                                filter: function(feature, layer) {
+                                    return feature.properties.name === it.co_barrio;
+                                },
+
+                                style: style,
+                                onEachFeature: function(feature, layer) {
+                                    layer.myTag = "mapa"
+                                    if (feature.geometry.type) {
+                                        layer.bindPopup(
+                                            JSON.stringify(
+                                                "<img src='https://www.close-upinternational.com/img/logo.svg' alt='colombia'  /> <br>" +
+                                                feature.properties.description
+                                            )
+                                        );
+                                    }
+                                },
+                            }).addTo(map)
+                            //select de utc
+                        var x = document.getElementById("my-select");
+                        var option = new Option(`${it.co_barrio}  - ${it.desc_utc} `, `${it.co_barrio}`);
+                        x.appendChild(option);
+                    }
                     break
                 case "COSTA PACIFICA":
                     ///L.marker([3.43722, -76.5225]).addTo(layerGroup);
-                    map.flyTo([3.43722, -76.5225], 6);
+                    map.flyTo([3.43722, -76.5225], 8);
+                    for (const it of response) {
+                        //console.log("UTC: " + it.co_barrio);
+                        L.geoJson(maps, {
+                                filter: function(feature, layer) {
+                                    return feature.properties.name === it.co_barrio;
+                                },
 
+                                style: style,
+                                onEachFeature: function(feature, layer) {
+                                    layer.myTag = "mapa"
+                                    if (feature.geometry.type) {
+                                        layer.bindPopup(
+                                            JSON.stringify(
+                                                "<img src='https://www.close-upinternational.com/img/logo.svg' alt='colombia'  /> <br>" +
+                                                feature.properties.description
+                                            )
+                                        );
+                                    }
+                                },
+                            }).addTo(map)
+                            //select de utc
+                        var x = document.getElementById("my-select");
+                        var option = new Option(`${it.co_barrio}  - ${it.desc_utc} `, `${it.co_barrio}`);
+                        x.appendChild(option);
+                    }
                     break
                 case "ANTIOQUIA":
                     ///L.marker([6.25184, -75.56359]).addTo(layerGroup);
-                    map.flyTo([6.25184, -75.56359], 6);
+                    map.flyTo([6.25184, -75.56359], 8);
+                    for (const it of response) {
+                        //console.log("UTC: " + it.co_barrio);
+                        L.geoJson(maps, {
+                                filter: function(feature, layer) {
+                                    return feature.properties.name === it.co_barrio;
+                                },
 
+                                style: style,
+                                onEachFeature: function(feature, layer) {
+                                    layer.myTag = "mapa"
+                                    if (feature.geometry.type) {
+                                        layer.bindPopup(
+                                            JSON.stringify(
+                                                "<img src='https://www.close-upinternational.com/img/logo.svg' alt='colombia'  /> <br>" +
+                                                feature.properties.description
+                                            )
+                                        );
+                                    }
+                                },
+                            }).addTo(map)
+                            //select de utc
+                        var x = document.getElementById("my-select");
+                        var option = new Option(`${it.co_barrio}  - ${it.desc_utc} `, `${it.co_barrio}`);
+                        x.appendChild(option);
+                    }
                     break
                 case "EJE CAFETERO":
                     //L.marker([4.81333, -75.69611]).addTo(layerGroup);
-                    map.flyTo([4.81333, -75.69611], 6);
+                    map.flyTo([4.81333, -75.69611], 8);
+                    for (const it of response) {
+                        //console.log("UTC: " + it.co_barrio);
+                        L.geoJson(maps, {
+                                filter: function(feature, layer) {
+                                    return feature.properties.name === it.co_barrio;
+                                },
 
+                                style: style,
+                                onEachFeature: function(feature, layer) {
+                                    layer.myTag = "mapa"
+                                    if (feature.geometry.type) {
+                                        layer.bindPopup(
+                                            JSON.stringify(
+                                                "<img src='https://www.close-upinternational.com/img/logo.svg' alt='colombia'  /> <br>" +
+                                                feature.properties.description
+                                            )
+                                        );
+                                    }
+                                },
+                            }).addTo(map)
+                            //select de utc
+                        var x = document.getElementById("my-select");
+                        var option = new Option(`${it.co_barrio}  - ${it.desc_utc} `, `${it.co_barrio}`);
+                        x.appendChild(option);
+                    }
                     break
                 case "SANTANDERES":
                     //L.marker([7.12539, -73.1198]).addTo(layerGroup);
-                    map.flyTo([7.12539, -73.1198], 6);
+                    map.flyTo([7.12539, -73.1198], 8);
+                    for (const it of response) {
+                        //console.log("UTC: " + it.co_barrio);
+                        L.geoJson(maps, {
+                                filter: function(feature, layer) {
+                                    return feature.properties.name === it.co_barrio;
+                                },
 
+                                style: style,
+                                onEachFeature: function(feature, layer) {
+                                    layer.myTag = "mapa"
+                                    if (feature.geometry.type) {
+                                        layer.bindPopup(
+                                            JSON.stringify(
+                                                "<img src='https://www.close-upinternational.com/img/logo.svg' alt='colombia'  /> <br>" +
+                                                feature.properties.description
+                                            )
+                                        );
+                                    }
+                                },
+                            }).addTo(map)
+                            //select de utc
+                        var x = document.getElementById("my-select");
+                        var option = new Option(`${it.co_barrio}  - ${it.desc_utc} `, `${it.co_barrio}`);
+                        x.appendChild(option);
+                    }
                     break
                 case "ORIENTAL":
                     //L.marker([3.38463, -74.04424]).addTo(layerGroup);
-                    map.flyTo([3.38463, -74.04424], 6);
+                    map.flyTo([3.38463, -74.04424], 8);
+                    for (const it of response) {
+                        //console.log("UTC: " + it.co_barrio);
+                        L.geoJson(maps, {
+                                filter: function(feature, layer) {
+                                    return feature.properties.name === it.co_barrio;
+                                },
 
+                                style: style,
+                                onEachFeature: function(feature, layer) {
+                                    layer.myTag = "mapa"
+                                    if (feature.geometry.type) {
+                                        layer.bindPopup(
+                                            JSON.stringify(
+                                                "<img src='https://www.close-upinternational.com/img/logo.svg' alt='colombia'  /> <br>" +
+                                                feature.properties.description
+                                            )
+                                        );
+                                    }
+                                },
+                            }).addTo(map)
+                            //select de utc
+                        var x = document.getElementById("my-select");
+                        var option = new Option(`${it.co_barrio}  - ${it.desc_utc} `, `${it.co_barrio}`);
+                        x.appendChild(option);
+                    }
                     break
                 default:
+                    ""
 
                     break;
             }

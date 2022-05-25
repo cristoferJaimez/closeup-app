@@ -1,3 +1,4 @@
+
 <div class=" position-relative m-5  mt-2 " id="buttons">
 
     <a class=" btn btn-primary btn-sm border border-2 shadow-lg " data-bs-toggle="offcanvas" href="#offcanvasExample"
@@ -33,14 +34,14 @@
 
             <form action="{{ url('utcmaps') }}" method="POST" id="form-search" class="mb-3">
                 @csrf
-                <div class="input-group mb-3">
+              <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-map-location-dot"></i></span>
                     <input type="search" class="form-control" placeholder="Search for user" aria-label="Search"
                         aria-describedby="basic-addon1">
                 </div>
 
 
-                <select class="nieve form-select form-select-sm " id="nieve" name="nieve">
+                <select class="nieve form-select form-select-sm " style="font-size: 0.7em"  id="nieve" name="nieve">
                     <option value="0">Please select one Area …</option>
                     @if (Session::has('regiones'))
                     @else
@@ -63,19 +64,22 @@
             <table class=" table table-sm table-striped">
                 <tbody class="fs-6 text">
                     <tr class="" style="font-size: 0.7em">
-                        <td>Region</td>
-                        <td>
-                            <div class="resultado"></div>
-                        </td>
-                    </tr>
-                    <tr class="" style="font-size: 0.7em">
                         <td># UTC</td>
                         <td>
                             <div class="num_utc"></div>
                         </td>
                     </tr>
+
+
                 </tbody>
             </table>
+
+
+            <form action="">
+                <select style="font-size: 0.7em" id="my-select"  multiple data-live-search="true" name="utc[]" class="form-select form-select-sm mb-3" aria-label=".form-select-sm example">
+
+                </select>
+            </form>
 
 
 
@@ -83,3 +87,4 @@
 
     </div>
 </div>
+
