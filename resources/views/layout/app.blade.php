@@ -59,6 +59,7 @@
         $(document).ready(function($) {
             $(document).ready(function() {
                 $('.mi-selector').select2({
+                    theme: "classic",
                     width: 'resolve',
                     placeholder: "Search",
                 });

@@ -1,5 +1,5 @@
-
 /*maps*/
+
 body {
     margin: 0;
     padding: 0;
@@ -14,7 +14,7 @@ body {
     background-color: white;
 }
 
-#buttons {
+.buttons {
     position: absolute;
     z-index: 1;
 }

@@ -19,6 +19,12 @@ class UtcMapsController extends Controller
        $utc = DB::select('CALL colombiadb.ubicacion_utc(?)', [$request->input('nieve')]);
        return $utc;
     }
+     //ajax request
+     public function ajaxReqDep(Request $request)
+     {
+        $utc_dep = DB::select('CALL colombiadb.departamentos_(?)', [$request->input('nieve')]);
+        return $utc_dep;
+     }
 
       //ajax request
       public function listUTC(Request $request)
