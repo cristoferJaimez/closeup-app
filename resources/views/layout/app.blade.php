@@ -59,8 +59,8 @@
         $(document).ready(function($) {
             $(document).ready(function() {
                 $('.mi-selector').select2({
+                    width: 'resolve',
                     placeholder: "Search",
-                    language: "es",
                 });
             });
         });

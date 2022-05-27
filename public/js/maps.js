@@ -102,8 +102,8 @@ L.control.scale().addTo(map)
     //end view maps
     //https://vivaelsoftwarelibre.com/anadir-y-modificar-los-controles-en-leaflet/
     //caps
-var capas_base = { "capa base OSM": osm };
-L.control.layers(capas_base).addTo(map);
+//var capas_base = { "capa base OSM": osm };
+//L.control.layers(capas_base).addTo(map);
 
 //print map
 var printer = L.easyPrint({
@@ -164,7 +164,7 @@ function clearSelect() {
 }
 
 function onLoad_() {
-    let i = document.getElementById('cargando').textContent = "Loading...";
+    let i = document.getElementById('cargando').textContent = " ";
 }
 
 function offLoad_(txt) {
