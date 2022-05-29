@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fullScreen.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/rangeV.css') }}">
+
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('assets/maps.geojson') }}"></script>
@@ -45,7 +47,8 @@
     <script src="{{ asset('js/Leaflet.fullscreen.min.js') }}"></script>
     <script src="{{ asset('js/L.KML.js') }}"></script>
     <link href="{{ asset('css/select2.css') }}" rel="stylesheet" />
-
+    <link href="{{ asset('css/legend.css') }}" rel="stylesheet" />
+    <script src="{{ asset('js/legend.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
     <title>Web App</title>
