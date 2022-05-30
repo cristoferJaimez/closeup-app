@@ -7,7 +7,7 @@
                     @auth
                         <div class="d-flex align-items-center p-5  flex-column bd-highlight">
                             <div class="mt-auto p-5  bd-highlight">
-                                @include('auth.user')
+                                @include('auth.loginOK')
                             </div>
                         </div>
 
@@ -20,9 +20,7 @@
                 </div>
             </div>
 
-            @auth
-                @include('auth.home')
-            @endauth
+            
             @guest
                 <div
                     class="border-start text-with bg-dark  vh-100  d-flex justify-content-center align-items-center   col-md-7 col-sm-12 d-sm-none  d-none d-md-block m-0  row justify-content-center aling-item-center">
@@ -31,9 +29,7 @@
                         <h1>Welcome to</h1>
                         <h2>our community</h2>
                         <p>
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum dignissimos unde eum perspiciatis.
-                            Qui consequatur explicabo, ratione tempore illo ut eaque deleniti nobis aspernatur facilis nam
-                            tenetur inventore quis et?
+                            Information Channels
                         </p>
 
                         <p class="text-center">

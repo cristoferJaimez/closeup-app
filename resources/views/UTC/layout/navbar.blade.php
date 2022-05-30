@@ -23,18 +23,13 @@
 <div class="position-absolute top-0 start-50 translate-middle-x card p-2 text-center    buttons " id="" style="font-size: 0.7em">
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 <div class="form-check form-switch" style="">
-                    <input class="form-check-input" title="Fuerza de Venta" type="checkbox" id="flexSwitchCheckDefault">
-                    <label class="form-check-label text-muted" for="flexSwitchCheckDefault">Fuerza de venta</label>
+                    <input class="form-check-input fv" title="Fuerza de Venta" type="checkbox" id="fv" name="fv">
+                    <label class="form-check-label text-muted" for="fv">Fuerza de venta</label>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="form-check form-switch" style="">
-                    <input class="form-check-input" title="Fuerza de Venta" type="checkbox" id="flexSwitchCheckDefault">
-                    <label class="form-check-label text-muted" for="flexSwitchCheckDefault">Fuerza de venta</label>
-                </div>
-            </div>
+           
         </div>
     </div>
 
@@ -155,10 +150,10 @@
 
 
     <div class="col-1">
-        <div class="position-absolute top-50 start-100 translate-middle end-0    buttons  " id=""
-            style="font-size: 0.7em">
+        <div class="position-absolute top-50 start-100 translate-middle end-0    buttons  " id="" 
+            name="linea_tiempo" style="font-size: 0.7em;">
             <div class="slider-wrapper">
-                <input type="range" list="tickmarks">
+                <input type="range" list="tickmarks" class="linea_tiempo" id="linea_tiempo" style="display: none;">
 
                 <datalist id="tickmarks">
                     <option value="0" label="0%">

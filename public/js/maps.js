@@ -1,15 +1,6 @@
 //maps
 let array_init = undefined;
-let mapsGEO = undefined;
 
-/* ajax
-$.ajax({
-    url: "utcmaps",
-    data: $("#form-search").serialize(),
-    type: "post",
-    success: function (response) {
-        array_init = response;}})
-*/
 let cargando = document.querySelector("#cargando");
 // Make basemap
 const map = new L.Map("map", {
@@ -188,7 +179,16 @@ function removeMarkers() {
         if (layer.myTag === "mapa") {
             map.removeLayer(layer);
         }
+
+        if (layer.myTag === "calor") {
+            map.removeLayer(layer);
+        }
     });
+}
+
+function flay(a , b){
+    console.log("flay");
+    map.flyTo([a, b], 8);
 }
 
 function clearUTC() {
@@ -262,20 +262,7 @@ function cargandoOFF() {
     $(cargando).show(3000);
 }
 
-//colores para departamentos
-function color_departamento(num) {
-    switch (num) {
-        case 0:
-            return "#16A085";
-            break;
-        case 0:
-            return "#C0392B";
-            break;
 
-        default:
-            break;
-    }
-}
 
 //consultar region utc
 $(selectElement).click(function () {
@@ -299,8 +286,6 @@ $(selectElement).click(function () {
                         for (const it of response) {
                             L.geoJson(maps, {
                                 filter: function (feature, layer) {
-                                    //guardar datos geo
-                                    mapsGEO = feature;
                                     return (
                                         feature.properties.name === it.co_barrio
                                     );
@@ -716,7 +701,20 @@ $(selectElement).click(function () {
 });
 //end region utc
 
+//colores para departamentos
+function color_departamento(num) {
+    switch (num) {
+        case 0:
+            return "#16A085";
+            break;
+        case 0:
+            return "#C0392B";
+            break;
 
+        default:
+            break;
+    }
+}
 
 
 //consultar departamentos utc para ver municipios
@@ -728,12 +726,14 @@ $(selectElementDep).change(function () {
     clearSelectMun();
     let val = $(this).val();
     $('html,body').css('cursor','wait');
-
+    let cont = 0;
     for (const key in val) {
         let color = color_departamento(val[key]);
+       cont = 0;
         switch (val[key]) {
             case val[key]:
                 for (const it of array_init) {
+                    cont = cont +1;
                     //pintar mapa
                     let geoDep = it.departamento === val[key];
                     switch (geoDep) {
@@ -760,9 +760,9 @@ $(selectElementDep).change(function () {
                                 },
                             }).addTo(map);
 
+                            //console.log(maps.features[it].geometry.coordinates[1]);
                             //volar al departamento
-                            //map.flyTo([4.60971, -74.08175], 5);
-
+                            
                             /*
                             //cargar utc dentro de departamentos
                             */
@@ -770,7 +770,7 @@ $(selectElementDep).change(function () {
                             var x = document.getElementById("my-select-utc");
                             var option = new Option(
                                 `${it.co_barrio}`,
-                                `${it.co_barrio} `
+                                `${it.co_barrio}`
                             );
                             x.appendChild(option);
 
@@ -796,11 +796,17 @@ $(selectElementDep).change(function () {
                 //leyenda
 
                 // Insertando una leyenda en el mapa
-                
- 
+               /*
+                console.log(maps.features[cont].geometry.coordinates[0][0],maps.features[cont].geometry.coordinates[0][1]);
+                let lat = maps.features[cont].geometry.coordinates[0][0];
+                let lng = maps.features[cont].geometry.coordinates[0][1];
+
+                flay(lat, lng) 
+*/
                 break;
 
             default:
+                console.log("default departamentos");
                 break;
         }
     }
@@ -859,7 +865,7 @@ $(selectElementMUN).change(function () {
                             var x = document.getElementById("my-select-utc");
                             var option = new Option(
                                 `${it.co_barrio}`,
-                                `${it.co_barrio} `
+                                `${it.co_barrio}`
                             );
                             x.appendChild(option);
 
@@ -948,7 +954,7 @@ $(selectElementLOC).change(function () {
                             var x = document.getElementById("my-select-utc");
                             var option = new Option(
                                 `${it.co_barrio}`,
-                                `${it.co_barrio} `
+                                `${it.co_barrio}`
                             );
                             x.appendChild(option);
 
@@ -1036,7 +1042,7 @@ $(selectElementBAR).change(function () {
                             var x = document.getElementById("my-select-utc");
                             var option = new Option(
                                 `${it.co_barrio}`,
-                                `${it.co_barrio} `
+                                `${it.co_barrio}`
                             );
                             x.appendChild(option);
 
@@ -1063,7 +1069,7 @@ $(selectElementBAR).change(function () {
 });
 
 
-const selectElementUTC = document.querySelector(".my-select-utc");
+const selectElementUTC = document.querySelector("#my-select-utc");
 //consultar barrio para ver utc unica
 $(selectElementUTC).change(function () {
     let lat = 0, lng = 0;
@@ -1130,6 +1136,5 @@ $(selectElementUTC).change(function () {
                 break;
         }
     }
-});
 
-console.log(maps);
+});
