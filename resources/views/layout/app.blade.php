@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/maps.css') }}">
     <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fullScreen.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/linea.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/rangeV.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
@@ -48,6 +49,7 @@
     <link href="{{ asset('css/select2.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/legend.css') }}" rel="stylesheet" />
     <script src="{{ asset('js/legend.js') }}"></script>
+    <script src="{{ asset('js/linea.js') }}"></script>
     
     
     <script src="{{ asset('js/control.js') }}"></script>
