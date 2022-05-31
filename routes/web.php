@@ -22,6 +22,10 @@ Route::post( 'logout' , [LoginController::class , 'Logout'])->name('logout');
 Route::view('home' , 'home.home')->name('home')->middleware('auth');
 Route::get('home' , [usersController::class, 'index_home' ] )->name('home')->middleware('auth');
 
+//home usuario
+Route::post('home' , [postController::class ,'list_home' ] )->name('home')->middleware('auth');
+
+
 //perfil user
 Route::get('perfil/{id}', [usersController::class, 'perfil'])->name('perfil')->middleware('auth');
 

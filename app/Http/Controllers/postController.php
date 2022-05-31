@@ -26,6 +26,14 @@ class postController extends Controller
         return view('home.listPost', ['posts' => $posts, 'type' => $type, 'cate'=> $cate, 'user' => $user]);
     }
 
+    public function list_home(){
+        $posts = Post::all();
+        $type = typeReport::all();
+        $cate = Category::all();
+        $user = User::all();
+        return view('home.home', ['posts' => $posts, 'type' => $type, 'cate'=> $cate, 'user' => $user]);
+    }
+
     //listar por usuario
     public function listID($id){
         $post = Post::orderBy('created_at', 'desc')
