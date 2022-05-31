@@ -20,7 +20,8 @@
 
 
 
-<div class="position-absolute top-0 start-50 translate-middle-x card p-2 text-center    buttons " id="" style="font-size: 0.7em">
+<div class="position-absolute top-0 start-50 translate-middle-x card p-2 text-center    buttons " id=""
+    style="font-size: 0.7em">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -29,7 +30,50 @@
                     <label class="form-check-label text-muted" for="fv">Fuerza de venta</label>
                 </div>
             </div>
-           
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="position-absolute bottom-0 start-50 translate-middle-x card p-3 historial   buttons  " id="historial" 
+style="display: none; width: 50em; z-index:3;"
+    style="font-size: 0.7em">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <input type="range" list="tickmarks" max="24" class="linea_tiempo" id="linea_tiempo" style="width: 100%;">
+                <datalist id="tickmarks">
+                    <option value="1" label="1">
+                    <option value="2" label="2">
+                    <option value="3" label="3">
+                    <option value="4" label="4">
+                    <option value="5" label="5">
+                    <option value="6" label="6">
+                    <option value="7" label="7">
+                    <option value="8" label="8">
+                    <option value="9" label="9">
+                    <option value="10" label="10">
+                    <option value="11" label="11">
+                    <option value="12" label="12">
+                    <option value="13" label="13">
+                    <option value="14" label="14">
+                    <option value="15" label="15">
+                    <option value="16" label="16">
+                    <option value="17" label="17">
+                    <option value="18" label="18">
+                    <option value="19" label="19">
+                    <option value="20" label="20">
+                    <option value="21" label="21">
+                    <option value="22" label="22">
+                    <option value="23" label="23">
+                    <option value="24" label="24">
+                </datalist>
+                
+            </div>
+
         </div>
     </div>
 
@@ -149,40 +193,16 @@
     </div>
 
 
-    <div class="col-1">
-        <div class="position-absolute top-50 start-100 translate-middle end-0    buttons  " id="" 
-            name="linea_tiempo" style="font-size: 0.7em;">
-            <div class="slider-wrapper">
-                <input type="range" list="tickmarks" class="linea_tiempo" id="linea_tiempo" style="display: none;">
 
-                <datalist id="tickmarks">
-                    <option value="0" label="0%">
-                    <option value="10">
-                    <option value="20">
-                    <option value="30">
-                    <option value="40">
-                    <option value="50" label="50%" title="50">
-                    <option value="60">
-                    <option value="70">
-                    <option value="80">
-                    <option value="90">
-                    <option value="100" label="100%">
-                    <option value="110" label="0%">
-                    <option value="120">
-                    <option value="130">
-                    <option value="140">
-                    <option value="150">
-                    <option value="160" label="50%">
-                    <option value="170">
-                    <option value="180">
-                    <option value="190">
-                    <option value="200">
-                    <option value="210" label="100%">
-                    <option value="220">
-                    <option value="230">
-                    <option value="240">
-                    <option value="250" label="100%">
-                </datalist>
+   
+
+
+
+    <div class="col-1">
+        <div class="position-absolute top-50 start-100 translate-middle end-0    buttons  " id="" name="linea_tiempo"
+            style="font-size: 0.7em;">
+            <div class="slider-wrapper">
+                
             </div>
         </div>
     </div>
