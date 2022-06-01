@@ -6,29 +6,63 @@
     </div>
 </div>
 
-<div class="position-absolute top-50 end-0 translate-middle-y  buttons " id="">
-    <div class="btn-group-vertical me-2" role="group" aria-label="Second group">
+
+<div class="position-absolute top-50 start-50 translate-middle buttons files_upload" id="files_upload"
+    style="display: none;">
+
+    <div class="mb-3">
+        <input class="form-control" type="file" id="formFile">
+    </div>
+
+</div>
+
+<div class="position-absolute top-0 end-0 buttons" style="z-index: 9999;">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="form-check form-switch" style="">
+                    <label for="">
+                        <div class="icono"></div>
+                        <i class="fa-solid fa-eye-slash" id="fa-eye-slash"></i>
+                        <input class="form-check-input view" title="Panel UTC" type="checkbox" id="view" name="view"
+                            checked>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="position-absolute top-0 start-50 translate-middle-x  buttons " id="">
+    <div class="btn-group me-2 p-2" role="group" aria-label="Second group">
         <button type="button" class="btn btn-secondary" onclick="body.webkitRequestFullscreen()">
             <i class="fa-solid fa-expand"></i></button>
         </button>
         <button type="button" class="btn btn-secondary" onclick="print()">
             <i class="fa-solid fa-print"></i>
         </button>
+        <button type="files" class="btn btn-secondary tools" onclick="tools()">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+        </button>
+        <button type="files" class="btn btn-secondary tools" onclick="toggle() ">
+            <i class="fa-solid fa-users"></i>
+        </button>
     </div>
 </div>
 
 
 
 
-<div class="position-absolute top-0 start-50 translate-middle-x card p-2 text-center    buttons " id=""
-    style="font-size: 0.7em">
+
+
+
+
+<div class="position-absolute bottom-0 start-50 translate-middle-x card p-3 historial   buttons  " id="historial"
+    style="display: none; width: 50em; z-index:3; " style="font-size: 0.7em">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="form-check form-switch" style="">
-                    <input class="form-check-input fv" title="Fuerza de Venta" type="checkbox" id="fv" name="fv">
-                    <label class="form-check-label text-muted" for="fv">Fuerza de venta</label>
-                </div>
+                @include('UTC.layout.line_tiempo')
             </div>
 
         </div>
@@ -38,24 +72,8 @@
 
 
 
-<div class="position-absolute bottom-0 start-50 translate-middle-x card p-3 historial   buttons  " id="historial" 
-style="display: none; width: 50em; z-index:3; "
-    style="font-size: 0.7em">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                @include('UTC.layout.line_tiempo') 
-            </div>
-
-        </div>
-    </div>
-
-</div>
-
-
-
-
-<div class="  float-end float-xxl-end float-lg-end  card p-3 buttons " id="" style="width: 15rem">
+<!--panel _ 1-->
+<div class="  float-end float-xxl-end float-lg-end  card p-3 buttons panel_1 " id="panel_1" style="width: 15rem">
 
     <div class="container">
         <div class="row">
@@ -165,4 +183,99 @@ style="display: none; width: 50em; z-index:3; "
         </div>
     </div>
 
+</div>
+<!--fin panel 1-->
+
+<!--panel 2-->
+<div class="  float-end float-xxl-end float-lg-end  card p-3 buttons panel_2 " id="panel_2"
+    style="width: 15rem; display: none;">
+
+    <div class="container" style="font-size: 0.7em">
+        <div class="row text-muted text-cente">
+
+            <ul>
+                <li>
+                    <div class="form-check form-switch " style="">
+                        <input class="form-check-input fv" title="Fuerza de Venta" type="checkbox" id="fv" name="fv">
+                        <label class="form-check-label text-muted" for="fv">Fuerza de venta</label>
+                </li>
+                <li>
+                    <div class="form-check form-switch " style="">
+                        <input class="form-check-input load_file" title="Fuerza de Venta" type="checkbox" id="load_file"
+                            name="load_file">
+                        <label class="form-check-label text-muted" for="load_file">Subir Archivo</label>
+                    </div>
+                </li>
+            </ul>
+
+
+        </div>
+
+    </div>
+
+</div>
+<!--fi panel 2-->
+
+
+<!---panel representantes-->
+<div class="position-absolute top-50 start-0 translate-middle-y buttons panel_re " style="display: none; width: 25rem">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="card p-2">
+                    <form action="" method="POST" id="form-search" class="mb-3 ">
+                        @csrf
+                        <label class="text-mute form-label" style="">
+                            <i class="fa-solid fa-users"></i> Representante en <span class="text-nowrap bd-highlight"> UTC</span></label>
+                        <select class="nieve form-select form-select-sm  " multiple
+                            style="border: none; font-size: 0.5em " id="nieve" name="nieve">
+
+                            @if (Session::has('regiones'))
+                            @else
+                                @foreach ($regiones as $item)
+                                    <option value="{{ $item->co_region }}">{{ $item->region }} </option>
+                                @endforeach
+                            @endif
+
+                        </select>
+
+
+                        <!--msm -->
+                        @if (Session::has('utc'))
+                        @endif
+
+
+                    </form>
+                </div>
+
+                <div class="card p-2">
+                    <table class="table table-sm" style="font-size: 0.7em">
+                        <thead>
+                            <tr>
+                                <th colspan="3" class="table-active text-center">Representante</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="3" class="table-active text-center">Larry the Bird</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Gerente. General</th>
+                                <td colspan="2" class=" text-center">Larry the Bird</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Gerente. Distrital</th>
+                                <td colspan="2" class=" text-center">Larry the Bird</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <form action="" method="POST" id="form-search" class="mb-3 ">
+                        @csrf
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

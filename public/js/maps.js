@@ -6,7 +6,7 @@ let cargando = document.querySelector("#cargando");
 const map = new L.Map("map", {
     center: new L.LatLng(4.570868, -74.297333),
     zoom: 5,
-    ext: "png"  
+    ext: "png"
 });
 var cartodbAttribution =
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="#"><img src="https://www.close-upinternational.com/img/logo.svg" width="50px" /> | <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" width="12px" /></a>';
@@ -162,16 +162,16 @@ function flay(a, b, c) {
         map.flyTo([a, b], 9)
     } else
     if (c === 'b') {
-        map.flyTo([a, b], 10)
+        map.flyTo([a, b], 11.8)
     } else
     if (c === 'c') {
-        map.flyTo([a, b], 11)
-    } else
-    if (c === 'd') {
         map.flyTo([a, b], 12)
     } else
+    if (c === 'd') {
+        map.flyTo([a, b], 13)
+    } else
     if (c === 'e') {
-        map.flyTo([a, b], 14)
+        map.flyTo([a, b], 17.5)
     }
 
 }
@@ -248,6 +248,9 @@ function cargandoOFF() {
 }
 
 
+//centro de poligono
+
+
 
 //consultar region utc
 $(selectElement).click(function() {
@@ -259,6 +262,7 @@ $(selectElement).click(function() {
             cargandoON();
             removeMarkers();
             clearSelect();
+            let poligono;
             dep = [];
             array_init = response;
             //console.log(response);
@@ -271,7 +275,9 @@ $(selectElement).click(function() {
                         for (const it of response) {
                             L.geoJson(maps, {
                                 filter: function(feature, layer) {
+
                                     return (
+
                                         feature.properties.name === it.co_barrio
                                     );
                                 },
@@ -286,6 +292,8 @@ $(selectElement).click(function() {
                                                 .description
                                             )
                                         );
+
+                                        poligono = feature.geometry.coordinates;
                                     }
                                 },
                             }).addTo(map);

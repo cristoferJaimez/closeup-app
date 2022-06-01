@@ -1,6 +1,6 @@
 var heat;
 
-//
+//activar mapade calor herramintas de mapa de calor
 $(document).on('click', '.fv', function(e) {
     let linea = document.getElementById('linea_tiempo')
     let hist = document.getElementById('historial')
@@ -35,8 +35,81 @@ function calor() {
         scaleRadius: true,
         useLocalExtrema: true,
         maxOpacity: 0.8,
-        radius: 25,
+        radius: 15,
         blur: 15, // default value
-    }).addTo(map);
+    });
+    $(heat.addTo(map)).show(500)
 
+}
+
+
+//ocultar paneles
+$(document).on('click', '.view', function(e) {
+    // console.log(e);
+    let panel = document.getElementById('panel_1')
+    let vista = document.getElementsByClassName('fa-eye')
+    let panel_2 = document.getElementById('panel_2')
+    let view = document.querySelector('.view').checked;
+    //console.log(vis);
+    if (view === true) {
+        $(panel).show(500)
+    } else {
+        $(panel).hide(500)
+    }
+
+})
+
+// panel tools
+function tools() {
+    let panel = document.getElementById('panel_1')
+    let panel_2 = document.getElementById('panel_2')
+    let chk = document.querySelector('.view');
+    /*console.log(chk.defaultChecked);
+    if (chk.value === 'on') {
+
+    } else {
+        $(chk).prop("checked", true);
+        //$(panel).hide(500)
+        $(panel_2).hide(500)
+    }
+
+    */
+
+    $(panel_2).animate({
+        height: 'toggle'
+    }, "slow", function() {
+
+    });
+}
+
+// input file
+function file_up() {
+    let files = document.getElementById('files_upload')
+    $(files).show(500)
+}
+
+$(document).on('click', '.load_file', function(e) {
+    // console.log(e);
+    let file = document.getElementById('files_upload')
+    let view = document.querySelector('.load_file').checked;
+    if (view === true) {
+        $(file).show(500)
+    } else {
+        $(file).hide(500)
+    }
+
+})
+
+
+//ocultar representantes
+$(document).on('click', '#view_re', function(e) {
+
+})
+
+//funcion ocultar boton
+function toggle() {
+    let panel = document.getElementsByClassName('panel_re')
+    $(panel).animate({
+        height: 'toggle'
+    }, "slow");
 }

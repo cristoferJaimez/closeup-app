@@ -50,13 +50,13 @@
     <link href="{{ asset('css/legend.css') }}" rel="stylesheet" />
     <script src="{{ asset('js/legend.js') }}"></script>
     <script src="{{ asset('js/linea.js') }}"></script>
-    
-    
+
+
     <script src="{{ asset('js/control.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
-  
-   
+
+
     <title>Web App</title>
 </head>
 
@@ -75,11 +75,11 @@
             });
         });
     </script>
-    
+
 </body>
 
-  <!--mapa de calor plugins-->
-  <script src="{{ asset('js/leaflet_heatmap.js') }}"></script>
-  
-  
+<!--mapa de calor plugins-->
+<script src="{{ asset('js/leaflet_heatmap.js') }}"></script>
+
+
 </html>
