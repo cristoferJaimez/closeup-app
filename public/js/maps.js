@@ -6,11 +6,7 @@ let cargando = document.querySelector("#cargando");
 const map = new L.Map("map", {
     center: new L.LatLng(4.570868, -74.297333),
     zoom: 5,
-    ext: "png",
-
-    fullscreenControl: {
-        pseudoFullscreen: false,
-    },
+    ext: "png"  
 });
 var cartodbAttribution =
     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="#"><img src="https://www.close-upinternational.com/img/logo.svg" width="50px" /> | <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" width="12px" /></a>';
@@ -133,7 +129,7 @@ L.control.scale().addTo(map);
 //end view maps
 
 // Insertando una leyenda en el mapa
-L.control.zoom({ position: "topright" }).addTo(map);
+//L.control.zoom({ position: "topright" }).addTo(map);
 
 
 //end pain
