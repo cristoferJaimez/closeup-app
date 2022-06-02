@@ -33,7 +33,7 @@
     </div>
 </div>
 
-<div class="position-absolute top-0 start-50 translate-middle-x  buttons " id="">
+<div class="position-absolute bottom-0 start-50 translate-middle-x  buttons " id="">
     <div class="btn-group me-2 p-2" role="group" aria-label="Second group">
         <button type="button" class="btn btn-secondary" onclick="body.webkitRequestFullscreen()">
             <i class="fa-solid fa-expand"></i></button>
@@ -217,16 +217,53 @@
 <!--fi panel 2-->
 
 
+<!--panel 3-->
+<div class="  float-end float-xxl-end float-lg-end  card p-3 buttons panel_add_re" id="panel_add_re"
+    style="width: 20rem; display: none;">
+
+    <div class="container" style="font-size: 0.7em">
+
+
+
+    </div>
+
+</div>
+
+
 <!---panel representantes-->
-<div class="position-absolute top-50 start-0 translate-middle-y buttons panel_re " style="display: none; width: 25rem">
+<div class="position-fixed top-50 start-0 translate-middle-y buttons panel_re " style="display: none; font-size: 0.8em; width: 18rem">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-12">
                 <div class="card p-2">
                     <form action="" method="POST" id="form-search" class="mb-3 ">
                         @csrf
-                        <label class="text-mute form-label" style="">
+
+                        <label class="text-mute form-label text-center" style="">
+                            <i class="fa-solid fa-flask-vial"></i>Laboratorio </label>
+                        <select class="nieve form-select form-select-sm  " multiple
+                            style="border: none; font-size: 0.5em " id="nieve" name="nieve">
+
+                            @if (Session::has('regiones'))
+                            @else
+                                @foreach ($regiones as $item)
+                                    <option value="{{ $item->co_region }}">{{ $item->region }} </option>
+                                @endforeach
+                            @endif
+
+                        </select>
+
+
+                        <label class="text-mute form-label mt-2 mb-2 text-center" style="">
                             <i class="fa-solid fa-users"></i> Representante en <span class="text-nowrap bd-highlight"> UTC</span></label>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-2">
+                                <button type="button" class="btn btn-primary btn-circle border border-1 add_new_rep" id="add_new_rep"><i class="fa-solid fa-plus"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-success btn-circle border border-1 rep_edit" id="rep_edit"><i class="fa-solid fa-pencil"></i>
+                                </button>
+
+                              </div>
                         <select class="nieve form-select form-select-sm  " multiple
                             style="border: none; font-size: 0.5em " id="nieve" name="nieve">
 
@@ -248,7 +285,7 @@
                     </form>
                 </div>
 
-                <div class="card p-2">
+                <div class="card p-2 mt-1">
                     <table class="table table-sm" style="font-size: 0.7em">
                         <thead>
                             <tr>
@@ -272,6 +309,30 @@
                     <form action="" method="POST" id="form-search" class="mb-3 ">
                         @csrf
 
+
+                        <!--leyenda-->
+                        <ol class="list-group list-group-numbered" style="font-size: 0.7em">
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                              <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                              </div>
+                              <span class="badge bg-primary rounded-pill">14</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                              <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                              </div>
+                              <span class="badge bg-primary rounded-pill">14</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                              <div class="ms-2 me-auto">
+                                <div class="fw-bold">Subheading</div>
+                              </div>
+                              <span class="badge bg-primary rounded-pill">14</span>
+                            </li>
+
+
+                          </ol>
 
                     </form>
                 </div>

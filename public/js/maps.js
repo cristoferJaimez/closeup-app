@@ -128,6 +128,10 @@ L.geoJson(null, {
 L.control.scale().addTo(map);
 //end view maps
 
+//lazo
+
+//end lazo
+
 // Insertando una leyenda en el mapa
 //L.control.zoom({ position: "topright" }).addTo(map);
 

@@ -113,3 +113,19 @@ function toggle() {
         height: 'toggle'
     }, "slow");
 }
+
+
+//agregar representantes y utc a representantes
+$(document).on('click', '.add_new_rep', function(e) {
+    let view = document.querySelector('.view')
+        // console.log(e);
+    let panel_1 = document.getElementById('panel_1')
+    let panel_2 = document.getElementsByClassName('panel_add_re')
+        //console.log($(view).prop('checked', false));
+    $(view).prop('checked', false);
+    $(panel_1).hide(500);
+    $(panel_2).animate({
+        height: 'toggle'
+    }, "slow");
+
+})
