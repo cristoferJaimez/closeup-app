@@ -46,6 +46,7 @@
 
 
                 @else
+                <!--
                     <li class="nav-item">
                         <a class=" nav-link   {{ request()->routeIs('postList') ? 'text-white' : 'text-dark' }}"
                             aria-current="page" href="{{ url('postList') }}/{{ auth()->user()->id }}"><i
@@ -57,7 +58,7 @@
                             aria-current="page" href="{{ url('oldpost') }}/{{ auth()->user()->id }}"><i
                                 class="fa-solid fa-clipboard-list"></i> List old post</a>
                     </li>
-
+                -->
                 @endif
             </ul>
             <div class="d-flex">

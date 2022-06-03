@@ -27,6 +27,7 @@
                             class="fa-solid fa-clipboard-list"></i></a>
                 </li>
             @else
+            <!--
                 <li class="nav-item">
                     <a class=" nav-link  border-1 m-2 {{ request()->routeIs('postList') ? 'text-white ' : 'text-dark' }}"
                         aria-current="page" href="{{ url('postList') }}/{{ auth()->user()->id }}"><i
@@ -44,6 +45,7 @@
                         aria-current="page" href="{{ url('oldpost') }}/{{ auth()->user()->id }}"><i
                             class="fa-solid fa-clipboard-list"></i></a>
                 </li>
+            -->
             @endif
 
 
