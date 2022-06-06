@@ -11,21 +11,21 @@ use App\Models\typeReport;
 
 class usersController extends Controller
 {
-  
+
     protected $user;
 
     public function __construct(User $user){
         $this->user = $user;
     }
-    
+
 
     //listar usuarios
     public function index()
     {
     $user = $this->user->index();
     return view('index', ['user' => $user]);
-    }    
-    
+    }
+
 
     //save users new
     public function saveUser(Request $request){
@@ -42,14 +42,16 @@ class usersController extends Controller
      $user = DB::table('users')
         ->select(['name', 'id'])
         ->where('id' , $id)
-        ->get();   
+        ->get();
+
+    $proveedor =  DB::select('CALL colombiadb.data_proveedor()');
 
     $type = typeReport::all();
     $category = Category::all();
 
-     return view('home.post', ['user'=> $user, 'type' => $type, 'category'=> $category]);
-    }    
-    
+     return view('home.post', ['user'=> $user, 'type' => $type, 'category'=> $category, 'proveedor' => $proveedor]);
+    }
+
 
      // obtenr user por id
      public function perfil($id)
@@ -57,12 +59,12 @@ class usersController extends Controller
       $user = DB::table('users')
          ->select(['name', 'id'])
          ->where('id' , $id)
-         ->get();   
- 
+         ->get();
+
       $rol = Rol::all();
       return view('auth.perfil', ['user'=> $user, 'rol'=> $rol]);
-     }    
-     
+     }
+
 
 
 
@@ -72,22 +74,24 @@ class usersController extends Controller
     public function index_home()
     {
     $user = $this->user->index();
+    //
+    $proveedor =  DB::select('CALL colombiadb.data_proveedor()');
     $rols = Rol::all();
-    return view('home/home', ['user' => $user, 'rols' => $rols]);
-    }  
-    
-     
+    return view('home/home', ['user' => $user, 'rols' => $rols, 'proveedor'=>$proveedor]);
+    }
+
+
      //listar usuarios en home
      public function index_listUsers()
      {
      $user = $this->user->index();
      $rol = Rol::all();
      return view('home/listUsers', ['user' => $user, 'rol' => $rol]);
-     }  
+     }
 
 
      //view category and type an rol
-     
+
      public function category(){
         $category = Category::all();
         $type = typeReport::all();
@@ -97,6 +101,6 @@ class usersController extends Controller
      }
 
      //update rol user
-  
+
 
 }
