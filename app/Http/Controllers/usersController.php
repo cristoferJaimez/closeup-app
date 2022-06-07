@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Rol;
 use App\Models\Category;
 use App\Models\typeReport;
+use App\Models\Post;
 
 class usersController extends Controller
 {
@@ -77,7 +78,8 @@ class usersController extends Controller
     //
     $proveedor =  DB::select('CALL colombiadb.data_proveedor()');
     $rols = Rol::all();
-    return view('home/home', ['user' => $user, 'rols' => $rols, 'proveedor'=>$proveedor]);
+    $posts = Post::all();
+    return view('home/home', ['user' => $user, 'rols' => $rols, 'proveedor'=>$proveedor, 'posts'=>$posts]);
     }
 
 

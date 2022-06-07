@@ -62,7 +62,6 @@
 
 <body>
     @yield('contenido')
-
     <script src="{{ asset('js/maps.js') }}"></script>
     <script>
         $(document).ready(function($) {
@@ -82,4 +81,5 @@
 <script src="{{ asset('js/leaflet_heatmap.js') }}"></script>
 
 <script src="https://unpkg.com/leaflet-lasso@2.2.8/dist/leaflet-lasso.umd.min.js"></script>
+
 </html>

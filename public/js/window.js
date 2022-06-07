@@ -5,7 +5,7 @@ function hover(u) {
 }
 
 function hide() {
-    let card = document.querySelector('.card')
+    let card = document.querySelectorAll('.card')
     $(card).hide(500)
     let iframe = document.querySelector('.iframe')
     $(iframe).show(500)
@@ -19,7 +19,7 @@ function hide_iframe() {
     $(iframe).hide(500)
     let btn = document.querySelector('.btn_')
     $(btn).hide(500)
-    let card = document.querySelector('.card')
+    let card = document.querySelectorAll('.card')
     $(card).show(500)
 }
 

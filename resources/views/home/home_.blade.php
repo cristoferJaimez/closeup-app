@@ -4,122 +4,137 @@
     @include('home.navbutton')
 
     <!--msm -->
-    <div class="container">
-        <div class="row mt-5">
+    <div class="container-fluid " style="">
 
-            <div class="col-md-3 col-sm-12">
-                <div class="card m-1">
-                    <span class="text-muted p-1">
-                        labs
-                    </span>
+
+    <div class="container">
+        <div class="col-3">
+            <input type="button"
+                class="btn_ btn btn-danger position-absolute top-0 start-0"
+                onclick="hide_iframe()" value="publicaciones"
+                style="position:fixed;display: ; z-index:999999;">
+        </div>
+        <div class="row">
+
+        </div>
+        <p>
+    </div>
+
+        <div class="row mt-5 ">
+
+            <div class="col-md-4 col-sm-12">
+                <div class="card  " style=" width: 18rem;">
+                    <div class="text-center p-2">
+                        <img src="https://www.close-upinternational.com/img/logo.svg" width="100px" height="100px"
+                            alt="logo" class="p-1 border   rounded-circle" />
+                    </div>
                     <div class="card-body text-center">
                         @foreach ($proveedor as $pro)
-
                             @if ($pro->id === auth()->user()->id)
-
-                            <img class="img-fluid" src="{{$pro->url}}"  width="150px"/>
+                                <span class="text-muted">
+                                    <h4 class="">{{ $pro->description }}</h4>
+                                </span>
+                                <img class="img-fluid" src="{{ $pro->url }}" width="200px" />
                             @endif
                         @endforeach
-                        <p>
+                        <p class="text-start">
+                            <br>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reiciendis dignissimos esse
 
                         </p>
                     </div>
                 </div>
-
-
-
             </div>
-            <div class="col-md-9 col-sm-12">
 
-                <div class="card  col-12 m-1">
-                    <div class="card-body text-center">
+            <div class="col-md-8 col-sm-12 ">
 
-
-                        <div class="card-group">
-                            <div class="card m-1">
-                                <div class="card-header no-border">
-                                 <!--   <h5 class="card-title">Flash</h5> -->
+                <div class="card mt-2 mb-3" style="width: 18rem;">
+                    <div class="card-header no-border">
+                        <h5 class="card-title">Flash</h5>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="widget-49">
+                            <div class="widget-49-title-wrapper">
+                                <div class="widget-49-date-danger">
+                                    <span class="widget-49-date-day">
+                                        <i class="fa-solid fa-bolt-lightning"></i>
+                                    </span>
+                                    <span class="widget-49-date-month"></span>
                                 </div>
-                                <div class="card-body pt-0">
-                                    <div class="widget-49">
-                                        <div class="widget-49-title-wrapper">
-                                            <div class="widget-49-date-danger">
-                                                <span class="widget-49-date-day">
-                                                    <i class="fa-solid fa-bolt-lightning"></i>
-                                                </span>
-                                                <span class="widget-49-date-month"></span>
-                                            </div>
-                                            <div class="widget-49-meeting-info">
-                                                <span class="widget-49-pro-title">Pharmacist</span>
-                                                <span class="widget-49-meeting-time">time</span>
-                                            </div>
+                                @foreach ($posts as $post)
+                                    @if ($post->user_id === auth()->user()->id)
+                                        <div class="widget-49-meeting-info">
+                                            <span class="widget-49-pro-title">Pharmacist</span>
+                                            <span class="widget-49-meeting-time">{{ $post->created_at }}</span>
                                         </div>
-                                        <ol class="widget-49-meeting-points">
-                                            <!--<li class="widget-49-meeting-item"><span>descripcion</span></li>-->
-                                        </ol>
-                                        <div class="widget-49-meeting-action">
-                                            <a href="{{ 'postList' }}/{{ auth()->user()->id }}"
-                                                class="btn btn-sm btn-flash-border-success">View All</a>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
-
-
-                            <div class="card  m-1">
-                                <div class="card-header no-border">
-                                </div>
-                                <div class="card-body pt-0">
-                                    <div class="widget-49">
-                                        <div class="widget-49-title-wrapper">
-                                            <div class="widget-49-date-success">
-                                                <span class="widget-49-date-day">
-                                                    <i class="fa-solid fa-prescription"></i>
-                                                </span>
-                                                <span class="widget-49-date-month"></span>
-                                            </div>
-                                            <div class="widget-49-meeting-info">
-                                                <span class="widget-49-pro-title">Document.</span>
-                                                <span class="widget-49-meeting-time"></span>
-                                            </div>
-                                        </div>
-                                        <ol class="widget-49-meeting-points">
-                                            <!--<li class="widget-49-meeting-item"><span>descripcion</span></li>-->
-                                        </ol>
-                                        <div class="widget-49-meeting-action">
-                                            <a href="{{ 'postList' }}/{{ auth()->user()->id }}"
-                                                class="btn btn-sm btn-flash-border-success">View All</a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <ol class="widget-49-meeting-points">
+                                <!--<li class="widget-49-meeting-item"><span>descripcion</span></li>-->
+                            </ol>
+                            <div class="widget-49-meeting-action">
+                                <a href="{{$post->url}}" target="iframe" onclick="hide()"
+                                    class="btn btn-sm btn-flash-border-success">View All</a>
                             </div>
+                            @endif
+                            @endforeach
                         </div>
-
-
                     </div>
                 </div>
 
 
+                <div class="card " style="width: 18rem;">
+                    <div class="card-header no-border">
+                        <h5 class="card-title">Rx</h5>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="widget-49">
+                            <div class="widget-49-title-wrapper">
+                                <div class="widget-49-date-success">
+                                    <span class="widget-49-date-day">
+                                        <i class="fa-solid fa-prescription"></i>
+                                    </span>
+                                    <span class="widget-49-date-month"></span>
+                                </div>
+                                <div class="widget-49-meeting-info">
+                                    <span class="widget-49-pro-title">Document.</span>
+                                    <span class="widget-49-meeting-time"></span>
+                                </div>
+                            </div>
+                            <ol class="widget-49-meeting-points">
+                                <!--<li class="widget-49-meeting-item"><span>descripcion</span></li>-->
+                            </ol>
+                            <div class="widget-49-meeting-action">
+                                <a href="{{ 'postList' }}/{{ auth()->user()->id }}"
+                                    class="btn btn-sm btn-flash-border-success">View All</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
+
+
         </div>
     </div>
 
 
-    <div class="position-absolute bottom-0 end-0">
-    @foreach ($proveedor as $pro)
-                            @if ($pro->id === auth()->user()->id)
-                            <img class="img-fluid" src="{{$pro->url}}" width="200px" />
-                            @endif
-                        @endforeach
+    <div class="position-absolute bottom-0 end-0" style="z-index: 999999">
+        @foreach ($proveedor as $pro)
+            @if ($pro->id === auth()->user()->id)
+                <img class="img-fluid" src="{{ $pro->url }}" width="200px" />
+            @endif
+        @endforeach
     </div>
 
 
+    <iframe src="" frameborder="0" class="iframe " id="iframe" onload=""
+    style="overflow: auto;position:fixed; top:60px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999998; display: none;"
+    name="iframe">
 
-
-
-
-
-
-
-
+    </iframe>
 @endsection
+
+
+

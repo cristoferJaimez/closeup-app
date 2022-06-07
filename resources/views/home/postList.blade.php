@@ -4,9 +4,21 @@
     @include('home.navbutton')
 
     <div class="container mt-5">
-        <span class="text-muted "><h3> Publications</h3> </span>
-        <div class="row mt5 m-2 "">
+        <span class="text-muted ">
+            <h3> Publications</h3>
+        </span>
+        <div class="row mt5 m-2 ">
 
+            <div class="container">
+                <div class="row">
+                    <div class="col-3">
+                        <input type="button" class="btn_ btn btn-secondary position-absolute top-0 start-0"
+                            onclick="hide_iframe()" value="publicaciones"
+                            style="position:fixed;display: none; z-index:999999;">
+                    </div>
+                </div>
+                <p>
+            </div>
 
 
             @foreach ($post as $item => $value)
@@ -55,17 +67,7 @@
                 </div>
             @endforeach
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-3">
-                        <input type="button"
-                            class="btn_ btn btn-secondary position-absolute top-0 start-50 translate-middle-x"
-                            onclick="hide_iframe()" value="publicaciones"
-                            style="position:fixed;display: none; z-index:999999;">
-                    </div>
-                </div>
-                <p>
-            </div>
+
 
             <iframe src="" frameborder="0" class="iframe " id="iframe" onload=""
                 style="overflow: auto;position:fixed; top:60px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999998; display: none;"
