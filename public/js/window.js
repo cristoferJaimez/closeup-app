@@ -10,8 +10,9 @@ function hide() {
     let iframe = document.querySelector('.iframe')
     $(iframe).show(500)
     let btn = document.querySelector('.btn_')
-    $(btn).show(2000)
-    console.log("cargando");
+    let load_ = document.querySelector('#load_')
+    $(btn).show(500)
+    $(load_).show(500)
 }
 
 function hide_iframe() {
@@ -20,6 +21,8 @@ function hide_iframe() {
     let btn = document.querySelector('.btn_')
     $(btn).hide(500)
     let card = document.querySelectorAll('.card')
+    let load_ = document.querySelector('#load_')
+    $(load_).hide(500)
     $(card).show(500)
 }
 

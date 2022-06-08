@@ -1,6 +1,7 @@
 //maps
 let array_init = undefined;
 
+
 let cargando = document.querySelector("#cargando");
 // Make basemap
 const map = new L.Map("map", {
@@ -21,6 +22,10 @@ const osm = new L.TileLayer(
     //"https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg"
     { attribution: cartodbAttribution }
 );
+
+//llenar search con datos de maps
+
+
 //pain areas
 function getColor(d) {
     //console.log(d);
@@ -193,6 +198,11 @@ function clearSelect() {
     for (let i = $select.options.length; i >= 0; i--) {
         $select.remove(i);
     }
+
+    const $select_ = document.querySelector("#search_");
+    for (let i = $select_.options.length; i >= 0; i--) {
+        $select_.remove(i);
+    }
     clearSelectMun();
     clearSelectLoc();
     clearSelectBar()
@@ -266,7 +276,6 @@ $(selectElement).click(function() {
             cargandoON();
             removeMarkers();
             clearSelect();
-            let poligono;
             dep = [];
             array_init = response;
             //console.log(response);
@@ -311,11 +320,20 @@ $(selectElement).click(function() {
                                 `${it.co_barrio}`
                             );
                             x.appendChild(option);
+
+                            var y = document.getElementById("search_");
+                            var option_ = new Option(
+                                `${it.co_barrio}`,
+                                `${it.co_barrio}`
+                            );
+                            y.appendChild(option_);
+
                         }
 
                         //console.log(dep.length);
                         var unique = dep.filter(onlyUnique);
                         //console.log(unique)
+
 
                         //select de utc
                         var x = document.getElementById("my-select-dep");
@@ -366,6 +384,12 @@ $(selectElement).click(function() {
                                 `${it.co_barrio}`
                             );
                             x.appendChild(option);
+                            var y = document.getElementById("search_");
+                            var option_ = new Option(
+                                `${it.co_barrio}`,
+                                `${it.co_barrio}`
+                            );
+                            y.appendChild(option_);
                         }
 
                         //console.log(dep.length);
@@ -421,6 +445,12 @@ $(selectElement).click(function() {
                                 `${it.co_barrio}`
                             );
                             x.appendChild(option);
+                            var y = document.getElementById("search_");
+                            var option_ = new Option(
+                                `${it.co_barrio}`,
+                                `${it.co_barrio}`
+                            );
+                            y.appendChild(option_);
                         }
                         //console.log(dep.length);
                         var unique = dep.filter(onlyUnique);
@@ -475,6 +505,12 @@ $(selectElement).click(function() {
                                 `${it.co_barrio}`
                             );
                             x.appendChild(option);
+                            var y = document.getElementById("search_");
+                            var option_ = new Option(
+                                `${it.co_barrio}`,
+                                `${it.co_barrio}`
+                            );
+                            y.appendChild(option_);
                         }
 
                         //console.log(dep.length);
@@ -531,6 +567,12 @@ $(selectElement).click(function() {
                                 `${it.co_barrio}`
                             );
                             x.appendChild(option);
+                            var y = document.getElementById("search_");
+                            var option_ = new Option(
+                                `${it.co_barrio}`,
+                                `${it.co_barrio}`
+                            );
+                            y.appendChild(option_);
                         }
 
                         //console.log(dep.length);
@@ -585,6 +627,12 @@ $(selectElement).click(function() {
                                 `${it.co_barrio}`
                             );
                             x.appendChild(option);
+                            var y = document.getElementById("search_");
+                            var option_ = new Option(
+                                `${it.co_barrio}`,
+                                `${it.co_barrio}`
+                            );
+                            y.appendChild(option_);
                         }
 
                         //console.log(dep.length);
@@ -640,6 +688,12 @@ $(selectElement).click(function() {
                                 `${it.co_barrio}`
                             );
                             x.appendChild(option);
+                            var y = document.getElementById("search_");
+                            var option_ = new Option(
+                                `${it.co_barrio}`,
+                                `${it.co_barrio}`
+                            );
+                            y.appendChild(option_);
                         }
 
                         //console.log(dep.length);
@@ -1180,6 +1234,87 @@ $(selectElementUTC).change(function() {
                 break;
         }
     }
+    flay(coord[1], coord[0], 'e')
+
+});
+
+
+const selectElementUTC_search = document.getElementsByClassName("mi-selector");
+//consultar barrio para ver utc unica
+$(selectElementUTC_search).change(function() {
+    //console.log("cambio");
+
+    let utc = [];
+    removeMarkers();
+    let val = $(this).val();
+    console.log(val);
+    for (const key in val) {
+        let color = color_departamento(val[key]);
+        //console.log(val[key]);
+        switch (val[key]) {
+            case val[key]:
+                for (const it of array_init) {
+                    //pintar mapa
+                    //console.log(val[key]);
+                    let geoDep = it.co_barrio == val;
+                    //console.log(geoDep);
+                    switch (geoDep) {
+                        case true:
+                            utc.push(it.co_barrio);
+                            L.geoJson(maps, {
+                                filter: function(feature, layer) {
+                                    return (
+                                        feature.properties.name === it.co_barrio
+                                    );
+                                },
+                                style: style,
+                                onEachFeature: function(feature, layer) {
+                                    layer.myTag = "mapa";
+                                    if (feature.geometry.type) {
+                                        layer.bindPopup(
+                                            JSON.stringify(
+                                                "<br><img src='https://www.close-upinternational.com/img/logo.svg' alt='colombia'  /> <br>" +
+                                                feature.properties
+                                                .description
+                                            )
+                                        );
+
+                                        try {
+                                            coord = feature.geometry.coordinates[0][0]
+                                        } catch (error) {
+                                            coord = coord;
+                                        }
+                                    }
+                                },
+                            }).addTo(map);
+
+                            //volar al departamento
+                            //map.flyTo([4.60971, -74.08175], 5);
+
+
+
+
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+
+
+
+                //leyenda
+
+                // Insertando una leyenda en el mapa
+
+
+                break;
+
+            default:
+                break;
+        }
+    }
+    console.log(coord[1], coord[0]);
     flay(coord[1], coord[0], 'e')
 
 });

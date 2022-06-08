@@ -4,26 +4,19 @@
     @include('home.navbutton')
 
     <!--msm -->
-    <div class="container-fluid " style="">
-
-
-    <div class="container">
-        <div class="col-3">
-            <input type="button"
-                class="btn_ btn btn-danger position-absolute top-0 start-0"
-                onclick="hide_iframe()" value="publicaciones"
-                style="position:fixed;display: ; z-index:999999;">
-        </div>
-        <div class="row">
-
-        </div>
-        <p>
-    </div>
-
+    <div class="container" style="">
         <div class="row mt-5 ">
+            <div class="col-md-1">
 
-            <div class="col-md-4 col-sm-12">
-                <div class="card  " style=" width: 18rem;">
+                <div class="position-absolute top-50 start-50   ">
+                    <div class="spinner-border text-danger" id="load_" style="display: none" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12">
+
+                <div class="card  mb-3 ">
                     <div class="text-center p-2">
                         <img src="https://www.close-upinternational.com/img/logo.svg" width="100px" height="100px"
                             alt="logo" class="p-1 border   rounded-circle" />
@@ -39,7 +32,6 @@
                         @endforeach
                         <p class="text-start">
                             <br>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolores reiciendis dignissimos esse
 
                         </p>
                     </div>
@@ -48,7 +40,7 @@
 
             <div class="col-md-8 col-sm-12 ">
 
-                <div class="card mt-2 mb-3" style="width: 18rem;">
+                <div class="card  mb-3">
                     <div class="card-header no-border">
                         <h5 class="card-title">Flash</h5>
                     </div>
@@ -73,7 +65,7 @@
                                 <!--<li class="widget-49-meeting-item"><span>descripcion</span></li>-->
                             </ol>
                             <div class="widget-49-meeting-action">
-                                <a href="{{$post->url}}" target="iframe" onclick="hide()"
+                                <a href="{{ $post->url }}" target="iframe" onclick="hide()"
                                     class="btn btn-sm btn-flash-border-success">View All</a>
                             </div>
                             @endif
@@ -83,7 +75,7 @@
                 </div>
 
 
-                <div class="card " style="width: 18rem;">
+                <div class="card ">
                     <div class="card-header no-border">
                         <h5 class="card-title">Rx</h5>
                     </div>
@@ -119,22 +111,37 @@
         </div>
     </div>
 
+    <div class="position-absolute top-50 end-0 translate-middle-y" style="z-index: 999999">
+        <button class="btn btn-outline-primary   rounded-circle " style="margin: auto; text-align:center; 35px; height: 35px;"
+            onclick="body.requestFullscreen()">
+            <i class="fa-solid fa-expand"></i>
+        </button>
+        <br>
+        <button class="btn btn-outline-danger btn_   rounded-circle " style="display:none; margin-top: 5px; text-align:center; 35px; height: 35px;"
+            onclick="hide_iframe()">
+            <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+
+    </div>
 
     <div class="position-absolute bottom-0 end-0" style="z-index: 999999">
+
         @foreach ($proveedor as $pro)
             @if ($pro->id === auth()->user()->id)
-                <img class="img-fluid" src="{{ $pro->url }}" width="200px" />
+                <img class="img-fluid bg-light" style="position: ;" src="{{ $pro->url }}" width="200px" />
             @endif
         @endforeach
+        <button class="btn_ btn btn-danger p-1 border   rounded-circle" onclick="hide_iframe()" value="publicaciones"
+            style="position:fixed; width: 35px; height: 35px; float: right; margin-top: -3em; display: none ; z-index:999999;">
+            <i class="fa-solid fa-circle-xmark"></i>
+        </button>
+
     </div>
 
 
     <iframe src="" frameborder="0" class="iframe " id="iframe" onload=""
-    style="overflow: auto;position:fixed; top:60px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999998; display: none;"
-    name="iframe">
+        style="overflow: auto;position:fixed; top:60px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999998; display: none;"
+        name="iframe">
 
     </iframe>
 @endsection
-
-
-
