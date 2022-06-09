@@ -1,6 +1,6 @@
 
-<nav class="navbar mt-5     d-md-none fixed-bottom navbar navbar-dark bg-danger">
-    <div class="container-fluid">
+<nav class="navbar mt-5      d-md-none fixed-bottom navbar navbar-dark bg-danger">
+    <div class="container ">
 
         <ul class="nav justify-content-center mx-auto text text-white navbar-dark">
             <li class="nav-item">
@@ -20,6 +20,7 @@
                             class="rounded-circle navbar-brand border m-2 bg-white" width="40px" height="40px">
                     </a>
                 </li>
+
 
                 <li class="nav-item">
                     <a class="nav-link  border-1 m-2 {{ request()->routeIs('listPost') ? 'text-white ' : 'text-dark' }}"

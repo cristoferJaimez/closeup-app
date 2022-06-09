@@ -1,4 +1,3 @@
-//maps
 let array_init = undefined;
 
 

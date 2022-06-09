@@ -30,6 +30,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <script>
         $(window).on('load', function() {
             setTimeout(function() {
@@ -50,6 +51,7 @@
     <link href="{{ asset('css/legend.css') }}" rel="stylesheet" />
     <script src="{{ asset('js/legend.js') }}"></script>
     <script src="{{ asset('js/linea.js') }}"></script>
+    <script src="{{ asset('js/off_mouse.js') }}"></script>
 
 
     <script src="{{ asset('js/control.js') }}"></script>

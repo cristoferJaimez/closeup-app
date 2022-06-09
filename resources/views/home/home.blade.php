@@ -3,9 +3,10 @@
   @include('home.navbar')
   @include('home.breadcrumb')
 
+
+
+
   <!--usuario sin rol-->
-  <div class="container">
-      <div class="row">
         @if(auth()->user()->fk_rol == "")
         @include('layout.none-rol')
       @endif
@@ -38,8 +39,8 @@
       @if(auth()->user()->fk_rol === 5)
         @include('home.home_')
       @endif
-      </div>
-  </div>
+
+
 
 
 

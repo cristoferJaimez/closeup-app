@@ -9,3 +9,18 @@ if (elInput) {
         }, false);
     }
 }
+
+
+$(document).ready(function() {
+    $('#sidebarCollapse').on('click', function() {
+        $('#sidebar').toggleClass('active');
+        $(this).toggleClass('active');
+    });
+});
+
+
+function load_web(params) {
+    let content = document.querySelector("#content")
+    $(content).load(params);
+
+}

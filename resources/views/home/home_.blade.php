@@ -4,6 +4,11 @@
     @include('home.navbutton')
 
     <!--msm -->
+    <style>
+        .socialIcon {
+            display: none;
+        }
+    </style>
     <div class="container" style="">
         <div class="row mt-5 ">
             <div class="col-md-1">
@@ -97,7 +102,7 @@
                                 <!--<li class="widget-49-meeting-item"><span>descripcion</span></li>-->
                             </ol>
                             <div class="widget-49-meeting-action">
-                                <a href="{{ 'postList' }}/{{ auth()->user()->id }}"
+                                <a href=""
                                     class="btn btn-sm btn-flash-border-success">View All</a>
                             </div>
                         </div>
@@ -111,32 +116,53 @@
         </div>
     </div>
 
-    <div class="position-absolute top-50 end-0 translate-middle-y" style="z-index: 999999">
-        <button class="btn btn-outline-primary   rounded-circle " style="margin: auto; text-align:center; 35px; height: 35px;"
-            onclick="body.requestFullscreen()">
+    <div class="position-absolute top-50 end-0 translate-middle-y " style="margin-right: 4px;  z-index: 999999">
+        <button class="btn btn-outline-primary   rounded-circle "
+            style="margin: auto; text-align:center; 35px; height: 35px;" onclick="body.requestFullscreen()">
             <i class="fa-solid fa-expand"></i>
         </button>
         <br>
-        <button class="btn btn-outline-danger btn_   rounded-circle " style="display:none; margin-top: 5px; text-align:center; 35px; height: 35px;"
-            onclick="hide_iframe()">
+        <button class="btn btn-outline-danger btn_   rounded-circle "
+            style="display:none; text-align:center; 35px; height: 35px;" onclick="hide_iframe()">
             <i class="fa-solid fa-circle-xmark"></i>
         </button>
 
     </div>
 
-    <div class="position-absolute bottom-0 end-0" style="z-index: 999999">
+    <div class="position-absolute bottom-0 start-50 translate-middle-x next_prev_ card p-2 "
+        style="display: none; z-index: 999999">
+        <div class="container">
+            <div class="row">
 
-        @foreach ($proveedor as $pro)
-            @if ($pro->id === auth()->user()->id)
-                <img class="img-fluid bg-light" style="position: ;" src="{{ $pro->url }}" width="200px" />
-            @endif
-        @endforeach
-        <button class="btn_ btn btn-danger p-1 border   rounded-circle" onclick="hide_iframe()" value="publicaciones"
-            style="position:fixed; width: 35px; height: 35px; float: right; margin-top: -3em; display: none ; z-index:999999;">
-            <i class="fa-solid fa-circle-xmark"></i>
-        </button>
+                <div class="  col-sm-12 col-md-4 ">
+                    <button class="btn btn-outline-primary   rounded-circle "
+                        style="margin: auto; text-align:center; 35px; height: 35px;" onclick="">
+                        <i class="fa-solid fa-angle-left"></i>
+                    </button>
+                </div>
+
+                <div class="  col-sm-12 col-md-4">
+                    @foreach ($proveedor as $pro)
+                        @if ($pro->id === auth()->user()->id)
+                            <img class="img-fluid " style="" src="{{ $pro->url }}"  />
+                        @endif
+                    @endforeach
+                </div>
+
+                <div class="  col-sm-12 col-md-4 text-end">
+                    <button class="btn btn-outline-primary   rounded-circle "
+                        style="margin: auto; text-align:center; 35px; height: 35px;" onclick="">
+                        <i class="fa-solid fa-angle-right"></i>
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
 
     </div>
+
+
 
 
     <iframe src="" frameborder="0" class="iframe " id="iframe" onload=""
