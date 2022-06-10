@@ -2,7 +2,7 @@
 @section('contenido')
   @include('home.navbar')
   @include('home.breadcrumb')
-
+  @include('home.load')
 
 
 

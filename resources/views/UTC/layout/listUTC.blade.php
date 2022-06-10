@@ -3,8 +3,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    @include('home.navbar')
-    @include('home.navbutton')
+    @include('home.load')
+
     <div class="container ">
         <div class="row m-1">
 
@@ -26,10 +26,13 @@
 
                     </tbody>
                 </table>
+
+
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
                 <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
                 <script type="text/javascript">
-                    const datos = {!! json_encode($data) !!};
+                    $(document).ready(e=>{
+                        const datos = {!! json_encode($data) !!};
 
                     try {
 
@@ -71,6 +74,7 @@
                     } catch (error) {
                         console.log(console.error(error));
                     }
+                    })
                 </script>
 
             </div>

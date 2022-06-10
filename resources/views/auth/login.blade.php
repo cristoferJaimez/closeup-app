@@ -1,19 +1,19 @@
-<div class="container">
+<div class="container ">
     <div class="row">
 
 
     <div class=" position-absolute top-50 start-50 translate-middle col-md-11 col-sm-11 ">
 
-        <p class="text-left">
-           <img src="https://www.close-upinternational.com/img/logo.svg" width="60px" height="60px" alt="logo" class="p-1 border  rounded-circle" />
-           <h2> Sign in</h2>
+        <p class="text-center">
+           <img src="https://www.close-upinternational.com/img/logo.svg" width="80px" height="80px" alt="logo" class="p-1 border  rounded-circle" style="text-align: center" />
 
-           <h6>Don't have an account? <a href="{{url('register')}}">Sign up</a></h6>
+
+          <!-- <h6>Don't have an account? <a href="{{url('register')}}">Sign up</a></h6> -->
         </p>
         <div class="card  " style="width: 18rem;" >
             <div class="card-body">
 
-                <form action="{{url('login')}}" method="POST">
+                <form action="{{url('login')}}" method="POST" >
                     <div class="form-group ">
                         <!--token-->
                         @csrf

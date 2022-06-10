@@ -52,6 +52,8 @@
     <script src="{{ asset('js/legend.js') }}"></script>
     <script src="{{ asset('js/linea.js') }}"></script>
     <script src="{{ asset('js/off_mouse.js') }}"></script>
+    <script src="{{ asset('js/index.js') }}"></script>
+    <script src="{{ asset('js/graticule.js') }}"></script>
 
 
     <script src="{{ asset('js/control.js') }}"></script>

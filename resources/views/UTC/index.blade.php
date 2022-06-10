@@ -4,9 +4,7 @@
 
 @endpush
 @section('contenido')
-    <div class="loader-page"><span class="ref"></span></div>
-
-
+   @include('home.load')
     <!--map -->
 
 
