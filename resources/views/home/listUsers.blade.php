@@ -1,6 +1,6 @@
 @extends('layout.app')
-@include('home.load')
 
+ 
 @section('contenido')
     @if (auth()->user()->fk_rol === 1)
        <div class="container-fluid">
@@ -21,7 +21,7 @@
 
             <div class=" col-md-9  col-sm-12">
 
-                <table class="table table-striped ">
+                <table class="table">
                     <thead class="text-center">
                         <th><i class="fa-solid fa-users"></i> Name User</th>
                         <th> <i class="fa-solid fa-user-gear"></i> Rol</th>
@@ -31,8 +31,8 @@
                             @foreach ($user as $usu => $value)
                                 <tr>
 
-                                    <td class="fs-6 text-capitalize" style="font-size: 0.7em">{{ $value->name }}</td>
-                                    <td class="" style="font-size: 0.7em">
+                                    <td class="fs-6 text-capitalize">{{ $value->name }}</td>
+                                    <td class="">
                                         <select class="form-select form-select-sm border-0 " required
                                             aria-label="Default select example">
                                             @foreach ($rol as $item)
@@ -49,6 +49,7 @@
 
                                 </tr>
                             @endforeach
+                            {{ $user->links() }}
                         </form>
                     </tbody>
                 </table>

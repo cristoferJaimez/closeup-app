@@ -31,6 +31,7 @@
                         <th> <i class="fa-solid fa-calendar"></i> Timestamps</th>
                     </thead>
                     <tbody>
+                        {{ $posts->links() }}
                         @foreach ($posts as $post => $value)
                             <tr>
                                 <td>

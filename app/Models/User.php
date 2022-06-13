@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     //show
     public function index(){
-        return User::all();
+        return User::simplePaginate(10);
     }
 
 

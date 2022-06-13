@@ -19,7 +19,7 @@ class postController extends Controller
 
 
     public function list(){
-        $posts = Post::all();
+        $posts = Post::simplePaginate(10);
         $type = typeReport::all();
         $cate = Category::all();
         $user = User::all();

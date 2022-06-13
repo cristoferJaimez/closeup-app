@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-10 col-sm-12 " style="position: relative;">
+        <div class="col-md-10 col-sm-12 " style="position: relative; font-size: 0.7em;">
 
-            <div class=" row" id="default">
+            <div class=" row" id="default"  >
                 <div class="text-center text-muted position-absolute top-50 start-50 translate-middle"
                     style="background-image: url('')" >
                     <i class="text-muted fa-solid fa-chart-pie  fa-9x cometa " ></i>
