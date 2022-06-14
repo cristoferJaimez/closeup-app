@@ -6,7 +6,10 @@
 
 
 
+
+
   <!--usuario sin rol-->
+  <div class="container-fluid" >
         @if(auth()->user()->fk_rol == "")
         @include('layout.none-rol')
       @endif
@@ -14,6 +17,7 @@
       <!--usuario admin-->
 
       @if(auth()->user()->fk_rol == 1)
+
       @include('home.list')
       @endif
 
@@ -43,8 +47,6 @@
 
 
 
-
-  @include('home.navbutton')
-
+</div>
 
   @endsection

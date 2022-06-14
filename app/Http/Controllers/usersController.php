@@ -77,6 +77,7 @@ class usersController extends Controller
     $user = $this->user->index();
     //
     $proveedor =  DB::select('CALL colombiadb.data_proveedor()');
+
     $rols = Rol::all();
     $posts = Post::all();
     return view('home/home', ['user' => $user, 'rols' => $rols, 'proveedor'=>$proveedor, 'posts'=>$posts]);
@@ -86,9 +87,12 @@ class usersController extends Controller
      //listar usuarios en home
      public function index_listUsers()
      {
+     $prov = DB::select('call user_the_provaiders');
+     $data_provaiders = DB::select('call provaiders');
+     //$data_provaiders = json_decode($data_provaider, true);
      $user = $this->user->index();
      $rol = Rol::all();
-     return view('home/listUsers', ['user' => $user, 'rol' => $rol]);
+     return view('home/listUsers', ['user' => $user, 'rol' => $rol, 'prov'=> $prov ])->with('data_prov', $data_provaiders);
      }
 
 

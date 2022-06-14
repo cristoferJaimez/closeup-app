@@ -1,6 +1,7 @@
-<nav class="navbar navbar-light d-none d-sm-block text-cente shadow-sm  d-sm-none d-md-block navbar-expand-lg mb-3">
+<nav class="navbar navbar-light  d-sm-block text-cente shadow-sm   d-md-block navbar-expand-lg mb-3">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{url('home')}}"><i class="fa-regular fa-gauge-max"></i> My Report Dashboard</a>
+        <a class="navbar-brand" href="{{ url('home') }}"><i class="fa-regular fa-gauge-max"></i> My Report
+            Dashboard</a>
 
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

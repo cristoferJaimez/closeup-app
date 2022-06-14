@@ -14,10 +14,12 @@ $(document).ready(function() {
                 window.Location.href = link
 
                 info = e
-                contenedor.innerHTML = info;
+                let view = contenedor.innerHTML = info;
+
             },
             error: function(xhr, status) {
-                alert('Disculpe, existió un problema');
+                alert('Disculpe, existe un problema', xhr, status);
+                console.log(status);
             },
         });
 

@@ -54,6 +54,11 @@
     <script src="{{ asset('js/off_mouse.js') }}"></script>
     <script src="{{ asset('js/index.js') }}"></script>
     <script src="{{ asset('js/graticule.js') }}"></script>
+    <script src="{{ asset('js/jquery.csv.js') }}"></script>
+    <script src="{{ asset('js/jquery.csv.min.js') }}"></script>
+    <script src="{{ asset('js/readCSV.js') }}"></script>
+    <script src="{{ asset('js/create_list.js') }}"></script>
+
 
 
     <script src="{{ asset('js/control.js') }}"></script>

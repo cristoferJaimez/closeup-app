@@ -1,65 +1,76 @@
 
-<nav class="navbar mt-5      d-md-none fixed-bottom navbar navbar-dark bg-danger">
-    <div class="container ">
-
-        <ul class="nav justify-content-center mx-auto text text-white navbar-dark">
-            <li class="nav-item">
-
-                <a class="  border-1 nav-link m-2 {{ request()->routeIs('home') ? 'text-white ' : 'text-dark' }}"
-                    aria-current="page" href="{{ url('home') }}"><i class="fa-solid fa-house-user"></i></a>
-            </li>
-
-            @if (auth()->user()->fk_rol === 1)
-                <li class="nav-item">
-                    <a class=" nav-link  border-1 m-2 {{ request()->routeIs('listUsers') ? 'text-white ' : 'text-dark' }}"
-                        aria-current="page" href="{{ url('listUsers') }}"><i class="fa-solid fa-users-line"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('perfil') }}/{{ auth()->user()->id }}">
-                        <img src="{{auth()->user()->avatar}}" alt="avatar"
-                            class="rounded-circle navbar-brand border m-2 bg-white" width="40px" height="40px">
-                    </a>
-                </li>
+<nav class="navbar mt-5      d-md-none fixed-bottom navbar navbar-light shadow-lg p-3  bg-white rounded">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{url('home')}}"><i class="fa-regular fa-gauge-max"></i> My Report Dashboard</a>
 
 
-                <li class="nav-item">
-                    <a class="nav-link  border-1 m-2 {{ request()->routeIs('listPost') ? 'text-white ' : 'text-dark' }}"
-                        aria-current="page" href="{{ url('listPost') }}"><i
-                            class="fa-solid fa-clipboard-list"></i></a>
-                </li>
-            @else
-            <!--
-                <li class="nav-item">
-                    <a class=" nav-link  border-1 m-2 {{ request()->routeIs('postList') ? 'text-white ' : 'text-dark' }}"
-                        aria-current="page" href="{{ url('postList') }}/{{ auth()->user()->id }}"><i
-                            class="fa-solid fa-link"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url('perfil') }}/{{ auth()->user()->id }}">
-                        <img src="{{auth()->user()->avatar}}" alt="avatar"
-                            class="rounded-circle navbar-brand border m-2 bg-white" width="40px" height="40px">
-                    </a>
-                </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto  mb-lg-0">
 
+                <!--
                 <li class="nav-item">
-                    <a class=" nav-link  border-1 m-2 {{ request()->routeIs('oldpost') ? 'text-white ' : 'text-dark' }}"
-                        aria-current="page" href="{{ url('oldpost') }}/{{ auth()->user()->id }}"><i
-                            class="fa-solid fa-clipboard-list"></i></a>
+                    <a class="nav-link {{ request()->routeIs('home') ? 'active text-white' : 'text-dark' }}"
+                        aria-current="page" href="{{ url('home') }}"> <i class="fa-solid fa-house-user"></i> Home </a>
                 </li>
             -->
-            @endif
+
+                @if (auth()->user()->fk_rol === 1)
+                    <!--
+                <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('listUsers') ? 'active text-white' : 'text-dark' }}"
+                            aria-current="page" href="{{ url('listUsers') }}"><i class="fa-solid fa-users-line"></i>
+                            List Users</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('listPost') ? 'active text-white' : 'text-dark' }}"
+                            aria-current="page" href="{{ url('listPost') }}"> <i
+                                class="fa-solid fa-clipboard-list"></i>
+                            List Post</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a target="blank_"
+                            class="nav-link {{ request()->routeIs('utcmaps') ? 'active text-white' : 'text-dark' }}"
+                            aria-current="page" href="{{ route('utcmaps') }}"> <i
+                                class="fa-solid fa-map-location-dot"></i>
+                            Maps</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('listUTC') ? 'active text-white' : 'text-dark' }}"
+                            aria-current="page" href="{{ route('listUTC') }}"> <i
+                                class="fa-solid fa-map-location-dot"></i>
+                            List UTC</a>
+                    </li>
+                -->
+                 <li class="nav-item ">
+                        <form action="{{ url('logout') }}" style="display: inline; " method="POST">
+                            @csrf
+                            <button class="nav-link btn btn-sm text-dark" type="submit"> <i
+                                    class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                        </form>
+                    <li>
 
 
-            <li class="nav-item ">
-                <form action="{{ url('logout') }}" method="POST">
-                    @csrf
-                    <button class="nav-link btn text-dark  m-2" type="submit"> <i
-                            class="fa-solid fa-arrow-right-from-bracket"></i></button>
-                </form>
-            <li>
 
-        </ul>
+                @else
+                    <!--
+                    <li class="nav-item">
+                        <a class=" nav-link   {{ request()->routeIs('postList') ? 'text-white' : 'text-dark' }}"
+                            aria-current="page" href="{{ url('postList') }}/{{ auth()->user()->id }}"><i
+                                class="fa-solid fa-link"></i> Links post</a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link    {{ request()->routeIs('oldpost') ? 'text-white' : 'text-dark' }}"
+                            aria-current="page" href="{{ url('oldpost') }}/{{ auth()->user()->id }}"><i
+                                class="fa-solid fa-clipboard-list"></i> List old post</a>
+                    </li>
+                -->
+                @endif
+            </ul>
 
+        </div>
     </div>
 </nav>

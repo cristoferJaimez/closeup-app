@@ -16,7 +16,7 @@
 
 
 
-        <div class="col-md-2 col-sm-12">
+        <div class="col-md-2 col-sm-12 d-none d-sm-block d-md-block" style=" font-size: 0.7em">
             <div class="list-group list-group-flush mb-3" style="overflow-x: hidden; overflow-y: hidden">
                 <a href="{{ url('listUsers') }}" target="_parent" id="home.listUsers"
                     class="list-group-item list-group-item-action href_" aria-current="true">
