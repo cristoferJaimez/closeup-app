@@ -57,7 +57,7 @@
                         <div class="widget-49">
                             <div class="widget-49-title-wrapper">
 
-                                        @if ($post->title === 'Flash')
+                                        @if ($post->title === 'Flash Farmacéutico')
                                         <div class="widget-49-date-danger">
                                             <span class="widget-49-date-day">
                                         <i class="fa-solid fa-bolt-lightning"></i>
