@@ -45,23 +45,37 @@
 
             <div class="col-md-8 col-sm-12 ">
 
-                <div class="card  mb-3">
+
+
+                @foreach ($posts as $post)
+                @if ($post->user_id === auth()->user()->id)
+                <div class=" card mb-3 ">
                     <div class="card-header no-border">
-                        <h5 class="card-title">Flash</h5>
+                        <h5 class="card-title">{{$post->title}}</h5>
                     </div>
                     <div class="card-body pt-0">
                         <div class="widget-49">
                             <div class="widget-49-title-wrapper">
-                                <div class="widget-49-date-danger">
-                                    <span class="widget-49-date-day">
+
+                                        @if ($post->title === 'Flash')
+                                        <div class="widget-49-date-danger">
+                                            <span class="widget-49-date-day">
                                         <i class="fa-solid fa-bolt-lightning"></i>
+
+                                        @else
+                                        <div class="widget-49-date-success">
+                                            <span class="widget-49-date-day">
+                                        <i class="fa-solid fa-prescription"></i>
+
+                                        @endif
                                     </span>
                                     <span class="widget-49-date-month"></span>
                                 </div>
-                                @foreach ($posts as $post)
-                                    @if ($post->user_id === auth()->user()->id)
+
+
+                                    @if ($post->user_id === auth()->user()->id )
                                         <div class="widget-49-meeting-info">
-                                            <span class="widget-49-pro-title">Pharmacist</span>
+                                            <span class="widget-49-pro-title">{{$post->title}}</span>
                                             <span class="widget-49-meeting-time">{{ $post->created_at }}</span>
                                         </div>
 
@@ -73,40 +87,17 @@
                                 <a href="{{ $post->url }}" target="iframe" onclick="hide()"
                                     class="btn btn-sm btn-flash-border-success">View All</a>
                             </div>
+
+                            @else
+                                <i class="fa-solid fa-ban fa-9x"></i>
+                            aqui
                             @endif
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
 
-
-                <div class="card ">
-                    <div class="card-header no-border">
-                        <h5 class="card-title">Rx</h5>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div class="widget-49">
-                            <div class="widget-49-title-wrapper">
-                                <div class="widget-49-date-success">
-                                    <span class="widget-49-date-day">
-                                        <i class="fa-solid fa-prescription"></i>
-                                    </span>
-                                    <span class="widget-49-date-month"></span>
-                                </div>
-                                <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title">Document.</span>
-                                    <span class="widget-49-meeting-time"></span>
-                                </div>
-                            </div>
-                            <ol class="widget-49-meeting-points">
-                                <!--<li class="widget-49-meeting-item"><span>descripcion</span></li>-->
-                            </ol>
-                            <div class="widget-49-meeting-action">
-                                <a href=""
-                                    class="btn btn-sm btn-flash-border-success">View All</a>
                             </div>
                         </div>
                     </div>
+                @endif
+                @endforeach
                 </div>
 
             </div>
@@ -129,13 +120,13 @@
 
     </div>
 
-    <div class="position-absolute bottom-0 start-50 translate-middle-x next_prev_ card p-2 "
+    <div class="position-absolute bottom-0 start-50 translate-middle-x next_prev_  d-none p-2 "
         style="display: none; z-index: 999999">
         <div class="container">
             <div class="row">
 
                 <div class="  col-sm-12 col-md-4 ">
-                    <button class="btn btn-outline-primary   rounded-circle "
+                    <button class="btn btn-outline-primary   rounded-circle btn_prev "
                         style="margin: auto; text-align:center; 35px; height: 35px;" onclick="">
                         <i class="fa-solid fa-angle-left"></i>
                     </button>
@@ -150,7 +141,7 @@
                 </div>
 
                 <div class="  col-sm-12 col-md-4 text-end">
-                    <button class="btn btn-outline-primary   rounded-circle "
+                    <button class="btn btn-outline-primary   rounded-circle  btn_next"
                         style="margin: auto; text-align:center; 35px; height: 35px;" onclick="">
                         <i class="fa-solid fa-angle-right"></i>
                     </button>
@@ -166,7 +157,7 @@
 
 
     <iframe src="" frameborder="0" class="iframe " id="iframe" onload=""
-        style="overflow: auto;position:fixed; top:60px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999998; display: none;"
+        style="overflow: auto;position:fixed; top:60px; left:0px; bottom:0px; right:0px; width:100%; height:99%; border:none; margin:0; padding:0; overflow:hidden; z-index:999998; display: none;"
         name="iframe">
 
     </iframe>

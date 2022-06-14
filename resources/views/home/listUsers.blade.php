@@ -1,8 +1,9 @@
 @extends('layout.app')
 
 @section('contenido')
+@push('scripts')
 
-
+    {!! json_encode($data_prov) !!}
     @if (auth()->user()->fk_rol === 1)
 
         <div class="container-fluid ">
