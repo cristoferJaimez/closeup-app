@@ -9,7 +9,7 @@
 
 
   <!--usuario sin rol-->
-  <div class="container-fluid" >
+  <div class="container-fluid" style="" >
         @if(auth()->user()->fk_rol == "")
         @include('layout.none-rol')
       @endif

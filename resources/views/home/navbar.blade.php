@@ -62,6 +62,7 @@
             </ul>
             <div class="d-flex">
                 <ul class="navbar-nav  mb-lg-0">
+
                     <li class="nav-item ">
                         <form action="{{ url('logout') }}" style="display: inline; " method="POST">
                             @csrf

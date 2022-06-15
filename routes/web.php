@@ -43,7 +43,9 @@ Route::get('post/{id}',  [usersController::class, 'userId'])->middleware('auth')
 
 //public Post
 Route::post('post/public', [postController::class , 'public'])->middleware('auth');
-
+//proveedores
+Route::view('proveedores', 'home.proveedores')->middleware('auth');
+Route::view('sendEmail', 'home.sendEmail')->middleware('auth');
 //update rol users
 
 //post users

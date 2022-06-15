@@ -109,4 +109,10 @@ class usersController extends Controller
      //update rol user
 
 
+     // list users de proveedores
+      public function users_prove()
+     {
+         $users = DB::select('call list_users_proveedores(?)');
+     }
+
 }

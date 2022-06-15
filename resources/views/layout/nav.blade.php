@@ -1,4 +1,4 @@
-<ul class="nav justify-content-end">
+<ul class="nav justify-content-center">
     <li class="nav-item">
       <a class="nav-link  {{request()->routeIs('home') ? 'active' : "text-muted"}}" aria-current="page" href="{{url('/')}}">Home</a>
     </li>
