@@ -1,4 +1,8 @@
 $(document).ready(function() {
+
+
+
+
     const $app = $('.app');
     const $img = $('.app__img');
     const $pageNav1 = $('.pages__item--1');
@@ -45,6 +49,13 @@ $(document).ready(function() {
     setTimeout(function() {
         animation = false;
     }, 4500);
+
+
+    //click en botton
+    $(document).on('click', '#btn_login', e => {
+        navigateDown();
+    })
+
 
     $(document).on('mousewheel DOMMouseScroll', function(e) {
         var delta = e.originalEvent.wheelDelta;

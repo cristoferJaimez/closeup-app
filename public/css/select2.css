@@ -1,3 +1,13 @@
+select {
+    user-select: all;
+    /* Varoles globales */
+    /* Valores Mozilla-specific */
+    -moz-user-select: all;
+    /* Valores WebKit-specific */
+    -webkit-user-select: all;
+    -ms-user-select: text;
+}
+
 .select2-container {
     box-sizing: border-box;
     display: inline-block;

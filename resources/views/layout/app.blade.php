@@ -56,7 +56,6 @@
     <script src="{{ asset('js/graticule.js') }}"></script>
     <script src="{{ asset('js/jquery.csv.js') }}"></script>
     <script src="{{ asset('js/jquery.csv.min.js') }}"></script>
-    <script src="{{ asset('js/readCSV.js') }}"></script>
     <script src="{{ asset('js/create_list.js') }}"></script>
     <script src="{{ asset('js/pagination.js') }}"></script>
 
@@ -71,7 +70,7 @@
     <title>Web App</title>
 </head>
 
-<body>
+<body style="overflow-y: hidden">
     @yield('contenido')
     <script src="{{ asset('js/maps.js') }}"></script>
     <script>

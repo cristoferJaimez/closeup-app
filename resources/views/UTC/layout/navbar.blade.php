@@ -84,7 +84,7 @@
 
                     <label class="text-mute form-label" style="border: none; height: 20px; font-size: 0.5em">
                         <i class="fa-solid fa-magnifying-glass"></i> Buscar Persona.</label>
-                    <select type="search" class="mi-selector form-select form-select-sm search_" id="search_" name="search_" style="font-size: 0.7em"
+                    <select  type="search" class="mi-selector form-select form-select-sm search_" id="search_" name="search_" style="font-size: 0.7em"
                         placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
                     </select>
 

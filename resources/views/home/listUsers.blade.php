@@ -1,11 +1,7 @@
 @extends('layout.app')
-
 @section('contenido')
-    @push('scripts')
-
-
         @if (auth()->user()->fk_rol === 1)
-            <div class="container ">
+            <div class="container " >
                 <div class="row">
                     <h6 class="text-muted"><i class="fa-solid fa-users"></i> List Users</h6>
                     <hr>
@@ -22,7 +18,7 @@
 
                         </div>
 
-                        <h6 class="text-center text-muted">List System Users</h6>
+                        <h6 class="text-center text-muted"><i class="fa-solid fa-list"></i> List System Users</h6>
                         <div class="list-group" style="overflow-x: hidden; max-height: 50%">
 
                             @foreach ($data_prov as $item => $it)
@@ -44,7 +40,7 @@
 
 
                     </div>
-                    <div class=" col-md-9  col-sm-12  " style="position: relative;height: 75vh;">
+                    <div class=" col-md-9  col-sm-12  " style="position: relative;">
                         <div id="contenido" class="text-center text-muted ">
                             <i class="fa-solid fa-users-rays fa-8x position-absolute top-50 start-50 translate-middle  "></i>
                             <br>

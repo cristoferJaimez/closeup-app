@@ -45,6 +45,12 @@
       @endif
 
 
+      @if(auth()->user()->fk_rol === 8)
+      <script>
+        window.location.href = "{{ route('utcmaps')}}";
+      </script>
+    @endif
+
 
 
 </div>
