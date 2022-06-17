@@ -1,10 +1,9 @@
 try {
     let array_init = undefined;
 
-
     let cargando = document.querySelector("#cargando");
     // Make basemap
-    let map = new L.Map("map", {
+    const map = new L.Map("map", {
         center: new L.LatLng(4.570868, -74.297333),
         zoom: 5,
         ext: "png"
@@ -154,8 +153,12 @@ try {
 
     //removercapas
 
+
+
     function removeMarkers() {
         try {
+
+            //L.geoJson(layer).removeLayer(map)
 
             map.eachLayer(function(layer) {
                 if (layer.myTag === "mapa") {
@@ -167,9 +170,8 @@ try {
                 }
             });
         } catch (error) {
-            console.log(error);
+            alert(error);
         }
-
     }
 
     function flay(a, b, c) {
