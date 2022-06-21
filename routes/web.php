@@ -72,3 +72,6 @@ Route::get('utcmaps', [UtcMapsController::class, 'show'])->name('utcmaps')->midd
 Route::post('utcmaps', [UtcMapsController::class, 'ajaxReq'])->name('utcmaps')->middleware('auth');
 
 Route::get('listUTC', [UtcMapsController::class, 'listUTC'])->name('listUTC')->middleware('auth');
+
+//google maps
+Route::view('maps_google', 'maps_google.index')->name('mapas_google')->middleware('auth');

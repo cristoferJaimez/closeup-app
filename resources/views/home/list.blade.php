@@ -1,5 +1,4 @@
-
-    <script src="{{ asset('js/readCSV.js') }}"></script>
+<script src="{{ asset('js/readCSV.js') }}"></script>
 
 <div class="container-fluid">
     <div class="row">
@@ -30,6 +29,10 @@
                     class="list-group-item list-group-item-action" aria-current="true">
                     <i class="fa-solid fa-map"></i> Maps
                 </a>
+                <a href="{{ route('mapas_google') }}" target="_blank" id="home.listUsers"
+                    class="list-group-item list-group-item-action" aria-current="true">
+                    <i class="fa-solid fa-map"></i>Google Maps
+                </a>
                 <a href="{{ route('listUTC') }}" target="_blank"
                     class="list-group-item list-group-item-action  nav-link {{ request()->routeIs('listUTC') ? 'active text-white' : 'text-dark' }}">
                     <i class="fa-solid fa-list-ul"></i> List UTC
@@ -44,7 +47,8 @@
                 <i class="fa-regular fa-folder"></i> Repository
             </h6>
             <div class="list-group list-group-flush" style="overflow-x: hidden; overflow-y: hidden">
-                <a href="#" class="list-group-item list-group-item-action href_" id="file_ex" aria-current="true">
+                <a href="#" class="list-group-item list-group-item-action href_" id="file_ex"
+                    aria-current="true">
                     <i class="fa-regular fa-file-excel"></i> Files Excel
                 </a>
                 <a href="#" class="list-group-item list-group-item-action href_" id="file_csv">
