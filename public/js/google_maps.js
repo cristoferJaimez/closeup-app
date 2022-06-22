@@ -3,15 +3,23 @@ var map;
 var mark;
 
 
+let text_ = document.querySelector('.search_input');
+
+$(text_).on('click', () => {
+    $(text_).val('');
+})
+
 google.maps.event.addDomListener(window, "load", function() {
 
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 4.570868, lng: -74.297333 },
-        zoom: 5
+        zoom: 5,
+        mapTypeControl: false,
     });
 
 
     darwing()
+
 
 
     //console.log(map.data);
@@ -59,11 +67,38 @@ google.maps.event.addDomListener(window, "load", function() {
 
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
         var near_place = autocomplete.getPlace();
-
         //limpia mapa
+        // alert(near_place)
         clear_maps()
             //console.log(near_place);
-        flay(near_place)
+            //flay(near_place)
+        map.setCenter(near_place.geometry.location)
+        var coor = { lat: near_place.geometry.location.lat(), lng: near_place.geometry.location.lng() }
+        map.setZoom(15)
+        mark = new google.maps.Marker({
+            //draggable: true,
+            animation: google.maps.Animation.DROP,
+            position: coor,
+            map,
+            title: "" + near_place.formatted_address + "",
+        });
+        //console.log(mark);
+        var popup = new google.maps.InfoWindow();
+
+        mark.addListener('click', function(e) {
+            popup.setContent('<table class="table table-striped">' +
+                '<tr>' +
+                '<th colspan="2"><strong>' + `${near_place.formatted_address}` + '</strong></th>' +
+                '</tr>'
+
+                +
+                '</table>'
+            );
+            popup.setPosition(e.latLng);
+            popup.open(map);
+
+
+        });
 
 
     });
@@ -72,35 +107,7 @@ google.maps.event.addDomListener(window, "load", function() {
 
 
 // naegar a punto
-function flay(near_place) {
-    map.setCenter(near_place.geometry.location)
-    var coor = { lat: near_place.geometry.location.lat(), lng: near_place.geometry.location.lng() }
-    map.setZoom(15)
-    mark = new google.maps.Marker({
-        //draggable: true,
-        animation: google.maps.Animation.DROP,
-        position: coor,
-        map,
-        title: "" + near_place.formatted_address + "",
-    });
-    //console.log(mark);
-    var popup = new google.maps.InfoWindow();
-
-    mark.addListener('click', function(e) {
-        popup.setContent('<table class="table table-striped">' +
-            '<tr>' +
-            '<th colspan="2"><strong>' + `${near_place.formatted_address}` + '</strong></th>' +
-            '</tr>'
-
-            +
-            '</table>'
-        );
-        popup.setPosition(e.latLng);
-        popup.open(map);
-
-
-    });
-}
+function flay(near_place) {}
 
 
 

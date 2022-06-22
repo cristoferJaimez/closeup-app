@@ -6,21 +6,38 @@
     table{
         border: none
     }
+
+    #legend {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  padding: 10px;
+  margin: 10px;
+  border: 3px solid #000;
+}
+
+#legend h3 {
+  margin-top: 0;
+}
+
+#legend img {
+  vertical-align: middle;
+}
 </style>
     <div class="container-fluit">
         <div class="row">
-            <div class="" style="z-index: 2">
+            <div class="col-md-12 col-sm-12" style="z-index: 2">
                 <!-- Autocomplete location search input -->
-                <div class="col-md-4 col-sm-12 position-absolute top-0 start-50 translate-middle-x mt-3">
-                    <input type="search" required  class="form-control form-control-lg" id="search_input" class="" autofocus/>
-                    <input type="hidden" id="loc_lat" />
-                    <input type="hidden" id="loc_long" />
-                    <form action="{{ url('logout') }}" style="display: inline; " method="POST">
-                        @csrf
-                        <button class="nav-link btn btn-sm text-dark" type="submit"> <i
-                                class="fa-solid fa-arrow-right-from-bracket"></i></button>
-                    </form>
+                <div class="col-md-4 col-sm-12 position-absolute top-0 start-0 mt-3 m-2">
+                    <input type="search"  class="form-control form-control-md search_input" id="search_input" class="" autofocus/>
+                <i class="fa-solid fa-bars btn btn-outline-primary mt-2"></i>
+                <i class="fa-solid fa-print btn  btn-outline-primary mt-2" onclick="print()"></i>
+                <form action="{{ url('logout') }}" style="display: inline; " method="POST">
+                    @csrf
+                    <button class="btn btn-outline-danger mt-2" type="submit"> <i
+                            class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                </form>
                 </div>
+
 
 
 
