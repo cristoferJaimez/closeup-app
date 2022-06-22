@@ -2,14 +2,15 @@
 @section('contenido')
     <div class="container-fluit">
         <div class="row">
-            <div class="col-md-12" style="z-index: 99999">
+            <div class="" style="z-index: 99999">
                 <!-- Autocomplete location search input -->
-                <div class="position-absolute top-0 start-50 translate-middle-x mt-3">
-
-                    <input type="text" class="form-control" id="search_input" class="" />
+                <div class="col-md-4 col-sm-12 position-absolute top-0 start-50 translate-middle-x mt-3">
+                    <input type="text"  class="form-control form-control-lg" id="search_input" class="" />
                     <input type="hidden" id="loc_lat" />
                     <input type="hidden" id="loc_long" />
                 </div>
+
+                
 
                 <!-- Display latitude and longitude
                 <div class="latlong-view">

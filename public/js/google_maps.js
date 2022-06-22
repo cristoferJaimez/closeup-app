@@ -20,15 +20,37 @@ google.maps.event.addDomListener(window, "load", function() {
 
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
         var near_place = autocomplete.getPlace();
-        console.log(near_place.formatted_address);
+        var data_Adress = [
+            near_place.address_components[0].long_name,
+            near_place.address_components[1].long_name,
+            near_place.address_components[2].long_name,
+            near_place.address_components[3].long_name,
+            near_place.address_components[4].long_name,
+            near_place.address_components[5].long_name
+        ]
+        console.log(near_place);
         map.setCenter(near_place.geometry.location)
         var coor = { lat: near_place.geometry.location.lat(), lng: near_place.geometry.location.lng() }
         map.setZoom(15)
-        new google.maps.Marker({
+       var mark =  new google.maps.Marker({
             position: coor,
             map,
-            title: "'"+near_place.formatted_address+"+",
+            title: ""+near_place.formatted_address+"",
         });
+
+        var popup = new google.maps.InfoWindow();
+
+    mark.addListener('click', function(e) {
+        popup.setContent('<table class="table table-striped">'+
+            '<tr>'+
+                '<th colspan="2"><strong>'+ `${near_place.formatted_address}` +'</strong></th>'
+            +'</tr>'
+          
+        +'</table>'
+        );
+        popup.setPosition(e.latLng);
+        popup.open(map);
+    });
 
         /* document.getElementById('loc_lat').value = near_place.geometry.location.lat();
         document.getElementById('loc_long').value = near_place.geometry.location.lng();
