@@ -1,16 +1,28 @@
 @extends('layout.app')
+@include('home.load')
 @section('contenido')
+
+<style>
+    table{
+        border: none
+    }
+</style>
     <div class="container-fluit">
         <div class="row">
-            <div class="" style="z-index: 99999">
+            <div class="" style="z-index: 2">
                 <!-- Autocomplete location search input -->
                 <div class="col-md-4 col-sm-12 position-absolute top-0 start-50 translate-middle-x mt-3">
-                    <input type="text"  class="form-control form-control-lg" id="search_input" class="" />
+                    <input type="search" required  class="form-control form-control-lg" id="search_input" class="" autofocus/>
                     <input type="hidden" id="loc_lat" />
                     <input type="hidden" id="loc_long" />
+                    <form action="{{ url('logout') }}" style="display: inline; " method="POST">
+                        @csrf
+                        <button class="nav-link btn btn-sm text-dark" type="submit"> <i
+                                class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                    </form>
                 </div>
 
-                
+
 
                 <!-- Display latitude and longitude
                 <div class="latlong-view">
