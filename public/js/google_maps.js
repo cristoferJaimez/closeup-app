@@ -13,21 +13,21 @@ google.maps.event.addDomListener(window, "load", function() {
 
     var autocomplete;
     autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
-        types: ['geocode'],
+       // types: ['geocode', '', 'doctor'],
     });
 
     var place = autocomplete.getPlace();
 
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
         var near_place = autocomplete.getPlace();
-        console.log(near_place);
+        console.log(near_place.formatted_address);
         map.setCenter(near_place.geometry.location)
         var coor = { lat: near_place.geometry.location.lat(), lng: near_place.geometry.location.lng() }
         map.setZoom(15)
         new google.maps.Marker({
             position: coor,
             map,
-            title: coor,
+            title: "'"+near_place.formatted_address+"+",
         });
 
         /* document.getElementById('loc_lat').value = near_place.geometry.location.lat();
