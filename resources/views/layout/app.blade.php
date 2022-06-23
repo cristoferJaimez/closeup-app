@@ -5,16 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="http://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+    <link rel="stylesheet" href="http://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+
     <link rel="stylesheet" href="{{ asset('css/maps.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fullScreen.css') }}">
     <link rel="stylesheet" href="{{ asset('css/linea.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/rangeV.css') }}">
+
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('assets/maps.geojson') }}"></script>
 
@@ -65,7 +68,6 @@
 
     <script src="{{ asset('js/control.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
 
 
     <title>Web App</title>

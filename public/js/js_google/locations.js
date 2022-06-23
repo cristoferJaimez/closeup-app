@@ -1,0 +1,1 @@
+export function msm() { console.log("Nice job") };
