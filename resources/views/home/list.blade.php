@@ -25,7 +25,7 @@
                     id="home.listPost">
                     <i class="fa-solid fa-list-ul"></i> Load post
                 </a>
-                <a href="{{ route('form_geo') }}" target="_blank" id="home.listUsers"
+                <a href="{{ route('form_geo') }}" target="_blank"  target="_blank" id="home.listUsers"
                     class="list-group-item list-group-item-action" aria-current="true">
                     <i class="fa-brands fa-wpforms"></i> Form Locations
                 </a>
