@@ -85,12 +85,12 @@
             });
         });
     </script>
-    <script type="text/javascript"  src="https://www.dropbox.com/s/e3oltjitstcu2of/maps.geojson?dl=0"></script>
+    <script type="text/javascript"  src="{{ asset('js/g') }}"></script>
 
 </body>
 
 <!--mapa de calor plugins-->
-<script src="{{ asset('js/leaflet_heatmap.js') }}"></script>
+<script src="{{ asset('assets/maps.geojson') }}"></script>
 
 <script src="https://unpkg.com/leaflet-lasso@2.2.8/dist/leaflet-lasso.umd.min.js"></script>
 

@@ -25,10 +25,10 @@
                     id="home.listPost">
                     <i class="fa-solid fa-list-ul"></i> Load post
                 </a>
-                <!--<a href="{{ route('utcmaps') }}" target="_blank" id="home.listUsers"
+                <a href="{{ route('form_geo') }}" target="_blank" id="home.listUsers"
                     class="list-group-item list-group-item-action" aria-current="true">
-                    <i class="fa-solid fa-map"></i> Maps
-                </a>-->
+                    <i class="fa-brands fa-wpforms"></i> Form Locations
+                </a>
                 <a  href="{{ route('mapas_google') }}" target="_blank" id="home.listUsers"
                     class="list-group-item list-group-item-action" aria-current="true">
                     <i class="fa-solid fa-map"></i> Google Maps

@@ -75,3 +75,7 @@ Route::get('listUTC', [UtcMapsController::class, 'listUTC'])->name('listUTC')->m
 
 //google maps
 Route::view('maps_google', 'maps_google.index')->name('mapas_google')->middleware('auth');
+
+
+//google maps forma geo localitation
+Route::view('form_geo', 'form_geo.index')->name('form_geo')->middleware('auth');
