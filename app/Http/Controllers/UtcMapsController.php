@@ -29,7 +29,7 @@ class UtcMapsController extends Controller
       //ajax request
       public function listUTC(Request $request)
       {
-         $utc = DB::select('CALL colombiadb.list_utc()');
+         $utc = DB::select('CALL list_utc()');
          $data = DataTables::of($utc)
          ->addIndexColumn()
          ->addColumn('action', function($row){
@@ -47,7 +47,7 @@ class UtcMapsController extends Controller
     public function show(Request $request)
     {
         $regiones = Region::all();
-        $list = DB::select('CALL colombiadb.list_utc()');
+        $list = DB::select('CALL list_utc()');
         return view('UTC.index', ['regiones' => $regiones, 'list'=> $list]);
     }
 }

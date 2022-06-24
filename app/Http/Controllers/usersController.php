@@ -76,7 +76,7 @@ class usersController extends Controller
     {
     $user = $this->user->index();
     //
-    $proveedor =  DB::select('CALL colombiadb.data_proveedor()');
+    $proveedor =  DB::select('CALL data_proveedor()');
 
     $rols = Rol::all();
     $posts = Post::all();
