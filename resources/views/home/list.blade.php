@@ -25,13 +25,13 @@
                     id="home.listPost">
                     <i class="fa-solid fa-list-ul"></i> Load post
                 </a>
-                <a href="{{ route('utcmaps') }}" target="_blank" id="home.listUsers"
+                <!--<a href="{{ route('utcmaps') }}" target="_blank" id="home.listUsers"
                     class="list-group-item list-group-item-action" aria-current="true">
                     <i class="fa-solid fa-map"></i> Maps
-                </a>
-                <a href="{{ route('mapas_google') }}" target="_blank" id="home.listUsers"
+                </a>-->
+                <a class="" href="{{ route('mapas_google') }}" target="_blank" id="home.listUsers"
                     class="list-group-item list-group-item-action" aria-current="true">
-                    <i class="fa-solid fa-map"></i>Google Maps
+                    <i class="fa-solid fa-map"></i> Google Maps
                 </a>
                 <a href="{{ route('listUTC') }}" target="_blank"
                     class="list-group-item list-group-item-action  nav-link {{ request()->routeIs('listUTC') ? 'active text-white' : 'text-dark' }}">
