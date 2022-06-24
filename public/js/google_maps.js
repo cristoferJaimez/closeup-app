@@ -44,7 +44,7 @@ google.maps.event.addDomListener(window, "load", function() {
 
         //limpia mapa
         //alert(near_place)
-        clear_maps(maps)
+        //clear_maps(maps)
         darwing(near_place)
             //console.log(near_place.address_components);
             //flay(near_place)
@@ -97,12 +97,12 @@ async function clear_maps(feature) {
 //drawin maps
 function darwing(near_place) {
     console.log("dibujando");
-
-
+    console.log(near_place);
+    clear_maps(near_place)
     //console.log(near_place.address_components[0].long_name);
     let locations = [
         { location: 'Bogotá', cod: '11' },
-        { location: 'Cartagena', cod: '13' },
+        { location: 'Cartagena de Indias', cod: '13' },
         { location: 'Barranquilla', cod: '08' },
         { location: 'Bello', cod: '05' },
         { location: 'Cali', cod: '76' },
@@ -119,7 +119,7 @@ function darwing(near_place) {
     ]
 
     const resultado = locations.find(fruta => fruta.location === near_place.address_components[0].long_name);
-    // console.log(resultado);
+    console.log(resultado);
     draw(resultado)
         //console.log(maps);
 }
@@ -148,17 +148,25 @@ function draw(data) {
 
         }
 
-        //map.data.addGeoJson(json);
-    } catch (error) {
-        //console.log("valor : ", geo.length);
-        var json = JSON.stringify(geo)
         var data_geo = {
                 type: 'FeatureCollection',
                 features: geo,
                 type: "FeatureCollection"
             }
             //console.log(maps);
-            // console.log(data_geo);
+     console.log(data_geo);
+
+        map.data.addGeoJson(data_geo)
+        //map.data.addGeoJson(json);
+    } catch (error) {
+        //console.log("valor : ", geo.length);
+        var data_geo = {
+                type: 'FeatureCollection',
+                features: geo,
+                type: "FeatureCollection"
+            }
+            //console.log(maps);
+     console.log(data_geo);
 
         map.data.addGeoJson(data_geo)
             //console.log(json);
