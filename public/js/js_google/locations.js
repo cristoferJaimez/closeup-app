@@ -7,10 +7,19 @@ const init = () => {
     const onActualizacionDeUbicacion = ubicacion => {
         const coordenadas = ubicacion.coords;
         let { latitude, longitude } = coordenadas;
-        console.log(latitude, longitude);
+        //console.log(latitude, longitude);
         document.getElementById('lat_lng').value = latitude + "   " + longitude;
-        document.getElementById('lng_').innerHTML = longitude;
 
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById('lat_lng')), {
+        //types: ['cities'],
+        });
+        //var place = autocomplete.getPlace();
+
+        //console.log(place);
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            var near_place = autocomplete.getPlace();
+            console.log(near_place);
+        });
 
     }
 
