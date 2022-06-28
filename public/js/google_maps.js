@@ -7,6 +7,17 @@ var searchInput = 'search_input';
 var map;
 var mark;
 
+fetch('https://www.dropbox.com/s/e3oltjitstcu2of/maps.geojson?dl=0', {
+        mode: 'cors',
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).then((response) =>
+        console.log(response))
+    .catch(function(response) {
+        console.log(response);
+    })
 
 
 let text_ = document.querySelector('.search_input');
@@ -99,7 +110,7 @@ function darwing(near_place) {
     console.log("dibujando");
     console.log(near_place);
     clear_maps(near_place)
-    //console.log(near_place.address_components[0].long_name);
+        //console.log(near_place.address_components[0].long_name);
     let locations = [
         { location: 'Bogotá', cod: '11' },
         { location: 'Cartagena de Indias', cod: '13' },
@@ -154,10 +165,10 @@ function draw(data) {
                 type: "FeatureCollection"
             }
             //console.log(maps);
-     console.log(data_geo);
+        console.log(data_geo);
 
         map.data.addGeoJson(data_geo)
-        //map.data.addGeoJson(json);
+            //map.data.addGeoJson(json);
     } catch (error) {
         //console.log("valor : ", geo.length);
         var data_geo = {
@@ -166,7 +177,7 @@ function draw(data) {
                 type: "FeatureCollection"
             }
             //console.log(maps);
-     console.log(data_geo);
+        console.log(data_geo);
 
         map.data.addGeoJson(data_geo)
             //console.log(json);

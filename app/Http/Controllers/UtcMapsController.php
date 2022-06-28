@@ -22,7 +22,7 @@ class UtcMapsController extends Controller
      //ajax request
      public function ajaxReqDep(Request $request)
      {
-        $utc_dep = DB::select('CALL colombiadb.departamentos_(?)', [$request->input('nieve')]);
+        $utc_dep = DB::select('CALL departamentos_(?)', [$request->input('nieve')]);
         return $utc_dep;
      }
 
@@ -50,4 +50,10 @@ class UtcMapsController extends Controller
         $list = DB::select('CALL list_utc()');
         return view('UTC.index', ['regiones' => $regiones, 'list'=> $list]);
     }
+
+    public function search(Request $request){
+        echo $request;
+        $utc_dep = DB::select('CALL search_pharma(?)', [$request->input('buscar')]);
+        return $utc_dep;
+        }
 }

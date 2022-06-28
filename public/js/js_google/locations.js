@@ -11,7 +11,7 @@ const init = () => {
         document.getElementById('lat_lng').value = latitude + "   " + longitude;
 
         autocomplete = new google.maps.places.Autocomplete((document.getElementById('lat_lng')), {
-        //types: ['cities'],
+            //types: ['cities'],
         });
         //var place = autocomplete.getPlace();
 

@@ -53,7 +53,7 @@
     <link href="{{ asset('css/legend.css') }}" rel="stylesheet" />
     <script src="{{ asset('js/legend.js') }}"></script>
     <script src="{{ asset('js/linea.js') }}"></script>
-    <script src="{{ asset('js/off_mouse.js') }}"></script>
+   <!-- <script src="{{ asset('js/off_mouse.js') }}"></script>-->
     <script src="{{ asset('js/index.js') }}"></script>
     <script src="{{ asset('js/graticule.js') }}"></script>
     <script src="{{ asset('js/jquery.csv.js') }}"></script>
@@ -90,8 +90,7 @@
 </body>
 
 <!--mapa de calor plugins-->
-<script src="{{ asset('assets/maps.geojson') }}"></script>
-
+<!--<script src="{{ asset('assets/maps.geojson') }}"></script>-->
 <script src="https://unpkg.com/leaflet-lasso@2.2.8/dist/leaflet-lasso.umd.min.js"></script>
 
 </html>

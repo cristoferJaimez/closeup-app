@@ -5,6 +5,8 @@ use App\Http\Controllers\usersController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\postController;
 use App\Http\Controllers\UtcMapsController;
+use App\Http\Controllers\pharmaController;
+
 
 
 
@@ -73,9 +75,13 @@ Route::post('utcmaps', [UtcMapsController::class, 'ajaxReq'])->name('utcmaps')->
 
 Route::get('listUTC', [UtcMapsController::class, 'listUTC'])->name('listUTC')->middleware('auth');
 
-//google maps
-Route::view('maps_google', 'maps_google.index')->name('mapas_google')->middleware('auth');
+
+    //google maps
+    Route::view('maps_google', 'maps_google.index')->name('mapas_google')->middleware('auth');
 
 
 //google maps forma geo localitation
 Route::view('form_geo', 'form_geo.index')->name('form_geo')->middleware('auth');
+
+//formulario
+Route::get('./form_geo/index',[UtcMapsController::class, 'search'] )->middleware('auth');

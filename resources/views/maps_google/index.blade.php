@@ -29,8 +29,9 @@
                 <div class="col-md-4 col-sm-12 position-absolute top-0 start-50 translate-middle-x mt-3 m-2">
                     <input type="search" class="form-control form-control-md search_input" id="search_input" class=""
                         autofocus />
-                    <i class="fa-solid fa-map btn btn-secondary mt-2" onclick="draw()"></i>
+                   <!-- <i class="fa-solid fa-map btn btn-secondary mt-2" onclick="draw()"></i>
                     <i class="fa-solid fa-bars btn btn-outline-primary mt-2" onclick="clear_maps()"></i>
+                   -->
                     <i class="fa-solid fa-print btn  btn-outline-primary mt-2" onclick="print()"></i>
                     <form action="{{ url('logout') }}" style="display: inline; " method="POST">
                         @csrf
@@ -62,4 +63,6 @@
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBb3IgM-eU8HwwkzPNpIcpA1BWAdWtdaoI">
     </script>
     <script src="{{ asset('js/google_maps.js') }}"></script>
+<script src="{{ asset('') }}" ></script>
+
 @endsection
