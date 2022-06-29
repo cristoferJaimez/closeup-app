@@ -180,4 +180,5 @@ function draw(data) {
         );
         infoWindow.open(map);
     });
+
 }
