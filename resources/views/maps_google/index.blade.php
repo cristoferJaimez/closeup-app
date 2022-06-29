@@ -63,5 +63,4 @@
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBb3IgM-eU8HwwkzPNpIcpA1BWAdWtdaoI">
     </script>
     <script src="{{ asset('js/google_maps.js') }}"></script>
-
 @endsection
