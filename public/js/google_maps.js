@@ -8,14 +8,14 @@ var map;
 var mark;
 var bogota;
 var json_api;
-
+var map_drawing;
 
 
 let text_ = document.querySelector('.search_input');
 
 $(text_).on('click', () => {
-    clear_maps("vacio")
     $(text_).val('');
+
 })
 
 google.maps.event.addDomListener(window, "load", function() {
@@ -39,7 +39,7 @@ google.maps.event.addDomListener(window, "load", function() {
 
     var place = autocomplete.getPlace();
 
-
+    clear_maps("v");
 
 
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
@@ -90,7 +90,9 @@ function flay(near_place) {}
 //clear maps
 function clear_maps(feature) {
     //console.log(feature);
-    map.data.setStyle({ visible: false });
+    map.data.forEach(function(feature) {
+        map.data.remove(feature);
+    });
 
 
 }
@@ -144,7 +146,7 @@ function draw(data) {
                 method: 'GET', // or 'PUT'
 
             }).then(response => response.json())
-            .then(data => map.data.addGeoJson(data));
+            .then(data => map_drawing = map.data.addGeoJson(data));
 
     } catch (error) {
         var data_geo;
@@ -152,7 +154,7 @@ function draw(data) {
                 method: 'GET', // or 'PUT'
 
             }).then(response => response.json())
-            .then(data => map.data.addGeoJson(data));
+            .then(data => map_drawing = map.data.addGeoJson(data));
 
     }
     map.data.setStyle({
