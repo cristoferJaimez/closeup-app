@@ -131,12 +131,13 @@ function darwing(near_place) {
             locations.forEach(e => {
                 if (e.location === near_place.address_components[i].long_name) {
                     resultado = e;
-
+                    throw 'Break';
                 }
+
             })
         } //console.log(resultado.api);
     } catch (error) {
-
+        if (error !== 'Break') throw error
     }
     json_api = resultado.api;
     draw(resultado)
