@@ -7,14 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <link rel="stylesheet" href="http://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+
 
     <link rel="stylesheet" href="{{ asset('css/maps.css') }}">
 
         <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/fullScreen.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/linea.css') }}">
+
 
     <link rel="stylesheet" href="{{ asset('css/rangeV.css') }}">
 
@@ -45,20 +43,11 @@
         });
     </script>
 
-    <script src="{{ asset('js/bundle.js') }}"></script>
     <script src="{{ asset('js/window.js') }}"></script>
-    <script src="{{ asset('js/Leaflet.fullscreen.min.js') }}"></script>
-    <script src="{{ asset('js/L.KML.js') }}"></script>
-    <link href="{{ asset('css/select2.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/legend.css') }}" rel="stylesheet" />
-    <script src="{{ asset('js/legend.js') }}"></script>
-    <script src="{{ asset('js/linea.js') }}"></script>
    <!-- <script src="{{ asset('js/off_mouse.js') }}"></script>-->
     <script src="{{ asset('js/index.js') }}"></script>
     <script src="{{ asset('js/graticule.js') }}"></script>
-    <script src="{{ asset('js/jquery.csv.js') }}"></script>
-    <script src="{{ asset('js/jquery.csv.min.js') }}"></script>
-    <script src="{{ asset('js/create_list.js') }}"></script>
+        <script src="{{ asset('js/create_list.js') }}"></script>
     <script src="{{ asset('js/pagination.js') }}"></script>
 
 
@@ -85,12 +74,9 @@
             });
         });
     </script>
-    <script type="text/javascript"  src="{{ asset('js/g') }}"></script>
 
 </body>
 
 <!--mapa de calor plugins-->
-<script src="{{ asset('assets/maps.geojson') }}"></script>
-<script src="https://unpkg.com/leaflet-lasso@2.2.8/dist/leaflet-lasso.umd.min.js"></script>
 
 </html>

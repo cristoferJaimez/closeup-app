@@ -15,6 +15,8 @@ let text_ = document.querySelector('.search_input');
 
 $(text_).on('click', () => {
     $(text_).val('');
+    clear_maps("v");
+    mark.setMap(null)
 
 })
 
@@ -39,7 +41,7 @@ google.maps.event.addDomListener(window, "load", function() {
 
     var place = autocomplete.getPlace();
 
-    clear_maps("v");
+
 
 
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
@@ -95,6 +97,8 @@ function clear_maps(feature) {
     });
 
 
+
+    //clear mark
 }
 
 //drawin maps
@@ -143,7 +147,7 @@ function draw(data) {
 
 
         fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api} `, {
-                method: 'GET', // or 'PUT'
+                method: 'GET',
 
             }).then(response => response.json())
             .then(data => map_drawing = map.data.addGeoJson(data));
@@ -151,7 +155,7 @@ function draw(data) {
     } catch (error) {
         var data_geo;
         fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api} `, {
-                method: 'GET', // or 'PUT'
+                method: 'GET',
 
             }).then(response => response.json())
             .then(data => map_drawing = map.data.addGeoJson(data));
