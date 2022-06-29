@@ -17,7 +17,7 @@
             </div>
 
             <div class="app__text app__text--1">
-                <div class="app__text-line app__text-line--4">My Report </div>
+                <div class="app__text-line app__text-line--4">Geo<i class="fa-solid fa-globe"></i>UTC </div>
                 <div class="app__text-line app__text-line--3">  </div>
                 <div class="app__text-line app__text-line--2"><img src="https://www.close-upinternational.com/img/logo.svg"
                     alt="" /></div>
