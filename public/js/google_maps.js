@@ -14,6 +14,7 @@ var json_api;
 let text_ = document.querySelector('.search_input');
 
 $(text_).on('click', () => {
+    clear_maps("vacio")
     $(text_).val('');
 })
 
