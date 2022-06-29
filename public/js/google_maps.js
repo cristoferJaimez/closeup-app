@@ -125,11 +125,13 @@ function darwing(near_place) {
         { location: 'Manizales', cod: '17', api: 'manizales.json' },
     ]
     var resultado;
+    var BreakException = {};
     try {
         for (let i = 0; i <= near_place.address_components.length; i++) {
             locations.forEach(e => {
                 if (e.location === near_place.address_components[i].long_name) {
                     resultado = e;
+
                 }
             })
         } //console.log(resultado.api);
