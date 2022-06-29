@@ -9,7 +9,7 @@ var mark;
 var bogota;
 var json_api;
 var map_drawing;
-
+var infoWindow = new google.maps.InfoWindow();
 
 let text_ = document.querySelector('.search_input');
 
@@ -17,6 +17,7 @@ $(text_).on('click', () => {
     $(text_).val('');
     clear_maps("v");
     mark.setMap(null)
+    if (infoWindow) infoWindow.close();
 
 })
 
@@ -171,7 +172,7 @@ function draw(data) {
         geodesic: true,
     });
 
-    var infoWindow = new google.maps.InfoWindow();
+
 
 
     map.data.addListener('click', function(event) {
