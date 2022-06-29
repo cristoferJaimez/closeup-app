@@ -90,7 +90,7 @@
 </body>
 
 <!--mapa de calor plugins-->
-<!--<script src="{{ asset('assets/maps.geojson') }}"></script>-->
+<script src="{{ asset('assets/maps.geojson') }}"></script>
 <script src="https://unpkg.com/leaflet-lasso@2.2.8/dist/leaflet-lasso.umd.min.js"></script>
 
 </html>

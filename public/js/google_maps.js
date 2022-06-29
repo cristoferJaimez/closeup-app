@@ -6,18 +6,9 @@
 var searchInput = 'search_input';
 var map;
 var mark;
+var bogota;
+var json_api;
 
-fetch('https://www.dropbox.com/s/e3oltjitstcu2of/maps.geojson?dl=0', {
-        mode: 'cors',
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    }).then((response) =>
-        console.log(response))
-    .catch(function(response) {
-        console.log(response);
-    })
 
 
 let text_ = document.querySelector('.search_input');
@@ -112,28 +103,31 @@ function darwing(near_place) {
     clear_maps(near_place)
         //console.log(near_place.address_components[0].long_name);
     let locations = [
-        { location: 'Bogotá', cod: '11' },
-        { location: 'Cartagena de Indias', cod: '13' },
-        { location: 'Barranquilla', cod: '08' },
-        { location: 'Bello', cod: '05' },
-        { location: 'Cali', cod: '76' },
-        { location: 'Envigado', cod: '05' },
-        { location: 'Itagüi', cod: '05' },
-        { location: 'Medellín', cod: '05' },
-        { location: 'Bucaramanga', cod: '68' },
-        { location: 'Floridablanca', cod: '68' },
-        { location: 'Cúcuta', cod: '54' },
-        { location: 'Soledad', cod: '08' },
-        { location: 'Armenia', cod: '63' },
-        { location: 'Pereira', cod: '66' },
-        { location: 'Manizales', cod: '17' },
+        { location: 'Bogotá', cod: '11', api: 'bogota.json' },
+        { location: 'Cartagena de Indias', cod: '13', api: 'cartagena.json' },
+        { location: 'Cartagena', cod: '13', api: 'cartagena.json' },
+        { location: 'Barranquilla', cod: '08', api: 'barranquilla.json' },
+        { location: 'Bello', cod: '05', api: 'bello.json' },
+        { location: 'Cali', cod: '76', api: 'cali.json' },
+        { location: 'Envigado', cod: '05', api: 'envigado.json' },
+        { location: 'Itagüi', cod: '05', api: 'itagui.json' },
+        { location: 'Medellín', cod: '05', api: 'medellin.json' },
+        { location: 'Bucaramanga', cod: '68', api: 'bucaramanga.json' },
+        { location: 'Floridablanca', cod: '68', api: 'floridablanca.json' },
+        { location: 'Cúcuta', cod: '54', api: 'cucuta.json' },
+        { location: 'Soledad', cod: '08', api: 'soledad.json' },
+        { location: 'Armenia', cod: '63', api: 'armenia.json' },
+        { location: 'Pereira', cod: '66', api: 'pereira.json' },
+        { location: 'Manizales', cod: '17', api: 'manizales.json' },
     ]
 
     const resultado = locations.find(fruta => fruta.location === near_place.address_components[0].long_name);
-    console.log(resultado);
+    console.log(resultado.api);
+    json_api = resultado.api;
     draw(resultado)
         //console.log(maps);
 }
+
 
 // dibujar mapa
 function draw(data) {
@@ -159,29 +153,34 @@ function draw(data) {
 
         }
 
-        var data_geo = {
-                type: 'FeatureCollection',
-                features: geo,
-                type: "FeatureCollection"
-            }
-            //console.log(maps);
-        console.log(data_geo);
 
-        map.data.addGeoJson(data_geo)
-            //map.data.addGeoJson(json);
+
+        var data_geo = []
+
+        fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api} `, {
+                method: 'GET', // or 'PUT'
+                //body: JSON.stringify(data), // data can be `string` or {object}!
+
+            }).then(response => response.json())
+            .then(data => map.data.addGeoJson(data));
+        //console.log(maps);
+
+        //map.data.addGeoJson(json);
     } catch (error) {
         //console.log("valor : ", geo.length);
-        var data_geo = {
-                type: 'FeatureCollection',
-                features: geo,
-                type: "FeatureCollection"
-            }
-            //console.log(maps);
-        console.log(data_geo);
+        var data_geo;
+        fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api} `, {
+                method: 'GET', // or 'PUT'
+                //body: JSON.stringify(data), // data can be `string` or {object}!
 
-        map.data.addGeoJson(data_geo)
-            //console.log(json);
-            //console.log(error);
+            }).then(response => response.json())
+            .then(data => map.data.addGeoJson(data));
+        //console.log(maps);
+
+
+
+        //console.log(json);
+        //console.log(error);
     }
     map.data.setStyle({
         icon: 'https://www.close-upinternational.com/img/logo.svg',
