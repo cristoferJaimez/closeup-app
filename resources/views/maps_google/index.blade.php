@@ -40,7 +40,9 @@
                     </form>
                 </div>
 
-
+                <div class="card m-4 spinner-border text-danger position-absolute top-50 start-50 car_api" style="z-index: 99999; display: none" role="status">
+                    <span class="visually-hidden">Loading map utc...</span>
+                  </div>
 
 
                 <!-- Display latitude and longitude

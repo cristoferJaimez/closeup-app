@@ -104,7 +104,7 @@ function clear_maps(feature) {
 
 //drawin maps
 function darwing(near_place) {
-
+    console.log(near_place);
     clear_maps(near_place)
     let locations = [
         { location: 'Bogotá', cod: '11', api: 'bogota.json' },
@@ -113,6 +113,7 @@ function darwing(near_place) {
         { location: 'Barranquilla', cod: '08', api: 'barranquilla.json' },
         { location: 'Bello', cod: '05', api: 'bello.json' },
         { location: 'Cali', cod: '76', api: 'cali.json' },
+        { location: 'Valle del Cauca', cod: '76', api: 'cali.json' },
         { location: 'Envigado', cod: '05', api: 'envigado.json' },
         { location: 'Itagüi', cod: '05', api: 'itagui.json' },
         { location: 'Medellín', cod: '05', api: 'medellin.json' },
@@ -131,13 +132,12 @@ function darwing(near_place) {
             locations.forEach(e => {
                 if (e.location === near_place.address_components[i].long_name) {
                     resultado = e;
-                    throw 'Break';
                 }
 
             })
         } //console.log(resultado.api);
     } catch (error) {
-        if (error !== 'Break') throw error
+
     }
     json_api = resultado.api;
     draw(resultado)
@@ -147,6 +147,9 @@ function darwing(near_place) {
 // dibujar mapa
 function draw(data) {
 
+    var car_api = document.querySelector('.car_api');
+    $(car_api).show();
+
     try {
 
 
@@ -154,7 +157,10 @@ function draw(data) {
                 method: 'GET',
 
             }).then(response => response.json())
-            .then(data => map_drawing = map.data.addGeoJson(data));
+            .then(data => map_drawing = map.data.addGeoJson(data))
+            .then(
+                $(car_api).hide()
+            );
 
     } catch (error) {
         var data_geo;
@@ -162,7 +168,11 @@ function draw(data) {
                 method: 'GET',
 
             }).then(response => response.json())
-            .then(data => map_drawing = map.data.addGeoJson(data));
+            .then(data => map_drawing = map.data.addGeoJson(data))
+            .then(
+                $(car_api).hide()
+            );
+
 
     }
     map.data.setStyle({
