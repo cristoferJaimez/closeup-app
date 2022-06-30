@@ -25,7 +25,8 @@ function camera() {
                 video.mozSrcObject = stream;
             } else {
                 var vendorURL = window.URL || window.webkitURL;
-                video.src = vendorURL.createObjectURL(stream);
+                console.log(vendorURL);
+                video.srcObject = stream;
             }
             video.play();
         },
