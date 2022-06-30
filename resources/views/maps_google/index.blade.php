@@ -27,7 +27,7 @@
             <div class=" col-md-12 col-sm-12" style="z-index: 2">
                 <!-- Autocomplete location search input -->
 
-                    <div class="btn-group mt-3 position-absolute top-0 start-50 translate-middle-x col-4 " role="group" aria-label="Basic checkbox toggle button group">
+                    <div class="btn-group mt-3 position-absolute top-0 start-50 translate-middle-x col-6 " role="group" aria-label="Basic checkbox toggle button group">
 
                         <input type="search" class="form-control form-control-md search_input col-12" id="search_input" class=""
                             autofocus />
