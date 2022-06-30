@@ -3,8 +3,8 @@
 @include('home.load')
 
 @section('contenido')
-<script src="{{ asset('css/camera.css') }}"></script>
-<div class="container ">
+    <script src="{{ asset('css/camera.css') }}"></script>
+    <div class="container ">
         <div class="row ">
             <div class="col-md-6 col-sm-12  mt-5 ">
                 <div class="card p-4 ">
@@ -35,7 +35,6 @@
             <div class="col-md-6 col-sm-12  mt-5 ">
                 <div class="card p-4 ">
 
-
                     <div class="display-cover">
                         <video autoplay></video>
                         <canvas class="d-none"></canvas>
@@ -51,7 +50,8 @@
                         <div class="controls">
                             <button class="btn btn-danger play" title="Play"><i data-feather="play-circle"></i></button>
                             <button class="btn btn-info pause d-none" title="Pause"><i data-feather="pause"></i></button>
-                            <button class="btn btn-outline-success screenshot d-none" title="ScreenShot"><i data-feather="image"></i></button>
+                            <button class="btn btn-outline-success screenshot d-none" title="ScreenShot"><i
+                                    data-feather="image"></i></button>
                         </div>
                     </div>
                 </div>
