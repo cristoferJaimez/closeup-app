@@ -17,10 +17,13 @@ return new class extends Migration
             $table->id();
             $table->string('cod','50');
             $table->string('name_original');
-            $table->string('name');
-            $table->string('adress_name_mun');
-            $table->string('cod_zona');
             $table->string('adress');
+            $table->string('utc');
+            $table->string('lat');
+            $table->string('lng');
+            $table->string('img');
+            $table->string('adress_real');
+            $table->string('status');
             $table->timestamps();
         });
     }
