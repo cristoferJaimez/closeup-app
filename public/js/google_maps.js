@@ -156,7 +156,7 @@ function darwing(near_place) {
 // dibujar mapa
 function draw(data) {
 
-    $(car_api).show();
+
 
     try {
 
@@ -164,7 +164,8 @@ function draw(data) {
         fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api} `, {
                 method: 'GET',
 
-            }).then(response => response.json())
+            }).then($(car_api).show())
+            .then(response => response.json())
             .then(data => map_drawing = map.data.addGeoJson(data))
             .then(
                 $(car_api).hide()
@@ -175,7 +176,8 @@ function draw(data) {
         fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api} `, {
                 method: 'GET',
 
-            }).then(response => response.json())
+            }).then($(car_api).show())
+            .then(response => response.json())
             .then(data => map_drawing = map.data.addGeoJson(data))
             .then(
                 $(car_api).hide()
