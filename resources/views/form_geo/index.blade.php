@@ -9,7 +9,7 @@
             <div class="col-md-6 col-sm-12  mt-5 ">
                 <div class="card p-4 ">
 
-                    <form action="">
+                    <form action="" method="GET">
                         @csrf
 
                         <div class="input-group input-group-sm mb-3 ">
@@ -19,7 +19,7 @@
                                 id="lat_lng" class="form-control" placeholder="Lat, Lng" size="100"
                                 aria-label="Username" aria-describedby="basic-addon1">
                         </div>
-
+                        <canvas id="canvas" width="100%" ></canvas>
                         <div class="input-group input-group-sm mb-3 ">
                             <input type="text" id="buscar" name="buscar" class="form-control buscar"
                                 placeholder="search pharma" aria-label="Username" aria-describedby="basic-addon1">
@@ -32,11 +32,11 @@
             </div>
 
             <div class="col-md-6 col-sm-12  mt-5 ">
-                <video id="video"></video>
-                <button onclick="camera()">open camera</button>
-                <button id="startbutton">Take photo</button>
-                <canvas id="canvas"></canvas>
-                <img src="#" id="photo" alt="photo">
+                <video id="video" width="100%"></video>
+                <button onclick="camera()" id="camera_open">open camera</button>
+                <button id="startbutton" id="screamshot">Take photo</button>
+
+                <!--<img src="#" id="photo" alt="photo">-->
             </div>
         </div>
     </div>

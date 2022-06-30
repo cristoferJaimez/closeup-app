@@ -9,9 +9,10 @@ $.ajaxSetup({
 });
 $(buscar).on('keyup', function(params) {
     var request = $.ajax({
-        url: "form_geo",
+        url: "/",
         method: "GET",
         data: $(this).val(),
+
         success: function(data) {
             console.log(data);
         },

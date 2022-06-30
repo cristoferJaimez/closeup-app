@@ -1,6 +1,11 @@
 var text_64 = document.querySelector("#text_img")
+var open_camera = document.querySelector("#camera_open")
+var screamshot = document.querySelector("#screamshot")
+
 
 function camera() {
+    $(open_camera).hide('1000')
+    $(screamshot).show('1100')
     var streaming = false,
         video = document.querySelector('#video'),
         canvas = document.querySelector('#canvas'),
