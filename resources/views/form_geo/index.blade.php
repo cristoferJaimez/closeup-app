@@ -25,38 +25,18 @@
                                 placeholder="search pharma" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
 
-                        <div class="border border-1 p-2"></div>
+                        <textarea class="form-control" id="text_img" disabled rows="3"></textarea>
                         <button type="submit" class=" btn btn-sm btn-primary mt-2">update</button>
                     </form>
                 </div>
             </div>
 
             <div class="col-md-6 col-sm-12  mt-5 ">
-                <div class="card p-4 ">
-                    <div class="controls col-md-12 col-sm-12">
-                        <button class="btn btn-danger play d-none" title="Play"><i class="fa-solid fa-backward"></i></button>
-                        <button class="btn btn-warning pause d-none"   title="backward"><i class="fa-solid fa-backward"></i></button>
-                        <button class="btn btn-primary screenshot d-none" title="ScreenShot"><i class="fa-solid fa-camera-retro"></i></button>
-                    </div>
-                    <div class="video-options" >
-                        <label>Select camera</label>
-                        <select name="" id="" class="custom-select mb-2 mt-2">
-                            <option value="">Select camera</option>
-                        </select>
-                    </div>
-                    <div class="display-cover">
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <video autoplay width="100%" class=""></video>
-                        </div>
-                        <canvas class="d-none"></canvas>
-
-
-
-                        <img class="screenshot-image d-none img-fluid mt-2 img-thumbnail" alt="">
-
-
-                    </div>
-                </div>
+                <video id="video"></video>
+                <button onclick="camera()">open camera</button>
+                <button id="startbutton">Take photo</button>
+                <canvas id="canvas"></canvas>
+                <img src="#" id="photo" alt="photo">
             </div>
         </div>
     </div>
