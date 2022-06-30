@@ -17,8 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('cod','50');
             $table->string('name_original');
-            $table->string('adress');
             $table->string('utc');
+            $table->string('adress');
+            $table->string('cod_sub_canal');
+            $table->string('identificador_base');
+            $table->string('cod_cadena');
             $table->string('lat');
             $table->string('lng');
             $table->string('img');

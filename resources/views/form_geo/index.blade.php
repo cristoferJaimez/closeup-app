@@ -3,9 +3,10 @@
 @include('home.load')
 
 @section('contenido')
-    <div class="container ">
+<script src="{{ asset('css/camera.css') }}"></script>
+<div class="container ">
         <div class="row ">
-            <div class="col-md-6 col-sm-12 mx-auto mt-5 ">
+            <div class="col-md-6 col-sm-12  mt-5 ">
                 <div class="card p-4 ">
 
                     <form action="">
@@ -23,16 +24,36 @@
                             <input type="text" id="buscar" name="buscar" class="form-control buscar"
                                 placeholder="search pharma" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
-                        <i class="fa-solid fa-camera fa-1x btn btn-warning mb-2" id="camera" onclick="camera()"></i>
-                        <i class="fa-solid fa-circle-camera fa-1x btn btn-danger mb-2" id="startbutton" style="display: none"></i>
-                        <video id="video"></video>
-                        <canvas id="canvas"></canvas>
-                        <img src="http://placekitten.com/g/320/261" id="photo" alt="photo">
 
                         <div class="border border-1 p-2"></div>
                         <button class="btn btn-success btn-sm mt-2 ">new</button>
                         <button type="submit" class=" btn btn-sm btn-primary mt-2">update</button>
                     </form>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-sm-12  mt-5 ">
+                <div class="card p-4 ">
+
+
+                    <div class="display-cover">
+                        <video autoplay></video>
+                        <canvas class="d-none"></canvas>
+
+                        <div class="video-options">
+                            <select name="" id="" class="custom-select">
+                                <option value="">Select camera</option>
+                            </select>
+                        </div>
+
+                        <img class="screenshot-image d-none" alt="">
+
+                        <div class="controls">
+                            <button class="btn btn-danger play" title="Play"><i data-feather="play-circle"></i></button>
+                            <button class="btn btn-info pause d-none" title="Pause"><i data-feather="pause"></i></button>
+                            <button class="btn btn-outline-success screenshot d-none" title="ScreenShot"><i data-feather="image"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

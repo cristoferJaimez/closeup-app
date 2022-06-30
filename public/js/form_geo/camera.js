@@ -1,62 +1,93 @@
-var cam = document.querySelector('#camera')
+    const controls = document.querySelector(".controls");
+    const cameraOptions = document.querySelector(".video-options>select");
+    const video = document.querySelector("video");
+    const canvas = document.querySelector("canvas");
+    const screenshotImage = document.querySelector("img");
+    const buttons = [...controls.querySelectorAll("button")];
+    let streamStarted = false;
 
-function camera() {
-    $(cam).hide()
-    var streaming = false,
-        video = document.querySelector('#video'),
-        canvas = document.querySelector('#canvas'),
-        photo = document.querySelector('#photo'),
-        startbutton = document.querySelector('#startbutton'),
-        width = 320,
-        height = 0;
-    $(startbutton).show()
+    const [play, pause, screenshot] = buttons;
 
-    navigator.getMedia = (navigator.getUserMedia ||
-        navigator.webkitGetUserMedia ||
-        navigator.mozGetUserMedia ||
-        navigator.msGetUserMedia);
-
-    navigator.getMedia({
-            video: true,
-            audio: false
-        },
-        function(stream) {
-            if (navigator.mozGetUserMedia) {
-                video.mozSrcObject = stream;
-            } else {
-                var vendorURL = window.URL || window.webkitURL;
-                console.log(vendorURL);
-                video.srcObject = stream;
+    const constraints = {
+        video: {
+            width: {
+                min: 1280,
+                ideal: 1920,
+                max: 2560
+            },
+            height: {
+                min: 720,
+                ideal: 1080,
+                max: 1440
             }
+        }
+    };
+
+    cameraOptions.onchange = () => {
+        const updatedConstraints = {
+            ...constraints,
+            deviceId: {
+                exact: cameraOptions.value
+            }
+        };
+
+        startStream(updatedConstraints);
+    };
+
+    play.onclick = () => {
+        if (streamStarted) {
             video.play();
-        },
-        function(err) {
-            console.log("An error occured! " + err);
+            play.classList.add("d-none");
+            pause.classList.remove("d-none");
+            return;
         }
-    );
-
-    video.addEventListener('canplay', function(ev) {
-        if (!streaming) {
-            height = video.videoHeight / (video.videoWidth / width);
-            video.setAttribute('width', width);
-            video.setAttribute('height', height);
-            canvas.setAttribute('width', width);
-            canvas.setAttribute('height', height);
-            streaming = true;
+        if ("mediaDevices" in navigator && navigator.mediaDevices.getUserMedia) {
+            const updatedConstraints = {
+                ...constraints,
+                deviceId: {
+                    exact: cameraOptions.value
+                }
+            };
+            startStream(updatedConstraints);
         }
-    }, false);
+    };
 
-    function takepicture() {
-        canvas.width = width;
-        canvas.height = height;
-        canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-        var data = canvas.toDataURL('image/png');
-        photo.setAttribute('src', data);
-    }
+    const pauseStream = () => {
+        video.pause();
+        play.classList.remove("d-none");
+        pause.classList.add("d-none");
+    };
 
-    startbutton.addEventListener('click', function(ev) {
-        takepicture();
-        ev.preventDefault();
-    }, false);
+    const doScreenshot = () => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext("2d").drawImage(video, 0, 0);
+        screenshotImage.src = canvas.toDataURL("image/webp");
+        screenshotImage.classList.remove("d-none");
+    };
 
-}
+    pause.onclick = pauseStream;
+    screenshot.onclick = doScreenshot;
+
+    const startStream = async(constraints) => {
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        handleStream(stream);
+    };
+
+    const handleStream = (stream) => {
+        video.srcObject = stream;
+        play.classList.add("d-none");
+        pause.classList.remove("d-none");
+        screenshot.classList.remove("d-none");
+    };
+
+    const getCameraSelection = async() => {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const videoDevices = devices.filter((device) => device.kind === "videoinput");
+        const options = videoDevices.map((videoDevice) => {
+            return `<option value="${videoDevice.deviceId}">${videoDevice.label}</option>`;
+        });
+        cameraOptions.innerHTML = options.join("");
+    };
+
+    getCameraSelection();
