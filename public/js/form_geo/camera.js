@@ -56,11 +56,17 @@ play.onclick = () => {
 
 const pauseStream = () => {
     video.pause();
-    play.classList.remove("d-none");
-    pause.classList.add("d-none");
+    play.classList.add("d-none");
+    pause.classList.remove("d-none");
+    $(video).show('500')
+    $(screenshotImage).hide('500')
+
 };
 
 const doScreenshot = () => {
+
+    $(video).hide('500')
+    $(screenshotImage).show('500')
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
     canvas.getContext("2d").drawImage(video, 0, 0);
