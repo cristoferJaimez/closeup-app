@@ -11,6 +11,7 @@ var json_api;
 var map_drawing;
 var infoWindow = new google.maps.InfoWindow();
 
+var car_api = document.querySelector('.car_api');
 let text_ = document.querySelector('.search_input');
 
 $(text_).on('click', () => {
@@ -104,7 +105,7 @@ function clear_maps(feature) {
 
 //drawin maps
 function darwing(near_place) {
-    console.log(near_place);
+    //console.log(near_place);
     clear_maps(near_place)
     let locations = [
         { location: 'Bogotá', cod: '11', api: 'bogota.json' },
@@ -137,7 +138,15 @@ function darwing(near_place) {
             })
         } //console.log(resultado.api);
     } catch (error) {
+        var toastTrigger = document.getElementById('liveToastBtn')
+        var toastLiveExample = document.getElementById('liveToast')
+        if (toastTrigger) {
+            toastTrigger.addEventListener('click', function() {
+                var toast = new bootstrap.Toast(toastLiveExample)
 
+                toast.show()
+            })
+        }
     }
     json_api = resultado.api;
     draw(resultado)
@@ -147,7 +156,6 @@ function darwing(near_place) {
 // dibujar mapa
 function draw(data) {
 
-    var car_api = document.querySelector('.car_api');
     $(car_api).show();
 
     try {

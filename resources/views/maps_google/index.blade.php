@@ -24,36 +24,38 @@
     </style>
     <div class="container-fluit">
         <div class="row">
-            <div class="col-md-12 col-sm-12" style="z-index: 2">
+            <div class=" col-md-12 col-sm-12" style="z-index: 2">
                 <!-- Autocomplete location search input -->
-                <div class="col-md-4 col-sm-12 position-absolute top-0 start-50 translate-middle-x mt-3 m-2">
-                    <input type="search" class="form-control form-control-md search_input" id="search_input" class=""
-                        autofocus />
-                   <!-- <i class="fa-solid fa-map btn btn-secondary mt-2" onclick="draw()"></i>
-                    <i class="fa-solid fa-bars btn btn-outline-primary mt-2" onclick="clear_maps()"></i>
-                   -->
-                    <i class="fa-solid fa-print btn  btn-outline-primary mt-2" onclick="print()"></i>
-                    <form action="{{ url('logout') }}" style="display: inline; " method="POST">
-                        @csrf
-                        <button class="btn btn-outline-danger mt-2" type="submit"> <i
-                                class="fa-solid fa-arrow-right-from-bracket"></i></button>
-                    </form>
-                </div>
 
-                <div class="card m-4 spinner-border text-danger position-absolute top-50 start-50 car_api" style="z-index: 99999; display: none" role="status">
+                    <div class="btn-group mt-3 position-absolute top-0 start-50 translate-middle-x " role="group" aria-label="Basic checkbox toggle button group">
+
+                        <input type="search" class="form-control form-control-md search_input" id="search_input" class=""
+                            autofocus />
+
+                        <i class="fa-solid fa-print btn  btn-primary m-2" onclick="print()"></i>
+                        <form action="{{ url('logout') }}" style="display: inline; " method="POST">
+                            @csrf
+                            <button class="btn btn-danger mt-2" type="submit"> <i
+                                    class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                        </form>
+
+
+                  </div>
+
+
+                  <div class="card m-4 spinner-border text-danger position-absolute top-50 start-50 car_api" style="z-index: 99999; display: none" role="status">
                     <span class="visually-hidden">Loading map utc...</span>
                   </div>
 
 
-                <!-- Display latitude and longitude
-                    <div class="latlong-view">
-                        <p><b>Latitude:</b> <span id="latitude_view"></span></p>
-                        <p><b>Longitude:</b> <span id="longitude_view"></span></p>
-                    </div>
-                    -->
+
             </div>
-            <div class="col-md-12">
+            <div class="col-md-12" style="z-index: 1">
                 <div id="map"></div>
+
+
+
+
 
             </div>
         </div>
