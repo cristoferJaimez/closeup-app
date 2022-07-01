@@ -9,7 +9,7 @@ $.ajaxSetup({
 });
 $(buscar).on('keyup', function(params) {
     var request = $.ajax({
-        url: "/",
+        url: "get_forma",
         method: "GET",
         data: $(this).val(),
 
