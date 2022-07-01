@@ -28,14 +28,14 @@
                         <video id="video" class=" col-12 mb-1 d-none">
                         </video>
 
-                        <img src="https://www.close-upinternational.com/img/logo.svg" id="photo" style="width: 20%"
-                            alt="photo" class="col-12 img-thumbnail  shadow-sm mb-2">
+                        <img src="https://www.close-upinternational.com/img/logo.svg" id="photo" style="width: 100%"
+                            alt="photo" class="col-12 img-thumbnail rounded mx-auto d-block  shadow-sm mb-2">
 
                         <div class="mx-auto">
                             <button type="button" onclick="camera()" id="camera_open"
-                                class="btn btn-danger btn-sm col-12  mb-5"><i class="fa-solid fa-camera"></i></button>
+                                class="btn btn-danger btn-sm col-12 mb-1"><i class="fa-solid fa-camera"></i></button>
 
-                                <input type="button" id="startbutton" class="d-none mx-auto btn btn-primary mb-3"
+                                <input type="button" id="startbutton" class="d-none  col-12 btn btn-primary mt-3 mb-3"
                                 value="Take photo" />
                         </div>
 
