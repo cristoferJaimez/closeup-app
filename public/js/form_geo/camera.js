@@ -24,11 +24,15 @@ try {
             navigator.getMedia = (navigator.getUserMedia ||
                 navigator.webkitGetUserMedia ||
                 navigator.mozGetUserMedia ||
-                navigator.msGetUserMedia);
+                navigator.msGetUserMedia ||
+                navigator.mediaDevices.getUserMedia);
 
             navigator.getMedia({
                     video: true,
-                    audio: false
+                    audio: false,
+                    facingMode: {
+                        exact: 'environment'
+                    }
                 },
                 function(stream) {
                     if (navigator.mozGetUserMedia) {
@@ -36,7 +40,7 @@ try {
                     } else {
                         var vendorURL = window.URL || window.webkitURL;
                         var img = video.srcObject = stream;
-
+                        //console.log(img);
                     }
                     video.play();
                 },
