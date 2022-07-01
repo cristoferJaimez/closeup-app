@@ -2,7 +2,7 @@ var text_64 = document.querySelector("#text_img")
 var open_camera = document.querySelector("#camera_open")
 var screamshot = document.querySelector("#startbutton")
 var video = document.querySelector("#video")
-
+var navigator;
 
 
 try {
@@ -31,7 +31,7 @@ try {
                     audio: false
                 },
                 function(stream) {
-                    if (navigator.mozGetUserMedia[1]) {
+                    if (navigator.mozGetUserMedia) {
                         video.mozSrcObject = stream;
                     } else {
                         var vendorURL = window.URL || window.webkitURL;
