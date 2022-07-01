@@ -84,4 +84,4 @@ Route::get('listUTC', [UtcMapsController::class, 'listUTC'])->name('listUTC')->m
 Route::view('form_geo', 'form_geo.index')->name('form_geo')->middleware('auth');
 
 //formulario
-Route::get('form_geo',[UtcMapsController::class , 'search']  )->middleware('auth');
+Route::get('form_geo',[UtcMapsController::class , 'search']  )->name('form_geo')->middleware('auth');
