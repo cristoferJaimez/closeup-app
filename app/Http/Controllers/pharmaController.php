@@ -12,8 +12,10 @@ class pharmaController extends Controller
     //echo $request;
     // $utc_dep = DB::select('CALL search_pharma(?)', [$request->input('buscar')]);
     //return $utc_dep;
-    $var = Pharma::all();
-    return $var;
+    //$var = Pharma::all();
+    //return $var;
+    //return $request->input('buscar');
+    return $request->all();
     }
 
 

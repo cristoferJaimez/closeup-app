@@ -11,12 +11,13 @@
 
     <link rel="stylesheet" href="{{ asset('css/maps.css') }}">
 
-        <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
 
 
     <link rel="stylesheet" href="{{ asset('css/rangeV.css') }}">
 
     <script src="{{ asset('js/app.js') }}"></script>
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -44,10 +45,10 @@
     </script>
 
     <script src="{{ asset('js/window.js') }}"></script>
-   <!-- <script src="{{ asset('js/off_mouse.js') }}"></script>-->
+    <!-- <script src="{{ asset('js/off_mouse.js') }}"></script>-->
     <script src="{{ asset('js/index.js') }}"></script>
     <script src="{{ asset('js/graticule.js') }}"></script>
-        <script src="{{ asset('js/create_list.js') }}"></script>
+    <script src="{{ asset('js/create_list.js') }}"></script>
     <script src="{{ asset('js/pagination.js') }}"></script>
 
 
@@ -62,15 +63,14 @@
 
 <body style="overflow-y: hidden">
     @yield('contenido')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="{{ asset('js/maps.js') }}"></script>
     <script>
-        $(document).ready(function($) {
+        jQuery(document).ready(function($) {
             $(document).ready(function() {
-                $('.mi-selector').select2({
-                    theme: "classic",
-                    width: 'resolve',
-                    placeholder: "Search",
-                });
+                $('.mi-selector').select2();
             });
         });
     </script>

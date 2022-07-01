@@ -2,12 +2,14 @@ var text_64 = document.querySelector("#text_img")
 var open_camera = document.querySelector("#camera_open")
 var screamshot = document.querySelector("#startbutton")
 var video = document.querySelector("#video")
+var photo = document.querySelector("#photo")
 var navigator;
 
 
 try {
     function camera() {
         $('#camera_open').addClass('d-none')
+        $('#photo').addClass('d-none')
         $("#video").removeClass("d-none")
         $("#startbutton").removeClass("d-none")
         try {
@@ -75,6 +77,7 @@ try {
                 takepicture();
                 $('#video').addClass('d-none')
                 $('#camera_open').removeClass('d-none')
+                $('#photo').removeClass('d-none')
                 $("#startbutton").addClass("d-none")
                 ev.preventDefault();
             }, false);

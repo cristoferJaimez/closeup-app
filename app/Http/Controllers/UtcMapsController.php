@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Geo_utc;
 use Illuminate\Http\Request;
 use App\Models\Region;
+use App\Models\Pharma;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
 use DataTables;
@@ -52,8 +53,10 @@ class UtcMapsController extends Controller
     }
 
     public function search(Request $request){
-        echo $request;
-        $utc_dep = DB::select('CALL search_pharma(?)', [$request->input('buscar')]);
-        return $utc_dep;
-        }
+        //echo $request;
+        $pharma = pharma::all()->where('status', 'PENDIENTE');
+        //return  view('form_geo.index', ['data' => $pharma ]);
+        //return $pharma;
+        return view('form_geo.index' , ['pharma' => $pharma]);
+    }
 }
