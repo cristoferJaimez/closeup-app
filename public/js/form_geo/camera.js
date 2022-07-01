@@ -1,11 +1,16 @@
 var text_64 = document.querySelector("#text_img")
 var open_camera = document.querySelector("#camera_open")
-var screamshot = document.querySelector("#screamshot")
+var screamshot = document.querySelector("#startbutton")
+var video = document.querySelector("#video")
+
 
 
 function camera() {
-    $(open_camera).hide('1000')
-    $(screamshot).show('1100')
+    $('#camera_open').addClass('d-none')
+    $("#video").removeClass("d-none")
+    $("#startbutton").removeClass("d-none")
+
+
     var streaming = false,
         video = document.querySelector('#video'),
         canvas = document.querySelector('#canvas'),
@@ -61,6 +66,7 @@ function camera() {
 
     startbutton.addEventListener('click', function(ev) {
         takepicture();
+
         ev.preventDefault();
     }, false);
 
