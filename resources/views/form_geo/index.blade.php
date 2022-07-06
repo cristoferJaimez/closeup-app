@@ -36,8 +36,8 @@
                         <video id="video" class=" mt-3 col-12 mb-1 d-none">
                         </video>
 
-                        <img src="https://www.close-upinternational.com/img/logo.svg" id="photo" style="width: 100%"
-                            alt="photo" class="col-12 d-none img-thumbnail rounded mx-auto d-block  shadow-sm mb-2">
+                        <img src="https://www.close-upinternational.com/img/logo.svg" id="photo" style=""
+                            alt="photo" class="col-12 d-none img-thumbnail rounded mx-auto    shadow-sm mb-2" width="100%">
 
                         <div class="mx-auto">
                             <button type="button" onclick="camera()" id="camera_open"

@@ -125,6 +125,20 @@ function darwing(near_place) {
         { location: 'Armenia', cod: '63', api: 'armenia.json' },
         { location: 'Pereira', cod: '66', api: 'pereira.json' },
         { location: 'Manizales', cod: '17', api: 'manizales.json' },
+
+        { location: 'Amazonas', cod: '91', api: 'amazonas.json' },
+        { location: 'Arauca', cod: '81', api: 'arauca.json' },
+        { location: 'Cundinamarca', cod: '25', api: 'cundinamarca.json' },
+        { location: 'Boyacá', cod: '15', api: 'boyaca.json' },
+        { location: 'Bolívar', cod: '13', api: 'bolivar.json' },
+        { location: 'Santander', cod: '68', api: 'santander.json' },
+        { location: 'Pasto', cod: '52', api: 'pasto.json' },
+        { location: 'Vichada', cod: '99', api: 'vichada.json' },
+        { location: 'Vaupés', cod: '97', api: 'vaupes.json' },
+        { location: 'Guainía', cod: '94', api: 'guainia.json' },
+        { location: 'San Andrés', cod: '88', api: 'san_andres.json' },
+        { location: 'Putumayo', cod: '86', api: 'putumayo.json' },
+        { location: 'Casanare', cod: '85', api: 'casanare.json' },
     ]
     var resultado;
     var BreakException = {};
