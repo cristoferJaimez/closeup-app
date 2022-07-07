@@ -30,12 +30,8 @@ try {
                 navigator.mediaDevices.getUserMedia);
 
             navigator.getMedia({
-                    video: {
-                        width: { ideal: 1280 },
-                        height: { ideal: 720 }
-                    },
+                    video: { width: 1280, height: 720 },
                     audio: false,
-
                 },
                 function(stream) {
                     if (navigator.mozGetUserMedia) {
