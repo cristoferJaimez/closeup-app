@@ -108,6 +108,9 @@ function darwing(near_place) {
     //console.log(near_place);
     clear_maps(near_place)
     let locations = [
+        { location: 'Atlántico', cod: '08', api: 'barranquilla.json' },
+        { location: 'Antioquia', cod: '05', api: 'medellin.json' },
+
         { location: 'Bogotá', cod: '11', api: 'bogota.json' },
         { location: 'Cartagena de Indias', cod: '13', api: 'cartagena.json' },
         { location: 'Cartagena', cod: '13', api: 'cartagena.json' },
