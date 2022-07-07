@@ -72,7 +72,7 @@ try {
                 photo.setAttribute('src', data);
             }
 
-            startbutton.addEventListener('click', function(ev) {
+            video.addEventListener('click', function(ev) {
                 takepicture();
                 $('#video').addClass('d-none')
                 $('#camera_open').removeClass('d-none')

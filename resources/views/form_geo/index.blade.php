@@ -33,12 +33,6 @@
                                 placeholder="Lat, Lng" size="100" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
 
-                        <video id="video" class=" mt-3 col-12 mb-1 d-none">
-                        </video>
-
-                        <img src="https://www.close-upinternational.com/img/logo.svg" id="photo" style=""
-                            alt="photo" class="col-12 d-none img-thumbnail rounded mx-auto    shadow-sm mb-2" width="100%">
-
                         <div class="mx-auto">
                             <button type="button" onclick="camera()" id="camera_open"
                                 class="btn btn-danger  col-12 mb-1"><i class="fa-solid fa-camera "></i></button>
@@ -46,6 +40,12 @@
                                 <input type="button" id="startbutton" class="d-none  col-12 btn btn-primary mt-3 mb-3"
                                 value="Take photo" />
                         </div>
+                        <video id="video" onclick="takepicture()" class=" mt-3 col-12 mb-1 d-none">
+                        </video>
+
+                        <img src="https://www.close-upinternational.com/img/logo.svg" id="photo" style="" onclick=""
+                            alt="photo" class="col-12 d-none img-thumbnail rounded mx-auto    shadow-sm mb-2" width="100%">
+
 
 
 
