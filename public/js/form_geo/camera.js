@@ -80,6 +80,15 @@ try {
                 $("#startbutton").addClass("d-none")
                 ev.preventDefault();
             }, false);
+
+            screamshot.addEventListener('click', function(ev) {
+                takepicture();
+                $('#video').addClass('d-none')
+                $('#camera_open').removeClass('d-none')
+                $('#photo').removeClass('d-none')
+                $("#startbutton").addClass("d-none")
+                ev.preventDefault();
+            }, false);
         } catch (error) {
             alert(error)
         }
