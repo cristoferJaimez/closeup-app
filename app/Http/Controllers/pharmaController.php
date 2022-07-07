@@ -3,19 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Pharma;
+use App\Models\Pharma;
 
 
 class pharmaController extends Controller
 {
-   public function search(Request $request){
-    //echo $request;
-    // $utc_dep = DB::select('CALL search_pharma(?)', [$request->input('buscar')]);
-    //return $utc_dep;
-    //$var = Pharma::all();
-    //return $var;
-    //return $request->input('buscar');
-    return $request->all();
+   public function request_(Request $request){
+
+    $farmacia  = Pharma::findOrFail($request->input('pharma'));
+    $farmacia->lat =  $request->input('lat');
+    $farmacia->lng =   $request->input('lng');
+    $farmacia->img =  $request->input('img');
+    $farmacia->adress_real = " N/A ";
+    $farmacia->status = 'OK';
+    $farmacia->save();
+
+    return $farmacia;
     }
 
 

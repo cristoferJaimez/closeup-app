@@ -21,12 +21,12 @@
             <div class="col-md-12 col-sm-12 mx-auto  mt-1 ">
                 <div class="card p-4 ">
 
-                    <form action="/" method="post">
+                    <form action="{{ route('form_geo') }}" method="post">
                         @csrf
                         <div class="input-group input-group-sm mb-1 mt-3 ">
                             <select class="mi-selector  mb-4" name="pharma" id="">
                                 @foreach ($pharma as $item)
-                                    <option value="{{ $item->name_original }}">{{ $item->name_original }} -
+                                    <option value="{{ $item->id }}">{{ $item->name_original }} -
                                         {{ $item->adress }}</option>
                                 @endforeach
                             </select>
@@ -37,9 +37,12 @@
                                     onclick="init()"></i></span>
                             <input type="text" id="lat_lng" disabled
                                 style="text-align: center; color: rgb(214, 60, 60)" id="lat_lng" class="form-control"
-                                placeholder="Lat, Lng" size="100" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
+                                placeholder="Lat, Lng" size="100" aria-label="Username" name="lat_lng" aria-describedby="basic-addon1">
 
+                               <input type="text" name="lat" id="lat" class="d-none">
+                               <input type="text" name="lng" id="lng" class="d-none">
+                            </div>
+                            <span id="dir_google"></span>
                         <div class="mx-auto">
                             <button type="button" onclick="camera()" id="camera_open"
                                 class="btn btn-danger  col-12 mb-1"><i class="fa-solid fa-camera "></i></button>
@@ -65,7 +68,7 @@
                         -->
 
 
-                        <textarea class="form-control" id="text_img" style="display: none" disabled rows="3"></textarea>
+                        <textarea class="form-control" id="text_img" name="img" style="display: none"  rows="3"></textarea>
                         <button type="submit" class=" btn btn-sm btn-primary mt-2">update</button>
                     </form>
                 </div>

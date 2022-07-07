@@ -13,7 +13,6 @@ class Pharma extends Model
 
     protected $fillable = [
         'id',
-        '',
         'cod',
         'name_original',
         'utc',

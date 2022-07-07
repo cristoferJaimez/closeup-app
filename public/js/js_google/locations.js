@@ -9,6 +9,22 @@ const init = () => {
         let { latitude, longitude } = coordenadas;
         //console.log(latitude, longitude);
         document.getElementById('lat_lng').value = latitude + "   " + longitude;
+        document.getElementById('lat').value = latitude;
+        document.getElementById('lng').value = longitude;
+
+        const destination = new google.maps.LatLng(latitude, longitude);
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ 'location': destination }, function(results, status) {
+
+            if (status == 'OK') {
+                console.log(results);
+                document.getElementById('dir_google').innerHTML = results[0].formatted_address;
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+
+
 
         autocomplete = new google.maps.places.Autocomplete((document.getElementById('lat_lng')), {
             //types: ['cities'],
