@@ -116,6 +116,35 @@ function darwing(near_place) {
         { location: 'Putumayo', cod: '86' },
         { location: 'Casanare', cod: '85' },
 
+        { location: 'Caldas', cod: '17' },
+        { location: 'Caquetá', cod: '18' },
+        { location: 'Cauca', cod: '19' },
+        { location: 'Cesar', cod: '20' },
+        { location: 'Córdoba', cod: '23' },
+        { location: 'Chocó', cod: '27' },
+
+        { location: 'Huila', cod: '41' },
+        { location: 'La Guajira', cod: '44' },
+        { location: 'Magdalena', cod: '44' },
+        { location: 'Meta', cod: '50' },
+        { location: 'Narino', cod: '52' },
+        { location: 'Norte de Santander', cod: '54' },
+        { location: 'Quindío', cod: '63' },
+        { location: 'Risaralda', cod: '66' },
+        { location: 'Sucre', cod: '70' },
+        { location: 'Tolima', cod: '73' },
+        { location: 'Valle del Cauca', cod: '76' },
+
+
+
+
+
+
+
+
+
+
+
     ]
 
     const resultado = locations.find(fruta => fruta.location === near_place.address_components[0].long_name);

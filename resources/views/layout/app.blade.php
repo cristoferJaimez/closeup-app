@@ -17,8 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/rangeV.css') }}">
 
     <script src="{{ asset('js/app.js') }}"></script>
-   <!-- <script src="{{ asset('assets/maps.geojson') }}"></script>
-   -->
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
