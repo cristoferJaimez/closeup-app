@@ -20,7 +20,7 @@ try {
                 canvas = document.querySelector('#canvas'),
                 photo = document.querySelector('#photo'),
                 startbutton = document.querySelector('#startbutton'),
-                width = 320,
+                width = 300,
                 height = 0;
 
             navigator.getMedia = (navigator.getUserMedia ||
@@ -30,7 +30,9 @@ try {
                 navigator.mediaDevices.getUserMedia);
 
             navigator.getMedia({
-                    video: { width: 1920, height: 1080 },
+                    video: {
+                        facingMode: ("environment")
+                    },
                     audio: false,
                 },
                 function(stream) {
