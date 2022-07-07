@@ -21,7 +21,7 @@
                         <div class="input-group input-group-sm mb-1 mt-3 ">
                         <select class="mi-selector  mb-4" name="pharma" id="">
                             @foreach ($pharma as $item )
-                                <option value="{{$item->name_original}}">{{$item->name_original}}</option>
+                                <option value="{{$item->name_original}}">{{$item->name_original}} - {{$item->adress}}</option>
                             @endforeach
                         </select>
                         </div>
@@ -41,7 +41,7 @@
 
                         <div class="mx-auto">
                             <button type="button" onclick="camera()" id="camera_open"
-                                class="btn btn-danger  col-12 mb-1"><i class="fa-solid fa-camera"></i></button>
+                                class="btn btn-danger  col-12 mb-1"><i class="fa-solid fa-camera "></i></button>
 
                                 <input type="button" id="startbutton" class="d-none  col-12 btn btn-primary mt-3 mb-3"
                                 value="Take photo" />

@@ -30,11 +30,12 @@ try {
                 navigator.mediaDevices.getUserMedia);
 
             navigator.getMedia({
-                    video: true,
+                    video: {
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    },
                     audio: false,
-                    facingMode: {
-                        exact: 'environment'
-                    }
+
                 },
                 function(stream) {
                     if (navigator.mozGetUserMedia) {
