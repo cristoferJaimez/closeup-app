@@ -30,7 +30,7 @@ try {
                 navigator.mediaDevices.getUserMedia);
 
             navigator.getMedia({
-                    video: { width: 1280, height: 720 },
+                    video: { width: 1920, height: 1080 },
                     audio: false,
                 },
                 function(stream) {
