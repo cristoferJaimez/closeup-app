@@ -10,7 +10,7 @@
         }
     </style>
     <script src="{{ asset('css/camera.css') }}"></script>
-    <div class="container-fluid">
+    <div class="container-fluid" style="overflow: scroll;">
 
         <div class="row ">
             <div class="col-md-12 col-sm-12 mx-auto  mt-1 ">
@@ -37,10 +37,10 @@
                             <button type="button" onclick="camera()" id="camera_open"
                                 class="btn btn-danger  col-12 mb-1"><i class="fa-solid fa-camera "></i></button>
 
-                                <input type="button" id="startbutton" class="d-none  col-12 btn btn-primary mt-3 mb-3"
+                                <input type="button" id="startbutton" class="d-none  col-12 btn btn-primary"
                                 value="Take photo" />
                         </div>
-                        <video id="video" onclick="takepicture()" class=" mt-3 col-12 mb-1 d-none">
+                        <video id="video" onclick="takepicture()" class=" mt-1 col-12 mb-1 d-none">
                         </video>
 
                         <img src="https://www.close-upinternational.com/img/logo.svg" id="photo" style="" onclick=""
