@@ -37,6 +37,10 @@
                     class="list-group-item list-group-item-action  nav-link {{ request()->routeIs('listUTC') ? 'active text-white' : 'text-dark' }}">
                     <i class="fa-solid fa-list-ul"></i> List UTC
                 </a>
+                <a href="{{ url('listar') }}" target="_blank"
+                class="list-group-item list-group-item-action  nav-link {{ request()->routeIs('listar') ? 'active text-white' : 'text-dark' }}">
+                <i class="fa-solid fa-list-ul"></i> List Pharmas
+            </a>
                 <a href="{{ url('sendEmail') }}" class="list-group-item list-group-item-action href_"
                     id="home.sendEmails">
                     <i class="fa-regular fa-paper-plane"></i> Send Emails

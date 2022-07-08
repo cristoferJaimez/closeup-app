@@ -86,3 +86,4 @@ Route::view('form_geo', 'form_geo.index')->name('form_geo')->middleware('auth');
 //formulario
 Route::get('form_geo',[UtcMapsController::class , 'search']  )->name('form_geo')->middleware('auth');
 Route::post('form_geo',[pharmaController::class , 'request_']  )->name('form_geo')->middleware('auth');
+Route::get('listar',[pharmaController::class , 'list_']  )->name('listar')->middleware('auth');

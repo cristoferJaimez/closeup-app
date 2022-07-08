@@ -32,7 +32,9 @@
                         <input type="search" class="form-control form-control-md search_input col-12" id="search_input" class=""
                             autofocus />
 
+                        <i class="fa-solid fa-map-pin  btn-warning m-2 d-none" onclick="init()"></i>
                         <i class="fa-solid fa-print btn  btn-primary m-2" onclick="print()"></i>
+
                         <form action="{{ url('logout') }}" style="display: inline; " method="POST">
                             @csrf
                             <button class="btn btn-danger mt-2" type="submit"> <i

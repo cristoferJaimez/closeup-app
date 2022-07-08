@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pharma;
+use Illuminate\Support\Facades\DB;
 
 
 class pharmaController extends Controller
@@ -20,6 +21,13 @@ class pharmaController extends Controller
 
     return redirect()->back()->with(["message" => "Pharma Update successfully"]);
     }
+
+    public function list_(){
+            $list_pharma = DB::table('phar')->where('status', 'OK')->paginate(10);
+
+            //return $list_pharma;
+            return  view('form_geo.listar', ['lista'=> $list_pharma]);
+        }
 
 
 }
