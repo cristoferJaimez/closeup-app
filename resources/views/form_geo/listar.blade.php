@@ -18,7 +18,7 @@
                     @foreach ($lista as $item)
                         <tr>
 
-                            <td>{{ $item->Cod }}</td>
+                            <td>{{ $item->cod }}</td>
                             <td>{{ $item->name_original }}
                             <td>{{ $item->adress }}</td>
                             <td>{{ $item->lat }}</td>
