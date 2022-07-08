@@ -21,7 +21,7 @@ const init = () => {
                 document.getElementById('dir_google').innerHTML = results[0].formatted_address;
                 document.getElementById('adress').value = results[0].formatted_address;
             } else {
-                alert('Geocode was not successful for the following reason: ' + status);
+                //alert('Geocode was not successful for the following reason: ' + status);
             }
         });
 
