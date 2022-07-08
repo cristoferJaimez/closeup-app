@@ -14,11 +14,11 @@ class pharmaController extends Controller
     $farmacia->lat =  $request->input('lat');
     $farmacia->lng =   $request->input('lng');
     $farmacia->img =  $request->input('img');
-    $farmacia->adress_real = " N/A ";
+    $farmacia->adress_real = $request->input('adress');
     $farmacia->status = 'OK';
     $farmacia->save();
 
-    return $farmacia;
+    return redirect()->back()->with(["message" => "Pharma Update successfully"]);
     }
 
 
