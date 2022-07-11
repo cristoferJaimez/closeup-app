@@ -17,8 +17,11 @@
     <script src="{{ asset('css/camera.css') }}"></script>
 
     <video id="video" onclick="takepicture()" class=" mt-1 col-12 mb-1 d-none res"
-    width="100%" style="position:absolute; z-index:3;  top:-25px">
+    width="100%"  style="position:absolute; z-index:3;  top:-25px ; height: 100%">
 </video>
+
+<input type="button" id="startbutton" class="d-none  col-12 btn btn-primary position-absolute bottom-0 start-50 translate-middle-x"
+value="Take photo"  style=" z-index:3;" />
 
     <div class="container-fluid" style="">
 
@@ -63,8 +66,6 @@
                                 <button type="button" onclick="camera()" id="camera_open"
                                     class="btn btn-danger  col-12 mb-1"><i class="fa-solid fa-camera "></i></button>
 
-                                <input type="button" id="startbutton" class="d-none  col-12 btn btn-primary"
-                                    value="Take photo" />
                             </div>
 
 
