@@ -1,17 +1,18 @@
 @extends('layout.app')
 @section('contenido')
+@include('home.navbar')
     <div class="container p-3">
         <div class="row">
-            <table class="table table-strip " style="font-size: 0.7em;">
+            <table class="table table-striped " style="font-size: 0.7em;">
                 <header>
-                    <tr>
-                        <td>Cod</td>
-                        <td>Name</td>
-                        <td>Adress</td>
-                        <td>Lat</td>
-                        <td>Lng</td>
-                        <td>Google Adress</td>
-                        <td>img</td>
+                    <tr  class="text-center">
+                        <th>Cod</th>
+                        <th>Name</th>
+                        <th>Adress</th>
+                        <th>Lat</th>
+                        <th>Lng</th>
+                        <th>Google Adress</th>
+                        <th>img</th>
                     </tr>
                 </header>
                 <tbody>

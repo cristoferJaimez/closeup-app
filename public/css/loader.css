@@ -684,3 +684,16 @@ html {
     left: auto;
     right: 5px;
 }
+
+
+/* Estilos track de scroll */
+
+.container::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+}
+
+.container::-webkit-scrollbar-track:hover,
+.container::-webkit-scrollbar-track:active {
+    background: #d4d4d4;
+}

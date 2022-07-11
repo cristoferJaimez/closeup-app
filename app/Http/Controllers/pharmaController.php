@@ -23,7 +23,7 @@ class pharmaController extends Controller
     }
 
     public function list_(){
-            $list_pharma = DB::table('phar')->where('status', 'OK')->paginate(5);
+            $list_pharma = DB::table('phar')->where('status', 'OK')->simplepaginate(5);
 
             //return $list_pharma;
             return  view('form_geo.listar', ['lista'=> $list_pharma]);
