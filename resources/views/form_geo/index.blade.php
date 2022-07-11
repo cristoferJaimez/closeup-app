@@ -15,7 +15,12 @@
         }
     </style>
     <script src="{{ asset('css/camera.css') }}"></script>
-    <div class="container-fluid" style="overflow-y: scroll;">
+
+    <video id="video" onclick="takepicture()" class=" mt-1 col-12 mb-1 d-none res"
+    width="100%" style="position:absolute; z-index:3;  top:-25px">
+</video>
+
+    <div class="container-fluid" style="">
 
         <div class="row ">
 
@@ -61,9 +66,7 @@
                                 <input type="button" id="startbutton" class="d-none  col-12 btn btn-primary"
                                     value="Take photo" />
                             </div>
-                            <video id="video" onclick="takepicture()" class=" mt-1 col-12 mb-1 d-none res"
-                                width="100%">
-                            </video>
+
 
                             <img src="https://www.close-upinternational.com/img/logo.svg" id="photo" style=""
                                 onclick="" alt="photo"
