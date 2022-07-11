@@ -246,7 +246,10 @@ function draw(data) {
     map.data.addListener('click', function(event) {
         $(event.feature.j.description).addClass('table table-striped ')
 
+
+
         map.data.overrideStyle(event.feature, { fillColor: 'red', strokeColor: 'blue', strokeWeight: 1 });
+
         infoWindow.setPosition(event.latLng);
         infoWindow.setContent(
             '<div class="text-center p-2" style="z-index: 99999">' +

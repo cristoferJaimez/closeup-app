@@ -8,7 +8,7 @@ const init = () => {
         const coordenadas = ubicacion.coords;
         let { latitude, longitude } = coordenadas;
         //console.log(latitude, longitude);
-        document.getElementById('lat_lng').value = latitude + "   " + longitude;
+        document.getElementById('lat_lng').value = "Lat: " + latitude + ",  Lng: " + longitude;
         document.getElementById('lat').value = latitude;
         document.getElementById('lng').value = longitude;
 

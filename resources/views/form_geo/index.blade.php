@@ -40,14 +40,9 @@ value="Take photo"  style=" z-index:3;" />
 
                         <form action="{{ route('form_geo') }}" method="post">
                             @csrf
-                            <div class="input-group input-group-sm mb-1 mt-3 ">
-                                <select class="mi-selector  mb-4" name="pharma" id="">
-                                    @foreach ($pharma as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name_original }} -
-                                            {{ $item->adress }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+
+                            <span id="dir_google" class="text-muted mx-auto"></span>
+
                             <div class="input-group input-group-sm mb-1 mt-3 ">
                                 <span class="input-group-text" id="basic-addon1"><i
                                         class="fa-solid fa-location-crosshairs fa-2x" class="p-2 btn btn-primary "
@@ -61,7 +56,31 @@ value="Take photo"  style=" z-index:3;" />
                                 <input type="text" name="lng" id="lng" class="d-none">
                                 <input type="text" name="adress" id="adress" class="d-none">
                             </div>
-                            <span id="dir_google"></span>
+
+                            <div class="input-group input-group-sm mb-1 mt-3 ">
+                                <select class="form-select  mb-1" name="cadena_ind" id="">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">Cadena</option>
+                                    <option value="2">Independientes</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm mb-1 mt-3 ">
+                                <select class="form-select  mb-1" name="nom_cadena" id="">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-sm mb-1 mt-3 ">
+                                <select class="mi-selector  form-select mb-4" name="pharma" id="">
+                                    <option selected>Open this select menu</option>
+                                    @foreach ($pharma as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name_original }} -
+                                            {{ $item->adress }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <div class="mx-auto">
                                 <button type="button" onclick="camera()" id="camera_open"
                                     class="btn btn-danger  col-12 mb-1"><i class="fa-solid fa-camera "></i></button>
