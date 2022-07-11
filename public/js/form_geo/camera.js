@@ -31,8 +31,8 @@ try {
 
             navigator.getMedia({
                     video: {
-                        width: 1280,
-                        height: 720,
+                        width: { ideal: 4096 },
+                        height: { ideal: 2160 },
                         facingMode: ("environment")
                     },
                     audio: false,
