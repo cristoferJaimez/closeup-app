@@ -24,7 +24,7 @@
                             <td>{{ $item->lat }}</td>
                             <td>{{ $item->lng }}</td>
                             <td>{{ $item->adress_real }}</td>
-                            <td><img src="{{$item->img}}" alt="{{$item->cod}}" width="100px"></td>
+                            <td><img src="{{$item->img}}" alt="{{$item->cod}}" width="100px" height="100px"></td>
                         </tr>
                         <input type="text" id="img_base_64" value="{{ $item->img }}" class=" d-none">
 
