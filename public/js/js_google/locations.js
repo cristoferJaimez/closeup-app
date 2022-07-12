@@ -21,7 +21,7 @@ const init = () => {
                 console.log(results);
                 document.getElementById('dir_google').innerHTML = results[0].formatted_address;
                 document.getElementById('adress').value = results[0].formatted_address;
-                document.getElementById('dir_mts').innerHTML = 'Exactitud : ' + mts + ' metros';
+                document.getElementById('dir_mts').innerHTML = 'Exactitud : ' + Math.round(mts) + ' metros';
 
 
             } else {
