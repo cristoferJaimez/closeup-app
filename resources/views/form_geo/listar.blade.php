@@ -5,12 +5,14 @@
         <div class="container-fluid mb-3 col-md-12 col-sm-12">
             <form action="">
                 @csrf
-                <label for="search-pharma" class="control-label">Search</label>
-                <input type="search" name="search-pharma"  class="form-control ">
+                <div class="form-floating">
+                    <input type="search" class="form-control " id="floatingSearch" placeholder="Search">
+                    <label for="floatingPassword">Search</label>
+                  </div>
             </form>
         </div>
         <div class="row">
-            <table class="table table-striped " style="font-size: 0.7em;">
+            <table class="table align-middle table-striped " style="font-size: 0.7em;">
                 <header>
                     <tr  class="text-center">
                         <th>Cod</th>
@@ -31,7 +33,7 @@
                             <td>{{ $item->lat }}</td>
                             <td>{{ $item->lng }}</td>
                             <td>{{ $item->adress_real }}</td>
-                            <td class="text-center"><!----> <a href="{{$item->img}}"  data-title="{{$item->name_original}}"  maxWidth maxHeight alwaysShowNavOnTouchDevices="true"  data-lightbox="roadtrip">  <img src="{{$item->img}}" alt="{{$item->cod}}" class="" title="img : {{$item->cod}}" style="cursor: pointer" width="20px" height="20px"></a></td>
+                            <td class="text-center"><!----> <a href="{{$item->img}}"  data-title="{{$item->name_original}}"  maxWidth maxHeight alwaysShowNavOnTouchDevices="true" wrapAround="true"  data-lightbox="roadtrip">  <img src="{{$item->img}}" alt="{{$item->cod}}" class="" title="img : {{$item->cod}}" style="cursor: pointer" width="20px" height="20px"></a></td>
                         </tr>
                         <input type="text" id="img_base_64" value="{{ $item->img }}" class=" d-none">
 
