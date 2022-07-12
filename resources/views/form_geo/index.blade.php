@@ -44,6 +44,8 @@
                         @csrf
 
                         <span id="dir_google" class="text-muted mx-auto"></span>
+                        <br>
+                        <span id="dir_mts" class="text-muted mx-auto"></span>
 
                         <div class="input-group input-group-sm mb-1 mt-3 ">
                             <span class="input-group-text" id="basic-addon1"><i

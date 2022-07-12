@@ -6,6 +6,7 @@ const init = () => {
 
     const onActualizacionDeUbicacion = ubicacion => {
         const coordenadas = ubicacion.coords;
+        const mts = ubicacion.coords.accuracy
         let { latitude, longitude } = coordenadas;
         //console.log(latitude, longitude);
         document.getElementById('lat_lng').value = "Lat: " + latitude + ",  Lng: " + longitude;
@@ -20,6 +21,8 @@ const init = () => {
                 console.log(results);
                 document.getElementById('dir_google').innerHTML = results[0].formatted_address;
                 document.getElementById('adress').value = results[0].formatted_address;
+                document.getElementById('dir_mts').innerHTML = 'Exactitud : ' + mts + ' metros';
+
 
             } else {
                 //alert('Geocode was not successful for the following reason: ' + status);
