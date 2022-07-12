@@ -20,6 +20,7 @@ const init = () => {
                 console.log(results);
                 document.getElementById('dir_google').innerHTML = results[0].formatted_address;
                 document.getElementById('adress').value = results[0].formatted_address;
+
             } else {
                 //alert('Geocode was not successful for the following reason: ' + status);
             }
@@ -46,10 +47,10 @@ const init = () => {
 
 
     const opcionesDeSolicitud = {
-        enableHighAccuracy: true, // Alta precisión
-        //maximumAge: 0, // No queremos caché
-        //timeout: 000 // Esperar solo 30 segundos
+        enableHighAccuracy: true,
+        maximumAge: 60000,
+        timeout: 45000
     };
 
-    idWatcher = navigator.geolocation.watchPosition(onActualizacionDeUbicacion, onErrorDeUbicacion, opcionesDeSolicitud);
+    idWatcher = navigator.geolocation.getCurrentPosition(onActualizacionDeUbicacion, onErrorDeUbicacion, opcionesDeSolicitud);
 }
