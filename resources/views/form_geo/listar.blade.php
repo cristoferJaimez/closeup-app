@@ -31,7 +31,7 @@
                             <td>{{ $item->lat }}</td>
                             <td>{{ $item->lng }}</td>
                             <td>{{ $item->adress_real }}</td>
-                            <td class="text-center"><!----> <a href="{{$item->img}}"  data-title="{{$item->name_original}}"   data-lightbox="smile">  <img src="{{$item->img}}" alt="{{$item->cod}}" class="" title="img : {{$item->cod}}" style="cursor: pointer" width="20px" height="20px"></a></td>
+                            <td class="text-center"><!----> <a href="{{$item->img}}"  data-title="{{$item->name_original}}"  maxWidth maxHeight alwaysShowNavOnTouchDevices="true"  data-lightbox="roadtrip">  <img src="{{$item->img}}" alt="{{$item->cod}}" class="" title="img : {{$item->cod}}" style="cursor: pointer" width="20px" height="20px"></a></td>
                         </tr>
                         <input type="text" id="img_base_64" value="{{ $item->img }}" class=" d-none">
 
