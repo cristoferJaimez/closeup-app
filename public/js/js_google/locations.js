@@ -47,8 +47,8 @@ const init = () => {
 
     const opcionesDeSolicitud = {
         enableHighAccuracy: true, // Alta precisión
-        maximumAge: 0, // No queremos caché
-        timeout: 30000 // Esperar solo 30 segundos
+        //maximumAge: 0, // No queremos caché
+        //timeout: 000 // Esperar solo 30 segundos
     };
 
     idWatcher = navigator.geolocation.watchPosition(onActualizacionDeUbicacion, onErrorDeUbicacion, opcionesDeSolicitud);
