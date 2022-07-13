@@ -18,8 +18,10 @@ Route::get('/', [usersController::class, 'index'] );
 
 //Sign In
 Route::post('login', [LoginController::class, 'login'])->name('login')->middleware('guest');
+Route::get('login', [LoginController::class, 'login'])->name('login')->middleware('guest');
 //end SignIn
 Route::post( 'logout' , [LoginController::class , 'Logout'])->name('logout');
+Route::get( 'logout' , [LoginController::class , 'Logout'])->name('logout');
 
 
 //Sign In users Routes
