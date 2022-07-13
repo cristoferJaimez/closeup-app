@@ -22,17 +22,21 @@
                 <div class="app__text-line app__text-line--2"><img src="https://www.close-upinternational.com/img/logo.svg"
                     alt="" /></div>
                 <div class="app__text-line app__text-line--1"><img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg"
-                        alt=""  /> <i>Colombia</i>  <button class="btn badge bg-primary text-wrap" id="btn_login"> <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In</button></div>
-            </div>
+                        alt=""  /> <i>Colombia</i>
+                        @auth
+                        @include('auth.loginOK')
+                        @endauth
+                        @guest
+                        <button class="btn badge bg-primary text-wrap" id="btn_login"> <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In</button></div>
+                        @endguest
+                    </div>
 
             <A name="login" class="login" id="login"></A>
             <div class="app__text app__text--2">
                 <div class="app__text-line app__text-line--4"></div>
                 <div class="app__text-line app__text-line--3"></div>
                 <div class="app__text-line app__text-line--2 mt-5">
-                    @auth
-                        @include('auth.loginOK')
-                    @endauth
+
 
                     @guest
                         @include('auth.login')

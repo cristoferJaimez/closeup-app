@@ -1,3 +1,4 @@
+@include('home.load')
 @extends('layout.app')
 @section('contenido')
 @include('home.navbar')
