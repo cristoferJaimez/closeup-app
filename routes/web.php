@@ -6,6 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\postController;
 use App\Http\Controllers\UtcMapsController;
 use App\Http\Controllers\pharmaController;
+use App\Http\Controllers\ExelController;
+
 
 
 
@@ -87,3 +89,11 @@ Route::view('form_geo', 'form_geo.index')->name('form_geo')->middleware('auth');
 Route::get('form_geo',[UtcMapsController::class , 'search']  )->name('form_geo')->middleware('auth');
 Route::post('form_geo',[pharmaController::class , 'request_']  )->name('form_geo')->middleware('auth');
 Route::get('listar',[pharmaController::class , 'list_']  )->name('listar')->middleware('auth');
+
+
+//excel
+Route::controller(ExelController::class)->group(function(){
+    Route::get('users', 'index');
+    Route::get('excel-export', 'export')->name('excel.export');
+    //Route::post('users-import', 'import')->name('users.import');
+});

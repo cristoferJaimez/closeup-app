@@ -3,12 +3,17 @@
 @include('home.navbar')
     <div class="container p-3">
         <div class="container-fluid mb-3 col-md-12 col-sm-12">
-            <form action="">
+            <form action="{{ route('excel.export') }}">
                 @csrf
-                <div class="form-floating">
-                    <input type="search" class="form-control " id="floatingSearch" placeholder="Search">
-                    <label for="floatingPassword">Search</label>
+                <div class=" input-group input-group-sm mb-3">
+                    <input type="search" class="form-control" id="floatingSearch" placeholder="Search">
                   </div>
+                  <button class="btn btn-success " type="submit"  title="Export all XLSX" ><i class="fa-solid fa-file-excel"></i></button>
+                  @if(session('status'))
+                  <div class="alert alert-success">
+                      {{ session('status') }}
+                  </div>
+                @endif
             </form>
         </div>
         <div class="row">
