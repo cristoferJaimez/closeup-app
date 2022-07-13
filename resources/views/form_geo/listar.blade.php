@@ -6,9 +6,10 @@
             <form action="{{ route('excel.export') }}">
                 @csrf
                 <div class=" input-group input-group-sm mb-3">
-                    <input type="search" class="form-control" id="floatingSearch" placeholder="Search">
-                  </div>
-                  <button class="btn btn-success " type="submit"  title="Export all XLSX" ><i class="fa-solid fa-file-excel"></i></button>
+                   <!-- <input type="search" class="form-control" id="floatingSearch" placeholder="Search">
+                   -->
+                </div>
+                  <button class="btn btn-warning " type="submit"  title="Export all XLSX" >Export <i class="fa-solid fa-file-excel"></i></button>
                   @if(session('status'))
                   <div class="alert alert-success">
                       {{ session('status') }}

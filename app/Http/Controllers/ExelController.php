@@ -7,7 +7,10 @@ use App\Exports\UsersExport;
 use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Pharma;
+use Carbon\Carbon;
+
 class ExelController extends Controller
+
 {
 
     /**
@@ -16,7 +19,9 @@ class ExelController extends Controller
 
     public function export()
     {
-        return Excel::download(new UsersExport, 'pharma.xlsx');
+        $date = Carbon::now()->toDateTimeString();
+        $name_file = ($date);
+        return Excel::download(new UsersExport, 'pharma_geo.xlsx' );
     }
 
 
