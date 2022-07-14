@@ -23,7 +23,88 @@ const init = () => {
                 document.getElementById('adress').value = results[0].formatted_address;
                 document.getElementById('dir_mts').innerHTML = 'Exactitud : ' + Math.round(mts) + ' metros';
 
+                //consultar
+                //clear_maps(near_place)
+                let locations = [
+                    { location: 'Atlántico', cod: '08', api: 'barranquilla.json' },
+                    { location: 'Antioquia', cod: '05', api: 'medellin.json' },
 
+                    { location: 'Bogota', cod: '11', api: 'bogota.json' },
+                    { location: 'BOGOTA D.C.', cod: '11', api: 'bogota.json' },
+                    { location: 'Cartagena de Indias', cod: '13', api: 'cartagena.json' },
+                    { location: 'Cartagena', cod: '13', api: 'cartagena.json' },
+                    { location: 'Barranquilla', cod: '08', api: 'barranquilla.json' },
+                    { location: 'Bello', cod: '05', api: 'bello.json' },
+                    { location: 'Cali', cod: '76', api: 'cali.json' },
+                    { location: 'Valle del Cauca', cod: '76', api: 'cali.json' },
+                    { location: 'Envigado', cod: '05', api: 'envigado.json' },
+                    { location: 'Itagüi', cod: '05', api: 'itagui.json' },
+                    { location: 'Medellín', cod: '05', api: 'medellin.json' },
+                    { location: 'Bucaramanga', cod: '68', api: 'bucaramanga.json' },
+                    { location: 'Floridablanca', cod: '68', api: 'floridablanca.json' },
+                    { location: 'Cúcuta', cod: '54', api: 'cucuta.json' },
+                    { location: 'Soledad', cod: '08', api: 'soledad.json' },
+                    { location: 'Armenia', cod: '63', api: 'armenia.json' },
+                    { location: 'Pereira', cod: '66', api: 'pereira.json' },
+                    { location: 'Manizales', cod: '17', api: 'manizales.json' },
+
+                    { location: 'Amazonas', cod: '91', api: 'amazonas.json' },
+                    { location: 'Arauca', cod: '81', api: 'arauca.json' },
+                    { location: 'Cundinamarca', cod: '25', api: 'cundinamarca.json' },
+                    { location: 'Boyacá', cod: '15', api: 'boyaca.json' },
+                    { location: 'Bolívar', cod: '13', api: 'bolivar.json' },
+                    { location: 'Santander', cod: '68', api: 'santander.json' },
+                    { location: 'Pasto', cod: '52', api: 'pasto.json' },
+                    { location: 'Vichada', cod: '99', api: 'vichada.json' },
+                    { location: 'Vaupés', cod: '97', api: 'vaupes.json' },
+                    { location: 'Guainía', cod: '94', api: 'guainia.json' },
+                    { location: 'San Andrés', cod: '88', api: 'san_andres.json' },
+                    { location: 'Putumayo', cod: '86', api: 'putumayo.json' },
+                    { location: 'Casanare', cod: '85', api: 'casanare.json' },
+
+                    { location: 'Caldas', cod: '17', api: 'caldas.json' },
+                    { location: 'Caquetá', cod: '18', api: 'caqueta.json' },
+                    { location: 'Cauca', cod: '19', api: 'cauca.json' },
+                    { location: 'Cesar', cod: '20', api: 'casar.json' },
+                    { location: 'Córdoba', cod: '23', api: 'cordoba.json' },
+                    { location: 'Chocó', cod: '27', api: 'choco.json' },
+
+                    { location: 'Huila', cod: '41', api: 'huila.json' },
+                    { location: 'La Guajira', cod: '44', api: 'la_guajira.json' },
+                    { location: 'Magdalena', cod: '47', api: 'magdalena.json' },
+                    { location: 'Meta', cod: '50', api: 'meta.json' },
+                    { location: 'Narino', cod: '52', api: 'narino.json' },
+                    { location: 'Norte de Santander', cod: '54', api: 'norte_santander.json' },
+                    { location: 'Quindío', cod: '63', api: 'quindio.json' },
+                    { location: 'Risaralda', cod: '66', api: 'risaralda.json' },
+                    { location: 'Sucre', cod: '70', api: 'sucre.json' },
+                    { location: 'Tolima', cod: '73', api: 'tolima.json' },
+                    { location: 'Valle del Cauca', cod: '76', api: 'valle_cauca.json' },
+                    { location: 'Santa Marta', cod: '47', api: 'santa_marta.json' },
+
+                ]
+                var resultado;
+                try {
+                    for (let i = 0; i <= results.length; i++) {
+                        for (let k = 0; k < results[i].address_components.length; k++) {
+                            let ver = results[i].address_components[k].long_name;
+                            locations.forEach(e => {
+                                if (e.location === ver) {
+                                    resultado = e;
+                                } else {
+
+                                }
+
+                            })
+                        }
+
+                    } //console.log(resultado.api);
+
+                    console.log(resultado);
+                } catch (error) {
+                    //console.log(error);
+                    console.log(resultado);
+                }
             } else {
                 //alert('Geocode was not successful for the following reason: ' + status);
             }

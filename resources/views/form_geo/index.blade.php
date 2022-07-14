@@ -51,7 +51,7 @@
                             <span class="input-group-text" id="basic-addon1"><i
                                     class="fa-solid fa-location-crosshairs fa-2x" class="p-2 btn btn-primary "
                                     onclick="init()"></i></span>
-                            <input type="text" id="lat_lng" disabled
+                            <input type="text" id="lat_lng" disabled required
                                 style="text-align: center; color: rgb(214, 60, 60)" id="lat_lng" class="form-control"
                                 placeholder="Lat, Lng" size="100" aria-label="Username" name="lat_lng"
                                 aria-describedby="basic-addon1">
@@ -62,8 +62,8 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            <input type="text" name="lng" id="lng" class="d-none">
-                            <input type="text" name="adress" id="adress" class="d-none">
+                            <input type="text" name="lng" id="lng" class="d-none" required>
+                            <input type="text" name="adress" id="adress" class="d-none" required>
                         </div>
 
                         <div class="input-group input-group-sm mb-1 mt-3 ">
@@ -73,8 +73,8 @@
                                 <option value="2">Independientes</option>
                             </select>
                         </div>
-                        <div class="input-group input-group-sm mb-1 mt-3 d-none  select_nom_cadena">
-                            <select class="form-select  mb-1" name="nom_cadena" id="nom_cadena">
+                        <div class="input-group input-group-sm mb-1 mt-3 d-none  select_nom_cadena" >
+                            <select class="form-select  mb-1" name="nom_cadena" id="nom_cadena" required>
                                 <option selected>Open this select menu</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -115,7 +115,7 @@
                                     -->
 
 
-                        <textarea class="form-control" id="text_img" name="img" style="display: none" rows="3"></textarea>
+                        <textarea class="form-control" id="text_img" name="img" style="display: none" rows="3" required></textarea>
                         <button type="submit" class=" btn btn-sm btn-primary mt-2">update</button>
                     </form>
                 </div>
