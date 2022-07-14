@@ -136,15 +136,6 @@ function darwing(near_place) {
         { location: 'Valle del Cauca', cod: '76' },
 
 
-
-
-
-
-
-
-
-
-
     ]
 
     const resultado = locations.find(fruta => fruta.location === near_place.address_components[0].long_name);

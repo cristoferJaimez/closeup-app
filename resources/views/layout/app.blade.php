@@ -51,6 +51,9 @@
     <script src="{{ asset('js/create_list.js') }}"></script>
     <script src="{{ asset('js/pagination.js') }}"></script>
 
+    <script src="{{ asset('assets/maps.geojson') }}"></script>
+
+
 
 
 
@@ -76,6 +79,7 @@
     </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
 </body>
 

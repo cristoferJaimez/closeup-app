@@ -53,6 +53,9 @@ class UtcMapsController extends Controller
     }
 
     public function search(Request $request){
+
+
+
         //echo $request;
         $pharma = pharma::all()->where('status', 'PENDIENTE');
         //return  view('form_geo.index', ['data' => $pharma ]);

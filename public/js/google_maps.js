@@ -159,7 +159,7 @@ function darwing(near_place) {
 
         { location: 'Huila', cod: '41', api: 'huila.json' },
         { location: 'La Guajira', cod: '44', api: 'la_guajira.json' },
-        { location: 'Magdalena', cod: '44', api: 'magdalena.json' },
+        { location: 'Magdalena', cod: '47', api: 'magdalena.json' },
         { location: 'Meta', cod: '50', api: 'meta.json' },
         { location: 'Narino', cod: '52', api: 'narino.json' },
         { location: 'Norte de Santander', cod: '54', api: 'norte_santander.json' },
@@ -168,6 +168,8 @@ function darwing(near_place) {
         { location: 'Sucre', cod: '70', api: 'sucre.json' },
         { location: 'Tolima', cod: '73', api: 'tolima.json' },
         { location: 'Valle del Cauca', cod: '76', api: 'valle_cauca.json' },
+        { location: 'Santa Marta', cod: '47', api: 'santa_marta.json' },
+
     ]
     var resultado;
     var BreakException = {};

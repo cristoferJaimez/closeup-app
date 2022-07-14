@@ -40,7 +40,7 @@
             <div class="col-md-12 col-sm-12 mx-auto  mt-1 ">
                 <div class="card p-4 ">
 
-                    <form action="{{ route('form_geo') }}" method="post">
+                    <form action="{{ route('form_geo') }}" method="post"  id="myForm">
                         @csrf
 
                         <span id="dir_google" class="text-muted mx-auto"></span>
@@ -56,20 +56,25 @@
                                 placeholder="Lat, Lng" size="100" aria-label="Username" name="lat_lng"
                                 aria-describedby="basic-addon1">
 
-                            <input type="text" name="lat" id="lat" class="d-none" >
-                            <input type="text" name="lng" id="lng" class="d-none" >
+                            <input type="text" name="lat" id="lat" class="d-none">
+                            @error('lat')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <input type="text" name="lng" id="lng" class="d-none">
                             <input type="text" name="adress" id="adress" class="d-none">
                         </div>
 
                         <div class="input-group input-group-sm mb-1 mt-3 ">
-                            <select class="form-select  mb-1" name="cadena_ind" id="cadena_ind">
+                            <select class="form-select  mb-1" name="cadena_ind" id="cadena_ind" required>
                                 <option selected>Open this select menu</option>
                                 <option value="1">Cadena</option>
                                 <option value="2">Independientes</option>
                             </select>
                         </div>
                         <div class="input-group input-group-sm mb-1 mt-3 d-none  select_nom_cadena">
-                            <select class="form-select  mb-1" name="nom_cadena" id="nom_cadena" >
+                            <select class="form-select  mb-1" name="nom_cadena" id="nom_cadena">
                                 <option selected>Open this select menu</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -79,7 +84,7 @@
                             <p class="error-message">{{ $message }}</p>
                         @enderror
                         <div class="input-group col-12 input-group-sm mb-1 mt-2 mb-2 mx-auto  d-none select_pharma">
-                            <select class="mi-selector" name="pharma" id="pharma">
+                            <select class="mi-selector" name="pharma" id="pharma"  required>
                                 <option selected>Open this select menu</option>
                                 @foreach ($pharma as $item)
                                     <option value="{{ $item->id }}">{{ $item->name_original }} -
@@ -103,11 +108,11 @@
 
                         <canvas id="canvas" width="100%" class="col-12 d-none"></canvas>
                         <!--
-                                    <div class="input-group input-group-sm mb-3 ">
-                                        <input type="text" id="buscar" required name="buscar" class="form-control buscar"
-                                            placeholder="search pharma" aria-label="Username" aria-describedby="basic-addon1">
-                                    </div>
-                                -->
+                                        <div class="input-group input-group-sm mb-3 ">
+                                            <input type="text" id="buscar" required name="buscar" class="form-control buscar"
+                                                placeholder="search pharma" aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
+                                    -->
 
 
                         <textarea class="form-control" id="text_img" name="img" style="display: none" rows="3"></textarea>
