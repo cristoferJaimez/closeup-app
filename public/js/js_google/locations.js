@@ -36,6 +36,7 @@ const init = () => {
                     },
                     method: "POST",
                     success: function(response) {
+                        console.log(response);
                         const select = document.querySelector('.mi-localidad');
                         datos_ = response;
                         const unicos = [];
