@@ -58,8 +58,8 @@ google.maps.event.addDomListener(window, "load", function() {
 
         //limpia mapa
         darwing(near_place)
-            //console.log(near_place.address_components);
-            //flay(near_place)
+        console.log(near_place.address_components);
+        //flay(near_place)
         map.setCenter(near_place.geometry.location)
         var coor = { lat: near_place.geometry.location.lat(), lng: near_place.geometry.location.lng() }
         map.setZoom(15)
@@ -153,7 +153,7 @@ function darwing(near_place) {
         { location: 'Caldas', cod: '17', api: 'caldas.json' },
         { location: 'Caquetá', cod: '18', api: 'caqueta.json' },
         { location: 'Cauca', cod: '19', api: 'cauca.json' },
-        { location: 'Cesar', cod: '20', api: 'casar.json' },
+        { location: 'Cesar', cod: '20', api: 'cesar.json' },
         { location: 'Córdoba', cod: '23', api: 'cordoba.json' },
         { location: 'Chocó', cod: '27', api: 'choco.json' },
 
@@ -169,11 +169,14 @@ function darwing(near_place) {
         { location: 'Tolima', cod: '73', api: 'tolima.json' },
         { location: 'Valle del Cauca', cod: '76', api: 'valle_cauca.json' },
         { location: 'Alban', cod: '52', api: 'narino.json' },
+        { location: 'Arboleda', cod: '52', api: 'narino.json' },
+        { location: 'Arenal', cod: '13', api: 'bolivar.json' },
     ]
     var resultado;
     var BreakException = {};
     try {
         for (let i = 0; i <= near_place.address_components.length; i++) {
+            console.log(near_place.address_components[i].long_name);
             locations.forEach(e => {
                 if (e.location === near_place.address_components[i].long_name) {
                     resultado = e;
@@ -184,15 +187,6 @@ function darwing(near_place) {
     } catch (error) {
 
 
-        var toastTrigger = document.getElementById('liveToastBtn')
-        var toastLiveExample = document.getElementById('liveToast')
-        if (toastTrigger) {
-            toastTrigger.addEventListener('click', function() {
-                var toast = new bootstrap.Toast(toastLiveExample)
-
-                toast.show()
-            })
-        }
     }
     json_api = resultado.api;
     draw(resultado)
