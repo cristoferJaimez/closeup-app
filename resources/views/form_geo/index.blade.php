@@ -15,6 +15,7 @@
             height: auto !important;
         }
     </style>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <script src="{{ asset('css/camera.css') }}"></script>
 
     <video id="video" onclick="takepicture()" class=" mt-1 col-12 mb-1 d-none res" width="100%"
@@ -86,10 +87,11 @@
                         <div class="input-group col-12 input-group-sm mb-1 mt-2 mb-2 mx-auto  d-none select_pharma">
                             <select class="mi-selector" name="pharma" id="pharma"  required>
                                 <option selected>Open this select menu</option>
-                                @foreach ($pharma as $item)
+                               <!-- @foreach ($pharma as $item)
                                     <option value="{{ $item->id }}">{{ $item->name_original }} -
                                         {{ $item->adress }}</option>
                                 @endforeach
+                                    -->
                             </select>
                         </div>
 

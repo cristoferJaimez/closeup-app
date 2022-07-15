@@ -19,9 +19,27 @@ const init = () => {
 
             if (status == 'OK') {
                 console.log(results);
-                document.getElementById('dir_google').innerHTML = results[0].formatted_address;
+                let google = document.getElementById('dir_google').innerHTML = results[0].formatted_address;
                 document.getElementById('adress').value = results[0].formatted_address;
                 document.getElementById('dir_mts').innerHTML = 'Exactitud : ' + Math.round(mts) + ' metros';
+                let div_google = google.split(",")
+                let pos = div_google.length;
+                console.log(div_google);
+                console.log(pos);
+                $.ajax({
+                    url: "form_geo",
+                    data: {
+                        "_token": $("meta[name='csrf-token']").attr("content"),
+                        "google": `${div_google[pos -2]}`
+                    },
+                    method: "POST",
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                })
 
                 //consultar
                 //clear_maps(near_place)
@@ -29,8 +47,7 @@ const init = () => {
                     { location: 'Atlántico', cod: '08', api: 'barranquilla.json' },
                     { location: 'Antioquia', cod: '05', api: 'medellin.json' },
 
-                    { location: 'Bogota', cod: '11', api: 'bogota.json' },
-                    { location: 'BOGOTA D.C.', cod: '11', api: 'bogota.json' },
+                    { location: 'Bogotá', cod: '11', api: 'bogota.json' },
                     { location: 'Cartagena de Indias', cod: '13', api: 'cartagena.json' },
                     { location: 'Cartagena', cod: '13', api: 'cartagena.json' },
                     { location: 'Barranquilla', cod: '08', api: 'barranquilla.json' },
@@ -65,22 +82,25 @@ const init = () => {
                     { location: 'Caldas', cod: '17', api: 'caldas.json' },
                     { location: 'Caquetá', cod: '18', api: 'caqueta.json' },
                     { location: 'Cauca', cod: '19', api: 'cauca.json' },
-                    { location: 'Cesar', cod: '20', api: 'casar.json' },
+                    { location: 'Cesar', cod: '20', api: 'cesar.json' },
                     { location: 'Córdoba', cod: '23', api: 'cordoba.json' },
                     { location: 'Chocó', cod: '27', api: 'choco.json' },
 
                     { location: 'Huila', cod: '41', api: 'huila.json' },
                     { location: 'La Guajira', cod: '44', api: 'la_guajira.json' },
-                    { location: 'Magdalena', cod: '47', api: 'magdalena.json' },
+                    { location: 'Magdalena', cod: '44', api: 'magdalena.json' },
                     { location: 'Meta', cod: '50', api: 'meta.json' },
                     { location: 'Narino', cod: '52', api: 'narino.json' },
+                    { location: 'Nariño', cod: '52', api: 'narino.json' },
                     { location: 'Norte de Santander', cod: '54', api: 'norte_santander.json' },
                     { location: 'Quindío', cod: '63', api: 'quindio.json' },
                     { location: 'Risaralda', cod: '66', api: 'risaralda.json' },
                     { location: 'Sucre', cod: '70', api: 'sucre.json' },
                     { location: 'Tolima', cod: '73', api: 'tolima.json' },
                     { location: 'Valle del Cauca', cod: '76', api: 'valle_cauca.json' },
-                    { location: 'Santa Marta', cod: '47', api: 'santa_marta.json' },
+                    { location: 'Alban', cod: '52', api: 'narino.json' },
+                    { location: 'Arboleda', cod: '52', api: 'narino.json' },
+                    { location: 'Arenal', cod: '13', api: 'bolivar.json' },
 
                 ]
                 var resultado;

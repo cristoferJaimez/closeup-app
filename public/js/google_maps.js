@@ -172,6 +172,7 @@ function darwing(near_place) {
         { location: 'Alban', cod: '52', api: 'narino.json' },
         { location: 'Arboleda', cod: '52', api: 'narino.json' },
         { location: 'Arenal', cod: '13', api: 'bolivar.json' },
+        { location: 'Guaviare', cod: '95', api: 'guaviare.json' },
     ]
     var resultado;
     var BreakException = {};
