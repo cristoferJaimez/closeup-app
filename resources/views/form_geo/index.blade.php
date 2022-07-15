@@ -41,7 +41,7 @@
             <div class="col-md-12 col-sm-12 mx-auto  mt-1 ">
                 <div class="card p-4 ">
 
-                    <form action="{{ route('form_geo') }}" method="post"  id="myForm">
+                    <form action="{{ route('form_geo') }}" method="post" id="myForm">
                         @csrf
 
                         <span id="dir_google" class="text-muted mx-auto"></span>
@@ -65,37 +65,45 @@
                             @enderror
                             <input type="text" name="lng" id="lng" class="d-none" required>
                             <input type="text" name="adress" id="adress" class="d-none" required>
-                        </div>
 
-                        <select name="" id="my_pharma">
-                            <option value="">select item</option>
-                        </select>
 
+
+
+
+                            <p>
+                                <div class="msm_ mb-2 text-danger"></div>
+                            </p>
+                        <!--localidad-->
                         <div class="input-group input-group-sm mb-1 mt-3 ">
-                            <select class="form-select  mb-1" name="cadena_ind" id="cadena_ind" required>
-                                <option selected>Open this select menu</option>
-                                <option value="1">Cadena</option>
-                                <option value="2">Independientes</option>
+
+                            <select class="mi-selector form-select  mb-1 mi-localidad" name="cadena_ind" id="my_pharma" required>
+                                <option value="">Open this select menu</option>
                             </select>
                         </div>
-                        <div class="input-group input-group-sm mb-1 mt-3 d-none  select_nom_cadena" >
-                            <select class="form-select  mb-1" name="nom_cadena" id="nom_cadena" required>
+
+                        <div class="input-group input-group-sm mb-1 mt-3  d-none select_nom_cadena">
+                            <p>
+                                <div class="msm_ mb-2 text-danger"></div>
+                            </p>
+                            <select class=" form-select  mb-1  mi-cadena" name="cadena_ind" id="my_pharma" required>
                                 <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
+                                <option value="cadena">Cadena</option>
+                                <option value="independiente">Independiente</option>
                             </select>
                         </div>
+                        <!--cadena-->
+
                         @error('nom_cadena')
                             <p class="error-message">{{ $message }}</p>
                         @enderror
                         <div class="input-group col-12 input-group-sm mb-1 mt-2 mb-2 mx-auto  d-none select_pharma">
-                            <select class="mi-selector" name="pharma" id="pharma"  required>
+                            <select class="mi-selector" name="pharma" id="pharma" required>
                                 <option selected>Open this select menu</option>
-                               <!-- @foreach ($pharma as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name_original }} -
-                                        {{ $item->adress }}</option>
-                                @endforeach
-                                    -->
+                                <!-- @foreach ($pharma as $item)
+    <option value="{{ $item->id }}">{{ $item->name_original }} -
+                                            {{ $item->adress }}</option>
+    @endforeach
+                                        -->
                             </select>
                         </div>
 
@@ -114,11 +122,11 @@
 
                         <canvas id="canvas" width="100%" class="col-12 d-none"></canvas>
                         <!--
-                                        <div class="input-group input-group-sm mb-3 ">
-                                            <input type="text" id="buscar" required name="buscar" class="form-control buscar"
-                                                placeholder="search pharma" aria-label="Username" aria-describedby="basic-addon1">
-                                        </div>
-                                    -->
+                                            <div class="input-group input-group-sm mb-3 ">
+                                                <input type="text" id="buscar" required name="buscar" class="form-control buscar"
+                                                    placeholder="search pharma" aria-label="Username" aria-describedby="basic-addon1">
+                                            </div>
+                                        -->
 
 
                         <textarea class="form-control" id="text_img" name="img" style="display: none" rows="3" required></textarea>

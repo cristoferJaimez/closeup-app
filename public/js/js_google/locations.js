@@ -3,7 +3,7 @@ const init = () => {
         return alert("Tu navegador no soporta el acceso a la ubicación. Intenta con otro");
     }
 
-
+    let datos_ = [];
     const onActualizacionDeUbicacion = ubicacion => {
         const coordenadas = ubicacion.coords;
         const mts = ubicacion.coords.accuracy
@@ -18,6 +18,8 @@ const init = () => {
         geocoder.geocode({ 'location': destination }, function(results, status) {
 
             if (status == 'OK') {
+                document.querySelector('.msm_').innerHTML = "Loading...";
+
                 console.log(results);
                 let google = document.getElementById('dir_google').innerHTML = results[0].formatted_address;
                 document.getElementById('adress').value = results[0].formatted_address;
@@ -34,14 +36,31 @@ const init = () => {
                     },
                     method: "POST",
                     success: function(response) {
-                        const select = document.getElementById('my_pharma');
-                        console.log(response);
-                        response.forEach(e => {
+                        const select = document.querySelector('.mi-localidad');
+                        datos_ = response;
+                        const unicos = [];
+
+                        for (var i = 0; i < response.length; i++) {
+                            const elemento = response[i].desc_utc;
+                            unicos.push(elemento);
+
+                        }
+                        console.log(unicos);
+                        const unicos_ = [...new Set(unicos)]
+
+                        unicos_.forEach(e => {
                             const option = document.createElement('option');
-                            option.text = e.name_original;
-                            option.value = e.id;
+                            option.text = e;
+                            option.value = e;
                             select.appendChild(option);
+
                         })
+                        document.querySelector('.msm_').innerHTML = "OK.";
+                        $('.msm_').removeClass('text-danger');
+                        $('.msm_').addClass('text-success');
+                        $('.msm_').hide('5000')
+
+
                     },
                     error: function(err) {
                         console.log(err);
@@ -137,6 +156,10 @@ const init = () => {
             }
         });
 
+
+        $('.mi-cadena').on('change', e => {
+            console.log($(this).val());
+        });
 
 
         autocomplete = new google.maps.places.Autocomplete((document.getElementById('lat_lng')), {
