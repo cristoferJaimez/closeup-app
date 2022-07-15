@@ -30,5 +30,8 @@ class pharmaController extends Controller
         }
 
 
+    public function select(Request $request ){
+        $res = DB::select('CALL utc_geo_forma(?)', [$request->input('')]);
+    }
 }
 

@@ -162,6 +162,7 @@ function darwing(near_place) {
         { location: 'Magdalena', cod: '44', api: 'magdalena.json' },
         { location: 'Meta', cod: '50', api: 'meta.json' },
         { location: 'Narino', cod: '52', api: 'narino.json' },
+        { location: 'Nariño', cod: '52', api: 'narino.json' },
         { location: 'Norte de Santander', cod: '54', api: 'norte_santander.json' },
         { location: 'Quindío', cod: '63', api: 'quindio.json' },
         { location: 'Risaralda', cod: '66', api: 'risaralda.json' },
