@@ -27,7 +27,7 @@ const init = () => {
                 let div_google = google.split(",")
                 let pos = div_google.length;
                 console.log(div_google);
-                console.log(pos);
+                console.log(div_google[pos - 2]);
                 $.ajax({
                     url: "form_geo",
                     data: {
