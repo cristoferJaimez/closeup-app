@@ -67,6 +67,10 @@
                             <input type="text" name="adress" id="adress" class="d-none" required>
                         </div>
 
+                        <select name="" id="my_pharma">
+                            <option value="">select item</option>
+                        </select>
+
                         <div class="input-group input-group-sm mb-1 mt-3 ">
                             <select class="form-select  mb-1" name="cadena_ind" id="cadena_ind" required>
                                 <option selected>Open this select menu</option>

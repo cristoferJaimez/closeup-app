@@ -34,7 +34,14 @@ const init = () => {
                     },
                     method: "POST",
                     success: function(response) {
+                        const select = document.getElementById('my_pharma');
                         console.log(response);
+                        response.forEach(e => {
+                            const option = document.createElement('option');
+                            option.text = e.name_original;
+                            option.value = e.id;
+                            select.appendChild(option);
+                        })
                     },
                     error: function(err) {
                         console.log(err);
