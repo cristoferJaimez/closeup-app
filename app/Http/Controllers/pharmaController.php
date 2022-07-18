@@ -49,7 +49,7 @@ class pharmaController extends Controller
     //TRAER FARMACIAS
     public function search_pharma_cadena(Request $request){
 
-        $res = DB::select('call pharma_local_cadenas(?,?,?)',  [$request->local,$request->tipo,$request->nom_cad]);
+        $res = DB::select('CALL pharma_local_cadenas(?,?)',  [$request->local,$request->nom_cad]);
         return $res;
     }
 

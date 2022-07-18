@@ -124,8 +124,8 @@ const init = () => {
                         },
                         method: "POST",
                         success: function(response) {
-                            console.log(response);
-
+                            //    console.log(response);
+                            $('#pharma').empty();
                             const select = document.querySelector('#pharma');
                             $('.select_pharma').removeClass('d-none');
                             response.forEach(e => {
@@ -143,12 +143,12 @@ const init = () => {
                 }
 
                 function data_cadena(option_1, option_2, option_3) {
+                    console.log("cadenas", option_1 + " " + option_2 + " " + option_3);
                     $.ajax({
                         url: "form_geo_cadena",
                         data: {
                             "_token": $("meta[name='csrf-token']").attr("content"),
                             "local": `${option_1}`,
-                            "tipo": `${option_2}`,
                             "nom_cad": `${option_3}`,
                         },
                         method: "POST",
@@ -156,10 +156,12 @@ const init = () => {
                             console.log(response);
                             const select = document.querySelector('#pharma');
                             $('.select_pharma').removeClass('d-none');
+                            $('#pharma').empty();
                             response.forEach(e => {
+                                console.log(e);
                                 const option = document.createElement('option');
-                                option.text = e;
-                                option.value = e;
+                                option.text = e.name_original;
+                                option.value = e.id;
                                 select.appendChild(option);
 
                             })
