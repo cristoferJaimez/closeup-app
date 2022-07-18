@@ -22,6 +22,7 @@ class pharmaController extends Controller
     return redirect()->back()->with(["message" => "Pharma Update successfully"]);
     }
 
+    //PAGINAR FARMACIAS
     public function list_(){
             $list_pharma = DB::table('phar')->where('status', 'OK')->simplepaginate(5);
 
@@ -30,9 +31,29 @@ class pharmaController extends Controller
         }
 
 
+
+    // traer localidades de ubicacion
     public function select(Request $request ){
         $res = DB::select('call utc_geo_forma(?)',  [$request->google]);
         return $res;
     }
+
+    //traer cadena
+
+    public function search_pharma(Request $request){
+        $res = DB::select('call pharma_local_independiente(?, ?)',  [$request->local,$request->tipo]);
+        return $res;
+    }
+
+
+    //TRAER FARMACIAS
+    public function search_pharma_cadena(Request $request){
+
+        $res = DB::select('call pharma_local_cadenas(?,?,?)',  [$request->local,$request->tipo,$request->nom_cad]);
+        return $res;
+    }
+
+
+
 }
 

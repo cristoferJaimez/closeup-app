@@ -25,6 +25,8 @@ class Pharma extends Model
          'img',
          'adress_real',
          'status',
+         'cadena',
+         'nom_cadena',
     ];
 
     protected $hidden = [

@@ -15,4 +15,7 @@ $(document).ready(function() {
     });
 
 
+    //seleccionar farmacia por cadena o independiente
+
+
 });

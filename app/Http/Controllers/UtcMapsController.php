@@ -57,7 +57,8 @@ class UtcMapsController extends Controller
 
 
         //echo $request;
-        $pharma = pharma::all()->where('status', 'PENDIENTE');
+        $pharma = DB::table('phar')->distinct()->get(['cadena']);
+
         //return  view('form_geo.index', ['data' => $pharma ]);
         //return $pharma;
         return view('form_geo.index' , ['pharma' => $pharma]);

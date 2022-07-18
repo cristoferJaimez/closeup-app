@@ -71,66 +71,75 @@
 
 
                             <p>
-                                <div class="msm_ mb-2 text-danger"></div>
+                            <div class="msm_ mb-2 text-danger" style="z-index: 99999;"></div>
                             </p>
-                        <!--localidad-->
-                        <div class="input-group input-group-sm mb-1 mt-3 ">
+                            <!--localidad-->
+                            <div class="input-group input-group-sm mb-1 mt-3 ">
 
-                            <select class="mi-selector form-select  mb-1 mi-localidad" name="cadena_ind" id="my_pharma" required>
-                                <option value="">Open this select menu</option>
-                            </select>
-                        </div>
-
-                        <div class="input-group input-group-sm mb-1 mt-3  d-none select_nom_cadena">
+                                <select class="mi-selector form-select  mb-1 mi-localidad" name="cadena_ind" id="my_pharma"
+                                    required>
+                                    <option value="">Open this select menu</option>
+                                </select>
+                            </div>
                             <p>
-                                <div class="msm_ mb-2 text-danger"></div>
+                            <div class=" mb-2 position-absolute top-50 start-50 translate-middle text-danger">
+
+                            </div>
                             </p>
-                            <select class=" form-select  mb-1  mi-cadena" name="cadena_ind" id="my_pharma" required>
-                                <option selected>Open this select menu</option>
-                                <option value="cadena">Cadena</option>
-                                <option value="independiente">Independiente</option>
-                            </select>
-                        </div>
-                        <!--cadena-->
+                            <div class="input-group input-group-sm mb-1 mt-3  d-none select_nom_cadena">
 
-                        @error('nom_cadena')
-                            <p class="error-message">{{ $message }}</p>
-                        @enderror
-                        <div class="input-group col-12 input-group-sm mb-1 mt-2 mb-2 mx-auto  d-none select_pharma">
-                            <select class="mi-selector" name="pharma" id="pharma" required>
-                                <option selected>Open this select menu</option>
-                                <!-- @foreach ($pharma as $item)
-    <option value="{{ $item->id }}">{{ $item->name_original }} -
-                                            {{ $item->adress }}</option>
-    @endforeach
-                                        -->
-                            </select>
-                        </div>
+                                <select class=" form-select  mb-1  mi-cadena" name="" id="select_option" required>
+                                    <option selected>Open this select menu</option>
+                                    <option value="cadena">CADENAS</option>
+                                    <option value="independiente">INDEPENDIENTE</option>
+                                </select>
+                            </div>
+                            <!--cadena-->
+                            <div class="input-group input-group-sm mb-1 mt-3  d-none select_nom_cadena">
 
-                        <div class="mx-auto">
-                            <button type="button" onclick="camera()" id="camera_open"
-                                class="btn btn-danger  col-12 mb-1"><i class="fa-solid fa-camera "></i></button>
+                                <select class="form-select  mb-1 d-none" name="" id="nom_cadena" required>
+                                    <option value="">Open this select menu</option>
+                                    @foreach ($pharma as $item)
+                                        <option value="">{{ $item->cadena }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                        </div>
+                            <!--fin cadena-->
+                            @error('nom_cadena')
+                                <p class="error-message">{{ $message }}</p>
+                            @enderror
+                            <div class="input-group col-12 input-group-sm mb-1 mt-2 mb-2 mx-auto  d-none select_pharma">
+                                <select class="mi-selector" name="pharma" id="pharma" required>
+                                    <option selected>Open this select menu</option>
 
+                                </select>
+                            </div>
 
-                        <img src="https://www.close-upinternational.com/img/logo.svg" id="photo" style=""
-                            onclick="" alt="photo"
-                            class="col-12 d-none img-thumbnail rounded mx-auto    shadow-sm mb-2" width="200px"
-                            height="200px">
+                            <div class="col-md-12  col-sm-12 mt-4">
+                                <button type="button" onclick="camera()" id="camera_open" class="btn btn-danger "><i
+                                        class="fa-solid fa-camera "></i></button>
 
-
-                        <canvas id="canvas" width="100%" class="col-12 d-none"></canvas>
-                        <!--
-                                            <div class="input-group input-group-sm mb-3 ">
-                                                <input type="text" id="buscar" required name="buscar" class="form-control buscar"
-                                                    placeholder="search pharma" aria-label="Username" aria-describedby="basic-addon1">
-                                            </div>
-                                        -->
+                            </div>
 
 
-                        <textarea class="form-control" id="text_img" name="img" style="display: none" rows="3" required></textarea>
-                        <button type="submit" class=" btn btn-sm btn-primary mt-2">update</button>
+                            <img src="https://www.close-upinternational.com/img/logo.svg" id="photo" style=""
+                                onclick="" alt="photo"
+                                class="col-12 d-none img-thumbnail rounded mx-auto    shadow-sm mb-2" width="200px"
+                                height="200px">
+
+
+                            <canvas id="canvas" width="100%" class="col-12 d-none"></canvas>
+                            <!--
+                                                        <div class="input-group input-group-sm mb-3 ">
+                                                            <input type="text" id="buscar" required name="buscar" class="form-control buscar"
+                                                                placeholder="search pharma" aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    -->
+
+
+                            <textarea class="form-control col-md-12" id="text_img" name="img" style="display: none" rows="3" required></textarea>
+                            <button type="submit" class=" btn btn-sm btn-primary mt-2">update</button>
                     </form>
                 </div>
             </div>

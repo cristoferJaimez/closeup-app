@@ -28,45 +28,149 @@ const init = () => {
                 let pos = div_google.length;
                 console.log(div_google);
                 console.log(div_google[pos - 2]);
+                let loc;
+                if (div_google[pos - 2] !== div_google[pos - 3]) {
+                    loc = div_google[pos - 3];
+                } else {
+                    loc = div_google[pos - 2];
+                }
+                //seelccionar localidades de region
                 $.ajax({
-                    url: "form_geo",
-                    data: {
-                        "_token": $("meta[name='csrf-token']").attr("content"),
-                        "google": `${div_google[pos -2]}`
-                    },
-                    method: "POST",
-                    success: function(response) {
-                        console.log(response);
-                        const select = document.querySelector('.mi-localidad');
-                        datos_ = response;
-                        const unicos = [];
+                        url: "form_geo",
+                        data: {
+                            "_token": $("meta[name='csrf-token']").attr("content"),
+                            "google": `${loc}`
+                        },
+                        method: "POST",
+                        success: function(response) {
+                            console.log(response);
+                            const select = document.querySelector('.mi-localidad');
+                            $('#pharma').addClass('d-none')
+                            datos_ = response;
+                            const unicos = [];
 
-                        for (var i = 0; i < response.length; i++) {
-                            const elemento = response[i].desc_utc;
-                            unicos.push(elemento);
+                            for (var i = 0; i < response.length; i++) {
+                                const elemento = response[i].desc_utc;
+                                unicos.push(elemento);
 
+                            }
+                            console.log(unicos);
+                            const unicos_ = [...new Set(unicos)]
+
+                            unicos_.forEach(e => {
+                                const option = document.createElement('option');
+                                option.text = e;
+                                option.value = e;
+                                select.appendChild(option);
+
+                            })
+                            document.querySelector('.msm_').innerHTML = "OK.";
+                            $('.msm_').removeClass('text-danger');
+                            $('.msm_').addClass('text-success');
+                            $('.msm_').hide('5000')
+
+
+                        },
+                        error: function(err) {
+                            console.log(err);
                         }
-                        console.log(unicos);
-                        const unicos_ = [...new Set(unicos)]
-
-                        unicos_.forEach(e => {
-                            const option = document.createElement('option');
-                            option.text = e;
-                            option.value = e;
-                            select.appendChild(option);
-
-                        })
-                        document.querySelector('.msm_').innerHTML = "OK.";
-                        $('.msm_').removeClass('text-danger');
-                        $('.msm_').addClass('text-success');
-                        $('.msm_').hide('5000')
+                    }) //fin de region
 
 
-                    },
-                    error: function(err) {
-                        console.log(err);
+
+                //consultar cadenas o indiependientes
+                let localidad = document.querySelector('my_pharma');
+                let seleccion = document.querySelector('select_option');
+
+                var option_1, option_2, option_3;
+                $(document).on('change', '#my_pharma', e => {
+                    console.log($("#my_pharma  option:selected").text());
+                    option_1 = $("#my_pharma  option:selected").text();
+                    data(option_1, option_2);
+
+                });
+                $(document).on('change', '#select_option', e => {
+                    option_2 = $("#select_option  option:selected").text();
+                    console.log(option_2);
+                    const select = document.querySelector('#nom_cadena');
+
+                    if (option_2 == "CADENAS") {
+
+
+                        $('#nom_cadena').removeClass('d-none')
+
+
+                    } else if (option_2 == "INDEPENDIENTE") {
+                        $('#nom_cadena').addClass('d-none')
+                        data(option_1, option_2);
                     }
-                })
+                });
+
+                $(document).on('change', '#nom_cadena', e => {
+                    option_3 = $("#nom_cadena  option:selected").text();
+                    console.log(option_3);
+                    data_cadena(option_1, option_2, option_3);
+                });
+
+
+                function data(option_1, option_2) {
+
+                    $.ajax({
+                        url: "form_geo_",
+                        data: {
+                            "_token": $("meta[name='csrf-token']").attr("content"),
+                            "local": `${option_1}`,
+                            "tipo": `${option_2}`,
+                        },
+                        method: "POST",
+                        success: function(response) {
+                            console.log(response);
+
+                            const select = document.querySelector('#pharma');
+                            $('.select_pharma').removeClass('d-none');
+                            response.forEach(e => {
+                                const option = document.createElement('option');
+                                option.text = e;
+                                option.value = e;
+                                select.appendChild(option);
+
+                            })
+                        },
+                        error: function(err) {
+                            console.log(err);
+                        }
+                    });
+                }
+
+                function data_cadena(option_1, option_2, option_3) {
+                    $.ajax({
+                        url: "form_geo_cadena",
+                        data: {
+                            "_token": $("meta[name='csrf-token']").attr("content"),
+                            "local": `${option_1}`,
+                            "tipo": `${option_2}`,
+                            "nom_cad": `${option_3}`,
+                        },
+                        method: "POST",
+                        success: function(response) {
+                            console.log(response);
+                            const select = document.querySelector('#pharma');
+                            $('.select_pharma').removeClass('d-none');
+                            response.forEach(e => {
+                                const option = document.createElement('option');
+                                option.text = e;
+                                option.value = e;
+                                select.appendChild(option);
+
+                            })
+                        },
+                        error: function(err) {
+                            console.log(err);
+                        }
+                    });
+                }
+
+
 
                 //consultar
                 //clear_maps(near_place)
@@ -158,9 +262,7 @@ const init = () => {
         });
 
 
-        $('.mi-cadena').on('change', e => {
-            console.log($(this).val());
-        });
+
 
 
         autocomplete = new google.maps.places.Autocomplete((document.getElementById('lat_lng')), {
