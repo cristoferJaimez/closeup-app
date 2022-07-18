@@ -89,7 +89,7 @@ Route::view('form_geo', 'form_geo.index')->name('form_geo')->middleware('auth');
 
 //formulario
 Route::get('form_geo',[UtcMapsController::class , 'search']  )->name('form_geo')->middleware('auth');
-Route::post('form_geo',[pharmaController::class , 'request_']  )->name('form_geo')->middleware('auth');
+Route::post('form_geo_forma',[pharmaController::class , 'request_']  )->name('form_geo_forma')->middleware('auth');
 Route::post('form_geo',[pharmaController::class , 'select']  )->name('form_geo')->middleware('auth');
 Route::post('form_geo_',[pharmaController::class , 'search_pharma']  )->name('form_geo_')->middleware('auth');
 Route::post('form_geo_cadena',[pharmaController::class , 'search_pharma_cadena']  )->name('form_geo_cadena')->middleware('auth');

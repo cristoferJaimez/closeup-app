@@ -41,7 +41,7 @@
             <div class="col-md-12 col-sm-12 mx-auto  mt-1 ">
                 <div class="card p-4 ">
 
-                    <form action="{{ route('form_geo') }}" method="post" id="myForm">
+                    <form action="{{ route('form_geo_forma') }}" method="post" id="myForm">
                         @csrf
 
                         <span id="dir_google" class="text-muted mx-auto"></span>
