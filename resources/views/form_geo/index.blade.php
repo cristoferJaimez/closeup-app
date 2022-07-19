@@ -39,7 +39,7 @@
             @else
             @endif
             <div class="col-md-12 col-sm-12 mx-auto  mt-1 ">
-                <div class="card p-4 ">
+
 
                     <form action="{{ route('form_geo_forma') }}" method="post" id="myForm">
                         @csrf
@@ -67,12 +67,13 @@
                             <input type="text" name="adress" id="adress" class="d-none" required>
 
 
-
+                        </div>
 
 
                             <p>
-                            <div class="msm_ mb-2 text-danger" style="z-index: 99999;"></div>
+                                <div class="msm_ mb-2 text-danger" style="z-index: 99999;"></div>
                             </p>
+
                             <!--localidad-->
                             <div class="input-group input-group-sm mb-1 mt-3 ">
 
@@ -95,9 +96,9 @@
                                 </select>
                             </div>
                             <!--cadena-->
-                            <div class="input-group input-group-sm mb-1 mt-3  d-none select_nom_cadena">
+                            <div class="input-group input-group-sm mb-1 mt-3 col-12 d-none select_nom_cadena">
 
-                                <select class="form-select  mb-1 d-none" name="" id="nom_cadena" required>
+                                <select class="mi-selector form-select  mb-1 d-none" name="" id="nom_cadena" required>
                                     <option value="">Open this select menu</option>
                                     @foreach ($pharma as $item)
                                         <option value="">{{ $item->cadena }}</option>
@@ -117,7 +118,7 @@
                             </div>
 
                             <div class="col-md-12  col-sm-12 mt-4">
-                                <button type="button" onclick="camera()" id="camera_open" class="btn btn-danger "><i
+                                <button type="button" onclick="camera()" style="width: 100%" id="camera_open" class="btn btn-danger "><i
                                         class="fa-solid fa-camera "></i></button>
 
                             </div>
@@ -139,9 +140,9 @@
 
 
                             <textarea class="form-control col-md-12" id="text_img" name="img" style="display: none" rows="3" required></textarea>
-                            <button type="submit" class=" btn btn-sm btn-primary mt-2">update</button>
+                            <button type="submit" style="width: 100%" class=" btn btn-sm btn-primary mt-2">update</button>
                     </form>
-                </div>
+
             </div>
 
 

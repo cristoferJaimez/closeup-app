@@ -87,6 +87,7 @@ const init = () => {
                     console.log($("#my_pharma  option:selected").text());
                     option_1 = $("#my_pharma  option:selected").text();
                     data(option_1, option_2);
+                    data_cadena(option_1, option_2, option_3);
 
                 });
                 $(document).on('change', '#select_option', e => {
@@ -129,9 +130,10 @@ const init = () => {
                             const select = document.querySelector('#pharma');
                             $('.select_pharma').removeClass('d-none');
                             response.forEach(e => {
+                                console.log(e);
                                 const option = document.createElement('option');
-                                option.text = e;
-                                option.value = e;
+                                option.text = e.name_original;
+                                option.value = e.id;
                                 select.appendChild(option);
 
                             })
@@ -149,6 +151,7 @@ const init = () => {
                         data: {
                             "_token": $("meta[name='csrf-token']").attr("content"),
                             "local": `${option_1}`,
+                            "tipo": `${option_2}`,
                             "nom_cad": `${option_3}`,
                         },
                         method: "POST",
