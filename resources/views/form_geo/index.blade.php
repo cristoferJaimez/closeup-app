@@ -77,7 +77,7 @@
                             <!--localidad-->
                             <div class="input-group input-group-sm mb-1 mt-3 ">
 
-                                <select class="mi-selector form-select  mb-1 mi-localidad" name="cadena_ind" id="my_pharma"
+                                <select class="mi-selector form-select  mb-1 mi-localidad" style="width: 100%" name="cadena_ind" id="my_pharma"
                                     required>
                                     <option value="">Open this select menu</option>
                                 </select>
@@ -98,7 +98,7 @@
                             <!--cadena-->
                             <div class="input-group input-group-sm mb-1 mt-3 col-12 d-none select_nom_cadena">
 
-                                <select class="mi-selector form-select  mb-1 d-none" name="" id="nom_cadena" required>
+                                <select class="mi-selector form-select  mb-1 d-none" style="width: 100%"  name="" id="nom_cadena" required>
                                     <option value="">Open this select menu</option>
                                     @foreach ($pharma as $item)
                                         <option value="">{{ $item->cadena }}</option>
@@ -111,7 +111,7 @@
                                 <p class="error-message">{{ $message }}</p>
                             @enderror
                             <div class="input-group col-12 input-group-sm mb-1 mt-2 mb-2 mx-auto  d-none select_pharma">
-                                <select class="mi-selector" name="pharma" id="pharma" required>
+                                <select class="mi-selector" name="pharma" id="pharma" style="width: 100%" required>
                                     <option selected>Open this select menu</option>
 
                                 </select>
