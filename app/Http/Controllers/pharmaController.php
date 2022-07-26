@@ -35,7 +35,11 @@ class pharmaController extends Controller
     // traer localidades de ubicacion
     public function select(Request $request ){
         $res = DB::select('call utc_geo_forma(?)',  [$request->google]);
-        return $res;
+        if(!$res){
+            return $res;
+        }else{
+            return $res;
+        }
     }
 
     //traer cadena

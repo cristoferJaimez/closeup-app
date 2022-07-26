@@ -43,7 +43,8 @@ const init = () => {
                         },
                         method: "POST",
                         success: function(response) {
-                            console.log(response);
+
+                            // console.log(response);
                             const select = document.querySelector('.mi-localidad');
                             $('#pharma').addClass('d-none')
                             datos_ = response;
