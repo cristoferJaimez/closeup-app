@@ -34,12 +34,31 @@ class pharmaController extends Controller
 
     // traer localidades de ubicacion
     public function select(Request $request ){
+        //join consultamanual
+        $res = Pharma::select('phar.id',
+                              'phar.utc',
+                              'phar.name_original',
+                              'phar.cadena',
+                              'neighborhoods.desc_utc',
+                              //' municipalities.municipio',
+                              'departments.departamento',
+                              'phar.nom_cadena')
+       ->join('neighborhoods', 'neighborhoods.co_barrio', '=', 'phar.utc')
+       ->join('geo_utc', 'geo_utc.barrio_id' ,'=' ,	'neighborhoods.id'	)
+       ->join( 'municipalities', 'municipalities.id', '=' ,'geo_utc.municipio_id')
+       ->join('departments', 'departments.id', '=', 'geo_utc.departamento_id' )
+       ->where( 'departments.departamento' ,'LIKE' , $request->google.'%')
+       ->get();
+
+        return $res;
+/*
         $res = DB::select('call utc_geo_forma(?)',  [$request->google]);
         if(!$res){
             return $res;
         }else{
             return $res;
         }
+        */
     }
 
     //traer cadena
