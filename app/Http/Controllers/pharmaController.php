@@ -34,7 +34,7 @@ class pharmaController extends Controller
 
     // traer localidades de ubicacion
     public function select(Request $request ){
-        //join consultamanual
+        /*join consultamanual
         $res = Pharma::select('phar.id',
                               'phar.utc',
                               'phar.name_original',
@@ -51,14 +51,14 @@ class pharmaController extends Controller
        ->get();
 
         return $res;
-/*
+*/
         $res = DB::select('call utc_geo_forma(?)',  [$request->google]);
         if(!$res){
             return $res;
         }else{
             return $res;
         }
-        */
+
     }
 
     //traer cadena
