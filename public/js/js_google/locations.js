@@ -72,6 +72,7 @@ const init = () => {
 
 
                         },
+                        timeout: 30000, // sets timeout to 20 seconds
                         error: function(err) {
                             console.log(err);
                         }
