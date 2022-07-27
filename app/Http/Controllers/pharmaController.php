@@ -54,11 +54,9 @@ class pharmaController extends Controller
 */
         //$res = DB::select('select * from tst_utc_forma(?)',  [$request->google]);
         $res = DB::select('CALL utc_geo_forma(?)',  [$request->google]);
-        if(!$res){
+
             return $res;
-        }else{
-            return $res;
-        }
+
 
     }
 
