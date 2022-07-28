@@ -44,7 +44,7 @@ const init = () => {
                         method: "POST",
                         success: function(response) {
 
-                            // console.log(response);
+                            console.log(response);
                             const select = document.querySelector('.mi-localidad');
                             $('#pharma').addClass('d-none')
                             datos_ = response;
@@ -52,7 +52,10 @@ const init = () => {
 
                             for (var i = 0; i < response.length; i++) {
                                 const elemento = response[i].desc_utc;
+                                const sentencia = response[i].municipio + "," + response[i].departamento + "," + response[i].desc_utc;
+                                // if (sentencia.includes(`${loc}`.toUpperCase())) {
                                 unicos.push(elemento);
+                                // }
 
                             }
                             console.log(unicos);
