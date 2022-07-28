@@ -41,14 +41,16 @@ class pharmaController extends Controller
     //traer cadena
 
     public function search_pharma(Request $request){
-        $res = DB::select('call pharma_local_independiente(?, ?)',  [$request->local,$request->tipo]);
+        //$res = DB::select('call pharma_local_independiente(?, ?)',  [$request->local,$request->tipo]);
+        $res = DB::select('select * from pharma_local_independiente(?, ?)', [$request->local,$request->tipo]);
         return $res;
     }
 
 
     //TRAER FARMACIAS
     public function search_pharma_cadena(Request $request){
-        $res = DB::select('CALL pharma_local_cadenas(?,?,?)',  [$request->local,$request->nom_cad,$request->tipo]);
+        //$res = DB::select('CALL pharma_local_cadenas(?,?,?)',  [$request->local,$request->nom_cad,$request->tipo]);
+        $res = DB::select('select * from pharma_local_cadenas(?,?,?)', [$request->local,$request->nom_cad,$request->tipo]);
         return $res;
     }
 
