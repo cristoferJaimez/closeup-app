@@ -53,9 +53,10 @@ class pharmaController extends Controller
 
         return $res;
 */
-        //$res = DB::select('select * from tst_utc_forma(?)',  [$request->google]);
-        $res = DB::select('CALL utc_geo_forma(?)',  [$request->google]);
+        $res = DB::select('select * from tst_utc_forma(?)',  [$request->google]);
+        //$res = DB::select('CALL utc_geo_forma(?)',  [$request->google]);
         //
+        //$res = DB::query()
         //$res = DB::select('select * from phar LEFT JOIN neighborhoods on neighborhoods.co_barrio=phar.utc LEFT JOIN geo_utc on geo_utc.barrio_id = 	neighborhoods.id LEFT JOIN municipalities on municipalities.id = geo_utc.municipio_id LEFT JOIN departments on departments.id = geo_utc.departamento_id  WHERE municipalities.municipio LIKE CONCAT(?, ?) OR departments.departamento LIKE CONCAT(?, ?) OR neighborhoods.desc_utc LIKE CONCAT(?, ?) ', [$request->google,"%",$request->google,"%",$request->google,"%"]);
         return $res;
 
