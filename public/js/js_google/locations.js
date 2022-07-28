@@ -30,7 +30,7 @@ const init = () => {
                 console.log(div_google[pos - 2]);
                 let loc;
                 if (div_google[pos - 2] !== div_google[pos - 3]) {
-                    loc = div_google[pos - 3];
+                    loc = div_google[pos - 2];
                 } else {
                     loc = div_google[pos - 2];
                 }
@@ -39,7 +39,9 @@ const init = () => {
                         url: "form_geo",
                         data: {
                             "_token": $("meta[name='csrf-token']").attr("content"),
-                            "google": `${loc}`
+                            "google": `${loc.normalize('NFD')
+                            .replace(/([aeio])\u0301|(u)[\u0301\u0308]/gi,"$1$2")
+                            .normalize()}`.toUpperCase()
                         },
                         method: "POST",
                         success: function(response) {
@@ -52,11 +54,7 @@ const init = () => {
 
                             for (var i = 0; i < response.length; i++) {
                                 const elemento = response[i].desc_utc;
-                                const sentencia = response[i].municipio + "," + response[i].departamento + "," + response[i].desc_utc;
-                                // if (sentencia.includes(`${loc}`.toUpperCase())) {
                                 unicos.push(elemento);
-                                // }
-
                             }
                             console.log(unicos);
                             const unicos_ = [...new Set(unicos)]
