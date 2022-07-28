@@ -30,7 +30,7 @@ const init = () => {
                 console.log(div_google[pos - 2]);
                 let loc;
                 if (div_google[pos - 2] !== div_google[pos - 3]) {
-                    loc = div_google[pos - 2];
+                    loc = div_google[pos - 3];
                 } else {
                     loc = div_google[pos - 2];
                 }
