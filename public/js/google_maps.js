@@ -56,11 +56,7 @@ google.maps.event.addDomListener(window, "load", function() {
         var near_place = autocomplete.getPlace();
 
 
-        var location1 = new google.maps.LatLng(38.715, -74.002);
-        var location2 = new google.maps.LatLng(41.506, -0.119);
-        var location3 = new google.maps.LatLng(20.916, -43.251);
-        var area = google.maps.geometry.spherical.computeArea([location1, location2, location3]);
-        console.log(area);
+
 
         darwing(near_place)
         console.log(near_place.address_components);
