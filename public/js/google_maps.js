@@ -16,11 +16,6 @@ let text_ = document.querySelector('.search_input');
 
 
 
-
-
-
-
-
 $(text_).on('click', () => {
     $(text_).val('');
     clear_maps("v");
@@ -242,17 +237,15 @@ function draw(data) {
 
 
     map.data.addListener('click', function(event) {
-        $(event.feature.j.description).addClass('table table-striped ')
-
-
-
+        //$(event.feature.j.description).addClass('table table-striped ')
+        console.log(event.feature);
         map.data.overrideStyle(event.feature, { fillColor: 'red', strokeColor: 'blue', strokeWeight: 1 });
 
         infoWindow.setPosition(event.latLng);
         infoWindow.setContent(
             '<div class="text-center p-2" style="z-index: 99999">' +
             '<img src="https://www.close-upinternational.com/img/logo.svg" alt="logo">' + '</br>' +
-            event.feature.j.description +
+            event.feature.h.description +
             '</div>'
         );
         infoWindow.open(map);
