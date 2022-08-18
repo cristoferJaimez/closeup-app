@@ -186,7 +186,7 @@ function darwing(near_place) {
         { location: 'Cúcuta', cod: '00', api: 'CUCUTA.json' },
         { location: 'Envigado', cod: '00', api: 'ENVIGADO.json' },
         { location: 'Floridablanca', cod: '00', api: 'FLORIDABLANCA.json' },
-        { location: 'Itagüí', cod: '00', api: 'ITAGUI.json' },
+        { location: 'Itagüi', cod: '00', api: 'ITAGUI.json' },
         { location: 'Manizales', cod: '00', api: 'MANIZALES.json' },
         { location: 'Medellín', cod: '00', api: 'MEDELLIN.json' },
         { location: 'Pereira', cod: '00', api: 'PEREIRA.json' },
@@ -212,7 +212,7 @@ function darwing(near_place) {
 
     }
     json_api = resultado.api;
-    draw(resultado)
+
 
 
 
@@ -229,13 +229,21 @@ function darwing(near_place) {
 
     }
     json_api_mun = resultado_MUN.api;
-    draw_mun(resultado)
+
+    //draw_mun(resultado)
+    setTimeout(draw(resultado, resultado_MUN), 3000);
 }
 
 
 // dibujar mapa
 
-function draw_mun(data) {
+
+
+
+function draw(data, data_) {
+
+
+
     try {
 
 
@@ -248,15 +256,6 @@ function draw_mun(data) {
             .then(
                 $(car_api).hide()
             );
-    } catch {}
-}
-
-
-function draw(data) {
-
-
-
-    try {
 
 
         fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api} `, {
@@ -268,6 +267,7 @@ function draw(data) {
             .then(
                 $(car_api).hide()
             );
+
 
     } catch (error) {
         var data_geo;
@@ -284,14 +284,17 @@ function draw(data) {
 
     }
     map.data.setStyle({
-        icon: 'https://www.close-upinternational.com/img/logo.svg',
-        fillColor: 'green',
-        strokeColor: 'red',
-        clickable: true,
-        fillOpacity: 0.2,
-        strokeWeight: 1,
-        geodesic: true,
-    });
+            icon: 'https://www.close-upinternational.com/img/logo.svg',
+            fillColor: 'green',
+            strokeColor: 'red',
+            clickable: true,
+            fillOpacity: 0.2,
+            strokeWeight: 1,
+            geodesic: true,
+            zIndex: 1
+        },
+
+    );
 
 
 
@@ -299,7 +302,7 @@ function draw(data) {
     map.data.addListener('click', function(event) {
         //$(event.feature.j.description).addClass('table table-striped ')
         console.log(event.feature);
-        map.data.overrideStyle(event.feature, { fillColor: 'red', strokeColor: 'blue', strokeWeight: 1 });
+        map.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1, zIndex: -1 });
 
         infoWindow.setPosition(event.latLng);
         infoWindow.setContent(
@@ -311,6 +314,14 @@ function draw(data) {
         infoWindow.open(map);
     });
 
+}
+
+function draw_mun(data) {
+    try {
+
+
+
+    } catch {}
 }
 
 const init = () => {
