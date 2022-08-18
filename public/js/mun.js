@@ -2,14 +2,236 @@
 
 
 //end import
+//import
+
+
+//end import
+
+var searchInput = 'search_input';
+var map;
+var mark;
+
+
+
+let text_ = document.querySelector('.search_input');
+
+$(text_).on('click', () => {
+    $(text_).val('');
+})
+
+google.maps.event.addDomListener(window, "load", function() {
+
+
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 4.570868, lng: -74.297333 },
+        zoom: 5,
+        mapTypeControl: false,
+    });
+
+
+
+
+
+
+    var autocomplete;
+    autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+        // types: ['geocode', '', 'doctor'],
+    });
+
+    var place = autocomplete.getPlace();
+
+
+
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+        var near_place = autocomplete.getPlace();
+
+        //limpia mapa
+        //alert(near_place)
+        //clear_maps(maps)
+        darwing(near_place)
+        console.log(near_place.address_components);
+        //flay(near_place)
+        map.setCenter(near_place.geometry.location)
+        var coor = { lat: near_place.geometry.location.lat(), lng: near_place.geometry.location.lng() }
+        map.setZoom(15)
+        mark = new google.maps.Marker({
+            //draggable: true,
+            animation: google.maps.Animation.DROP,
+            position: coor,
+            map,
+            title: "" + near_place.formatted_address + "",
+        });
+        //console.log(mark);
+        var popup = new google.maps.InfoWindow();
+
+        mark.addListener('click', function(e) {
+            popup.setContent('<table class="table table-striped">' +
+                '<tr>' +
+                '<th colspan="2"><strong>' + `${near_place.formatted_address}` + '</strong></th>' +
+                '</tr>'
+
+                +
+                '</table>'
+            );
+            popup.setPosition(e.latLng);
+            popup.open(map);
+
+
+        });
+
+
+    });
+});
+
+
+
+// naegar a punto
+function flay(near_place) {}
+
+
+//clear maps
+async function clear_maps(feature) {
+    console.log("limpiando");
+    await map.data.setStyle({ visible: false });
+
+
+}
+
+//drawin maps
+function darwing(near_place) {
+    console.log("dibujando");
+
+
+    //console.log(near_place.address_components[0].long_name);
+    let locations = [
+
+        { location: 'Amazonas', cod: '91' },
+        { location: 'Arauca', cod: '81' },
+        { location: 'Cundinamarca', cod: '25' },
+        { location: 'Boyacá', cod: '15' },
+        { location: 'Bolívar', cod: '13' },
+        { location: 'Santander', cod: '68' },
+        { location: 'Pasto', cod: '52' },
+        { location: 'Vichada', cod: '99' },
+        { location: 'Vaupés', cod: '97' },
+        { location: 'Guainía', cod: '94' },
+        { location: 'San Andrés', cod: '88' },
+        { location: 'Putumayo', cod: '86' },
+        { location: 'Casanare', cod: '85' },
+
+        { location: 'Caldas', cod: '17' },
+        { location: 'Caquetá', cod: '18' },
+        { location: 'Cauca', cod: '19' },
+        { location: 'Cesar', cod: '20' },
+        { location: 'Córdoba', cod: '23' },
+        { location: 'Chocó', cod: '27' },
+
+        { location: 'Huila', cod: '41' },
+        { location: 'La Guajira', cod: '44' },
+        { location: 'Magdalena', cod: '44' },
+        { location: 'Meta', cod: '50' },
+        { location: 'Narino', cod: '52' },
+        { location: 'Norte de Santander', cod: '54' },
+        { location: 'Quindío', cod: '63' },
+        { location: 'Risaralda', cod: '66' },
+        { location: 'Sucre', cod: '70' },
+        { location: 'Tolima', cod: '73' },
+        { location: 'Valle del Cauca', cod: '76' },
+
+
+        { location: 'Bello', cod: '76' },
+        { location: 'Bogotá', cod: '76' },
+
+    ]
+
+    let resultado
+    for (let h = 0; h <= near_place.address_components.length; h++) {
+        resultado = locations.find(fruta => fruta.location === near_place.address_components[h].long_name);
+        if (resultado != undefined) {
+            break
+        }
+    }
+    draw(resultado)
+}
+
+// dibujar mapa
+function draw(data) {
+    var geo = [];
+
+
+    for (let index = 0; index <= 1119; index++) {
+        //console.log(maps.features[index].properties.name + "  " + data.location.toUpperCase());
+        if (maps.features[index].properties.name != undefined) {
+            let re = maps.features[index].properties.name === data.location.toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+            if (re === true) {
+                console.log(re);
+                //console.log(maps.features[index]);
+                geo.unshift(maps.features[index])
+            }
+        }
+
+    }
+
+    var json = JSON.stringify(geo)
+    var data_geo = {
+            type: 'FeatureCollection',
+            features: geo,
+            type: "FeatureCollection"
+        }
+        //console.log(maps);
+    console.log(data_geo);
+
+    map.data.addGeoJson(data_geo)
+
+    //map.data.addGeoJson(json);
+
+    map.data.setStyle({
+        icon: 'https://www.close-upinternational.com/img/logo.svg',
+        fillColor: 'green',
+        strokeColor: 'red',
+        clickable: true,
+        fillOpacity: 0.2,
+        strokeWeight: 1,
+        geodesic: true,
+    });
+
+    var infoWindow = new google.maps.InfoWindow();
+
+
+    map.data.addListener('click', function(event) {
+        $(event.feature.h.description).addClass('table table-striped ')
+
+        //console.log(event);
+        map.data.overrideStyle(event.feature, { fillColor: 'red', strokeColor: 'blue', strokeWeight: 1 });
+        console.log(event.feature);
+        //console.log(event.latLng);
+        infoWindow.setPosition(event.latLng);
+        infoWindow.setContent(
+            '<div class="text-center p-2" style="z-index: 99999">' +
+            '<img src="https://www.close-upinternational.com/img/logo.svg" alt="logo">' + '</br>' +
+            event.feature.h.description +
+            '</div>'
+        );
+        infoWindow.open(map);
+        //map.setCenter(event.latLng);
+    });
+
+
+}
+
+/*
+//import
+
+
+//end import
 
 var searchInput = 'search_input';
 var map;
 var mark;
 var bogota;
 var json_api;
-var json_api_mun;
-
 var map_drawing;
 var infoWindow = new google.maps.InfoWindow();
 
@@ -171,30 +393,7 @@ function darwing(near_place) {
         { location: 'Arboleda', cod: '52', api: 'narino.json' },
         { location: 'Arenal', cod: '13', api: 'bolivar.json' },
         { location: 'Guaviare', cod: '95', api: 'guaviare.json' },
-
-
     ]
-
-    let mun = [
-        { location: 'Armenia', cod: '00', api: 'ARMENIA.json' },
-        { location: 'Barranquilla', cod: '00', api: 'BARRANQUILLA.json' },
-        { location: 'Bello', cod: '00', api: 'BELLO.json' },
-        { location: 'Bogotá', cod: '00', api: 'BOGOTA.json' },
-        { location: 'Bucaramanga', cod: '00', api: 'BUCARAMANGA.json' },
-        { location: 'Cali', cod: '00', api: 'CALI.json' },
-        { location: 'Cartagena', cod: '00', api: 'CARTAGENA.json' },
-        { location: 'Cúcuta', cod: '00', api: 'CUCUTA.json' },
-        { location: 'Envigado', cod: '00', api: 'ENVIGADO.json' },
-        { location: 'Floridablanca', cod: '00', api: 'FLORIDABLANCA.json' },
-        { location: 'Itagüí', cod: '00', api: 'ITAGUI.json' },
-        { location: 'Manizales', cod: '00', api: 'MANIZALES.json' },
-        { location: 'Medellín', cod: '00', api: 'MEDELLIN.json' },
-        { location: 'Pereira', cod: '00', api: 'PEREIRA.json' },
-        { location: 'Soledad', cod: '00', api: 'SOLEDAD.json' },
-    ]
-
-
-
     var resultado;
     var BreakException = {};
     try {
@@ -213,45 +412,10 @@ function darwing(near_place) {
     }
     json_api = resultado.api;
     draw(resultado)
-
-
-
-
-    let resultado_MUN
-    try {
-        for (let h = 0; h <= near_place.address_components.length; h++) {
-            resultado_MUN = mun.find(fruta => fruta.location === near_place.address_components[h].long_name);
-            if (resultado_MUN != undefined) {
-                break
-            }
-        }
-    } catch (error) {
-
-    }
-    json_api_mun = resultado_MUN.api;
-    draw_mun(resultado)
 }
 
 
 // dibujar mapa
-
-function draw_mun(data) {
-    try {
-
-
-        fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`, {
-                method: 'GET',
-
-            }).then($(car_api).show())
-            .then(response => response.json())
-            .then(data => map_drawing = map.data.addGeoJson(data))
-            .then(
-                $(car_api).hide()
-            );
-    } catch {}
-}
-
-
 function draw(data) {
 
 
@@ -365,3 +529,5 @@ const init = () => {
 
     idWatcher = navigator.geolocation.watchPosition(onActualizacionDeUbicacion, onErrorDeUbicacion, opcionesDeSolicitud);
 }
+
+*/
