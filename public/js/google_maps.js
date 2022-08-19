@@ -5,6 +5,7 @@
 
 var searchInput = 'search_input';
 var map;
+var map_;
 var mark;
 var bogota;
 var json_api;
@@ -32,11 +33,11 @@ google.maps.event.addDomListener(window, "load", function() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 4.570868, lng: -74.297333 },
         zoom: 5,
-        mapTypeControl: false,
+        mapTypeControl: true,
     });
 
 
-
+    map_ = map;
 
 
 
@@ -108,6 +109,96 @@ function clear_maps(feature) {
     //clear mark
 }
 
+var geojson;
+
+function draw_mun(data) {
+    fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`, {
+            method: 'GET',
+
+        }).then($(car_api).show())
+        .then(geojson = `https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`)
+        .then(map.data.loadGeoJson(geojson))
+
+    .then(
+        $(car_api).hide()
+    );
+
+    map.data.setStyle({
+        fillColor: 'white',
+        strokeColor: 'red',
+        clickable: true,
+        fillOpacity: 0.2,
+        strokeWeight: 1,
+        geodesic: true,
+
+    });
+
+    map.data.addListener('click', function(event) {
+        //$(event.feature.j.description).addClass('table table-striped ')
+        console.log(event.feature);
+        map.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1 });
+
+        infoWindow.setPosition(event.latLng);
+        infoWindow.setContent(
+            '<div class="text-center p-2" style="z-index: 99999">' +
+            '<img src="https://www.close-upinternational.com/img/logo.svg" alt="logo">' + '</br>' +
+            event.feature.h.description +
+            '</div>'
+        );
+        infoWindow.open(map);
+    });
+}
+
+
+function draw(data) {
+    try {
+        fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api} `, {
+                method: 'GET',
+
+            }).then($(car_api).show())
+            .then(response => response.json())
+            .then(data => map_drawing = map.data.addGeoJson(data))
+            .then(
+                $(car_api).hide()
+            );
+
+
+    } catch (error) {
+
+
+    }
+    map.data.setStyle({
+            icon: 'https://www.close-upinternational.com/img/logo.svg',
+            fillColor: 'green',
+            strokeColor: 'red',
+            clickable: true,
+            fillOpacity: 0.2,
+            strokeWeight: 1,
+            geodesic: true,
+            zIndex: Math.floor(2)
+        },
+
+    );
+
+
+
+
+    map.data.addListener('click', function(event) {
+        //$(event.feature.j.description).addClass('table table-striped ')
+        console.log(event.feature);
+        map.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1, zIndex: 1 });
+
+        infoWindow.setPosition(event.latLng);
+        infoWindow.setContent(
+            '<div class="text-center p-2" style="z-index: 99999">' +
+            '<img src="https://www.close-upinternational.com/img/logo.svg" alt="logo">' + '</br>' +
+            event.feature.h.description +
+            '</div>'
+        );
+        infoWindow.open(map);
+    });
+
+}
 //drawin maps
 function darwing(near_place) {
     //console.log(near_place);
@@ -230,8 +321,8 @@ function darwing(near_place) {
     }
     json_api_mun = resultado_MUN.api;
 
-    //draw_mun(resultado)
-    setTimeout(draw(resultado, resultado_MUN), 3000);
+    draw_mun(resultado_MUN)
+    draw(resultado)
 }
 
 
@@ -239,90 +330,6 @@ function darwing(near_place) {
 
 
 
-
-function draw(data, data_) {
-
-
-
-    try {
-
-
-        fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`, {
-                method: 'GET',
-
-            }).then($(car_api).show())
-            .then(response => response.json())
-            .then(data => map_drawing = map.data.addGeoJson(data))
-            .then(
-                $(car_api).hide()
-            );
-
-
-        fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api} `, {
-                method: 'GET',
-
-            }).then($(car_api).show())
-            .then(response => response.json())
-            .then(data => map_drawing = map.data.addGeoJson(data))
-            .then(
-                $(car_api).hide()
-            );
-
-
-    } catch (error) {
-        var data_geo;
-        fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api} `, {
-                method: 'GET',
-
-            }).then($(car_api).show())
-            .then(response => response.json())
-            .then(data => map_drawing = map.data.addGeoJson(data))
-            .then(
-                $(car_api).hide()
-            );
-
-
-    }
-    map.data.setStyle({
-            icon: 'https://www.close-upinternational.com/img/logo.svg',
-            fillColor: 'green',
-            strokeColor: 'red',
-            clickable: true,
-            fillOpacity: 0.2,
-            strokeWeight: 1,
-            geodesic: true,
-            zIndex: 1
-        },
-
-    );
-
-
-
-
-    map.data.addListener('click', function(event) {
-        //$(event.feature.j.description).addClass('table table-striped ')
-        console.log(event.feature);
-        map.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1, zIndex: -1 });
-
-        infoWindow.setPosition(event.latLng);
-        infoWindow.setContent(
-            '<div class="text-center p-2" style="z-index: 99999">' +
-            '<img src="https://www.close-upinternational.com/img/logo.svg" alt="logo">' + '</br>' +
-            event.feature.h.description +
-            '</div>'
-        );
-        infoWindow.open(map);
-    });
-
-}
-
-function draw_mun(data) {
-    try {
-
-
-
-    } catch {}
-}
 
 const init = () => {
     if (!"geolocation" in navigator) {

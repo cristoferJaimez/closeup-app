@@ -5,6 +5,14 @@ body {
     padding: 0;
 }
 
+#id_cap_mun {
+    z-index: 1;
+}
+
+#id_cap_utc {
+    z-index: 3;
+}
+
 #map {
     position: absolute;
     top: 0;
