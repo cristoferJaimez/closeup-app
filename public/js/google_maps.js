@@ -228,6 +228,7 @@ function darwing(near_place) {
         { location: 'Amazonas', cod: '91', api: 'amazonas.json' },
         { location: 'Arauca', cod: '81', api: 'arauca.json' },
         { location: 'Cundinamarca', cod: '25', api: 'cundinamarca.json' },
+        { location: 'Fusagasugá', cod: '25', api: 'cundinamarca.json' },
         { location: 'Boyacá', cod: '15', api: 'boyaca.json' },
         { location: 'Bolívar', cod: '13', api: 'bolivar.json' },
         { location: 'Santander', cod: '68', api: 'santander.json' },
@@ -289,22 +290,18 @@ function darwing(near_place) {
     var resultado;
     var BreakException = {};
     try {
-        for (let i = 0; i <= near_place.address_components.length; i++) {
-            console.log(near_place.address_components[i].long_name);
-            locations.forEach(e => {
-                if (e.location === near_place.address_components[i].long_name) {
-                    resultado = e;
-                }
-
-            })
-        } //console.log(resultado.api);
+        for (let h = 0; h <= near_place.address_components.length; h++) {
+            resultado = locations.find(fruta => fruta.location === near_place.address_components[h].long_name);
+            if (resultado != undefined) {
+                break
+            }
+        }
     } catch (error) {
 
 
     }
+    console.log(resultado);
     json_api = resultado.api;
-
-
 
 
 
@@ -319,7 +316,12 @@ function darwing(near_place) {
     } catch (error) {
 
     }
-    json_api_mun = resultado_MUN.api;
+    try {
+        json_api_mun = resultado_MUN.api;
+    } catch (error) {
+
+    }
+
 
     draw_mun(resultado_MUN)
     draw(resultado)
