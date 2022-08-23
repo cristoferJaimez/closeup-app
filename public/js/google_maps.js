@@ -112,22 +112,32 @@ function clear_maps(feature) {
 var geojson;
 
 function draw_mun(data) {
-    let coords = `https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`
+    fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`, {
+            method: 'GET',
 
-    // Creamos el poligono
-    var area = new google.maps.Polygon({
-        paths: coords,
-        strokeColor: '#FF0000',
-        strokeOpacity: 0.8,
-        strokeWeight: 3,
-        fillColor: '#FF0000',
-        fillOpacity: 0.35
+        }).then($(car_api).show())
+        .then(geojson = `https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`)
+        .then(map_.data.loadGeoJson(geojson))
+
+    .then(
+        $(car_api).hide()
+    );
+
+    map_.data.setStyle({
+        fillColor: 'white',
+        strokeColor: 'red',
+        clickable: true,
+        fillOpacity: 0.2,
+        strokeWeight: 1,
+        geodesic: true,
+        zIndex: 0,
+
     });
-    area.setMap(map)
-    map.data.addListener('click', function(event) {
+
+    map_.data.addListener('click', function(event) {
         //$(event.feature.j.description).addClass('table table-striped ')
         console.log(event.feature);
-        map.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1 });
+        //map_.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1, zIndex: -1 });
 
         infoWindow.setPosition(event.latLng);
         infoWindow.setContent(
@@ -177,7 +187,7 @@ function draw(data) {
     map.data.addListener('click', function(event) {
         //$(event.feature.j.description).addClass('table table-striped ')
         console.log(event.feature);
-        map.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1, zIndex: 1 });
+        //map.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1, zIndex: 1 });
 
         infoWindow.setPosition(event.latLng);
         infoWindow.setContent(
@@ -314,8 +324,9 @@ function darwing(near_place) {
     }
 
 
-    draw_mun(resultado_MUN)
+
     draw(resultado)
+    draw_mun(resultado_MUN)
 }
 
 
