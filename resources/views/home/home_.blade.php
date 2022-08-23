@@ -28,19 +28,15 @@
                             alt="logo" class="p-1 border   rounded-circle" />
                     </div>
                     <div class="card-body text-center">
-                        {{auth()->user()->description}}
                         @foreach ($proveedor as $pro)
-                            @if ($pro->id == auth()->user()->id)
+                            @if ($pro->id === auth()->user()->id)
                                 <span class="text-muted">
                                     <h4 class="">{{ $pro->description }}</h4>
                                 </span>
                                 <img class="img-fluid" src="{{ $pro->url }}" width="200px" />
                             @endif
                         @endforeach
-                        <p class="text-start">
-                            <br>
 
-                        </p>
                     </div>
                 </div>
             </div>
@@ -48,22 +44,55 @@
             <div class="col-md-8 col-sm-12 ">
 
 
+
                 @foreach ($posts as $post)
                     @if ($post->user_id === auth()->user()->id)
-                        <div class="card p-4">
-                            <div class="card-body">
-                                <h3>{{$post->title}}</h3>
-                                <a href=" {{$post->url}}">link</a>
+                        <div class=" card mb-3 ">
+                            <div class="card-header no-border">
+                                <h5 class="card-title">{{ $post->title }}</h5>
                             </div>
-                        </div>
-                    @else
+                            <div class="card-body pt-0">
+                                <div class="widget-49">
+                                    <div class="widget-49-title-wrapper">
 
+                                        @if ($post->title === 'Flash Farmacéutico')
+                                            <div class="widget-49-date-danger">
+                                                <span class="widget-49-date-day">
+                                                    <i class="fa-solid fa-bolt-lightning"></i>
+                                                @else
+                                                    <div class="widget-49-date-success">
+                                                        <span class="widget-49-date-day">
+                                                            <i class="fa-solid fa-prescription"></i>
+                                        @endif
+                                        </span>
+                                        <span class="widget-49-date-month"></span>
+                                    </div>
+
+
+                                    @if ($post->user_id === auth()->user()->id)
+                                        <div class="widget-49-meeting-info">
+                                            <span class="widget-49-pro-title">{{ $post->title }}</span>
+                                            <span class="widget-49-meeting-time">{{ $post->created_at }}</span>
+                                        </div>
+
+                                </div>
+                                <ol class="widget-49-meeting-points">
+                                    <!--<li class="widget-49-meeting-item"><span>descripcion</span></li>-->
+                                </ol>
+                                <div class="widget-49-meeting-action">
+                                    <a href="{{ $post->url }}" target="iframe" onclick="hide()"
+                                        class="btn btn-sm btn-flash-border-success">View All</a>
+                                </div>
                     @endif
-                @endforeach
+
             </div>
         </div>
     </div>
 
+
+
+@endif
+@endforeach
 </div>
 
 </div>
