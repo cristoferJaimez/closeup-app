@@ -45,7 +45,7 @@ class usersController extends Controller
         ->where('id' , $id)
         ->get();
 
-    $proveedor =  DB::select('CALL colombiadb.data_proveedor()');
+    $proveedor =  DB::select('CALL data_proveedor()');
 
     $type = typeReport::all();
     $category = Category::all();
