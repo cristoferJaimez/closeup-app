@@ -28,14 +28,12 @@
                             alt="logo" class="p-1 border   rounded-circle" />
                     </div>
                     <div class="card-body text-center">
-                        @foreach ($proveedor as $pro)
-                            @if ($pro->id === auth()->user()->id)
-                                <span class="text-muted">
-                                    <h4 class="">{{ $pro->description }}</h4>
-                                </span>
-                                <img class="img-fluid" src="{{ $pro->url }}" width="200px" />
+                        @foreach ($proveedor as $provee )
+                            @if ($provee->id === auth()->user()->id)
+                                <img src="{{$provee->url}}" alt="" width="200px">
                             @endif
                         @endforeach
+
 
                     </div>
                 </div>
