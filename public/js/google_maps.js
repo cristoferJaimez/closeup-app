@@ -5,7 +5,7 @@
 
 var searchInput = 'search_input';
 var map;
-var map_;
+var map_2;
 var mark;
 var bogota;
 var json_api;
@@ -35,9 +35,6 @@ google.maps.event.addDomListener(window, "load", function() {
         zoom: 5,
         mapTypeControl: true,
     });
-
-
-    map_ = map;
 
 
 
@@ -112,33 +109,41 @@ function clear_maps(feature) {
 var geojson;
 
 function draw_mun(data) {
-    fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`, {
-            method: 'GET',
+    var mun = new google.maps.Data({ map: map });
+    mun.loadGeoJson(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api}`);
 
-        }).then($(car_api).show())
-        .then(geojson = `https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`)
-        .then(map_.data.loadGeoJson(geojson))
 
-    .then(
-        $(car_api).hide()
-    );
+    var utc = new google.maps.Data({ map: map });
+    utc.loadGeoJson(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`);
 
-    map_.data.setStyle({
-        fillColor: 'white',
-        strokeColor: 'red',
-        clickable: true,
-        fillOpacity: 0.2,
+
+
+
+
+    utc.setStyle({
+        fillColor: 'green',
+        strokeColor: 'black',
         strokeWeight: 1,
-        geodesic: true,
-        zIndex: 0,
-
+        zIndex: 1
     });
 
-    map_.data.addListener('click', function(event) {
+    mun.setStyle({
+        fillColor: 'blue',
+        strokeColor: 'black',
+        strokeWeight: 1,
+        zIndex: 2
+    });
+
+
+
+
+
+
+    utc.addListener('click', function(event) {
         //$(event.feature.j.description).addClass('table table-striped ')
         console.log(event.feature);
         //map_.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1, zIndex: -1 });
-
+        //map.data.overlayLayer.appendChild(this.div)
         infoWindow.setPosition(event.latLng);
         infoWindow.setContent(
             '<div class="text-center p-2" style="z-index: 99999">' +
@@ -148,47 +153,14 @@ function draw_mun(data) {
         );
         infoWindow.open(map);
     });
-}
-
-
-function draw(data) {
-    try {
-        fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api} `, {
-                method: 'GET',
-
-            }).then($(car_api).show())
-            .then(response => response.json())
-            .then(data => map_drawing = map.data.addGeoJson(data))
-            .then(
-                $(car_api).hide()
-            );
-
-
-    } catch (error) {
-
-
-    }
-    map.data.setStyle({
-            icon: 'https://www.close-upinternational.com/img/logo.svg',
-            fillColor: 'green',
-            strokeColor: 'red',
-            clickable: true,
-            fillOpacity: 0.2,
-            strokeWeight: 1,
-            geodesic: true,
-            zIndex: Math.floor(2)
-        },
-
-    );
 
 
 
-
-    map.data.addListener('click', function(event) {
+    mun.addListener('click', function(event) {
         //$(event.feature.j.description).addClass('table table-striped ')
         console.log(event.feature);
-        //map.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1, zIndex: 1 });
-
+        //map_.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1, zIndex: -1 });
+        //map.data.overlayLayer.appendChild(this.div)
         infoWindow.setPosition(event.latLng);
         infoWindow.setContent(
             '<div class="text-center p-2" style="z-index: 99999">' +
@@ -199,7 +171,11 @@ function draw(data) {
         infoWindow.open(map);
     });
 
+
 }
+
+
+
 //drawin maps
 function darwing(near_place) {
     //console.log(near_place);
@@ -325,7 +301,7 @@ function darwing(near_place) {
 
 
 
-    draw(resultado)
+    //draw(resultado)
     draw_mun(resultado_MUN)
 }
 
