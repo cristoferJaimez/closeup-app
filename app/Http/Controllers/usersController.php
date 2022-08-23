@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Rol;
 use App\Models\Category;
 use App\Models\typeReport;
+use App\Models\Providers;
+
 use App\Models\Post;
 
 class usersController extends Controller
@@ -45,6 +47,7 @@ class usersController extends Controller
         ->where('id' , $id)
         ->get();
 
+    //$proveedor =  DB::select('CALL data_proveedor()');
     $proveedor =  DB::select('CALL data_proveedor()');
 
     $type = typeReport::all();
@@ -75,8 +78,9 @@ class usersController extends Controller
     public function index_home()
     {
     $user = $this->user->index();
-    //
+
     $proveedor =  DB::select('CALL data_proveedor()');
+
 
     $rols = Rol::all();
     $posts = Post::all();

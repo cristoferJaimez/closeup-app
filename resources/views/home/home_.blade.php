@@ -29,12 +29,8 @@
                     </div>
                     <div class="card-body text-center">
                         @foreach ($proveedor as $provee )
-                            @if ($provee->id === auth()->user()->id)
-                                <img src="{{$provee->url}}" alt="" width="200px">
-                            @endif
+                            {{$provee->id}}
                         @endforeach
-
-
                     </div>
                 </div>
             </div>
