@@ -53,7 +53,7 @@
                         <div class="card p-4">
                             <div class="card-body">
                                 <h3>{{$post->title}}</h3>
-                                <a href=" {{$post->title}}">link</a>
+                                <a href=" {{$post->url}}">link</a>
                             </div>
                         </div>
                     @else
