@@ -29,8 +29,13 @@
                     </div>
                     <div class="card-body text-center">
                         @foreach ($proveedor as $provee )
-                            {{$provee->id}}
+                            @if ($provee->id === auth()->user()->id)
+                            <h4>{{$provee->description}}</h4>
+                                <img src="{{$provee->url}}" alt="" width="200px">
+                            @endif
                         @endforeach
+
+
                     </div>
                 </div>
             </div>
