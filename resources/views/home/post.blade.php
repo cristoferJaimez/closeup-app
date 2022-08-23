@@ -3,7 +3,7 @@
     @include('home.navbar')
     @include('home.navbutton')
 
-
+    @if (auth()->user()->id === 1)
         <div class="container mt-5  ">
             <div class="row mt-2 mb-5 m-2 ">
 
@@ -98,5 +98,7 @@
             </div>
 
         </div>
-
+    @else
+        sin permisos
+    @endif
 @endsection
