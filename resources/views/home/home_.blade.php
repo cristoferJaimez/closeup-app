@@ -55,34 +55,49 @@
                                     <div class="widget-49-title-wrapper">
 
                                         @if ($post->title === 'Flash Farmacéutico')
-                                            <div class="widget-49-date-danger">
-                                                <span class="widget-49-date-day">
-                                                    <i class="fa-solid fa-bolt-lightning"></i>
-                                                @else
+                                                    <div class="widget-49-date-danger">
+                                                        <span class="widget-49-date-day text-danger">
+                                                            <i class="fa-solid fa-bolt-lightning"></i>
+                                                        </span>
+                                                            <div>
+                                        @elseif($post->title === 'Transferencia de Valores')
                                                     <div class="widget-49-date-success">
-                                                        <span class="widget-49-date-day">
+                                                        <span class="widget-49-date-day text-success">
+                                                            <i class="fa-solid fa-dollar-sign" class="text-success"></i>
+                                                        </span>
+                                                            <div>
+                                        @elseif($post->title === 'Informe Prescripciones')
+                                                    <div class="widget-49-date-success">
+                                                        <span class="widget-49-date-day text-info">
                                                             <i class="fa-solid fa-prescription"></i>
+                                                        </span>
+                                                    <div>
                                         @endif
-                                        </span>
-                                        <span class="widget-49-date-month"></span>
+
+                                        @if ($post->user_id === auth()->user()->id)
+                                        <div class="widget-49-meeting-info">
+                                            <span class="widget-49-pro-title">{{ $post->title }}</span>
+                                            <span class="widget-49-meeting-time"></span>
+                                            <p></p>
+                                        <span class="widget-49-date-month">{{ $post->created_at }}</span>
+
+                                        </div>
+
+                                        </div>
+                                        <ol class="widget-49-meeting-points">
+                                            <!--<li class="widget-49-meeting-item"><span>descripcion</span></li>-->
+                                        </ol>
+                                        <div class="widget-49-meeting-action ">
+                                            <a href="{{ $post->url }}" target="iframe" onclick="hide()"
+                                                class="btn btn-sm btn-flash-border-success bg-success text-white"><i>View All...</i></a>
+                                        </div>
+                            @endif
+
+                                    </span>
+                                    <span class="widget-49-date-month"></span>
                                     </div>
 
 
-                                    @if ($post->user_id === auth()->user()->id)
-                                        <div class="widget-49-meeting-info">
-                                            <span class="widget-49-pro-title">{{ $post->title }}</span>
-                                            <span class="widget-49-meeting-time">{{ $post->created_at }}</span>
-                                        </div>
-
-                                </div>
-                                <ol class="widget-49-meeting-points">
-                                    <!--<li class="widget-49-meeting-item"><span>descripcion</span></li>-->
-                                </ol>
-                                <div class="widget-49-meeting-action">
-                                    <a href="{{ $post->url }}" target="iframe" onclick="hide()"
-                                        class="btn btn-sm btn-flash-border-success">View All</a>
-                                </div>
-                    @endif
 
             </div>
         </div>
