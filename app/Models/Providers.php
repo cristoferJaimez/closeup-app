@@ -21,6 +21,6 @@ class Providers extends Model
     ];
 
     public function show(){
-        return Providers::all();
+        return Pharma::all();
     }
 }

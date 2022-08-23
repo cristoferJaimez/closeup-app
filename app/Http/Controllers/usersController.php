@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Rol;
 use App\Models\Category;
 use App\Models\typeReport;
-use App\Models\Providers;
+use App\Models\providers;
 
 use App\Models\Post;
 
@@ -48,8 +48,7 @@ class usersController extends Controller
         ->get();
 
     //$proveedor =  DB::select('CALL data_proveedor()');
-    $proveedor =  DB::select('CALL data_proveedor()');
-
+    $proveedor = Providers::all();
     $type = typeReport::all();
     $category = Category::all();
 
