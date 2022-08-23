@@ -112,27 +112,18 @@ function clear_maps(feature) {
 var geojson;
 
 function draw_mun(data) {
-    fetch(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`, {
-            method: 'GET',
+    let coords = `https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`
 
-        }).then($(car_api).show())
-        .then(geojson = `https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`)
-        .then(map.data.loadGeoJson(geojson))
-
-    .then(
-        $(car_api).hide()
-    );
-
-    map.data.setStyle({
-        fillColor: 'white',
-        strokeColor: 'red',
-        clickable: true,
-        fillOpacity: 0.2,
-        strokeWeight: 1,
-        geodesic: true,
-
+    // Creamos el poligono
+    var area = new google.maps.Polygon({
+        paths: coords,
+        strokeColor: '#FF0000',
+        strokeOpacity: 0.8,
+        strokeWeight: 3,
+        fillColor: '#FF0000',
+        fillOpacity: 0.35
     });
-
+    area.setMap(map)
     map.data.addListener('click', function(event) {
         //$(event.feature.j.description).addClass('table table-striped ')
         console.log(event.feature);
