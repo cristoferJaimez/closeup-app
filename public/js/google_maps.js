@@ -10,6 +10,7 @@ var mark;
 var bogota;
 var json_api;
 var json_api_mun;
+var mun, utc;
 
 var map_drawing;
 var infoWindow = new google.maps.InfoWindow();
@@ -22,7 +23,7 @@ let text_ = document.querySelector('.search_input');
 $(text_).on('click', () => {
     $(text_).val('');
     clear_maps("v");
-    mark.setMap(null)
+   // mark.setMap(null)
     if (infoWindow) infoWindow.close();
 
 })
@@ -44,13 +45,17 @@ google.maps.event.addDomListener(window, "load", function() {
     });
 
     var place = autocomplete.getPlace();
-
+    
 
 
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
         var near_place = autocomplete.getPlace();
 
-
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 4.570868, lng: -74.297333 },
+            zoom: 5,
+            mapTypeControl: true,
+        });
 
 
         darwing(near_place)
@@ -109,11 +114,13 @@ function clear_maps(feature) {
 var geojson;
 
 function draw_mun(data) {
-    var mun = new google.maps.Data({ map: map });
+   console.log(map);
+
+    mun = new google.maps.Data({ map: map });
     mun.loadGeoJson(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/${json_api}`);
 
 
-    var utc = new google.maps.Data({ map: map });
+    utc = new google.maps.Data({ map: map });
     utc.loadGeoJson(`https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/MUN/${json_api_mun}`);
 
 
@@ -122,15 +129,15 @@ function draw_mun(data) {
 
     utc.setStyle({
         fillColor: 'green',
-        strokeColor: 'black',
-        strokeWeight: 1,
+        strokeColor: 'green',
+        strokeWeight: 0.5,
         zIndex: 1
     });
 
     mun.setStyle({
         fillColor: 'blue',
-        strokeColor: 'black',
-        strokeWeight: 1,
+        strokeColor: 'blue',
+        strokeWeight: 0.5,
         zIndex: 2
     });
 
@@ -141,7 +148,7 @@ function draw_mun(data) {
 
     utc.addListener('click', function(event) {
         //$(event.feature.j.description).addClass('table table-striped ')
-        console.log(event.feature);
+        //console.log(event.feature);
         //map_.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1, zIndex: -1 });
         //map.data.overlayLayer.appendChild(this.div)
         infoWindow.setPosition(event.latLng);
@@ -158,7 +165,7 @@ function draw_mun(data) {
 
     mun.addListener('click', function(event) {
         //$(event.feature.j.description).addClass('table table-striped ')
-        console.log(event.feature);
+        //console.log(event.feature);
         //map_.data.overrideStyle(event.feature, { fillColor: 'white', strokeColor: 'blue', strokeWeight: 1, zIndex: -1 });
         //map.data.overlayLayer.appendChild(this.div)
         infoWindow.setPosition(event.latLng);
@@ -179,6 +186,7 @@ function draw_mun(data) {
 //drawin maps
 function darwing(near_place) {
     //console.log(near_place);
+   
     clear_maps(near_place)
     let locations = [
         { location: 'Atlántico', cod: '08', api: 'barranquilla.json' },
@@ -303,6 +311,13 @@ function darwing(near_place) {
 
     //draw(resultado)
     draw_mun(resultado_MUN)
+
+
+}
+
+function hiddenLayer(){
+   
+
 }
 
 
