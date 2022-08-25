@@ -51,8 +51,8 @@
     <script src="{{ asset('js/create_list.js') }}"></script>
     <script src="{{ asset('js/pagination.js') }}"></script>
 
-    <script src="{{ asset('assets/maps.geojson') }}"></script>
-
+    <!--<script src="{{ asset('assets/maps.geojson') }}"></script>
+    -->
 
 
 
