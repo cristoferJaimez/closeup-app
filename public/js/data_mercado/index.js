@@ -7,3 +7,13 @@ function show_datos_mercado(event) {
     });
 
 }
+
+function closeGF() {
+    let gf = document.querySelector("#card_gf");
+    $(gf).addClass("d-none", 1000, "easeInBack");
+}
+
+function btn_gf() {
+    let gf = document.querySelector("#card_gf");
+    $(gf).removeClass("d-none", 1000, "easeInBack");
+}
