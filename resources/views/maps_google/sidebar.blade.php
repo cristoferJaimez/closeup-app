@@ -163,7 +163,7 @@
                         <p><i>{{ auth()->user()->name }}</i></p>
                     </div>
                     <ul class="dl-menu hide-dl-submenu">
-                        <li class="submenu ">
+                        <li class="submenu "  style="font-size: 0.9em">
                             <h6><a class="text-left fs-5 text-info" style="cursor: pointer"><i
                                         class="fa-solid fa-circle-info"></i> GEO<i class="fa-solid fa-globe"></i>UTC</a>
                             </h6>

@@ -17,3 +17,11 @@ function btn_gf() {
     let gf = document.querySelector("#card_gf");
     $(gf).removeClass("d-none", 1000, "easeInBack");
 }
+
+
+
+
+// dibujar mapa de empresa
+function drawingMap(utc, lat, lgn) {
+    console.log(utc);
+}

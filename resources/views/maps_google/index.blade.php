@@ -34,15 +34,26 @@
                 <div class="btn-group mt-3 position-absolute top-0 start-50 translate-middle-x col-6 " role="group"
                     aria-label="Basic checkbox toggle button group">
 
+
                     <input type="search" class="form-control form-control-md search_input col-12" id="search_input"
                         class="" autofocus />
 
+                        @if(auth()->user()->fk_rol === 1)
+                        <button class="btn  btn-success" style="margin-left: 10px"   style=" border: 1px solid #ffffff;padding: 7px;-moz-border-radius: 3px;-webkit-border-radius: 3px;" >
+                            <i class="fa-solid fa-home " onclick="drawingMap()"></i>
+                        </button>
+                        @endif
+
+                        <button class="btn  btn-primary" style="margin-left: 10px"   style=" border: 1px solid #ffffff;padding: 7px;-moz-border-radius: 3px;-webkit-border-radius: 3px;" >
+                            <i class="fa-solid fa-print " onclick="print()"></i>
+                        </button>
+
                     <i class="fa-solid fa-map-pin  btn-warning m-2 d-none" onclick="init()"></i>
-                    <i class="fa-solid fa-print btn  btn-primary m-2" onclick="print()"></i>
+
 
                     <form action="{{ url('logout') }}" style="display: inline; " method="POST">
                         @csrf
-                        <button class="btn btn-danger mt-2" type="submit"> <i
+                        <button class="btn btn-danger" type="submit" style="margin-left: 10px; height: 100%;"> <i
                                 class="fa-solid fa-arrow-right-from-bracket"></i></button>
                     </form>
 
@@ -86,12 +97,26 @@
                                                 <th>
                                                    <button class="btn btn-sm btn-outline-success " id="btn_dw"> <i class="fa-solid fa-file-arrow-down"></i></button>
                                                 </th>
+                                                <th>
+                                                    <button class="btn btn-sm btn-outline-secondary" id="btn_dw">
+                                                        <i class="fa-solid fa-layer-group"></i>
+                                                    </button>
+                                                </th>
+
+                                                <th>
+                                                    <button class="btn btn-sm btn-outline-secondary" id="btn_dw">
+
+                                                        <i class="fa-solid fa-location-dot"></i>
+                                                    </button>
+                                                </th>
                                             </tr>
                                             <tr>
                                                 <th style="font-size: 0.7em" colspan="2"
                                                     class="table-active text-center bg-danger text-white">PROPIA</th>
                                                     <th style="font-size: 0.7em" colspan="2"
                                                     class="table-active text-center bg-info text-white">UTC</th>
+
+
                                             </tr>
 
                                         </thead>
