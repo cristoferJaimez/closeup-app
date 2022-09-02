@@ -25,3 +25,18 @@ function btn_gf() {
 function drawingMap(utc, lat, lgn) {
     console.log(utc);
 }
+
+
+
+//cargar tablero csv
+function load_csv() {
+    csv = document.querySelector("#csv_file")
+    console.log("btn_load");
+    $(csv).removeClass("d-none");
+
+}
+
+function closeCSV() {
+    let csv = document.querySelector("#csv_file");
+    $(csv).addClass("d-none");
+}

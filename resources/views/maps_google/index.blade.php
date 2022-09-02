@@ -37,12 +37,22 @@
 
                     <input type="search" class="form-control form-control-md search_input col-12" id="search_input"
                         class="" autofocus />
+                        @if(auth()->user()->fk_rol === 1)
+
+                        <button class="btn  btn-secondary" style="margin-left: 10px"   style=" border: 1px solid #ffffff;padding: 7px;-moz-border-radius: 3px;-webkit-border-radius: 3px;" >
+                            <i class="fa-solid fa-plus " onclick="load_csv()"></i>
+                        </button>
+                        @endif
 
                         @if(auth()->user()->fk_rol === 1)
+
                         <button class="btn  btn-success" style="margin-left: 10px"   style=" border: 1px solid #ffffff;padding: 7px;-moz-border-radius: 3px;-webkit-border-radius: 3px;" >
                             <i class="fa-solid fa-home " onclick="drawingMap()"></i>
                         </button>
                         @endif
+
+
+
 
                         <button class="btn  btn-primary" style="margin-left: 10px"   style=" border: 1px solid #ffffff;padding: 7px;-moz-border-radius: 3px;-webkit-border-radius: 3px;" >
                             <i class="fa-solid fa-print " onclick="print()"></i>
@@ -75,6 +85,30 @@
                     </div>
                     </div>
                 </div>
+
+
+
+                <!--load file csv-->
+                <div class="position-absolute top-50 start-50 translate-middle  d-none" id="csv_file">
+
+                  <div class="card p-3">
+                    <a id="responsive-menu-button2 btn"  class="btn btn-sm btn-danger float-start" onclick="closeCSV()" style="width: 7%">
+                        &times;
+                    </a>
+
+                    <div class="input-group mt-3">
+                        <input type="file" class="form-control" >
+                        <button class="btn btn-success">Upload</button>
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+                <!--end-->
+
+
 
                 @if(auth()->user()->fk_rol === 1)
                 <div class="position-absolute top-50 end-0 translate-middle-y">
