@@ -45,6 +45,11 @@
       @endif
 
 
+      @if(auth()->user()->fk_rol === 7)
+      <script>
+        window.location.href = "{{ route('mapas_google')}}";
+      </script>
+
       @if(auth()->user()->fk_rol === 8)
       <script>
         window.location.href = "{{ route('mapas_google')}}";

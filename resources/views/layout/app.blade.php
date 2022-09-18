@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-
+    <link rel="stylesheet"  href="{{ asset('css/nav/navbar.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/maps.css') }}">
 
@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="{{ asset('css/rangeV.css') }}">
 
     <script src="{{ asset('js/app.js') }}"></script>
-
+    <script src="{{ asset('js/data_mercado/btn.js') }}"></script>
+   
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
