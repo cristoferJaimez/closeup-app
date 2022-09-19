@@ -7,6 +7,7 @@ use App\Http\Controllers\postController;
 use App\Http\Controllers\UtcMapsController;
 use App\Http\Controllers\pharmaController;
 use App\Http\Controllers\ExelController;
+use App\Http\Controllers\CalculosController;
 
 
 
@@ -104,3 +105,9 @@ Route::controller(ExelController::class)->group(function(){
     Route::get('excel-export', 'export')->name('excel.export');
     //Route::post('users-import', 'import')->name('users.import');
 });
+
+
+
+/////////////////////calculos de mercado rutas///////////////////////////////
+Route::post('maps_google',[CalculosController::class, 'topValor'])->name('maps_google_calculo')->middleware('auth');
+//Route::get('maps_google',[CalculosController::class, 'topValor'])->name('maps_google')->middleware('auth');

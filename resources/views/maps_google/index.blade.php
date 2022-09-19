@@ -51,43 +51,51 @@
 
 
                 <div class="container-fluid">
-                    <center>
-                        <div class="col-8 mt-2">
-                            <input type="search"  class="form-control form-control-sm" id="search_input"
-                                class="" autofocus />
-                        </div>
-                    </center>
+                    @if (auth()->user()->fk_rol == 1 || auth()->user()->fk_rol != 3)
+                        <center>
+                            <div class="col-8 mt-2">
+                                <input type="search" class="form-control form-control-sm" id="search_input" class=""
+                                    autofocus />
+                            </div>
+                        </center>
+                    @endif
                     <div class="contenedor">
                         <div class="div_map">
-                                @include('maps_google.sidebar')
-                            
+                            @include('maps_google.sidebar')
+
                         </div>
                     </div>
-
+                    @if (auth()->user()->fk_rol == 1 || auth()->user()->fk_rol == 3)
+                        <!--tarjeta inferiro-->
+                        <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4">
+                            @include('maps_google.folder_chart.info_btn')
+                        </div>
+                    @endif
 
                 </div>
                 @if (auth()->user()->fk_rol == 1 || auth()->user()->fk_rol == 3)
-                <!-- chart mercados mapas -->
-                <div class="position-absolute top-50 start-0 translate-middle-y">
-                    @include('maps_google.folder_chart.char')
-                </div>
+                    <!-- chart mercados mapas -->
+                    <div class="position-absolute top-50 start-0 translate-middle-y">
+                        @include('maps_google.folder_chart.char')
+                    </div>
 
-                <div class="position-absolute top-50 end-0 translate-middle-y" style="width: 15em;">
-                    @include('maps_google.folder_chart.info')
-                </div>
+                    <div class="position-absolute top-50 end-0 translate-middle-y" style="width: 15em;">
+                        @include('maps_google.folder_chart.info')
+                    </div>
 
-                <!--grafico-->
-                <div class="position-absolute top-50 start-50 translate-middle  d-none" id="card_gf"
-                    style="width: 100%; height: 100%;">
-                    <div class="card " style="z-index: 99999">
-                        <div class="card-body">
-                            <a id="responsive-menu-button2 btn" class="btn btn-sm btn-danger float-end" onclick="closeGF()">
-                                &times;
-                            </a>
+                    <!--grafico-->
+                    <div class="position-absolute top-50 start-50 translate-middle  d-none" id="card_gf"
+                        style="width: 100%; height: 100%;">
+                        <div class="card " style="z-index: 99999">
+                            <div class="card-body">
+                                <a id="responsive-menu-button2 btn" class="btn btn-sm btn-danger float-end"
+                                    onclick="closeGF()">
+                                    &times;
+                                </a>
 
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endif
 
 

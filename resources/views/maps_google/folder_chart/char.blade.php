@@ -6,7 +6,7 @@
         background: rgb(211, 69, 69);
         color: #fff;
     }
-    
+
 </style>
 
 <!--msm-loading-->
@@ -21,13 +21,13 @@
 <div class="card rounded m-2">
     <div class="btn-toolbar m-1" role="toolbar" aria-label="Toolbar with button groups">
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary" onclick="drawing_col()"><i class="fa-solid fa-earth-americas"></i></i></button>
-        <button type="button" class="btn btn-secondary" > <i class="fa-solid fa-layer-group"></i></button>
-        <button type="button" class="btn btn-secondary"  onclick="btn_gf()">   <i class="fa-solid fa-chart-simple"></i></button>
-       
+        <button type="button" class="btn btn-secondary" disabled onclick="drawing_col()"><i class="fa-solid fa-earth-americas"></i></i></button>
+        <button type="button" class="btn btn-secondary" disabled > <i class="fa-solid fa-layer-group"></i></button>
+        <button type="button" class="btn btn-secondary"  disabled  onclick="btn_gf()">   <i class="fa-solid fa-chart-simple"></i></button>
+
         </div>
         <div class="btn-group mr-2"  role="group" aria-label="Third group">
-            <button type="button" class="btn btn-secondary" onclick="home(11001011641)"><i class="fa-solid fa-home"></i></button>          
+            <button type="button" class="btn btn-secondary" onclick="home(11001011641)"><i class="fa-solid fa-home"></i></button>
         </div>
     </div>
 
@@ -51,7 +51,7 @@
                 <tr>
                     <th colspan="4" class="text-center bg-secondary" style="color: #fff">TOTAL</th>
                 </tr>
-                
+
                 <tr>
                     <th>TOP</th>
                     <th>PESOS</th>
@@ -90,7 +90,7 @@
                 </tr>
             </tbody>
         </table>
-  
+
 </div>
 
 
