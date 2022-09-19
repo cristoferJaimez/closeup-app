@@ -13,7 +13,7 @@
 
         <span class="text-success text-center" >
           <table class="table table-striped" >
-            <thead>
+            <thead class="text-center">
                 <th colspan="2">
                     Total Mercado
                 </th>
