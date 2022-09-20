@@ -109,5 +109,10 @@ Route::controller(ExelController::class)->group(function(){
 
 
 /////////////////////calculos de mercado rutas///////////////////////////////
-Route::post('maps_google',[CalculosController::class, 'topValor'])->name('maps_google_calculo')->middleware('auth');
-//Route::get('maps_google',[CalculosController::class, 'topValor'])->name('maps_google')->middleware('auth');
+//Route::post('maps_google',[CalculosController::class, 'topValor'])->name('maps_google_calculo')->middleware('auth');
+//Route::post('maps_google',[CalculosController::class, 'topProductos'])->name('maps_google_top_prod')->middleware('auth');
+
+Route::controller(CalculosController::class)->group(function(){
+    Route::post('info_btn', 'topValor')->middleware('auth');
+    Route::post('char','topProductos')->middleware('auth');
+});

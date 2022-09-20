@@ -4,6 +4,8 @@ var arr_back_utc = [];
 var map_ = false;
 var click = 0;
 
+
+
 function show_datos_mercado(event) {
     let tbl = document.querySelector(".tbl_info");
 
@@ -248,7 +250,7 @@ function calculo() {
 
 
     $.ajax({
-        url: "maps_google",
+        url: "info_btn",
         type: 'POST',
         data: {
             "arr_utc": document.getElementById('arr_utc').value,
@@ -262,4 +264,137 @@ function calculo() {
             console.log(err);
         }
     });
+
+
+}
+
+
+//selects
+
+const select_1 = document.querySelector('.select_1');
+
+
+select_1.addEventListener('change', (e) => {
+
+    const table = $("#table");
+    /*
+    $(document).ready(function() {
+        $('table').DataTable();
+    });
+*/
+    document.getElementById('table').innerHTML = ""
+    document.getElementById('inf_db').textContent = "Loading..."
+        //console.log(event.target.value);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+
+    if (event.target.value === "1") {
+        $.ajax({
+            url: "char",
+            type: 'POST',
+            data: {
+                "arr_utc": document.getElementById('arr_utc').value,
+                "select": event.target.value,
+            },
+            success: function(response) {
+
+
+                $.each(response, (index, value) => {
+                    const row = $(document.createElement("tr"));
+                    const secRow = $(document.createElement("tr"));
+
+
+                    for (let prop in value) {
+                        if (index === 0) {
+                            const cellHead = $(document.createElement("th"));
+                            cellHead.text(prop);
+                            secRow.append(cellHead);
+                            table.append(secRow);
+                        }
+                        const cell = $(document.createElement("td"));
+                        if (typeof value[prop] === "number") {
+                            if (prop === "TOTAL_UNIDADES") {
+                                cell.text(value[prop].toLocaleString("es"));
+                            } else {
+                                cell.text("$ " + value[prop].toLocaleString("es"));
+                            }
+                        } else {
+                            cell.text(value[prop]);
+                        }
+                        row.append(cell);
+
+                    }
+
+                    table.append(row);
+                });
+
+                document.getElementById('inf_db').textContent = ""
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    } else {
+        $.ajax({
+            url: "char",
+            type: 'POST',
+            data: {
+                "arr_utc": document.getElementById('arr_utc').value,
+                "select": event.target.value,
+            },
+            success: function(response) {
+
+                $.each(response, (index, value) => {
+
+                    const row = $(document.createElement("tr"));
+                    const secRow = $(document.createElement("tr"));
+
+                    for (let prop in value) {
+                        console.log(prop);
+                        if (index === 0) {
+                            const cellHead = $(document.createElement("th"));
+                            cellHead.text(prop);
+                            secRow.append(cellHead);
+                            table.append(secRow);
+                        }
+
+                        const cell = $(document.createElement("td"));
+                        if (prop === "DESC_FAB") {
+                            cell.text(index + "- " + value[prop]);
+                        }
+                        if (typeof value[prop] === "number") {
+                            if (prop === "TOTAL_UNIDADES") {
+                                cell.text(value[prop].toLocaleString("es"));
+                            } else {
+                                cell.text("$ " + value[prop].toLocaleString("es"));
+                            }
+                        } else {
+                            cell.text(value[prop]);
+                        }
+                        row.append(cell);
+
+                    }
+
+                    table.append(row);
+                });
+
+                document.getElementById('inf_db').textContent = ""
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        });
+    }
+
+
+
+});
+
+
+function clean_table() {
+    document.getElementById('table').innerHTML = ""
 }

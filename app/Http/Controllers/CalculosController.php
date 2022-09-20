@@ -39,4 +39,40 @@ class CalculosController extends Controller
 
 
     }
+    //top 10 productos
+    public function topProductos(Request $request){
+
+
+        $arr_prod = [];
+        $arr_lab = [];
+        $arr_mole = [];
+
+        $explode_id = array_map('intval', explode(',', $request->arr_utc));
+        //realizar laconsulta segun datos
+        $numero = count($explode_id);
+
+        if($request->select === "1"){
+            for ($i=0; $i < $numero ; $i++) {
+                $res =  DB::select('CALL dev_powerbi.top_productos(?)', [$explode_id[$i]]);
+              $arr_prod =  array_merge($arr_prod, $res);
+           }
+           array_multisort(array_column($arr_prod, 'TOTAL_VALORES'), SORT_DESC, $arr_prod);
+           return $arr_prod;
+
+        }else if($request->select === "2"){
+            for ($i=0; $i < $numero ; $i++) {
+                $res =  DB::select('CALL dev_powerbi.top_labs(?)', [$explode_id[$i]]);
+             $arr_lab =  array_merge($arr_lab, $res);
+           }
+
+           array_multisort(array_column($arr_lab, 'TOTAL_VALORES'), SORT_DESC, $arr_lab);
+           return  $arr_lab;
+        }else if($request->select === "3"){
+
+        }
+
+    }
+
+
 }
+

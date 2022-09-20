@@ -30,7 +30,9 @@
 
 
       @if(auth()->user()->fk_rol === 3)
-      @include('home.home_')
+      <script>
+        window.location.href = "{{ route('mapas_google')}}";
+      </script>
       @endif
 
 
@@ -51,7 +53,7 @@
       </script>
        @endif
 
-       
+
       @if(auth()->user()->fk_rol === 8)
       <script>
         window.location.href = "{{ route('mapas_google')}}";
