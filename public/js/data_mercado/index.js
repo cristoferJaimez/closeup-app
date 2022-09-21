@@ -258,6 +258,9 @@ function calculo() {
         success: function(response) {
             console.log(response);
             document.getElementById('total_valor').textContent = "$ " + response.total_valores.toLocaleString("es");
+            document.getElementById('total_unidad').textContent =  response.total_unidades;
+            document.getElementById('total').textContent = Math.trunc(response.total_valores / response.total_unidades);
+    
             //console.log(response);
         },
         error: function(err) {
@@ -317,10 +320,11 @@ select_1.addEventListener('change', (e) => {
                         }
                         const cell = $(document.createElement("td"));
                         if (typeof value[prop] === "number") {
-                            if (prop === "TOTAL_UNIDADES") {
+                            if (prop === "UND") {
                                 cell.text(value[prop].toLocaleString("es"));
                             } else {
-                                cell.text("$ " + value[prop].toLocaleString("es"));
+                                let va =  Math.trunc(value[prop])
+                                cell.text("$ " + va.toLocaleString("es"));
                             }
                         } else {
                             cell.text(value[prop]);
@@ -363,14 +367,15 @@ select_1.addEventListener('change', (e) => {
                         }
 
                         const cell = $(document.createElement("td"));
-                        if (prop === "DESC_FAB") {
+                        if (prop === "FAB") {
                             cell.text(index + "- " + value[prop]);
                         }
                         if (typeof value[prop] === "number") {
-                            if (prop === "TOTAL_UNIDADES") {
+                            if (prop === "UND") {
                                 cell.text(value[prop].toLocaleString("es"));
                             } else {
-                                cell.text("$ " + value[prop].toLocaleString("es"));
+                                let va =  Math.trunc(value[prop])
+                                cell.text("$ " + va.toLocaleString("es"));
                             }
                         } else {
                             cell.text(value[prop]);

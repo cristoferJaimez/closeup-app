@@ -20,7 +20,9 @@
         }
 
         table {
-            border: none
+            border: none;
+            border-bottom: rgb(235, 82, 82) 1px solid;
+            
         }
 
         #card_gf {

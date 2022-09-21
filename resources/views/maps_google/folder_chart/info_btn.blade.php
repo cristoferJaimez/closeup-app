@@ -17,10 +17,18 @@
                 <th colspan="2">
                     Total Mercado
                 </th>
+                <th colspan="2">
+                    Total Unidades
+                </th>
+                <th colspan="2">
+                    Venta Promedio
+                </th>
             </thead>
-            <tbody class="text-center" style="font-size: 1.5em">
+            <tbody class="text-center" style="font-size: 0.9em">
             <tr>
-                <td colspan="2" > <div id="total_valor">$ 0,00</div> </td>
+                <td colspan="2" > <div id="total_valor">$ 0,00</div> </td>          
+                <td colspan="2"><div id="total_unidad"> 0 </div></td>
+                <td colspan="2"><div id="total"> 0 </div></td>
             </tr>
             </tbody>
           </table>

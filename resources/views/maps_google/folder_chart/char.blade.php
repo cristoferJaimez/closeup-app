@@ -17,8 +17,8 @@
 
 
 
-<div class="card rounded m-2">
-    <div class="btn-toolbar m-1" role="toolbar" aria-label="Toolbar with button groups">
+<div class="card rounded">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-secondary" disabled onclick="drawing_col()"><i
                     class="fa-solid fa-earth-americas"></i></i></button>
@@ -51,7 +51,7 @@
 
         <div class="card p-2 scroll table-responsive-lg" style=" overflow-x: hidden;">
             <span id="inf_db"></span>
-            <table id="table" class="table table-hover align-middle" style="overflow-y: auto; font-size: 0.8em ; height: 300px;">
+            <table id="table" class="table align-middle" style="overflow-y: auto; font-size: 0.7em ;">
 
             </table>
         </div>
