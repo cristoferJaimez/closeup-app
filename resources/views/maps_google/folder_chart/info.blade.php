@@ -18,10 +18,7 @@ table{
             <button class="btn btn-sm btn-outline-secondary" type="button" onclick="calculo()"><i class="fa-solid fa-calculator"></i></button>
         </div>
     </form>
-
-
     <div class="text-center" id="list_utc" style="">
-        <hr>
         <b class="text-muted" style="font-size: 1em">Empety</b>
         <i class="fa-regular fa-empty-set"></i>
     </div>

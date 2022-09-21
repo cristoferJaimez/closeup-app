@@ -22,7 +22,7 @@
         table {
             border: none;
             border-bottom: rgb(235, 82, 82) 1px solid;
-            
+
         }
 
         #card_gf {
@@ -95,6 +95,8 @@
                                     onclick="closeGF()">
                                     &times;
                                 </a>
+
+                                    <img src="https://www.socialhizo.com/images/educacion/talleres/tipos_de_graficas.jpg" alt="" style="width: 80%; height: 80%;">
 
                             </div>
                         </div>

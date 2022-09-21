@@ -37,7 +37,19 @@ class CalculosController extends Controller
             $total_unidades +=  $arr_clean_[$i][0]->TOTAL_UNIDADES;
         }
 
-        return  ['total_valores'=> $total_valores, 'arr_utc_one' => $arr_clean_,'total_unidades'=> $total_unidades];
+
+        //farmacias
+        $arr_puntos = [];
+        for ($i=0; $i < $numero ; $i++) {
+            $res =  DB::select('CALL dev_powerbi.total_puntos(?)', [$explode_id[$i]]);
+        $arr_puntos = array_merge($arr_puntos, $res);
+       }
+
+
+
+
+
+        return  ['total_valores'=> $total_valores, 'arr_utc_one' => $arr_clean_,'total_unidades'=> $total_unidades, 'total_puntos' => $arr_puntos];
 
 
     }
@@ -68,10 +80,20 @@ class CalculosController extends Controller
            }
 
            array_multisort(array_column($arr_lab, 'VAL'), SORT_DESC, $arr_lab);
+
+           //UNIFICAR
+
+
            return  $arr_lab;
         }else if($request->select === "3"){
 
         }
+
+    }
+
+
+
+    public function My(Request $request){
 
     }
 

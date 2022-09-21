@@ -3,6 +3,7 @@ var arr_utc = [];
 var arr_back_utc = [];
 var map_ = false;
 var click = 0;
+const calculoMSH = 0;
 
 
 
@@ -122,7 +123,7 @@ function drawing_col() {
     }
 }
 
-function home(dir) {
+function home(dir, mydir) {
     var lat = "",
         lng = "";
     //cargar json para uso interno
@@ -257,10 +258,12 @@ function calculo() {
         },
         success: function(response) {
             console.log(response);
-            document.getElementById('total_valor').textContent = "$ " + response.total_valores.toLocaleString("es");
-            document.getElementById('total_unidad').textContent =  response.total_unidades;
-            document.getElementById('total').textContent = Math.trunc(response.total_valores / response.total_unidades);
-    
+            document.getElementById('total_valor').textContent = "$ " + Math.trunc(response.total_valores).toLocaleString("es");
+            document.getElementById('total_unidad').textContent = response.total_unidades;
+
+            document.getElementById('total_puntos').textContent = response.total_puntos.length;
+            document.getElementById('total_promedio').textContent = "$ " + Math.trunc(response.total_valores / response.total_puntos.length).toLocaleString("es");
+            $("#vt").val(response.total_valores);
             //console.log(response);
         },
         error: function(err) {
@@ -277,15 +280,12 @@ function calculo() {
 const select_1 = document.querySelector('.select_1');
 
 
-select_1.addEventListener('change', (e) => {
 
-    const table = $("#table");
-    /*
-    $(document).ready(function() {
-        $('table').DataTable();
-    });
-*/
-    document.getElementById('table').innerHTML = ""
+select_1.addEventListener('change', (e) => {
+    var num = $("#vt").val();
+
+    document.getElementById("body").innerHTML = ""
+        //document.getElementById('table').innerHTML = ""
     document.getElementById('inf_db').textContent = "Loading..."
         //console.log(event.target.value);
     $.ajaxSetup({
@@ -296,6 +296,9 @@ select_1.addEventListener('change', (e) => {
 
 
     if (event.target.value === "1") {
+
+
+
         $.ajax({
             url: "char",
             type: 'POST',
@@ -306,35 +309,21 @@ select_1.addEventListener('change', (e) => {
             success: function(response) {
 
 
-                $.each(response, (index, value) => {
-                    const row = $(document.createElement("tr"));
-                    const secRow = $(document.createElement("tr"));
+                console.log(response);
 
+                response.forEach((e, i, arr) => {
+                    document.getElementById("body").innerHTML += `
+                    <tr>
+                          <td>${i+1}</td>
+                          <td>${e.PROD}</td>
+                          <td>${e.UND}</td>
+                          <td> $${ Math.trunc(e.VAL).toLocaleString("es")}</td>
+                          <td>${ (e.VAL / num).toFixed(4)}%</td>
+                    </tr>
+                    `
 
-                    for (let prop in value) {
-                        if (index === 0) {
-                            const cellHead = $(document.createElement("th"));
-                            cellHead.text(prop);
-                            secRow.append(cellHead);
-                            table.append(secRow);
-                        }
-                        const cell = $(document.createElement("td"));
-                        if (typeof value[prop] === "number") {
-                            if (prop === "UND") {
-                                cell.text(value[prop].toLocaleString("es"));
-                            } else {
-                                let va =  Math.trunc(value[prop])
-                                cell.text("$ " + va.toLocaleString("es"));
-                            }
-                        } else {
-                            cell.text(value[prop]);
-                        }
-                        row.append(cell);
-
-                    }
-
-                    table.append(row);
                 });
+                $('table#tbl').tableSortable();
 
                 document.getElementById('inf_db').textContent = ""
             },
@@ -342,6 +331,7 @@ select_1.addEventListener('change', (e) => {
                 console.log(err);
             }
         });
+
     } else {
         $.ajax({
             url: "char",
@@ -352,40 +342,26 @@ select_1.addEventListener('change', (e) => {
             },
             success: function(response) {
 
-                $.each(response, (index, value) => {
+                //unificar
 
-                    const row = $(document.createElement("tr"));
-                    const secRow = $(document.createElement("tr"));
 
-                    for (let prop in value) {
-                        console.log(prop);
-                        if (index === 0) {
-                            const cellHead = $(document.createElement("th"));
-                            cellHead.text(prop);
-                            secRow.append(cellHead);
-                            table.append(secRow);
-                        }
+                response.forEach((e, i, arr) => {
 
-                        const cell = $(document.createElement("td"));
-                        if (prop === "FAB") {
-                            cell.text(index + "- " + value[prop]);
-                        }
-                        if (typeof value[prop] === "number") {
-                            if (prop === "UND") {
-                                cell.text(value[prop].toLocaleString("es"));
-                            } else {
-                                let va =  Math.trunc(value[prop])
-                                cell.text("$ " + va.toLocaleString("es"));
-                            }
-                        } else {
-                            cell.text(value[prop]);
-                        }
-                        row.append(cell);
 
-                    }
+                    document.getElementById("body").innerHTML += `
+                    <tr>
+                          <td>${i+1}</td>
+                          <td>${e.FABRICANTE}</td>
+                          <td>${e.UND}</td>
+                          <td> $${ Math.trunc(e.VAL).toLocaleString("es")}</td>
+                          <td>${ (e.VAL / num).toFixed(4)}%</td>
+                    </tr>
+                    `
 
-                    table.append(row);
                 });
+
+                $('table#tbl').tableSortable();
+
 
                 document.getElementById('inf_db').textContent = ""
             },
@@ -399,7 +375,6 @@ select_1.addEventListener('change', (e) => {
 
 });
 
-
-function clean_table() {
-    document.getElementById('table').innerHTML = ""
+function ClearTables() {
+    $('#tbl').DataTable().clear().draw();
 }
