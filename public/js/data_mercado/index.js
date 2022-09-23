@@ -4,6 +4,7 @@ var arr_back_utc = [];
 var map_ = false;
 var click = 0;
 const calculoMSH = 0;
+var farmacia = 0;
 
 
 
@@ -73,7 +74,7 @@ function drawing_col() {
                 //limpiar listado
                 list_utc.innerHTML = "";
                 arr_utc.forEach((e) => {
-                    list_utc.innerHTML += e.description + "\n<hr>";
+                    list_utc.innerHTML += e.description + "\n";
                 });
                 col.overrideStyle(event.feature, {
                     fillColor: "orange",
@@ -113,7 +114,7 @@ function drawing_col() {
 
                 list_utc.innerHTML = "";
                 arr_utc.forEach((e) => {
-                    list_utc.innerHTML += e.description + "\n<hr>";
+                    list_utc.innerHTML += e.name + "\n";
                 });
             }
         });
@@ -124,8 +125,8 @@ function drawing_col() {
 }
 
 function home(dir, mydir) {
-    var lat = "",
-        lng = "";
+    farmacia = mydir;
+
     //cargar json para uso interno
     $.getJSON(
         "https://raw.githubusercontent.com/cristoferJaimez/cristoferjaimez.github.io/main/maps_ok.min.json",
@@ -181,7 +182,7 @@ function home(dir, mydir) {
                             //limpiar listado
                             list_utc.innerHTML = "";
                             arr_utc.forEach((e) => {
-                                list_utc.innerHTML += e.description + "\n<hr>";
+                                list_utc.innerHTML += e.description + "\n";
                             });
                             col.overrideStyle(event.feature, {
                                 fillColor: "orange",
@@ -227,7 +228,7 @@ function home(dir, mydir) {
 
                             list_utc.innerHTML = "";
                             arr_utc.forEach((e) => {
-                                list_utc.innerHTML += e.description + "\n<hr>";
+                                list_utc.innerHTML += e.description + "\n";
                             });
                         }
                     });
@@ -247,14 +248,19 @@ function calculo() {
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+
+
     });
 
 
+    //mercado global
+    var propio = false
     $.ajax({
         url: "info_btn",
         type: 'POST',
         data: {
             "arr_utc": document.getElementById('arr_utc').value,
+            "farmacia": farmacia
         },
         success: function(response) {
             console.log(response);
@@ -264,12 +270,25 @@ function calculo() {
             document.getElementById('total_puntos').textContent = response.total_puntos.length;
             document.getElementById('total_promedio').textContent = "$ " + Math.trunc(response.total_valores / response.total_puntos.length).toLocaleString("es");
             $("#vt").val(response.total_valores);
+
+
+            if (propio === false) {
+                propio = true;
+                //mercado pripio
+
+                document.getElementById('total_propio').textContent = "$" + Math.trunc(response.farmacia[0].VAL).toLocaleString('es');
+                document.getElementById('unidad_propio').textContent = response.farmacia[0].UND
+
+            }
             //console.log(response);
         },
         error: function(err) {
             console.log(err);
         }
     });
+
+
+
 
 
 }

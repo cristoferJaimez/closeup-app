@@ -47,9 +47,12 @@ class CalculosController extends Controller
 
 
 
+       //mi farmacia
+       $myFarmacia =  DB::select('CALL dev_powerbi.farmacia(?)', [$request->farmacia]);
 
 
-        return  ['total_valores'=> $total_valores, 'arr_utc_one' => $arr_clean_,'total_unidades'=> $total_unidades, 'total_puntos' => $arr_puntos];
+
+        return  ['total_valores'=> $total_valores, 'arr_utc_one' => $arr_clean_,'total_unidades'=> $total_unidades, 'total_puntos' => $arr_puntos , 'farmacia' => $myFarmacia ];
 
 
     }
