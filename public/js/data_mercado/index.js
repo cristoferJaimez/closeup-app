@@ -182,7 +182,7 @@ function home(dir, mydir) {
                             //limpiar listado
                             list_utc.innerHTML = "";
                             arr_utc.forEach((e) => {
-                                list_utc.innerHTML += e.description + "\n";
+                                list_utc.innerHTML += '<i class="btn btn-sm btn-outline-secondary m-1" style="font-size: 0.7em;">' + e.name + "</i>";
                             });
                             col.overrideStyle(event.feature, {
                                 fillColor: "orange",
@@ -216,7 +216,7 @@ function home(dir, mydir) {
                             let index = arr_back_utc.findIndex(
                                 (e) => e === event.feature.h.name
                             );
-                            console.log("indice  " + index);
+                            //console.log("indice  " + index);
                             arr_back_utc.splice(index, 1);
 
                             document.getElementById('arr_utc').value = arr_back_utc
@@ -228,7 +228,7 @@ function home(dir, mydir) {
 
                             list_utc.innerHTML = "";
                             arr_utc.forEach((e) => {
-                                list_utc.innerHTML += e.description + "\n";
+                                list_utc.innerHTML += e.name + "\n";
                             });
                         }
                     });

@@ -1,5 +1,9 @@
 <style>
 
+.scroll:::-webkit-scrollbar:vertical {
+    background-color: rgb(219, 107, 107);
+}
+
 
 </style>
 
@@ -33,7 +37,11 @@
         </select>
 
 
-        <div class="card p-2 scroll table-responsive-lg" style=" overflow-x: hidden; ">
+        <div class="card p-2 scroll table-responsive-lg" id="tabla" style=" overflow-x: hidden; ">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="button" class="text-muted btn btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop" ><i class="fa-solid fa-chart-simple"></i></button>
+                <b class="text-muted btn btn-sm " onclick="max_min('#tabla')">&plusmn;</b>
+            </div>
             <span id="inf_db"></span>
             <table id="tbl" class="table scroll" style="font-size: 0.9em;">
                 <thead>

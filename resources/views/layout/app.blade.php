@@ -62,7 +62,7 @@
 
     <!--<script src="{{ asset('assets/maps.geojson') }}"></script>
     -->
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
     <script src="{{ asset('js/control.js') }}"></script>
