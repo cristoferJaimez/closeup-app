@@ -11,13 +11,13 @@
 
     </div>
     <div class="col-9">
-        <table class="table   bg-white">
+        <table class="table table-bordered  bg-white">
             <thead class="text-center " style="">
                 <tr>
-                    <td colspan="4" class="text-center bg-dark text-white">
+                    <td colspan="4" class="text-center bg-danger text-white">
                         MERCADO GLOBAL
                     </td>
-                    <td colspan="4" class="text-center ">
+                    <td colspan="4" class="bg-info text-white text-center ">
                         MERCADO CADENA
                     </td>
 
@@ -82,28 +82,28 @@
                         <div id="total_promedio"> 0 </div>
                     </td>
                     <td colspan="1" class="">
-                        <div id="total_propio">$ 0,00</div>
+                        <div id="total_cadena">$ 0,00</div>
                     </td>
                     <td colspan="1" class="">
-                        <div id="unidad_propio"> 0 </div>
+                        <div id="unidad_cadena"> 0 </div>
                     </td>
                     <td colspan="1">
-                        <div id="total_valor">$ 0,00</div>
+                        <div id="total_valor_cadena">$ 0,00</div>
                     </td>
                     <td colspan="1">
                         <div id="total_unidad"> 0 </div>
                     </td>
                     <td colspan="1">
-                        <div id="total_puntos"> 0 </div>
+                        <div id="total_propio"> $ 0,00 </div>
                     </td>
                     <td colspan="1">
-                        <div id="total_promedio"> 0 </div>
-                    </td>
-                    <td colspan="1" class="">
-                        <div id="total_propio">$ 0,00</div>
-                    </td>
-                    <td colspan="1" class="">
                         <div id="unidad_propio"> 0 </div>
+                    </td>
+                    <td colspan="1" class="">
+                        <div id="">0</div>
+                    </td>
+                    <td colspan="1" class="">
+                        <div id=""> 0 </div>
                     </td>
 
                 </tr>

@@ -51,9 +51,11 @@
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBb3IgM-eU8HwwkzPNpIcpA1BWAdWtdaoI">
     </script>
     <script src="{{ asset('js/google_maps.js') }}"></script>
-    <script src="{{ asset('js/data_mercado/index.js') }}"></script>
+    <script   src="{{ asset('js/data_mercado/index.js') }}"></script>
 
+    <script  src="{{ asset('js/data_mercado/max_min.js') }}"></script>
+    <script  src="{{ asset('js/data_mercado/home.js') }}"></script>
+    <script  src="{{ asset('js/data_mercado/select.js') }}"></script>
     <script src="{{ asset('js/data_mercado/char.js') }}"></script>
-    <script src="{{ asset('js/data_mercado/charForm.js') }}"></script>
-    <script src="{{ asset('js/data_mercado/max_min.js') }}"></script>
+    <script type="module" src="{{ asset('js/data_mercado/charForm.js') }}"></script>
 @endsection
