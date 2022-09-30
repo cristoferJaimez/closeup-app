@@ -25,7 +25,10 @@ select_1.addEventListener('change', (e) => {
                 "select": event.target.value,
             },
             success: function(response) {
-                char_(response)
+
+                //console.log(response);
+                //acomular duplicados
+                duplicado(response)
 
                 response.forEach((e, i, arr) => {
                     document.getElementById("body").innerHTML += `
@@ -59,7 +62,7 @@ select_1.addEventListener('change', (e) => {
             success: function(response) {
 
                 //unificar
-
+                duplicado(response)
 
                 response.forEach((e, i, arr) => {
 
@@ -90,3 +93,43 @@ select_1.addEventListener('change', (e) => {
 
 
 });
+
+
+
+
+function duplicado(data) {
+
+
+    data.forEach((val, i, arr) => {
+        data.forEach((val_, i_, arr_) => {
+
+            if (arr.PROD == arr_.PROD) {
+                console.log('repetido');
+            } else {
+                console.log('no repetidos');
+            }
+
+        })
+    })
+
+
+
+    const busquedad = data.reduce((acc, data, acu) => {
+        if (data.PROD) {
+
+            acc[data.PROD] = [++data.UND] || 0;
+        } else {
+            acc[data.FABRICANTE] = ++acc[Number(data.UND)] || 0;
+        }
+        return acc;
+    }, {});
+
+    console.log(busquedad);
+
+    const duplicados = data.filter((data) => {
+        return busquedad[data.PROD]
+    });
+
+    // console.log(duplicados);
+
+}

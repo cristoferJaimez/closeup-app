@@ -5,23 +5,17 @@ var propio_ = 0;
 //let myChart = new Chart();
 
 function char(glo, cad, pro) {
-
     var data = [{
-
         type: "sunburst",
-
-        labels: ["MERCADO", "GLOBAL", "CADENA", "PROPIO"],
-
-        parents: ["", "MERCADO", "GLOBAL", "CADENA"],
-
-        values: [0, glo, 12000000, pro],
-
-        outsidetextfont: { size: 10, color: "#377eb8" },
-
-        leaf: { opacity: 0.4 },
-
-        marker: { line: { width: 2 } },
-
+        labels: [`GLOBAL`, "CADENA", "PROPIO", "PROPIO"],
+        parents: ["", "GLOBAL", 'GLOBAL', "CADENA"],
+        values: [glo, 12000000, pro, pro],
+        outsidetextfont: { size: 10, color: "#FFF" },
+        leaf: { /*opacity: 0.4*/ },
+        marker: {
+            line: { width: 2 },
+            colors: ["#DC3545", "#0DCAF0", "#FFC107", "#FFC107"]
+        },
     }];
 
 
@@ -30,23 +24,24 @@ function char(glo, cad, pro) {
     var layout = {
         title: 'MERCADO',
         margin: { l: 0, r: 0, b: 0, t: 0 },
-
-        width: 310,
-
-        height: 250
+        height: 280,
 
     };
 
-
-
+    document.getElementById('myChart').textContent = ""
     Plotly.newPlot('myChart', data, layout, config);
     $('.modebar-btn').addClass('d-none');
+    console.log('y¿txt');
+    console.log($('.surface').length);
+
 }
 
 
 
 
 function calculo() {
+    document.getElementById('myChart').textContent = "Loading char..."
+
     document.getElementById('total_valor').textContent = "Loading..."
         //event.defaultPrevented();
     $.ajaxSetup({

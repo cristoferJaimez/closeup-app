@@ -18,6 +18,15 @@
         .scroll {
             height: 100px;
         }
+
+        table{
+            border: none;
+            font-size: 0.7em;
+        }
+
+        table tr td{
+            margin: 2px;
+        }
     </style>
 
 
@@ -33,11 +42,11 @@
                     @include('maps_google.folder_chart.grafy')
                 @endif
             </div>
-            <div class="col-md-9">
-                <div id="map" class="mt-2 rounded"></div>
+            <div class="col-md-9 col-sm-12">
+                <div id="map" class="mt-2 rounded col-sm-12"></div>
             </div>
 
-            <div class=" position-absolute bottom-0 start-0  rounded ">
+            <div class="col-sm-12 col-md-12 position-absolute bottom-0 start-0  rounded ">
                 @include('maps_google.folder_chart.info_btn')
             </div>
 

@@ -62,7 +62,6 @@
 
     <!--<script src="{{ asset('assets/maps.geojson') }}"></script>
     -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.plot.ly/plotly-2.14.0.min.js"></script>
 
     <script src="{{ asset('js/control.js') }}"></script>

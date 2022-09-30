@@ -7,7 +7,8 @@ function max_min(params) {
             height: 'toggle',
             //opacity: '0.5',
             height: '200px',
-            width: '310px'
+            width: 'auto',
+            zindex: '5'
         });
 
     } else {
@@ -17,7 +18,7 @@ function max_min(params) {
         $(params).animate({
             height: 'toggle',
             height: '80px',
-            width: '310px'
+            width: 'auto'
         });
 
     }
