@@ -74,6 +74,7 @@ class CalculosController extends Controller
               $arr_prod =  array_merge($arr_prod, $res);
            }
            array_multisort(array_column($arr_prod, 'VAL'), SORT_DESC, $arr_prod);
+           //unificar  productos
            return $arr_prod;
 
         }else if($request->select === "2"){
@@ -85,16 +86,12 @@ class CalculosController extends Controller
            array_multisort(array_column($arr_lab, 'VAL'), SORT_DESC, $arr_lab);
 
            //UNIFICAR
-
-
            return  $arr_lab;
         }else if($request->select === "3"){
 
         }
 
     }
-
-
 
     public function My(Request $request){
 

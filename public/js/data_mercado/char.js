@@ -31,8 +31,8 @@ function char(glo, cad, pro) {
     document.getElementById('myChart').textContent = ""
     Plotly.newPlot('myChart', data, layout, config);
     $('.modebar-btn').addClass('d-none');
-    console.log('y¿txt');
-    console.log($('.surface').length);
+    // console.log('y¿txt');
+    // console.log($('.surface').length);
 
 }
 

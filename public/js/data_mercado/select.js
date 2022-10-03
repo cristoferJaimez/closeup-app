@@ -99,37 +99,9 @@ select_1.addEventListener('change', (e) => {
 
 function duplicado(data) {
 
-
-    data.forEach((val, i, arr) => {
-        data.forEach((val_, i_, arr_) => {
-
-            if (arr.PROD == arr_.PROD) {
-                console.log('repetido');
-            } else {
-                console.log('no repetidos');
-            }
-
-        })
-    })
-
-
-
-    const busquedad = data.reduce((acc, data, acu) => {
-        if (data.PROD) {
-
-            acc[data.PROD] = [++data.UND] || 0;
-        } else {
-            acc[data.FABRICANTE] = ++acc[Number(data.UND)] || 0;
-        }
-        return acc;
-    }, {});
-
-    console.log(busquedad);
-
-    const duplicados = data.filter((data) => {
-        return busquedad[data.PROD]
-    });
-
-    // console.log(duplicados);
-
+    const respuesta = data.reduce((acc, data) => {
+        acc[data.FABRICANTE] = ++acc[data.FABRICANTE] || 0;
+        return acc
+    }, {})
+    console.log(respuesta);
 }

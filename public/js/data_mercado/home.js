@@ -102,7 +102,7 @@ function home(dir, mydir) {
 
                             list_utc.innerHTML = "";
                             arr_utc.forEach((e) => {
-                                list_utc.innerHTML += e.name + "\n";
+                                list_utc.innerHTML += '<i class="btn btn-sm btn-outline-secondary m-1" style="font-size: 0.7em;">' + e.name + "</i>";
                             });
                         }
                     });
