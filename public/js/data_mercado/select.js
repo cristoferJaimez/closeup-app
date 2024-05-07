@@ -98,10 +98,20 @@ select_1.addEventListener('change', (e) => {
 
 
 function duplicado(data) {
+    var newarr = [];
+    var und = 0,
+        valo = 0;
 
-    const respuesta = data.reduce((acc, data) => {
-        acc[data.FABRICANTE] = ++acc[data.FABRICANTE] || 0;
-        return acc
-    }, {})
-    console.log(respuesta);
+    data.forEach((val, i) => {
+        data.forEach((va, x) => {
+            if (val.FABRICANTE === va.FABRICANTE) {
+                und = und + va.UND;
+                valo = valo + va.VAL;
+            }
+        });
+
+        newarr.push({ 'FABRICANTE': val.FABRICANTE, 'UND': und, 'VAL': valo })
+    });
+
+    console.log(newarr);
 }

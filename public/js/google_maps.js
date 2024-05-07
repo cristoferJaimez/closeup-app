@@ -24,7 +24,7 @@ $(text_).on("click", () => {
     if (infoWindow) infoWindow.close();
 });
 
-google.maps.event.addDomListener(window, "load", function () {
+google.maps.event.addDomListener(window, "load", function() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 4.570868, lng: -74.297333 },
         zoom: 5,
@@ -33,15 +33,14 @@ google.maps.event.addDomListener(window, "load", function () {
 
     var autocomplete;
     autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById(searchInput),
-        {
+        document.getElementById(searchInput), {
             // types: ['geocode', '', 'doctor'],
         }
     );
 
     var place = autocomplete.getPlace();
 
-    google.maps.event.addListener(autocomplete, "place_changed", function () {
+    google.maps.event.addListener(autocomplete, "place_changed", function() {
         var near_place = autocomplete.getPlace();
 
         map = new google.maps.Map(document.getElementById("map"), {
@@ -69,15 +68,15 @@ google.maps.event.addDomListener(window, "load", function () {
         //console.log(mark);
         var popup = new google.maps.InfoWindow();
 
-        mark.addListener("click", function (e) {
+        mark.addListener("click", function(e) {
             popup.setContent(
                 '<table class="table table-striped">' +
-                    "<tr>" +
-                    '<th colspan="2"><strong>' +
-                    `${near_place.formatted_address}` +
-                    "</strong></th>" +
-                    "</tr>" +
-                    "</table>"
+                "<tr>" +
+                '<th colspan="2"><strong>' +
+                `${near_place.formatted_address}` +
+                "</strong></th>" +
+                "</tr>" +
+                "</table>"
             );
             popup.setPosition(e.latLng);
             popup.open(map);
@@ -91,7 +90,7 @@ function flay(near_place) {}
 //clear maps
 function clear_maps(feature) {
     //console.log(feature);
-    map.data.forEach(function (feature) {
+    map.data.forEach(function(feature) {
         map.data.remove(feature);
     });
 
@@ -127,30 +126,33 @@ function draw_mun(data) {
         zIndex: 2,
     });
 
-   
 
-    utc.addListener("click", function (event) {
+
+    utc.addListener("click", function(event) {
         //$(event.feature.j.description).addClass('table table-striped ')
-        //console.log(event.feature);
+        console.log(event.feature);
         utc.overrideStyle(event.feature, {
             fillColor: "orange",
             strokeColor: "white",
             strokeWeight: 1,
             zIndex: -1,
+
         });
+
+
         //map.data.overlayLayer.appendChild(this.div)
         infoWindow.setPosition(event.latLng);
         infoWindow.setContent(
             '<div class="text-center p-2" style="z-index: 99999">' +
-                '<img src="https://www.close-upinternational.com/img/logo.svg" alt="logo">' +
-                "</br>" +
-                event.feature.h.description +
-                "</div>"
+            '<img src="https://www.close-upinternational.com/img/logo.svg" alt="logo">' +
+            "</br>" +
+            event.feature.j.description +
+            "</div>"
         );
         infoWindow.open(map);
     });
 
-    mun.addListener("click", function (event) {
+    mun.addListener("click", function(event) {
         //$(event.feature.j.description).addClass('table table-striped ')
         //console.log(event.feature);
         mun.overrideStyle(event.feature, {
@@ -162,10 +164,10 @@ function draw_mun(data) {
         infoWindow.setPosition(event.latLng);
         infoWindow.setContent(
             '<div class="text-center p-2" style="z-index: 99999">' +
-                '<img src="https://www.close-upinternational.com/img/logo.svg" alt="logo">' +
-                "</br>" +
-                event.feature.h.description +
-                "</div>"
+            '<img src="https://www.close-upinternational.com/img/logo.svg" alt="logo">' +
+            "</br>" +
+            event.feature.j.description +
+            "</div>"
         );
         infoWindow.open(map);
     });
@@ -266,8 +268,8 @@ function darwing(near_place) {
         for (let h = 0; h <= near_place.address_components.length; h++) {
             resultado = locations.find(
                 (fruta) =>
-                    fruta.location ===
-                    near_place.address_components[h].long_name
+                fruta.location ===
+                near_place.address_components[h].long_name
             );
             if (resultado != undefined) {
                 break;
@@ -282,8 +284,8 @@ function darwing(near_place) {
         for (let h = 0; h <= near_place.address_components.length; h++) {
             resultado_MUN = mun.find(
                 (fruta) =>
-                    fruta.location ===
-                    near_place.address_components[h].long_name
+                fruta.location ===
+                near_place.address_components[h].long_name
             );
             if (resultado_MUN != undefined) {
                 break;
@@ -316,7 +318,7 @@ const init = () => {
 
         const destination = new google.maps.LatLng(latitude, longitude);
         var geocoder = new google.maps.Geocoder();
-        geocoder.geocode({ location: destination }, function (results, status) {
+        geocoder.geocode({ location: destination }, function(results, status) {
             if (status == "OK") {
                 console.log(results);
             } else {
@@ -325,8 +327,7 @@ const init = () => {
         });
 
         autocomplete = new google.maps.places.Autocomplete(
-            document.getElementById("lat_lng"),
-            {
+            document.getElementById("lat_lng"), {
                 //types: ['cities'],
             }
         );
@@ -336,7 +337,7 @@ const init = () => {
         google.maps.event.addListener(
             autocomplete,
             "place_changed",
-            function () {
+            function() {
                 var near_place = autocomplete.getPlace();
                 console.log(near_place);
             }
